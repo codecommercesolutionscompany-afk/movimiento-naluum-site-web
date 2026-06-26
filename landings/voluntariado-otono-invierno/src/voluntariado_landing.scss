@@ -1,0 +1,1264 @@
+$voi-primary: #179c55;
+$voi-primary-dark: #0f6f3c;
+$voi-deep: #07160e;
+$voi-deep-soft: #123026;
+$voi-text: #111827;
+$voi-muted: #58645d;
+$voi-cream: #fbfaf5;
+$voi-warm: #f3eadc;
+$voi-earth: #a08660;
+$voi-white: #ffffff;
+$voi-danger: #d9483f;
+$voi-shadow-soft: 0 20px 55px rgba(12, 24, 16, 0.12);
+$voi-shadow-hover: 0 34px 80px rgba(12, 24, 16, 0.18);
+$voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+@mixin voi-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+@mixin voi-sans {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.voi-landing {
+  @include voi-sans;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: $voi-cream;
+  color: $voi-text;
+  line-height: 1.7;
+
+  a {
+    color: inherit;
+  }
+
+  [id] {
+    scroll-margin-top: 118px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 60px;
+
+    @media (max-width: 768px) {
+      padding: 0 24px;
+    }
+  }
+
+  .section-label {
+    display: block;
+    margin-bottom: 1.25rem;
+    color: $voi-primary;
+    font-size: 0.74rem;
+    font-weight: 850;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .editorial-title {
+    @include voi-serif;
+    max-width: 900px;
+    margin-bottom: 1.45rem;
+    color: $voi-deep;
+    font-size: clamp(1.9rem, 4vw, 2.95rem);
+    font-weight: 600;
+    line-height: 1.08;
+  }
+
+  .editorial-lead {
+    max-width: 850px;
+    margin-bottom: 2.4rem;
+    color: $voi-muted;
+    font-size: 1.12rem;
+    line-height: 1.72;
+  }
+
+  .section-intro {
+    max-width: 920px;
+    margin: 0 auto 42px;
+    text-align: center;
+
+    .editorial-title,
+    .editorial-lead {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .editorial-lead {
+      margin-bottom: 0;
+    }
+  }
+
+  .section-intro--left {
+    margin: 0;
+    text-align: left;
+
+    .editorial-title {
+      margin-left: 0;
+    }
+  }
+
+  .btnPrimary,
+  .btnOutlineLight,
+  .btnSecondaryDark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+
+    @media (max-width: 440px) {
+      width: 100%;
+      padding-right: 18px;
+      padding-left: 18px;
+      font-size: 0.76rem;
+    }
+  }
+
+  .btnPrimary {
+    background: $voi-primary;
+    color: $voi-white;
+    box-shadow: 0 12px 28px rgba($voi-primary, 0.24);
+
+    &:hover {
+      background: $voi-primary-dark;
+      transform: translateY(-2px);
+    }
+
+    &--small {
+      width: auto;
+      min-height: 42px;
+      padding: 11px 22px;
+      font-size: 0.76rem;
+    }
+
+    &--wide {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  .btnSecondaryDark {
+    background: $voi-deep;
+    color: $voi-white;
+
+    &:hover {
+      background: $voi-primary-dark;
+      transform: translateY(-2px);
+    }
+  }
+
+  .btnOutlineLight {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    color: $voi-white;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.86);
+      transform: translateY(-2px);
+    }
+  }
+
+  .voi-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2000;
+    padding: 0;
+    background: transparent;
+    transition: all 0.4s $voi-ease;
+
+    &.scrolled {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba($voi-deep, 0.98);
+      backdrop-filter: blur(15px);
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1300px;
+      height: 74px;
+      margin: 0 auto;
+      padding: 0 60px;
+
+      @media (max-width: 768px) {
+        padding: 0 24px;
+      }
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      @include voi-serif;
+      color: $voi-white;
+      text-decoration: none;
+      font-size: 1.52rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+
+      &__img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        border-radius: 50%;
+        background: rgba(255, 250, 241, 0.95);
+        padding: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      @media (max-width: 440px) {
+        font-size: 1rem;
+        gap: 6px;
+        white-space: nowrap;
+
+        &__img {
+          width: 28px;
+          height: 28px;
+          padding: 3px;
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  .voi-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: $voi-deep;
+    text-align: center;
+
+    &__bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100%;
+      z-index: 1;
+
+      @media (max-width: 768px) {
+        height: 100%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.68;
+      }
+    }
+
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(to bottom, rgba($voi-deep, 0.52) 0%, rgba($voi-deep, 0.24) 42%, $voi-deep 96%),
+        radial-gradient(circle at 50% 36%, rgba($voi-primary, 0.16), transparent 44%);
+
+      @media (max-width: 768px) {
+        background:
+          linear-gradient(to bottom, rgba($voi-deep, 0.3) 0%, rgba($voi-deep, 0.75) 75%, $voi-deep 100%),
+          radial-gradient(circle at 50% 36%, rgba($voi-primary, 0.12), transparent 44%);
+      }
+    }
+
+    &__content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 118px 24px 84px;
+
+      @media (max-width: 660px) {
+        padding-top: 104px;
+      }
+    }
+
+    .voi-badge {
+      display: inline-block;
+      margin-bottom: 1.65rem;
+      padding: 7px 16px;
+      border: 1px solid rgba($voi-primary, 0.45);
+      border-radius: 999px;
+      background: rgba($voi-primary, 0.18);
+      color: $voi-white;
+      font-size: 0.72rem;
+      font-weight: 850;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .voi-title--hero {
+      @include voi-serif;
+      max-width: 930px;
+      margin-bottom: 1.8rem;
+      color: $voi-white;
+      font-size: clamp(2.7rem, 8vw, 5.2rem);
+      font-weight: 600;
+      line-height: 1.03;
+    }
+
+    &__subtitle {
+      max-width: 790px;
+      margin: 0 auto 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      line-height: 1.64;
+    }
+
+    &__support {
+      max-width: 820px;
+      margin: 0 auto 2.4rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.96rem;
+      line-height: 1.72;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 2.8rem;
+
+      @media (max-width: 660px) {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 420px;
+      }
+    }
+  }
+
+  .voi-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 980px;
+    padding-top: 2.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+
+    @media (max-width: 920px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 520px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .voi-quick-item {
+    display: grid;
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: $voi-white;
+    text-align: left;
+    backdrop-filter: blur(8px);
+
+    svg {
+      margin-bottom: 10px;
+      color: #7be0a0;
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.68rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    strong {
+      color: $voi-white;
+      font-size: 0.94rem;
+      line-height: 1.32;
+    }
+  }
+
+  .voi-intro {
+    display: grid;
+    grid-template-columns: 0.95fr 1.15fr;
+    gap: 70px;
+    padding-top: 76px;
+    padding-bottom: 76px;
+
+    @media (max-width: 940px) {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+  }
+
+  .voi-text-flow {
+    display: grid;
+    gap: 18px;
+    color: $voi-muted;
+    font-size: 1.04rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .voi-highlight-line {
+    padding-top: 12px;
+    color: $voi-deep;
+    font-weight: 750;
+  }
+
+  .voi-purpose {
+    padding: 78px 0;
+    background: $voi-deep;
+    color: $voi-white;
+
+    @media (max-width: 768px) {
+      padding: 48px 0;
+    }
+
+    .section-label {
+      color: #7be0a0;
+    }
+
+    .editorial-title {
+      color: $voi-white;
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
+      align-items: start;
+
+      @media (max-width: 940px) {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    &__copy {
+      display: grid;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 1.02rem;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  .voi-stats-grid {
+    padding-top: 78px;
+    padding-bottom: 70px;
+
+    @media (max-width: 768px) {
+      padding-top: 48px;
+      padding-bottom: 40px;
+    }
+  }
+
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+
+    @media (max-width: 1050px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 540px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card,
+  .task-card,
+  .cohort-card,
+  .process-step {
+    border: 1px solid rgba($voi-primary, 0.1);
+    border-radius: 12px;
+    background: $voi-white;
+    box-shadow: $voi-shadow-soft;
+  }
+
+  .stat-card {
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.35s $voi-ease, box-shadow 0.35s $voi-ease;
+
+    &:hover {
+      transform: translateY(-7px);
+      box-shadow: $voi-shadow-hover;
+    }
+
+    .stat-icon {
+      display: inline-flex;
+      margin-bottom: 18px;
+      color: $voi-primary;
+    }
+
+    .stat-value {
+      @include voi-serif;
+      margin-bottom: 6px;
+      color: $voi-deep;
+      font-size: clamp(1.9rem, 4vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .stat-label {
+      color: $voi-primary;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stat-desc {
+      margin-top: 14px;
+      color: $voi-muted;
+      font-size: 0.94rem;
+      line-height: 1.48;
+    }
+  }
+
+  .voi-includes-panel {
+    margin-top: 34px;
+    padding: 34px;
+    border: 1px solid rgba($voi-primary, 0.12);
+    border-radius: 14px;
+    background: #f7fbf7;
+
+    @media (max-width: 560px) {
+      padding: 25px 20px;
+    }
+  }
+
+  .voi-check-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-width: 0;
+      color: $voi-muted;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    svg {
+      flex: 0 0 auto;
+      margin-top: 3px;
+      color: $voi-primary;
+    }
+  }
+
+  .voi-important-note {
+    margin: 24px 0 0;
+    padding: 17px 20px;
+    border-left: 4px solid $voi-earth;
+    background: rgba($voi-earth, 0.12);
+    color: $voi-deep;
+    font-size: 0.94rem;
+    font-weight: 650;
+    line-height: 1.55;
+  }
+
+  .voi-main-layout {
+    display: grid;
+    grid-template-columns: 1.58fr 1fr;
+    gap: 50px;
+    align-items: flex-start;
+    padding-bottom: 72px;
+
+    @media (max-width: 980px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .content-area {
+    display: grid;
+    gap: 32px;
+  }
+
+  .sidebar-area {
+    position: sticky;
+    top: 120px;
+
+    @media (max-width: 980px) {
+      position: static;
+    }
+  }
+
+  .voi-section-block,
+  .booking-card {
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 14px;
+    background: $voi-white;
+    box-shadow: $voi-shadow-soft;
+  }
+
+  .voi-section-block {
+    padding: 46px 42px;
+
+    @media (max-width: 768px) {
+      padding: 32px 24px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: $voi-muted;
+      line-height: 1.72;
+    }
+
+    &--dark {
+      background: $voi-deep;
+      color: $voi-white;
+
+      .section-label {
+        color: #7be0a0;
+      }
+
+      .editorial-title {
+        color: $voi-white;
+      }
+
+      p,
+      .voi-check-list li {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .voi-check-list svg {
+        color: #7be0a0;
+      }
+    }
+  }
+
+  .voi-pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .voi-pill {
+    background: #eef8f1;
+    color: $voi-primary-dark;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid rgba($voi-primary, 0.2);
+    transition: all 0.2s $voi-ease;
+
+    &:hover {
+      background: $voi-primary;
+      color: $voi-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  .voi-split-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .voi-section-block {
+      height: 100%;
+    }
+  }
+
+  .voi-task-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .task-card {
+    padding: 22px;
+    background: #fcfcfb;
+
+    span {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: $voi-earth;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    p {
+      margin: 0;
+      color: $voi-deep;
+      font-size: 0.98rem;
+      font-weight: 680;
+      line-height: 1.45;
+    }
+  }
+
+  .axis-note {
+    margin: 30px 0 0;
+    color: $voi-deep;
+    font-size: 0.94rem;
+    font-style: italic;
+    font-weight: 650;
+  }
+
+  .booking-card {
+    padding: 42px 36px;
+
+    @media (max-width: 520px) {
+      padding: 34px 24px;
+    }
+  }
+
+  .booking-list {
+    display: grid;
+    gap: 13px;
+    margin: 1.5rem 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      gap: 10px;
+      color: $voi-muted;
+      font-size: 0.95rem;
+
+      strong {
+        color: $voi-deep;
+      }
+
+      @media (max-width: 420px) {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+  }
+
+  .booking-price-box {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 22px;
+    border: 1px solid rgba($voi-primary, 0.2);
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba($voi-primary, 0.1), rgba($voi-warm, 0.7));
+
+    span {
+      color: $voi-primary-dark;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    strong {
+      @include voi-serif;
+      color: $voi-deep;
+      font-size: clamp(2.1rem, 5vw, 3rem);
+      line-height: 1;
+    }
+
+    p {
+      margin: 4px 0 0;
+      color: $voi-deep;
+      font-size: 0.92rem;
+      font-weight: 650;
+      line-height: 1.5;
+    }
+  }
+
+  .booking-note {
+    margin: 16px 0 0;
+    color: $voi-muted;
+    font-size: 0.9rem;
+    font-weight: 620;
+    line-height: 1.55;
+  }
+
+  .voi-cohorts {
+    padding-top: 18px;
+    padding-bottom: 82px;
+    scroll-margin-top: 110px;
+
+    @media (max-width: 768px) {
+      padding-bottom: 48px;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+
+      @media (max-width: 820px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  .cohort-card {
+    position: relative;
+    overflow: hidden;
+    padding: 34px;
+
+    @media (max-width: 768px) {
+      padding: 24px;
+    }
+    background: linear-gradient(145deg, $voi-white 0%, #f6fbf6 100%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 6px;
+      background: linear-gradient(90deg, $voi-primary, $voi-earth);
+    }
+
+    span {
+      display: block;
+      margin-bottom: 16px;
+      color: $voi-primary-dark;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      @include voi-serif;
+      margin: 0 0 16px;
+      color: $voi-deep;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      font-weight: 650;
+      line-height: 1.12;
+    }
+
+    p {
+      margin: 0 0 12px;
+      color: $voi-muted;
+      line-height: 1.55;
+    }
+
+    &__note {
+      color: $voi-deep;
+      font-weight: 650;
+    }
+
+    strong {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba($voi-primary, 0.11);
+      color: $voi-primary-dark;
+      font-size: 0.82rem;
+    }
+
+    &__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 52px;
+      margin-top: 24px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: $voi-deep;
+      color: $voi-white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, transform 0.25s ease;
+
+      &:hover {
+        background: $voi-primary-dark;
+        transform: translateY(-2px);
+      }
+
+      svg {
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  .voi-investment {
+    padding: 78px 0;
+    background: $voi-warm;
+
+    @media (max-width: 768px) {
+      padding: 48px 0;
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 56px;
+      align-items: start;
+
+      @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  }
+
+  .investment-card {
+    padding: 38px;
+    border: 1px solid rgba($voi-primary, 0.16);
+    border-radius: 14px;
+    background: $voi-white;
+    box-shadow: $voi-shadow-soft;
+
+    @media (max-width: 560px) {
+      padding: 28px 22px;
+    }
+
+    > span {
+      display: block;
+      margin-bottom: 10px;
+      color: $voi-primary-dark;
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    > strong {
+      @include voi-serif;
+      display: block;
+      margin-bottom: 24px;
+      color: $voi-deep;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      line-height: 1;
+    }
+
+    p {
+      margin: 0 0 16px;
+      color: $voi-muted;
+      line-height: 1.66;
+    }
+  }
+
+  .spaced-section {
+    padding: 76px 60px;
+
+    @media (max-width: 768px) {
+      padding: 64px 24px;
+    }
+  }
+
+  .voi-filters-block {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .filter-card {
+    padding: 42px 36px;
+    border-radius: 14px;
+    box-shadow: $voi-shadow-soft;
+
+    @media (max-width: 768px) {
+      padding: 28px 24px;
+    }
+
+    > svg {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      @include voi-serif;
+      margin: 0 0 24px;
+      color: $voi-deep;
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      font-weight: 650;
+      line-height: 1.08;
+    }
+
+    .voi-check-list {
+      grid-template-columns: 1fr;
+    }
+
+    &--pos {
+      border: 1px solid rgba($voi-primary, 0.12);
+      background: #eef8f1;
+
+      > svg {
+        color: $voi-primary;
+      }
+    }
+
+    &--neg {
+      border: 1px solid rgba($voi-danger, 0.12);
+      background: #fff3f1;
+
+      > svg,
+      .voi-check-list svg {
+        color: $voi-danger;
+      }
+    }
+  }
+
+  .voi-process {
+    padding-bottom: 82px;
+
+    @media (max-width: 768px) {
+      padding-bottom: 48px;
+    }
+
+    &__notes {
+      display: grid;
+      gap: 12px;
+      max-width: 860px;
+      margin: 28px auto 0;
+
+      p {
+        margin: 0;
+        padding: 15px 18px;
+        border-left: 4px solid $voi-earth;
+        background: rgba($voi-earth, 0.12);
+        color: $voi-deep;
+        font-size: 0.94rem;
+        font-weight: 650;
+        line-height: 1.55;
+      }
+    }
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .process-step {
+    padding: 24px;
+    background: $voi-white;
+
+    span {
+      @include voi-serif;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      background: $voi-deep;
+      color: $voi-white;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      color: $voi-muted;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+  }
+
+  .voi-faq {
+    padding: 74px 60px;
+
+    @media (max-width: 768px) {
+      padding: 70px 24px;
+    }
+
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      border-top: 1px solid rgba($voi-deep, 0.1);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba($voi-deep, 0.1);
+
+      &__trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 24px 0;
+        border: 0;
+        background: transparent;
+        color: $voi-deep;
+        cursor: pointer;
+        font-size: 1.05rem;
+        font-weight: 750;
+        text-align: left;
+
+        .icon {
+          flex: 0 0 auto;
+          margin-left: 24px;
+          color: $voi-primary;
+          transition: transform 0.25s ease;
+        }
+      }
+
+      &__content {
+        overflow: hidden;
+        padding: 0 0 24px;
+        color: $voi-muted;
+        line-height: 1.72;
+      }
+    }
+  }
+
+  .voi-application {
+    padding: 80px 0;
+    background: $voi-white;
+
+    @media (max-width: 768px) {
+      padding: 48px 0;
+    }
+
+    .application-content {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .editorial-title,
+    .application-lead {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .application-lead {
+      margin-bottom: 34px;
+    }
+
+    .application-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+
+      @media (max-width: 680px) {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    .application-note {
+      max-width: 620px;
+      margin: 24px auto 0;
+      color: rgba($voi-muted, 0.86);
+      font-size: 0.9rem;
+      line-height: 1.58;
+    }
+  }
+
+  .voi-footer {
+    padding: 56px 0;
+    background: $voi-deep;
+    color: $voi-white;
+    text-align: center;
+
+    .footer-logo-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+
+      .footer-logo__img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        border-radius: 50%;
+        background: rgba(255, 250, 241, 0.95);
+        padding: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer-logo {
+        margin-bottom: 0;
+      }
+    }
+
+    .footer-logo {
+      @include voi-serif;
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.85rem;
+    }
+  }
+}
