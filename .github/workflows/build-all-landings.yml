@@ -1,0 +1,58 @@
+name: Build all landings
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-landings:
+    name: Build ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - name: PDC
+            path: landings/pdc
+          - name: Residencia Formativa
+            path: landings/programa-intercambio-formativo
+          - name: Selva Adentro
+            path: landings/selva-adentro
+          - name: Voluntariado
+            path: landings/voluntariado-otono-invierno
+          - name: Yerba
+            path: landings/yerba
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ matrix.path }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.path }}
+        run: npm ci
+
+      - name: Build landing
+        working-directory: ${{ matrix.path }}
+        run: npm run build
+
+      - name: Verify dist output
+        shell: bash
+        run: |
+          test -f "${{ matrix.path }}/dist/index.html" || {
+            echo "Missing dist/index.html for ${{ matrix.name }}"
+            exit 1
+          }
+
+          echo "Build OK: ${{ matrix.name }}"
+          find "${{ matrix.path }}/dist" -maxdepth 2 -type f | sort
