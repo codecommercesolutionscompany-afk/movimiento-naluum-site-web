@@ -1,0 +1,94 @@
+name: Deploy Yerba to Hostinger
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-yerba
+  cancel-in-progress: false
+
+jobs:
+  deploy-yerba:
+    name: Build and deploy Yerba
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+
+    env:
+      FTP_HOST: ${{ secrets.HOSTINGER_FTP_SERVER }}
+      FTP_USER: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+      FTP_PORT: ${{ vars.HOSTINGER_FTP_PORT }}
+      REMOTE_PATH: domains/movimientonaluum.org/public_html/yerba
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: landings/yerba/package-lock.json
+
+      - name: Install dependencies
+        working-directory: landings/yerba
+        run: npm ci
+
+      - name: Build Yerba
+        working-directory: landings/yerba
+        run: npm run build
+
+      - name: Verify build output
+        shell: bash
+        run: |
+          test -f "landings/yerba/dist/index.html" || {
+            echo "Missing landings/yerba/dist/index.html"
+            exit 1
+          }
+
+          echo "Yerba build is ready."
+          find landings/yerba/dist -maxdepth 2 -type f | sort
+
+      - name: Install lftp
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes lftp
+
+      - name: Deploy Yerba through FTPS
+        shell: bash
+        run: |
+          lftp             -u "$FTP_USER","$FTP_PASSWORD"             -p "$FTP_PORT"             "$FTP_HOST"             -e "
+              set ftp:passive-mode yes;
+              set ftp:ssl-force yes;
+              set ftp:ssl-protect-data yes;
+              set ssl:verify-certificate no;
+              set net:max-retries 2;
+              set net:timeout 30;
+              set cmd:fail-exit yes;
+
+              lcd \"$GITHUB_WORKSPACE/landings/yerba/dist\";
+              cd \"$REMOTE_PATH\";
+              mirror --reverse --verbose --parallel=2 . .;
+
+              bye;
+            "
+
+      - name: Verify public Yerba URL
+        shell: bash
+        run: |
+          CHECK_URL="https://movimientonaluum.org/yerba/?deploy_check=${GITHUB_RUN_ID}"
+
+          curl             --fail             --silent             --show-error             --location             --retry 3             "$CHECK_URL"             --output /tmp/yerba.html
+
+          grep -q "Yerba Mate Madre Selva" /tmp/yerba.html || {
+            echo "The public page responded, but expected Yerba content was not found."
+            exit 1
+          }
+
+          echo "Yerba deployment verified successfully."
