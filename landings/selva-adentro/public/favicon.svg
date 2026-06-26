@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Selva Adentro">
+  <rect width="64" height="64" rx="14" fill="#12372a"/>
+  <path d="M32 9c9 7 15 16 15 25 0 11-7 19-15 21-8-2-15-10-15-21 0-9 6-18 15-25Z" fill="#e4b458"/>
+  <path d="M32 15v34M23 31l9 7 9-7M25 22l7 6 7-6" fill="none" stroke="#12372a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
