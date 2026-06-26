@@ -3,6 +3,17 @@ name: Deploy all landings to Hostinger
 "on":
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    paths:
+      - "landings/pdc/**"
+      - "landings/programa-intercambio-formativo/**"
+      - "landings/selva-adentro/**"
+      - "landings/voluntariado-otono-invierno/**"
+      - "landings/yerba/**"
+      - ".github/workflows/deploy-all-landings-hostinger.yml"
+
 permissions:
   contents: read
 
@@ -92,6 +103,11 @@ jobs:
 
             cd "$GITHUB_WORKSPACE/$local_dir"
 
+            test -f "index.html" || {
+              echo "Missing index.html in $local_dir"
+              exit 1
+            }
+
             lftp               -u "$FTP_USER","$FTP_PASSWORD"               -p "$FTP_PORT"               "$FTP_HOST"               -e "
                 set ftp:passive-mode yes;
                 set ftp:ssl-force yes;
@@ -110,6 +126,8 @@ jobs:
 
                 bye;
               "
+
+            echo "$label deployed successfully"
           }
 
           deploy_landing "landings/pdc/dist" "pdc" "PDC"
@@ -135,6 +153,8 @@ jobs:
               echo "Expected content not found for $label"
               exit 1
             }
+
+            echo "$label verified successfully"
           }
 
           check_url "https://movimientonaluum.org/pdc/" "PDC" "PDC"
