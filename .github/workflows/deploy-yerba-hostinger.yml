@@ -52,6 +52,9 @@ jobs:
           }
 
           echo "Yerba build is ready."
+          pwd
+          ls -la landings/yerba
+          ls -la landings/yerba/dist
           find landings/yerba/dist -maxdepth 2 -type f | sort
 
       - name: Install lftp
@@ -63,6 +66,12 @@ jobs:
       - name: Deploy Yerba through FTPS
         shell: bash
         run: |
+          cd "$GITHUB_WORKSPACE/landings/yerba/dist"
+
+          echo "Local deployment directory:"
+          pwd
+          ls -la
+
           lftp             -u "$FTP_USER","$FTP_PASSWORD"             -p "$FTP_PORT"             "$FTP_HOST"             -e "
               set ftp:passive-mode yes;
               set ftp:ssl-force yes;
@@ -72,7 +81,6 @@ jobs:
               set net:timeout 30;
               set cmd:fail-exit yes;
 
-              lcd \"$GITHUB_WORKSPACE/landings/yerba/dist\";
               cd \"$REMOTE_PATH\";
               mirror --reverse --verbose --parallel=2 . .;
 
