@@ -40,15 +40,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes lftp
 
-      - name: Test FTP connection
+      - name: Test FTPS connection
         shell: bash
         run: |
-          lftp \
-            -u "$FTP_USER","$FTP_PASSWORD" \
-            -p "$FTP_PORT" \
-            "$FTP_HOST" \
-            -e "
+          lftp             -u "$FTP_USER","$FTP_PASSWORD"             -p "$FTP_PORT"             "$FTP_HOST"             -e "
               set ftp:passive-mode yes;
+              set ftp:ssl-force yes;
+              set ftp:ssl-protect-data yes;
+              set ssl:verify-certificate no;
               set net:max-retries 2;
               set net:timeout 20;
               set cmd:fail-exit yes;
@@ -65,5 +64,5 @@ jobs:
       - name: Connection test completed
         shell: bash
         run: |
-          echo "FTP connection succeeded."
+          echo "FTPS connection succeeded."
           echo "No files were uploaded, modified, or deleted."
