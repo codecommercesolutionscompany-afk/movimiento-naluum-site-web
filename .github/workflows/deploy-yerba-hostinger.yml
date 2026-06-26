@@ -22,7 +22,6 @@ jobs:
       FTP_USER: ${{ secrets.HOSTINGER_FTP_USERNAME }}
       FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
       FTP_PORT: ${{ vars.HOSTINGER_FTP_PORT }}
-      REMOTE_PATH: domains/movimientonaluum.org/public_html/yerba
 
     steps:
       - name: Checkout repository
@@ -52,9 +51,6 @@ jobs:
           }
 
           echo "Yerba build is ready."
-          pwd
-          ls -la landings/yerba
-          ls -la landings/yerba/dist
           find landings/yerba/dist -maxdepth 2 -type f | sort
 
       - name: Install lftp
@@ -81,7 +77,13 @@ jobs:
               set net:timeout 30;
               set cmd:fail-exit yes;
 
-              cd \"$REMOTE_PATH\";
+              cd domains;
+              cd movimientonaluum.org;
+              cd public_html;
+              cd yerba;
+              pwd;
+              cls -la;
+
               mirror --reverse --verbose --parallel=2 . .;
 
               bye;
