@@ -52,6 +52,8 @@ jobs:
               set net:max-retries 2;
               set net:timeout 20;
               set cmd:fail-exit yes;
+
+              cd domains/movimientonaluum.org/public_html;
               pwd;
               cls -la;
               cls -la pdc;
@@ -59,6 +61,7 @@ jobs:
               cls -la selva-adentro;
               cls -la voluntariado-otono-invierno;
               cls -la yerba;
+
               bye;
             "
 
