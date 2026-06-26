@@ -1,0 +1,150 @@
+name: Deploy all landings to Hostinger
+
+"on":
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-landings
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy all landings
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+
+    env:
+      FTP_HOST: ${{ secrets.HOSTINGER_FTP_SERVER }}
+      FTP_USER: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+      FTP_PORT: ${{ vars.HOSTINGER_FTP_PORT }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            landings/pdc/package-lock.json
+            landings/programa-intercambio-formativo/package-lock.json
+            landings/selva-adentro/package-lock.json
+            landings/voluntariado-otono-invierno/package-lock.json
+            landings/yerba/package-lock.json
+
+      - name: Build PDC
+        working-directory: landings/pdc
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Build Residencia Formativa
+        working-directory: landings/programa-intercambio-formativo
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Build Selva Adentro
+        working-directory: landings/selva-adentro
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Build Voluntariado
+        working-directory: landings/voluntariado-otono-invierno
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Build Yerba
+        working-directory: landings/yerba
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Install lftp
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes lftp
+
+      - name: Deploy all landings through FTPS
+        shell: bash
+        run: |
+          deploy_landing() {
+            local local_dir="$1"
+            local remote_dir="$2"
+            local label="$3"
+
+            echo "Deploying $label"
+
+            cd "$GITHUB_WORKSPACE/$local_dir"
+
+            lftp               -u "$FTP_USER","$FTP_PASSWORD"               -p "$FTP_PORT"               "$FTP_HOST"               -e "
+                set ftp:passive-mode yes;
+                set ftp:ssl-force yes;
+                set ftp:ssl-protect-data yes;
+                set ssl:verify-certificate no;
+                set net:max-retries 2;
+                set net:timeout 30;
+                set cmd:fail-exit yes;
+
+                cd domains;
+                cd movimientonaluum.org;
+                cd public_html;
+                cd $remote_dir;
+
+                mirror --reverse --verbose --parallel=2 . .;
+
+                bye;
+              "
+          }
+
+          deploy_landing "landings/pdc/dist" "pdc" "PDC"
+          deploy_landing "landings/programa-intercambio-formativo/dist" "programa-intercambio-formativo" "Residencia Formativa"
+          deploy_landing "landings/selva-adentro/dist" "selva-adentro" "Selva Adentro"
+          deploy_landing "landings/voluntariado-otono-invierno/dist" "voluntariado-otono-invierno" "Voluntariado"
+          deploy_landing "landings/yerba/dist" "yerba" "Yerba"
+
+      - name: Verify public URLs
+        shell: bash
+        run: |
+          check_url() {
+            local url="$1"
+            local expected="$2"
+            local label="$3"
+            local file="/tmp/check-${RANDOM}.html"
+
+            echo "Checking $label: $url"
+
+            curl               --fail               --silent               --show-error               --location               --retry 3               "${url}?deploy_check=${GITHUB_RUN_ID}"               --output "$file"
+
+            grep -qi "$expected" "$file" || {
+              echo "Expected content not found for $label"
+              exit 1
+            }
+          }
+
+          check_url "https://movimientonaluum.org/pdc/" "PDC" "PDC"
+          check_url "https://movimientonaluum.org/programa-intercambio-formativo/" "Residencia" "Residencia Formativa"
+          check_url "https://movimientonaluum.org/selva-adentro/" "Selva" "Selva Adentro"
+          check_url "https://movimientonaluum.org/voluntariado-otono-invierno/" "Voluntariado" "Voluntariado"
+          check_url "https://movimientonaluum.org/yerba/" "Yerba Mate Madre Selva" "Yerba"
+
+      - name: Deployment completed
+        shell: bash
+        run: |
+          echo "All landings were built, deployed, and verified."
+          echo "No remote delete operation was used."
