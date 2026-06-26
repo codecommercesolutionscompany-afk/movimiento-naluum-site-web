@@ -1,0 +1,579 @@
+{
+  "site": {
+    "brand": "MADRE SELVA",
+    "organization": "Instituto de Permacultura Na Lu'um",
+    "programId": "curso-certificado-diseno-permacultura",
+    "programSlug": "pdc",
+    "siteUrl": "https://movimientonaluum.org",
+    "landingUrl": "https://movimientonaluum.org/pdc"
+  },
+  "seo": {
+    "title": "Curso de Diseño en Permacultura (PDC) en Madre Selva | Curso Certificado de Diseño en Permacultura 2026",
+    "description": "Viví la permacultura en la práctica: una inmersión intensiva de 10 días en Madre Selva con certificación Na Lu'um + PRI Australia.",
+    "image": "/pdc/pdc_hero_pricipal.webp",
+    "canonical": "https://movimientonaluum.org/pdc"
+  },
+  "settings": {
+    "programPrice": "600 USD",
+    "foreignPrice": "600 USD",
+    "programDuration": "10 días",
+    "programDates": "9 al 18 de septiembre de 2026",
+    "arrivalNote": "El curso se realiza del 9 al 18 de septiembre de 2026.",
+    "location": "Madre Selva, Misiones, Argentina",
+    "whatsappNumber": "+5493764257777",
+    "whatsappUrl": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026.",
+    "earlyBirdDiscount": "",
+    "earlyBirdCondition": "",
+    "earlyBirdFinalPrice": "600 USD",
+    "balanceDue": "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante.",
+    "baseAccommodation": "Camping en carpa propia",
+    "yurtSharedDormPrice": "$15.000 ARS por día",
+    "argentinaPaymentMethod": "Mercado Pago",
+    "foreignPaymentMethod": "PayPal"
+  },
+  "tracking": {
+    "primaryConversionEvent": "generate_lead_qualified",
+    "secondaryConversionEvent": "click_whatsapp_start",
+    "landingSlug": "pdc",
+    "campaignType": "curso-certificado-diseno-permacultura",
+    "mainAudienceProfile": "perfil_2_permacultura_practica_sustentabilidad_vida_natural",
+    "funnelStrategy": "landing_to_whatsapp_direct"
+  },
+  "audienceStrategy": {
+    "mainProfile": {
+      "id": "perfil_2",
+      "name": "Permacultura práctica, sustentabilidad y vida natural",
+      "who": "Hombres y mujeres de 28 a 45 años con afinidad con permacultura, sustentabilidad, diseño consciente, agroecología, oficios, construcción natural o proyectos de vida ligados a la tierra.",
+      "pain": "Mucha teoría y poca práctica. Sienten falta de coherencia entre sus valores y su forma actual de vivir.",
+      "desire": "Aprender haciendo, vivir la permacultura en contexto real y acercarse a una vida más sustentable y coherente.",
+      "whatTheyBuy": "Práctica real, experiencia aplicada, inspiración para una casa o proyecto, y permacultura vivida, no decorativa.",
+      "mainHook": "Viví la permacultura en la práctica.",
+      "reasonForChoosing": "Es el perfil que mejor coincide con el Curso de Diseño en Permacultura (PDC) porque el programa es una formación intensiva, certificada y vivencial: combina teoría, práctica, diseño, comunidad, bioconstrucción, agricultura regenerativa y diseño hidrológico. No es solo una experiencia emocional ni un voluntariado: es una formación para aprender herramientas reales."
+    },
+    "supportProfiles": [
+      {
+        "id": "perfil_1",
+        "name": "Reconexión con la naturaleza y experiencia con sentido",
+        "usage": "Usar como capa emocional del copy: tierra, comunidad, calma, humanidad, volver a lo esencial y experiencia con alma."
+      },
+      {
+        "id": "perfil_3",
+        "name": "Jóvenes que buscan salir de la ciudad y conocer otra forma de vivir",
+        "usage": "Usar como capa secundaria para creativos o textos simples: salir de la ciudad, descubrir otra forma de vivir, selva, camping, comunidad y aprendizaje vivencial."
+      }
+    ],
+    "copyDirection": {
+      "tone": "Humano, claro, formativo, práctico y profundo. No místico de más, no técnico frío, no turístico.",
+      "mainAngle": "Una formación certificada, intensiva y vivencial para aprender permacultura desde la práctica, la comunidad y el territorio.",
+      "avoid": [
+        "No presentar el Curso de Diseño en Permacultura (PDC) como retiro espiritual.",
+        "No presentarlo como vacaciones en la selva.",
+        "No hacerlo sonar como curso técnico frío o académico desconectado.",
+        "No incluir referencias a empresas, marcas o proyectos externos que no sean Madre Selva, Movimiento Na Lu'um, Instituto Na Lu'um o PRI Australia."
+      ]
+    }
+  },
+  "header": {
+    "logoText": "MADRE SELVA",
+    "logoUrl": "https://movimientonaluum.org",
+    "ctaText": "QUIERO INSCRIBIRME",
+    "ctaTarget": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+  },
+  "hero": {
+    "badge": "CURSO DE DISEÑO EN PERMACULTURA (PDC) 2026 · CURSO CERTIFICADO",
+    "title": "Viví la Permacultura en la Práctica",
+    "subtitle": "Curso de Diseño en Permacultura (PDC) 2026 en Madre Selva, Misiones. Dejá la teoría de YouTube y vení a meter las manos en la tierra. Una inmersión de 10 días para aprender diseñando en un proyecto real.",
+    "supportText": "El Curso de Diseño en Permacultura (PDC) integra teoría, práctica, vida en comunidad y procesos de regeneración del ser, con certificación del Instituto Na Lu'um y Permaculture Research Institute Australia.",
+    "image": "/pdc/pdc_hero_pricipal.webp",
+    "primaryCta": {
+      "text": "Quiero inscribirme",
+      "target": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+    },
+    "infoBar": [
+      {
+        "icon": "Calendar",
+        "label": "Fecha",
+        "valueFromSetting": "programDates"
+      },
+      {
+        "icon": "MapPin",
+        "label": "Ubicación",
+        "value": "Madre Selva, Misiones"
+      },
+      {
+        "icon": "Award",
+        "label": "Certificación",
+        "value": "Na Lu'um + PRI Australia"
+      }
+    ]
+  },
+  "affinity": {
+    "label": "Filtro de afinidad",
+    "title": "No es solo aprender permacultura. Es vivirla en contexto real.",
+    "lead": "Esta experiencia está pensada para personas que quieren pasar de la teoría a la práctica y aprender permacultura dentro de un proyecto real, con territorio, comunidad, diseño, sistemas vivos y decisiones concretas.",
+    "warning": "Esta es una experiencia 100% activa. Venís a ensuciarte las manos, a convivir y a construir en equipo dentro de un proyecto real."
+  },
+  "includes": {
+    "label": "Propuesta",
+    "title": "Qué incluye la experiencia",
+    "lead": "Durante 10 días, el Curso de Diseño en Permacultura (PDC) combina formación profesional, práctica aplicada, convivencia, certificación y beneficios de continuidad para que puedas integrar herramientas reales de diseño permacultural.",
+    "items": [
+      {
+        "icon": "Award",
+        "value": "Certificación",
+        "label": "Aval académico",
+        "description": "Certificación del Curso de Diseño en Permacultura, avalada por el Instituto Na Lu'um y Permaculture Research Institute Australia."
+      },
+      {
+        "icon": "Leaf",
+        "value": "Práctica real",
+        "label": "Territorio",
+        "description": "Clases prácticas por la mañana, observación del territorio, análisis de sistemas vivos y diseño aplicado en Madre Selva."
+      },
+      {
+        "icon": "BookOpen",
+        "value": "Teoría aplicada",
+        "label": "Diseño",
+        "description": "Clases teóricas, herramientas de diseño, análisis de casos y desarrollo de propuestas vinculadas a proyectos reales."
+      },
+      {
+        "icon": "Utensils",
+        "value": "Alimentación completa",
+        "label": "Incluido",
+        "description": "Alimentación durante todos los días: 3 comidas diarias y 2 refrigerios diarios."
+      },
+      {
+        "icon": "Tent",
+        "value": "Camping base",
+        "label": "Hospedaje",
+        "description": "Estadía base en carpa propia. También existe opción de dormi compartido en yurta, sujeto a disponibilidad y con costo extra."
+      },
+      {
+        "icon": "Users",
+        "value": "Continuidad",
+        "label": "Comunidad",
+        "description": "Primer mes gratis en la comunidad de apoyo y precio mensual especial para continuar."
+      }
+    ]
+  },
+  "rolesSection": {
+    "label": "EJES DEL CURSO DE DISEÑO EN PERMACULTURA (PDC)",
+    "title": "Una formación integral para diseñar otra forma de habitar",
+    "lead": "El Curso de Diseño en Permacultura (PDC) aborda la permacultura como una práctica concreta para observar, diseñar y regenerar sistemas humanos y ecológicos.",
+    "note": "No necesitás experiencia previa. Sí necesitás presencia, apertura, compromiso con el ritmo del curso y ganas reales de aprender haciendo.",
+    "roles": [
+      {
+        "title": "Diseño en Permacultura",
+        "description": "Principios, ética y herramientas para observar sistemas, leer patrones y diseñar soluciones regenerativas aplicables a la vida, el territorio y los proyectos."
+      },
+      {
+        "title": "Bioconstrucción",
+        "description": "Introducción práctica al uso de materiales naturales, construcción consciente y formas de habitar más coherentes con el entorno."
+      },
+      {
+        "title": "Agricultura orgánica y regenerativa",
+        "description": "Bases para comprender sistemas de producción vegetal, suelo vivo, soberanía alimentaria y prácticas regenerativas."
+      },
+      {
+        "title": "Diseño hidrológico",
+        "description": "Herramientas para observar, cuidar y diseñar el movimiento del agua dentro de sistemas vivos y territorios reales."
+      },
+      {
+        "title": "Permacultura social y educación regenerativa",
+        "description": "Diseño de relaciones, comunidades, procesos educativos y formas de organización más humanas, colaborativas y sostenibles."
+      },
+      {
+        "title": "Reingeniería del Ser y vida en comunidad",
+        "description": "Procesos de conciencia, servicio amoroso y convivencia como parte del aprendizaje profundo de la permacultura."
+      }
+    ]
+  },
+  "sidebar": {
+    "label": "Datos clave",
+    "items": [
+      {
+        "label": "Duración",
+        "valueFromSetting": "programDuration"
+      },
+      {
+        "label": "Fecha",
+        "valueFromSetting": "programDates"
+      },
+      {
+        "label": "Lugar",
+        "valueFromSetting": "location"
+      }
+    ],
+    "description": "La inversión incluye formación intensiva, certificación, alimentación completa, materiales de apoyo, beneficios de continuidad y camping en carpa propia.",
+    "processLabel": "Cómo avanzar",
+    "process": [
+      "Leés la información completa de la experiencia",
+      "Nos escribís por WhatsApp desde la landing",
+      "Confirmamos disponibilidad y resolvemos dudas puntuales",
+      "Recibís los pasos para avanzar con tu inscripción",
+      "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante"
+    ],
+    "cta": {
+      "text": "QUIERO INSCRIBIRME",
+      "target": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+    }
+  },
+  "cohortsSection": {
+    "id": "cohortes",
+    "label": "Fecha disponible",
+    "title": "Próxima edición del Curso de Diseño en Permacultura (PDC) en Madre Selva",
+    "lead": "La próxima edición del programa se realiza del 9 al 18 de septiembre de 2026.",
+    "cardLabels": {
+      "registered": "inscriptos",
+      "spotsLeftPrefix": "Disponibilidad",
+      "countdownTitle": "Cuenta regresiva",
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Min",
+      "seconds": "Seg",
+      "availability": "Disponibilidad",
+      "cta": "Consultar por esta edición"
+    },
+    "cohorts": [
+      {
+        "name": "Curso de Diseño en Permacultura (PDC) Septiembre 2026",
+        "program": "Curso Certificado de Diseño en Permacultura",
+        "weekday": "Miércoles",
+        "day": "9",
+        "month": "Septiembre",
+        "year": "2026",
+        "endDateLabel": "Finaliza el 18 de septiembre de 2026",
+        "schedule": "Jornadas completas de 5:00 a 22:00",
+        "location": "Madre Selva - Misiones, Argentina",
+        "spots": "Consultar disponibilidad",
+        "capacity": null,
+        "registered": null,
+        "startsAt": "2026-09-09T05:00:00-03:00",
+        "endsAt": "2026-09-18T22:00:00-03:00"
+      }
+    ]
+  },
+  "formation": {
+    "label": "La Formación",
+    "title": "No es un curso más.\nEs una inmersión en diseño permacultural aplicado.",
+    "lead": "El Curso de Diseño en Permacultura (PDC), Permaculture Design Course, es una experiencia de vida en comunidad que integra las áreas principales de la sustentabilidad propuestas por la permacultura.",
+    "paragraphs": [
+      "Durante las mañanas se realizan principalmente prácticas, recorridos, observaciones, ejercicios de campo, reconocimiento del territorio, análisis de sistemas vivos y prácticas vinculadas al diseño.",
+      "Durante las tardes se trabajan clases teóricas, marcos conceptuales, herramientas de diseño, ejercicios grupales, análisis de casos y desarrollo de propuestas.",
+      "La idea es aprender haciendo, observando, pensando, diseñando y compartiendo con otras personas que también buscan una vida más coherente y regenerativa."
+    ],
+    "highlight": "No es un curso pasivo. Es una experiencia activa, profunda y participativa."
+  },
+  "progression": {
+    "label": "Trayectoria",
+    "title": "Más de 25 años formando diseñadores de permacultura",
+    "lead": "El Instituto de Permacultura Na Lu'um fue fundado por Tierra Martínez y Beatriz Ramírez, con una trayectoria internacional en procesos de educación vivencial, regeneración y diseño permacultural.",
+    "paragraphs": [
+      "La información institucional recuperada menciona más de 250 Curso de Diseño en Permacultura (PDC) realizados, más de 7000 diseñadores formados y presencia en más de 40 países.",
+      "El marco académico se basa en la tradición del Permaculture Design Course y está alineado a estándares PRI Curso de Diseño en Permacultura (PDC) Teachers."
+    ],
+    "highlight": "Una formación con raíz, trayectoria y certificación internacional, vivida en el territorio de Madre Selva."
+  },
+  "filters": {
+    "positive": {
+      "id": "perfil",
+      "title": "Este Curso de Diseño en Permacultura (PDC) puede ser para vos si...",
+      "items": [
+        "Querés aprender permacultura con profundidad y llevarla a la práctica.",
+        "Tenés un terreno, una idea, una comunidad, un emprendimiento o una búsqueda que necesitás ordenar.",
+        "Querés diseñar proyectos regenerativos, sustentables y económicamente viables.",
+        "Te interesa producir alimentos sanos, cuidar el agua, construir mejor y crear economías alternativas.",
+        "Sentís que el cambio externo también necesita un proceso interno.",
+        "Estás dispuesta/o a invertir tiempo, energía, dinero y compromiso en tu transformación."
+      ]
+    },
+    "negative": {
+      "title": "Importante: esto no es",
+      "items": [
+        "No es un voluntariado.",
+        "No es una experiencia turística.",
+        "No es una actividad para mirar desde afuera.",
+        "No es para recibir información sin participar.",
+        "No es para quien no pueda sostener intensidad, convivencia y compromiso diario."
+      ],
+      "note": "Buscamos cuidar la calidad del proceso y la afinidad con la experiencia. El Curso de Diseño en Permacultura (PDC) requiere presencia, apertura y compromiso real."
+    }
+  },
+  "requirements": {
+    "label": "Compromiso",
+    "title": "Qué necesitás para participar",
+    "lead": "El Curso de Diseño en Permacultura (PDC) no requiere experiencia previa, pero sí pide disposición real para vivir una formación intensiva y comunitaria.",
+    "items": [
+      "Disponibilidad para participar los 10 días completos, del 9 al 18 de septiembre de 2026.",
+      "Apertura para convivir, participar y aprender en comunidad.",
+      "Disposición física y emocional para una formación intensiva.",
+      "Interés real en permacultura, sustentabilidad, diseño regenerativo o proyectos de vida ligados a la tierra.",
+      "Escribir por WhatsApp desde la landing para confirmar disponibilidad y próximos pasos.",
+      "Traer carpa propia si se usa la opción de camping incluido.",
+      "Gestionar transporte propio hasta Madre Selva.",
+      "Consultar con anticipación si se necesita dormi compartido en yurta."
+    ]
+  },
+  "testimonialsSection": {
+    "label": "Voces de la experiencia",
+    "title": "Lo que abre una formación vivencial",
+    "testimonials": [
+      {
+        "name": "Natalia María Josefina",
+        "handle": "@nataliabereciartu",
+        "link": "https://www.instagram.com/nataliabereciartu/",
+        "title": "Profundidad con el mundo",
+        "quote": "Haber hecho el Curso de Diseño en Permacultura (PDC) a mis 27 años me conectó en mayor profundidad con el mundo de lo posible, me impulsó a ser responsable con mis sueños y también a ser consciente de los ritmos que cada proyecto necesita como organismo vivo.",
+        "image": "testimonioPDC1.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Jazmín",
+        "handle": "@jazchu_ll",
+        "link": "https://www.instagram.com/jazchu_ll/",
+        "title": "Un curso muy completo y enriquecedor",
+        "quote": "Mi experiencia con el Curso de Diseño en Permacultura (PDC) la verdad que fue muy linda. Fue un camino súper pautado, organizado, con una experiencia de autoconocimiento, de encontrarse a uno mismo y después también cómo interactúa en un grupo... Es un curso muy completo y súper enriquecedor.",
+        "image": "jazmin-testimonio.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Yeru",
+        "handle": "",
+        "link": "",
+        "title": "Cuidado y conciencia en el camino",
+        "quote": "Principalmente la palabra que me viene es cuidado. Mucho cuidado de las personas que están sosteniendo esto. Se sintió muy cómodo... Hacen nacer un sentimiento de conciencia ante los pasos que uno va viviendo en el mundo, hacen tomar conciencia de un montón de cosas que yo realmente no las tenía dentro de mi bagaje.",
+        "image": "yeru-testimonio.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Fabián Luna",
+        "handle": "",
+        "link": "",
+        "title": "Un espacio de confianza para soltarse",
+        "quote": "Fue la experiencia y sensación de confianza... me parece nodal el que se cree un espacio de confianza para poder soltarse, expresar ese sueño y también interactuar y que se retroalimenta en este diseño... totalmente enriquecedora esa dimensión propuesta.",
+        "image": "fabian-luna-testimonio.jpg",
+        "rating": 5
+      }
+    ],
+    "note": "No agregar testimonios inventados. Usar solo testimonios reales con autorización."
+  },
+  "faqSection": {
+    "label": "Resolviendo dudas",
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Necesito experiencia previa para hacer el Curso de Diseño en Permacultura (PDC)?",
+        "answer": "No. El Curso de Diseño en Permacultura (PDC) está abierto a personas sin experiencia previa, siempre que tengan interés real, apertura para aprender y disposición para participar activamente durante toda la experiencia."
+      },
+      {
+        "question": "¿El curso entrega certificación?",
+        "answer": "Sí. Al finalizar, recibís la Certificación del Curso de Diseño en Permacultura, avalada por el Instituto Na Lu'um y Permaculture Research Institute Australia."
+      },
+      {
+        "question": "¿Qué incluye la inversión?",
+        "answer": "Incluye 10 días de formación intensiva, clases prácticas por la mañana, clases teóricas por la tarde, diseño aplicado en un proyecto real, certificación, alimentación completa, 3 comidas diarias, 2 refrigerios diarios, material audiovisual de apoyo, beneficios de continuidad y camping en carpa propia."
+      },
+      {
+        "question": "¿Cuál es el valor del curso?",
+        "answer": "El valor del curso es de 600 USD por persona."
+      },
+      {
+        "question": "¿Qué formas de pago aceptan?",
+        "answer": "Para personas de Argentina, los pagos se realizan por Mercado Pago. Para personas extranjeras, por PayPal."
+      },
+
+      {
+        "question": "¿Dónde se realiza?",
+        "answer": "En el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera."
+      },
+      {
+        "question": "¿Qué hospedaje incluye?",
+        "answer": "La estadía base es en carpa propia. Cada participante debe traer carpa, bolsa de dormir, aislante o colchoneta, linterna y todo lo necesario para acampar cómodamente."
+      },
+      {
+        "question": "¿Hay opción de yurta?",
+        "answer": "Sí. Hay opción de dormi compartido en yurta, sujeto a disponibilidad, con cama, luz, espacio para guardar ropa, sábanas y cobertores. El valor es de $15.000 ARS por día."
+      },
+      {
+        "question": "¿El transporte está incluido?",
+        "answer": "No. Cada participante llega por su cuenta a Madre Selva."
+      },
+      {
+        "question": "¿Hay estacionamiento?",
+        "answer": "Sí. Tenemos un estacionamiento a cielo abierto en Madre Selva, el espacio donde dejamos los autos cuando realizamos eventos."
+      },
+      {
+        "question": "¿Cómo aplico o consulto disponibilidad?",
+        "answer": "Escribís por WhatsApp desde la landing con el mensaje prearmado. Desde ahí confirmamos disponibilidad, resolvemos dudas puntuales y te compartimos los pasos para avanzar con la inscripción."
+      },
+      {
+        "question": "¿Es una experiencia turística o un voluntariado?",
+        "answer": "No. Es una formación profesional, vivencial y transformadora. No es turismo, no es voluntariado y no es una actividad para mirar desde afuera."
+      }
+    ]
+  },
+  "application": {
+    "id": "aplicar",
+    "label": "Inscripción",
+    "title": "Avanzá con tu inscripción al Curso de Diseño en Permacultura (PDC)",
+    "intro": "Si la propuesta te resuena y ya tenés claro el valor, las fechas y las condiciones principales, escribinos por WhatsApp para confirmar disponibilidad y recibir los pasos de inscripción.",
+    "note": "Escribir por WhatsApp inicia el proceso de inscripción, pero no confirma automáticamente el cupo. Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante.",
+    "investmentLabel": "Inversión e inscripción",
+    "investmentDescription": "Valor del curso: 600 USD por persona.",
+    "cta": {
+      "text": "Quiero inscribirme",
+      "urlFromSetting": "whatsappUrl",
+      "type": "whatsapp"
+    },
+    "closing": {
+      "title": "Si querés dejar de mirar la permacultura desde afuera, este puede ser tu lugar.",
+      "text": "No venís solo a escuchar conceptos. Venís a vivir una experiencia intensiva, comunitaria y aplicada para aprender herramientas reales de diseño regenerativo."
+    }
+  },
+  "footer": {
+    "logo": "MADRE SELVA",
+    "copy": "© 2026 MADRE SELVA — MOVIMIENTO NA LU'UM. Instituto de Pedagogía de la Tierra."
+  },
+  "threeDimensions": {
+    "label": "Qué hace especial a este Curso de Diseño en Permacultura (PDC)",
+    "title": "Tres dimensiones para aprender permacultura con profundidad",
+    "lead": "El Curso de Diseño en Permacultura (PDC) une formación profesional, aprendizaje en un proyecto real y transformación personal aplicada al diseño regenerativo.",
+    "items": [
+      {
+        "title": "Formación profesional en diseño de permacultura",
+        "description": "Aprendés bases éticas, filosóficas, técnicas y metodológicas para observar, ordenar y crear sistemas vivos donde agua, suelo, alimentos, viviendas, economía, relaciones y organización funcionen de manera más armónica."
+      },
+      {
+        "title": "Aprendizaje en un proyecto real",
+        "description": "El curso se desarrolla dentro de Madre Selva, una escuela viva con sistemas productivos, construcciones, procesos comunitarios y decisiones de diseño que se aplican todos los días."
+      },
+      {
+        "title": "Transformación personal y mirada regenerativa",
+        "description": "Diseñar también implica mirar cómo tomamos decisiones, cómo nos relacionamos, cómo habitamos el territorio y desde qué lugar queremos crear futuro."
+      }
+    ]
+  },
+  "topicsSection": {
+    "label": "Temas del curso",
+    "title": "Qué vas a trabajar durante el Curso de Diseño en Permacultura (PDC)",
+    "lead": "El objetivo es que no solo recibas información, sino que aprendas a pensar como diseñadora o diseñador permacultural.",
+    "items": [
+      "Éticas y principios de la permacultura",
+      "Bases filosóficas del diseño regenerativo",
+      "Lectura del paisaje y observación del territorio",
+      "Diseño de agua: captación, cosecha, infiltración y uso consciente",
+      "Suelo vivo y regeneración de la fertilidad",
+      "Sistemas productivos agroecológicos",
+      "Agricultura regenerativa y sintrópica",
+      "Diseño de huertas, bosques comestibles y sistemas alimentarios",
+      "Bioarquitectura y hábitats saludables",
+      "Energías, flujos y eficiencia en el diseño",
+      "Zonas, sectores y planificación del territorio",
+      "Economía regenerativa y emprendimientos sustentables",
+      "Organización de proyectos como sistemas vivos",
+      "Permacultura social y vínculos humanos",
+      "Reingeniería del ser aplicada al diseño",
+      "Diseño de proyectos ecológicamente sustentables y económicamente viables",
+      "Elaboración de propuestas de diseño aplicadas a un caso real"
+    ]
+  },
+  "facilitatorsSection": {
+    "label": "Facilitadores",
+    "title": "Guiado por Tierra Martínez y Beatriz Ramírez",
+    "lead": "Fundadores y referentes del proceso de Na Lu’um y Madre Selva, con más de 25 años de experiencia en permacultura, diseño ecológico, educación transformadora, vida comunitaria y acompañamiento de proyectos.",
+    "items": [
+      {
+        "name": "Tierra Martínez",
+        "role": "Fundador y referente de Na Lu’um",
+        "description": "Su trabajo integra práctica, enseñanza, diseño, viajes, acompañamiento de comunidades y creación de espacios reales de regeneración."
+      },
+      {
+        "name": "Beatriz Ramírez",
+        "role": "Fundadora y referente de Madre Selva / Na Lu’um",
+        "description": "Su mirada une diseño social, bioconstrucción, educación transformadora, vida comunitaria y procesos regenerativos."
+      }
+    ],
+    "highlight": "La pedagogía de Na Lu’um integra teoría, práctica, experiencia, reflexión profunda y diseño aplicado."
+  },
+  "locationSection": {
+    "label": "Lugar",
+    "title": "Madre Selva: un territorio diseñado para aprender",
+    "lead": "El curso se realiza en el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera.",
+    "paragraphs": [
+      "Madre Selva es una escuela viva donde se integran permacultura, bioarquitectura, agricultura sintrópica, desarrollo sustentable, educación transformadora, producción agroecológica, vida comunitaria y cuidado del territorio.",
+      "No es solamente un lugar bonito para hacer un curso. La selva, el agua, las construcciones, los cultivos, los caminos, los sistemas de organización y la vida cotidiana forman parte del proceso educativo."
+    ],
+    "highlight": "Durante los 10 días vas a habitar un espacio donde muchas de las ideas del curso ya están siendo practicadas."
+  },
+  "offerSection": {
+    "label": "Inversión e inscripción",
+    "title": "Inversión del curso",
+    "lead": "El valor del curso es de 600 USD por persona.",
+    "priceCards": [
+      {
+        "label": "Valor del curso",
+        "valueFromSetting": "programPrice",
+        "description": "Inversión por persona."
+      }
+    ],
+    "conditions": [
+      "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante."
+    ]
+  },
+  "accommodationSection": {
+    "label": "Hospedaje",
+    "title": "Estadía base en carpa y opción de yurta",
+    "lead": "La estadía base es en carpa propia. Cada participante debe traer su equipo para acampar cómodamente.",
+    "baseOption": {
+      "title": "Camping en carpa propia",
+      "included": true,
+      "items": [
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante o colchoneta",
+        "Linterna",
+        "Todo lo necesario para acampar cómodamente"
+      ]
+    },
+    "extraOptions": [
+      {
+        "title": "Dormi compartido en yurta",
+        "priceFromSetting": "yurtSharedDormPrice",
+        "availability": "Sujeto a disponibilidad",
+        "includes": [
+          "Cama",
+          "Luz",
+          "Espacio para guardar ropa",
+          "Sábanas",
+          "Cobertores"
+        ]
+      }
+    ]
+  },
+  "paymentSection": {
+    "label": "Formas de pago",
+    "title": "Cómo se confirma la inscripción",
+    "lead": "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante.",
+    "items": [
+      {
+        "label": "Argentina",
+        "valueFromSetting": "argentinaPaymentMethod"
+      },
+      {
+        "label": "Extranjeros",
+        "valueFromSetting": "foreignPaymentMethod"
+      }
+    ]
+  },
+  "benefitsSection": {
+    "label": "Beneficios adicionales",
+    "title": "El Curso de Diseño en Permacultura (PDC) también abre continuidad de aprendizaje",
+    "lead": "Quienes participan de este Curso de Diseño en Permacultura (PDC) acceden a beneficios para seguir profundizando después de la formación intensiva.",
+    "items": [
+      {
+        "title": "Primer mes gratis en la comunidad de apoyo",
+        "description": "Espacio para seguir aprendiendo, mantenerse conectado y formar parte de una red con experiencia en permacultura y proyectos regenerativos."
+      }
+    ]
+  }
+}

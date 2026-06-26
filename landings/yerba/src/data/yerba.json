@@ -1,0 +1,130 @@
+[
+  {
+    "id": "yerba-mate-madre-selva-landing",
+    "type": "product_landing",
+    "title": "Yerba Mate Madre Selva",
+    "subtitle": "De la selva misionera a tu mate.",
+    "description": "Yerba misionera de producción local, con origen conocido y cuidado artesanal del producto.",
+    "image": "img/yerba-proceso-03.webp",
+    "price": 7500,
+    "currency": "ARS",
+    "badge": "Producción local · Origen misionero",
+    "format": "Venta por WhatsApp. El envío se coordina y cotiza según el destino.",
+    "router": "/yerba",
+    "stats": [],
+    "origin_text": "En Madre Selva creemos que producir también es cuidar. Esta yerba nace en tierras regeneradas de Misiones, con saberes transmitidos por generaciones y una forma de trabajo que respeta la naturaleza, fortalece la comunidad y honra el ritual del mate.\n\nDesde la leyenda guaraní, el mate representa energía, encuentro y conexión con la naturaleza.",
+    "differentials_cards": [
+      { "title": "Origen conocido", "text": "Producida en Km 10, Colonia Paraíso, El Soberbio, Misiones." },
+      { "title": "Barbacua tradicional", "text": "El ahumado viene de la madre de la lena, recolectada en tiempos de poda dentro de las 22 hectareas de Madre Selva." },
+      { "title": "Maduración fresca", "text": "Estacionamiento mínimo 1 mes para un sabor fresco y equilibrado." },
+      { "title": "Producción comunitaria", "text": "Cultivada por familias locales que regeneran la selva." }
+    ],
+    "gallery": [
+      "img/yerba-producto-01.webp",
+      "img/yerba-origen-02.webp",
+      "img/yerba-proceso-03.webp",
+      "img/yerba-comunidad-04.webp"
+    ],
+    "process": [
+      { "title": "Cosecha manual.", "desc": "Selección hoja por hoja." },
+      { "title": "Sapecado a fuego vivo.", "desc": "Sella el color y sabor." },
+      { "title": "Secado barbacuá 5 días.", "desc": "Calor indirecto tradicional." },
+      { "title": "Estacionamiento mínimo 1 mes.", "desc": "Maduración fresca y natural." },
+      { "title": "Envasado artesanal.", "desc": "Directo a tu mate." }
+    ],
+    "testimonials": [
+      {
+        "name": "Leo",
+        "title": "Producción local y sabor auténtico.",
+        "quote": "La recomendaría por su sabor y porque es una producción local. Ayuda a la gente del lugar y, a diferencia de otras, no tiene aditivos químicos.",
+        "tags": ["Sabor auténtico", "Producción local", "Sin aditivos"],
+        "image": "img/testimonios/testimonio-leo.webp"
+      },
+      {
+        "name": "Leilen",
+        "title": "Frescura y origen transparente.",
+        "quote": "La recomiendo al 100%. Te la envasan en el momento, te dan una yerba fresca. Me parece importante saber el origen y cómo cuidan el producto.",
+        "tags": ["Frescura", "Origen transparente", "Cuidado del producto"],
+        "image": "img/testimonios/testimonio-leilen.webp"
+      },
+      {
+        "name": "Iara",
+        "title": "De la agrofloresta a tus manos.",
+        "quote": "Es hermoso ver todo el proceso, desde el crecimiento en las agroflorestas hasta el sapecado y poder probarlo. Me gustó ver cómo algo que viene generalmente empaquetado tiene todo un proceso hasta llegar al consumo.",
+        "tags": ["Proceso artesanal", "Agrofloresta", "Experiencia viva"],
+        "image": "img/testimonios/testimonio-iara.webp"
+      }
+    ],
+    "detail": {
+      "producer": {
+        "name": "EcoCentro Madre Selva / Comunidad Agroforestal Suspiro de Selva",
+        "region": "Km 10 · Colonia Paraíso · El Soberbio · Misiones"
+      },
+      "specs": {
+        "presentation": "1 kg"
+      },
+      "pricing_note": "Menos de 30 kg: $7.500 ARS/kg. Desde 30 kg inclusive: $6.500 ARS/kg. El envío se coordina y cotiza según el destino.",
+      "variants": [
+        {
+          "sku": "YM-UNDER-30KG",
+          "label": "Menos de 30 kg",
+          "price": 7500,
+          "default": false
+        },
+        {
+          "sku": "YM-30KG-PLUS",
+          "label": "Desde 30 kg inclusive",
+          "price": 6500,
+          "default": true
+        }
+      ],
+      "faq": [
+        {
+          "question": "¿Cuánto cuesta el kilo?",
+          "answer": "Los pedidos menores a 30 kg tienen un valor de $7.500 ARS por kg. Desde 30 kg inclusive, el valor es de $6.500 ARS por kg."
+        },
+        {
+          "question": "¿Desde qué cantidad aplica el precio de $6.500?",
+          "answer": "El precio de $6.500 ARS por kg aplica desde 30 kg inclusive."
+        },
+        {
+          "question": "¿Puedo pedir menos de 10 kg?",
+          "answer": "Si. Cualquier pedido menor a 30 kg tiene un valor de $7.500 ARS por kg."
+        },
+        {
+          "question": "¿Cómo se calcula el envío?",
+          "answer": "El envío se coordina y cotiza según el destino. Escribinos por WhatsApp indicando tu localidad y la cantidad que necesitás."
+        },
+        {
+          "question": "¿Donde se produce?",
+          "answer": "Se produce en Km 10, Colonia Paraíso, El Soberbio, Misiones."
+        },
+        {
+          "question": "¿Cómo hago el pedido?",
+          "answer": "Escribís por WhatsApp, nos contás qué cantidad necesitás y tu localidad, y coordinamos disponibilidad, envío y forma de pago."
+        },
+        {
+          "question": "¿El pedido queda confirmado al escribir por WhatsApp?",
+          "answer": "El mensaje de WhatsApp inicia la consulta. El pedido se confirma después de acordar cantidad, disponibilidad, envío y forma de pago."
+        },
+        {
+          "question": "¿La yerba tiene aditivos?",
+          "answer": "Leo destaca en su testimonio que, a diferencia de otras yerbas, no tiene aditivos químicos."
+        },
+        {
+          "question": "¿Cómo se entrega o envasa?",
+          "answer": "La presentación indicada es de 1 kg. Los detalles de entrega se coordinan por WhatsApp según cantidad y destino."
+        }
+      ],
+      "cta": {
+        "whatsapp_number": "5493764257777",
+        "messages": {
+          "general": "Hola, quiero consultar por Yerba Mate Madre Selva. Quisiera definir la cantidad y conocer el costo de envío según mi destino.",
+          "under_30kg": "Hola, quiero consultar por Yerba Mate Madre Selva. Estoy interesado/a en un pedido menor a 30 kg y vi el precio de $7.500 ARS por kg. Quisiera consultar disponibilidad y costo de envío según mi destino.",
+          "30kg_plus": "Hola, quiero consultar por Yerba Mate Madre Selva. Estoy interesado/a en un pedido desde 30 kg y vi el precio de $6.500 ARS por kg. Quisiera consultar disponibilidad y costo de envío según mi destino."
+        },
+        "primary_label": "Consultar y hacer mi pedido"
+      }
+    }
+  }
+]
