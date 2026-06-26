@@ -18,7 +18,6 @@ jobs:
       FTP_USER: ${{ secrets.HOSTINGER_FTP_USERNAME }}
       FTP_PASSWORD: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
       FTP_PORT: ${{ vars.HOSTINGER_FTP_PORT }}
-      FTP_ROOT: ${{ vars.HOSTINGER_ROOT_PATH }}
 
     steps:
       - name: Validate configuration
@@ -28,11 +27,9 @@ jobs:
           test -n "$FTP_USER" || { echo "Missing HOSTINGER_FTP_USERNAME"; exit 1; }
           test -n "$FTP_PASSWORD" || { echo "Missing HOSTINGER_FTP_PASSWORD"; exit 1; }
           test -n "$FTP_PORT" || { echo "Missing HOSTINGER_FTP_PORT"; exit 1; }
-          test -n "$FTP_ROOT" || { echo "Missing HOSTINGER_ROOT_PATH"; exit 1; }
 
           echo "Configuration found."
           echo "FTP port: $FTP_PORT"
-          echo "Remote root: $FTP_ROOT"
 
       - name: Install lftp
         shell: bash
@@ -43,7 +40,11 @@ jobs:
       - name: Test FTPS connection
         shell: bash
         run: |
-          lftp             -u "$FTP_USER","$FTP_PASSWORD"             -p "$FTP_PORT"             "$FTP_HOST"             -e "
+          lftp \
+            -u "$FTP_USER","$FTP_PASSWORD" \
+            -p "$FTP_PORT" \
+            "$FTP_HOST" \
+            -e "
               set ftp:passive-mode yes;
               set ftp:ssl-force yes;
               set ftp:ssl-protect-data yes;
@@ -52,12 +53,12 @@ jobs:
               set net:timeout 20;
               set cmd:fail-exit yes;
               pwd;
-              cls -la \"$FTP_ROOT\";
-              cls -la \"$FTP_ROOT/pdc\";
-              cls -la \"$FTP_ROOT/programa-intercambio-formativo\";
-              cls -la \"$FTP_ROOT/selva-adentro\";
-              cls -la \"$FTP_ROOT/voluntariado-otono-invierno\";
-              cls -la \"$FTP_ROOT/yerba\";
+              cls -la;
+              cls -la pdc;
+              cls -la programa-intercambio-formativo;
+              cls -la selva-adentro;
+              cls -la voluntariado-otono-invierno;
+              cls -la yerba;
               bye;
             "
 
