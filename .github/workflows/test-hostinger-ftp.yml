@@ -166,7 +166,7 @@ jobs:
               set net:timeout 15;
               set cmd:fail-exit yes;
 
-              cd public_html;
+              cd domains/movimientonaluum.org/public_html;
               echo Checking landing folders:;
               cls -ld pdc;
               cls -ld programa-intercambio-formativo;
