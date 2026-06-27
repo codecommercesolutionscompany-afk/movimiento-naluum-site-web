@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   test-ftp:
-    name: Verify FTP access and folders
+    name: Diagnose FTPS access and folders
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment: production
@@ -23,21 +23,73 @@ jobs:
       - name: Validate configuration
         shell: bash
         run: |
+          echo "FTP host configured: $([ -n "$FTP_HOST" ] && echo yes || echo no)"
+          echo "FTP username configured: $([ -n "$FTP_USER" ] && echo yes || echo no)"
+          echo "FTP password configured: $([ -n "$FTP_PASSWORD" ] && echo yes || echo no)"
+          echo "FTP port: ${FTP_PORT:-missing}"
+
           test -n "$FTP_HOST" || { echo "Missing HOSTINGER_FTP_SERVER"; exit 1; }
           test -n "$FTP_USER" || { echo "Missing HOSTINGER_FTP_USERNAME"; exit 1; }
           test -n "$FTP_PASSWORD" || { echo "Missing HOSTINGER_FTP_PASSWORD"; exit 1; }
           test -n "$FTP_PORT" || { echo "Missing HOSTINGER_FTP_PORT"; exit 1; }
 
-          echo "Configuration found."
-          echo "FTP port: $FTP_PORT"
-
-      - name: Install lftp
+      - name: Install diagnostic tools
         shell: bash
         run: |
           sudo apt-get update
-          sudo apt-get install --yes lftp
+          sudo apt-get install --yes dnsutils lftp netcat-openbsd
 
-      - name: Test FTPS connection
+      - name: Test TCP connectivity
+        shell: bash
+        run: |
+          echo "Resolving FTP host..."
+          dig +short "$FTP_HOST" | sed 's/^/Resolved IP: /'
+
+          echo "Testing TCP connectivity to configured port..."
+          start="$(date +%s)"
+          nc -vz -w 15 "$FTP_HOST" "$FTP_PORT"
+          end="$(date +%s)"
+          echo "TCP connectivity completed in $((end - start)) seconds."
+
+      - name: Test FTPS login without navigation
+        shell: bash
+        run: |
+          set -o pipefail
+
+          lftp -d \
+            -u "$FTP_USER","$FTP_PASSWORD" \
+            -p "$FTP_PORT" \
+            "$FTP_HOST" \
+            -e "
+              set ftp:passive-mode yes;
+              set ftp:ssl-force yes;
+              set ftp:ssl-protect-data yes;
+              set ssl:verify-certificate no;
+              set net:max-retries 1;
+              set net:reconnect-interval-base 2;
+              set net:timeout 15;
+              set cmd:fail-exit yes;
+
+              pwd;
+              bye;
+            " \
+            2>&1 | python3 -c '
+          import os
+          import sys
+
+          redactions = {
+              os.environ.get("FTP_USER", ""): "[FTP_USER_REDACTED]",
+              os.environ.get("FTP_PASSWORD", ""): "[FTP_PASSWORD_REDACTED]",
+          }
+
+          for line in sys.stdin:
+              for secret, replacement in redactions.items():
+                  if secret:
+                      line = line.replace(secret, replacement)
+              sys.stdout.write(line)
+          '
+
+      - name: Show initial remote directory
         shell: bash
         run: |
           lftp \
@@ -49,24 +101,83 @@ jobs:
               set ftp:ssl-force yes;
               set ftp:ssl-protect-data yes;
               set ssl:verify-certificate no;
-              set net:max-retries 2;
-              set net:timeout 20;
+              set net:max-retries 1;
+              set net:reconnect-interval-base 2;
+              set net:timeout 15;
               set cmd:fail-exit yes;
 
-              cd domains/movimientonaluum.org/public_html;
+              echo Initial remote directory:;
               pwd;
-              cls -la;
-              cls -la pdc;
-              cls -la programa-intercambio-formativo;
-              cls -la selva-adentro;
-              cls -la voluntariado-otono-invierno;
-              cls -la yerba;
-
+              echo Initial directory listing:;
+              cls -1;
               bye;
             "
 
-      - name: Connection test completed
+      - name: Test candidate remote paths
         shell: bash
         run: |
-          echo "FTPS connection succeeded."
+          test_path() {
+            local path="$1"
+            echo "Testing path: $path"
+
+            if lftp \
+              -u "$FTP_USER","$FTP_PASSWORD" \
+              -p "$FTP_PORT" \
+              "$FTP_HOST" \
+              -e "
+                set ftp:passive-mode yes;
+                set ftp:ssl-force yes;
+                set ftp:ssl-protect-data yes;
+                set ssl:verify-certificate no;
+                set net:max-retries 1;
+                set net:reconnect-interval-base 2;
+                set net:timeout 15;
+                set cmd:fail-exit yes;
+
+                cd $path;
+                pwd;
+                cls -1;
+                bye;
+              "; then
+              echo "Path accessible: yes ($path)"
+            else
+              echo "Path accessible: no ($path)"
+            fi
+          }
+
+          test_path "public_html"
+          test_path "domains"
+          test_path "domains/movimientonaluum.org/public_html"
+
+      - name: List landing folders under public_html
+        shell: bash
+        run: |
+          lftp \
+            -u "$FTP_USER","$FTP_PASSWORD" \
+            -p "$FTP_PORT" \
+            "$FTP_HOST" \
+            -e "
+              set ftp:passive-mode yes;
+              set ftp:ssl-force yes;
+              set ftp:ssl-protect-data yes;
+              set ssl:verify-certificate no;
+              set net:max-retries 1;
+              set net:reconnect-interval-base 2;
+              set net:timeout 15;
+              set cmd:fail-exit yes;
+
+              cd public_html;
+              echo Checking landing folders:;
+              cls -ld pdc;
+              cls -ld programa-intercambio-formativo;
+              cls -ld selva-adentro;
+              cls -ld voluntariado-otono-invierno;
+              cls -ld yerba;
+              bye;
+            "
+
+      - name: Diagnostic completed
+        shell: bash
+        run: |
+          echo "FTPS diagnostic completed."
           echo "No files were uploaded, modified, or deleted."
