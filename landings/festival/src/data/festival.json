@@ -1,0 +1,120 @@
+{
+  "status": "draft",
+  "id": "ecos-de-la-tierra-2026",
+  "name": "Ecos de la Tierra",
+  "type": "Festival Regenerativo de Madre Selva",
+  "year": "2026",
+  "concept": "Conectar · Aprender · Celebrar · Regenerar",
+  "dates": "20 al 26 de septiembre de 2026",
+  "duration": "6 días / 5 noches",
+  "location": {
+    "name": "Madre Selva",
+    "detail": "Colonia Paraíso, Km 10, El Soberbio, Misiones, Argentina"
+  },
+  "capacity": 100,
+  "whatsapp": {
+    "number": "5493764257777",
+    "message": "Hola, quiero recibir informacion sobre Ecos de la Tierra 2026."
+  },
+  "hero": {
+    "eyebrow": "Festival Regenerativo de Madre Selva",
+    "title": "Ecos de la Tierra",
+    "subtitle": "Conectar · Aprender · Celebrar · Regenerar",
+    "description": "Una experiencia de encuentro en Madre Selva para convivir, aprender y celebrar la regeneracion como practica cotidiana.",
+    "cta": "Consultar por WhatsApp"
+  },
+  "intro": {
+    "title": "Que es Ecos de la Tierra",
+    "text": [
+      "Ecos de la Tierra es el Festival Regenerativo de Madre Selva: una invitacion a habitar la selva, compartir saberes, celebrar en comunidad y acercarse a formas de vida mas conscientes.",
+      "La edicion 2026 esta en etapa de preparacion. El programa completo, las actividades y las condiciones operativas se anunciaran mas adelante."
+    ]
+  },
+  "pillars": [
+    {
+      "title": "Conectar",
+      "text": "Un espacio para encontrarnos con la tierra, la comunidad y los ritmos vivos de Madre Selva."
+    },
+    {
+      "title": "Aprender",
+      "text": "Instancias formativas y practicas se comunicaran cuando el programa este confirmado."
+    },
+    {
+      "title": "Celebrar",
+      "text": "La celebracion sera parte del encuentro, con actividades a anunciarse proximamente."
+    },
+    {
+      "title": "Regenerar",
+      "text": "Una invitacion a mirar la regeneracion desde la experiencia directa y el cuidado cotidiano."
+    }
+  ],
+  "includes": [
+    "Alojamiento en camping durante la experiencia",
+    "18 comidas",
+    "Actividades y talleres del festival",
+    "Experiencia completa en Madre Selva",
+    "Alimentacion vegetariana, local, estacional y consciente"
+  ],
+  "food": {
+    "title": "Alimentacion consciente",
+    "text": "La experiencia incluye comidas vegetarianas, preparadas con una mirada local, estacional y consciente. El detalle operativo de la alimentacion se informara junto con el programa completo."
+  },
+  "tickets": [
+    {
+      "name": "Súper Preventa",
+      "spots": "15 cupos",
+      "price": "$390.000 ARS"
+    },
+    {
+      "name": "Preventa",
+      "spots": "30 cupos",
+      "price": "$490.000 ARS"
+    },
+    {
+      "name": "Entrada General",
+      "spots": "35 cupos",
+      "price": "$650.000 ARS"
+    },
+    {
+      "name": "Guardianes del Bosque",
+      "spots": "10 cupos",
+      "price": "$850.000 ARS"
+    },
+    {
+      "name": "Misiones",
+      "spots": "10 cupos",
+      "price": "$390.000 ARS"
+    }
+  ],
+  "program": {
+    "title": "Programa proximo a anunciarse",
+    "text": "El cronograma completo, las actividades, facilitadores y horarios se publicaran cuando esten confirmados."
+  },
+  "faq": [
+    {
+      "question": "Cuando es el festival?",
+      "answer": "La comunicacion publica actual es del 20 al 26 de septiembre de 2026."
+    },
+    {
+      "question": "Cuanto dura la experiencia?",
+      "answer": "La duracion comercial es de 6 dias / 5 noches."
+    },
+    {
+      "question": "Donde se realiza?",
+      "answer": "En Madre Selva, Colonia Paraiso, Km 10, El Soberbio, Misiones, Argentina."
+    },
+    {
+      "question": "Que incluye la entrada?",
+      "answer": "Incluye alojamiento en camping, 18 comidas, actividades, talleres y la experiencia completa de Madre Selva."
+    },
+    {
+      "question": "El programa ya esta confirmado?",
+      "answer": "No. El programa completo se anunciara proximamente."
+    },
+    {
+      "question": "Como consulto o reservo mi lugar?",
+      "answer": "Por ahora el contacto oficial es WhatsApp. El equipo de Madre Selva compartira los pasos vigentes cuando la informacion comercial este abierta."
+    }
+  ],
+  "refundPolicy": "Si avisás que no vas a poder asistir con al menos 15 días de anticipación al inicio del festival, te devolvemos el dinero abonado. Las cancelaciones realizadas con menos de 15 días de anticipación no tendrán devolución."
+}
