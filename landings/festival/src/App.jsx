@@ -1,11 +1,31 @@
 import { useEffect, useMemo } from 'react';
 import festivalData from './data/festival.json';
-import { generateWhatsappUrl } from './utils/whatsapp.js';
+import {
+  OFFICIAL_WHATSAPP_NUMBER,
+  buildFestivalWhatsappMessage,
+  generateWhatsappUrl,
+  getWhatsappTrackingUrl,
+} from './utils/whatsapp.js';
 import './styles/main.scss';
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 const UTM_STORAGE_KEY = 'festival_utm_context';
-const WHATSAPP_DEDUP_KEY = 'festival_whatsapp_first_click_tracked';
+const FIRST_TOUCH_STORAGE_KEY = 'festival_first_touch_timestamp';
+const WHATSAPP_DEDUP_PREFIX = 'festival_whatsapp_click_tracked';
+const FUNNEL_REFERENCE_PREFIX = 'festival_funnel_reference';
+const RELATED_SERVICE = 'festival';
+const LANDING_NAME = 'festival';
+const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const TICKET_CATEGORY_CODES = {
+  'super-preventa': 'SPREV',
+  preventa: 'PREV',
+  'entrada-general': 'GRAL',
+  'guardianes-del-bosque': 'BOSQ',
+  misiones: 'MIS',
+  general: 'GEN',
+};
+
+let eventPageContextPushed = false;
 
 const getStoredUtms = () => {
   if (typeof window === 'undefined') return {};
@@ -29,6 +49,76 @@ const getStoredUtms = () => {
   }
 };
 
+const getFirstTouchTimestamp = () => {
+  if (typeof window === 'undefined') return null;
+
+  const storedTimestamp = window.sessionStorage.getItem(FIRST_TOUCH_STORAGE_KEY);
+  if (storedTimestamp) return storedTimestamp;
+
+  const timestamp = new Date().toISOString();
+  window.sessionStorage.setItem(FIRST_TOUCH_STORAGE_KEY, timestamp);
+  return timestamp;
+};
+
+const generateReferenceCode = (length = 4) => {
+  const values = new Uint32Array(length);
+
+  if (typeof window !== 'undefined' && window.crypto?.getRandomValues) {
+    window.crypto.getRandomValues(values);
+  } else {
+    for (let index = 0; index < length; index += 1) {
+      values[index] = Math.floor(Math.random() * REFERENCE_CHARACTERS.length);
+    }
+  }
+
+  return Array.from(values, (value) => REFERENCE_CHARACTERS[value % REFERENCE_CHARACTERS.length]).join('');
+};
+
+const getFunnelReference = (ticketCategory = null) => {
+  const categoryKey = ticketCategory || 'general';
+  const categoryCode = TICKET_CATEGORY_CODES[categoryKey] || TICKET_CATEGORY_CODES.general;
+
+  if (typeof window === 'undefined') {
+    return `FEST-${categoryCode}-${generateReferenceCode()}`;
+  }
+
+  const storageKey = `${FUNNEL_REFERENCE_PREFIX}:${categoryKey}`;
+  const storedReference = window.sessionStorage.getItem(storageKey);
+  if (storedReference) return storedReference;
+
+  const reference = `FEST-${categoryCode}-${generateReferenceCode()}`;
+  window.sessionStorage.setItem(storageKey, reference);
+  return reference;
+};
+
+const getPageLocation = () => {
+  if (typeof window === 'undefined') {
+    return {
+      page_url: '',
+      page_path: '',
+    };
+  }
+
+  return {
+    page_url: window.location.href,
+    page_path: window.location.pathname,
+  };
+};
+
+const getFestivalContext = (data) => ({
+  ...getPageLocation(),
+  landing_name: LANDING_NAME,
+  related_service: RELATED_SERVICE,
+  event_id: data.id,
+  event_name: data.name,
+  event_type: data.type,
+  event_edition: data.year,
+  event_date: data.dates,
+  event_status: data.status,
+  ...getStoredUtms(),
+  first_touch_timestamp: getFirstTouchTimestamp(),
+});
+
 const pushDataLayer = (eventName, payload = {}) => {
   if (typeof window === 'undefined') return;
   window.dataLayer = window.dataLayer || [];
@@ -37,55 +127,88 @@ const pushDataLayer = (eventName, payload = {}) => {
 
 function App() {
   const data = festivalData;
-  const utms = useMemo(getStoredUtms, []);
-  const whatsappUrl = generateWhatsappUrl(data.whatsapp.number, data.whatsapp.message);
-
-  const eventContext = useMemo(
-    () => ({
-      event_id: data.id,
-      event_name: data.name,
-      event_type: data.type,
-      event_year: data.year,
-      event_status: data.status,
-      related_service: 'festival',
-      ...utms,
-    }),
-    [data, utms],
-  );
+  const eventContext = useMemo(() => getFestivalContext(data), [data]);
+  const whatsappDestination = data.whatsapp.number || OFFICIAL_WHATSAPP_NUMBER;
+  const trackingWhatsappUrl = getWhatsappTrackingUrl(whatsappDestination);
 
   useEffect(() => {
+    if (eventPageContextPushed) return;
     pushDataLayer('event_page_context', eventContext);
+    eventPageContextPushed = true;
   }, [eventContext]);
 
-  const trackWhatsappClick = (ctaLocation) => {
-    const payload = {
-      ...eventContext,
+  const getUtmPayload = () =>
+    UTM_KEYS.reduce((acc, key) => {
+      acc[key] = eventContext[key] || undefined;
+      return acc;
+    }, {});
+
+  const trackWhatsappClick = ({ ctaLocation, ctaText, ticketCategory = null, ticketLabel = null }) => {
+    const funnelReference = getFunnelReference(ticketCategory);
+    const ctaUrl = generateWhatsappUrl(
+      whatsappDestination,
+      buildFestivalWhatsappMessage(data.whatsapp.message, ticketLabel, funnelReference),
+    );
+    const trackingBase = {
+      page_url: eventContext.page_url,
+      page_path: eventContext.page_path,
+      cta_text: ctaText,
       cta_location: ctaLocation,
-      link_type: 'whatsapp',
+      ticket_category: ticketCategory,
+      funnel_reference: funnelReference,
+      related_service: RELATED_SERVICE,
+      ...getUtmPayload(),
     };
 
-    pushDataLayer('cta_click', payload);
+    pushDataLayer('cta_click', {
+      ...trackingBase,
+      cta_url: ctaUrl,
+      cta_type: 'whatsapp',
+    });
 
-    if (typeof window !== 'undefined' && window.sessionStorage.getItem(WHATSAPP_DEDUP_KEY) !== 'true') {
-      pushDataLayer('click_whatsapp', payload);
-      window.sessionStorage.setItem(WHATSAPP_DEDUP_KEY, 'true');
+    const deduplicationKey = `${WHATSAPP_DEDUP_PREFIX}:${ctaLocation}:${ticketCategory || 'none'}`;
+    if (typeof window !== 'undefined' && window.sessionStorage.getItem(deduplicationKey) !== 'true') {
+      pushDataLayer('click_whatsapp', {
+        ...trackingBase,
+        whatsapp_destination: whatsappDestination,
+        deduplication_scope: 'session_cta_location_ticket_category',
+      });
+      window.sessionStorage.setItem(deduplicationKey, 'true');
     }
+
+    return ctaUrl;
   };
 
-  const ctaProps = (location) => ({
-    href: whatsappUrl,
-    target: '_blank',
-    rel: 'noopener noreferrer',
-    className: 'festival-button',
-    onClick: () => trackWhatsappClick(location),
-    'data-event-id': data.id,
-    'data-event-name': data.name,
-    'data-event-type': data.type,
-    'data-event-year': data.year,
-    'data-event-status': data.status,
-    'data-cta-location': location,
-    'data-related-service': 'festival',
-  });
+  const ctaProps = ({ location, text, ticket = null }) => {
+    const ticketCategory = ticket?.id || null;
+
+    return {
+      href: trackingWhatsappUrl,
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      className: 'festival-button',
+      onClick: (event) => {
+        const ctaUrl = trackWhatsappClick({
+          ctaLocation: location,
+          ctaText: text,
+          ticketCategory,
+          ticketLabel: ticket?.name || null,
+        });
+        event.currentTarget.href = ctaUrl;
+      },
+      'data-event-id': data.id,
+      'data-event-name': data.name,
+      'data-event-type': data.type,
+      'data-event-edition': data.year,
+      'data-event-date': data.dates,
+      'data-event-status': data.status,
+      'data-cta-location': location,
+      'data-cta-type': 'whatsapp',
+      'data-ticket-category': ticket?.id || '',
+      'data-ticket-label': ticket?.name || '',
+      'data-related-service': RELATED_SERVICE,
+    };
+  };
 
   return (
     <main className="festival-page">
@@ -104,7 +227,7 @@ function App() {
             <span>{data.duration}</span>
             <span>{data.location.name}, Misiones</span>
           </div>
-          <a {...ctaProps('hero')}>{data.hero.cta}</a>
+          <a {...ctaProps({ location: 'hero', text: data.hero.cta })}>{data.hero.cta}</a>
           <p className="festival-hero__status">Estado: borrador interno. Programa completo a anunciarse.</p>
         </div>
       </section>
@@ -169,11 +292,17 @@ function App() {
                 <h3>{ticket.name}</h3>
                 <p>{ticket.spots}</p>
                 <strong>{ticket.price}</strong>
+                <a
+                  {...ctaProps({
+                    location: 'tickets',
+                    text: `Consultar ${ticket.name}`,
+                    ticket,
+                  })}
+                >
+                  Consultar {ticket.name}
+                </a>
               </article>
             ))}
-          </div>
-          <div className="festival-center">
-            <a {...ctaProps('tickets')}>Consultar disponibilidad</a>
           </div>
         </div>
       </section>
@@ -218,7 +347,7 @@ function App() {
           <p className="festival-eyebrow">Madre Selva · Misiones</p>
           <h2>Queres recibir informacion de Ecos de la Tierra?</h2>
           <p>Escribinos por WhatsApp y te compartimos los pasos disponibles cuando la informacion comercial este abierta.</p>
-          <a {...ctaProps('final')}>Escribir por WhatsApp</a>
+          <a {...ctaProps({ location: 'final', text: 'Escribir por WhatsApp' })}>Escribir por WhatsApp</a>
         </div>
       </section>
     </main>

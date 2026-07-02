@@ -14,7 +14,7 @@
   "capacity": 100,
   "whatsapp": {
     "number": "5493764257777",
-    "message": "Hola, quiero recibir informacion sobre Ecos de la Tierra 2026."
+    "message": "Hola, quiero recibir información sobre Ecos de la Tierra 2026."
   },
   "hero": {
     "eyebrow": "Festival Regenerativo de Madre Selva",
@@ -61,26 +61,31 @@
   },
   "tickets": [
     {
+      "id": "super-preventa",
       "name": "Súper Preventa",
       "spots": "15 cupos",
       "price": "$390.000 ARS"
     },
     {
+      "id": "preventa",
       "name": "Preventa",
       "spots": "30 cupos",
       "price": "$490.000 ARS"
     },
     {
+      "id": "entrada-general",
       "name": "Entrada General",
       "spots": "35 cupos",
       "price": "$650.000 ARS"
     },
     {
+      "id": "guardianes-del-bosque",
       "name": "Guardianes del Bosque",
       "spots": "10 cupos",
       "price": "$850.000 ARS"
     },
     {
+      "id": "misiones",
       "name": "Misiones",
       "spots": "10 cupos",
       "price": "$390.000 ARS"
