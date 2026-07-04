@@ -7,7 +7,7 @@ export const buildFestivalWhatsappMessage = (baseMessage = '', ticketLabel = nul
     return [baseMessage, referenceLine].filter(Boolean).join('\n\n');
   }
 
-  return `${baseMessage}\n\nEntrada de interés: ${ticketLabel}\n${referenceLine}`;
+  return `${baseMessage}\n\nOpción de interés: ${ticketLabel}\n${referenceLine}`;
 };
 
 export const generateWhatsappUrl = (number = OFFICIAL_WHATSAPP_NUMBER, message = '') => {

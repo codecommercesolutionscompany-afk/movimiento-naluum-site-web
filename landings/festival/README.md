@@ -56,15 +56,15 @@ Los clics a WhatsApp se preparan en `dataLayer` como `cta_click` y `click_whatsa
 
 `event_page_context` se envia una vez por carga con contexto de pagina, evento, estado `draft`, UTMs persistidas por sesion y `first_touch_timestamp`.
 
-`cta_click` se envia en todos los clics a WhatsApp. Incluye URL y path de pagina, texto del CTA, URL base de WhatsApp sin el mensaje completo, ubicacion del CTA, tipo `whatsapp`, categoria tecnica de entrada cuando existe, servicio relacionado y UTMs disponibles.
+`cta_click` se envia en todos los clics a WhatsApp. Incluye URL y path de pagina, texto del CTA, URL base de WhatsApp sin el mensaje completo, ubicacion del CTA, tipo `whatsapp`, opcion tecnica cuando existe, servicio relacionado y UTMs disponibles.
 
-`click_whatsapp` se deduplica por sesion, ubicacion del CTA y categoria de entrada. La clave conceptual es:
+`click_whatsapp` se deduplica por sesion, ubicacion del CTA y opcion tecnica. La clave conceptual es:
 
 ```text
 festival_whatsapp_click_tracked:<cta_location>:<ticket_category|none>
 ```
 
-Esto permite contar un primer clic por categoria o ubicacion sin inflar repeticiones consecutivas sobre la misma opcion.
+Esto permite contar un primer clic por opcion o ubicacion sin inflar repeticiones consecutivas sobre la misma opcion.
 
 El primer clic sobre un CTA genera una referencia tecnica corta y no personal por sesion y categoria:
 
@@ -75,8 +75,8 @@ FEST-<CATEGORIA>-<CODIGO>
 Ejemplos:
 
 ```text
-FEST-PREV-8K2M
-FEST-BOSQ-4N7Q
+FEST-COMP-8K2M
+FEST-PDCF-4N7Q
 ```
 
 La referencia se guarda en `sessionStorage` con una clave conceptual como:
@@ -94,13 +94,13 @@ No se crean referencias para CTAs no utilizados.
 
 Las UTMs quedan disponibles para GTM/GA4 mediante `dataLayer`, pero WhatsApp no garantiza transportar esa atribucion hacia el CRM.
 
-El mensaje de WhatsApp no incluye UTMs ni parametros tecnicos. Cuando la persona consulta desde una categoria de entrada, el mensaje agrega solamente una linea legible:
+El mensaje de WhatsApp no incluye UTMs ni parametros tecnicos. Cuando la persona consulta desde una opcion comercial, el mensaje agrega solamente una linea legible:
 
 ```text
-Entrada de interés: Preventa
+Opcion de interes: Congreso Festival completo
 ```
 
-La categoria llega de forma legible al chat, pero el registro final en CRM sera manual o mediante una integracion futura.
+La opcion llega de forma legible al chat, pero el registro final en CRM sera manual o mediante una integracion futura.
 
 Abrir WhatsApp no equivale a lead confirmado. El evento de conversion de lead no debe dispararse desde la landing.
 
@@ -111,7 +111,7 @@ Cuando una conversacion real sea confirmada, registrar como minimo:
 - `landing = festival`
 - `servicio = Ecos de la Tierra`
 - `referencia_de_embudo = funnel_reference enviado en el mensaje`
-- `categoria_de_entrada`
+- `opcion_de_interes`
 - `canal_de_entrada = WhatsApp`
 - `utm_source`, si esta disponible
 - `utm_medium`, si esta disponible
