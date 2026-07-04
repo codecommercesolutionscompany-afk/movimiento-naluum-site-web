@@ -129,6 +129,7 @@ jobs:
                 cd domains;
                 cd movimientonaluum.org;
                 cd public_html;
+                mkdir -p $remote_dir;
                 cd $remote_dir;
 
                 mirror --reverse --verbose --parallel=2 . .;
