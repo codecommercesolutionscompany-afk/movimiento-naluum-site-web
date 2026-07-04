@@ -1,125 +1,577 @@
 {
   "status": "draft",
   "id": "ecos-de-la-tierra-2026",
-  "name": "Ecos de la Tierra",
-  "type": "Festival Regenerativo de Madre Selva",
+  "name": "Ecos de la Tierra 2026",
+  "type": "Congreso Festival Regenerativo",
   "year": "2026",
-  "concept": "Conectar · Aprender · Celebrar · Regenerar",
+  "concept": "Aprender · Practicar · Celebrar",
   "dates": "20 al 26 de septiembre de 2026",
-  "duration": "6 días / 5 noches",
+  "duration": "7 días",
   "location": {
-    "name": "Madre Selva",
-    "detail": "Colonia Paraíso, Km 10, El Soberbio, Misiones, Argentina"
+    "name": "EcoCentro Madre Selva",
+    "short": "EcoCentro Madre Selva · Misiones, Argentina",
+    "detail": "EcoCentro Madre Selva, Misiones, Argentina"
   },
-  "capacity": 100,
   "whatsapp": {
     "number": "5493764257777",
     "message": "Hola, quiero recibir información sobre Ecos de la Tierra 2026."
   },
   "hero": {
-    "eyebrow": "Festival Regenerativo de Madre Selva",
-    "title": "Ecos de la Tierra",
-    "subtitle": "Conectar · Aprender · Celebrar · Regenerar",
-    "description": "Una experiencia de encuentro en Madre Selva para convivir, aprender y celebrar la regeneracion como practica cotidiana.",
-    "cta": "Consultar por WhatsApp"
+    "eyebrow": "Congreso Festival Regenerativo",
+    "title": "Ecos de la Tierra 2026",
+    "subtitle": "Un encuentro para aprender, practicar y celebrar nuevas formas de habitar la Tierra.",
+    "description": "Permacultura, bioconstrucción, agricultura regenerativa, comunidad, arte y celebración en EcoCentro Madre Selva.",
+    "pathNote": "Podés participar del Congreso Festival completo, elegir una experiencia puntual o sumarte a una formación más profunda.",
+    "cta": "Quiero recibir información"
+  },
+  "about": {
+    "title": "Mucho más que un festival",
+    "text": "Ecos de la Tierra reúne aprendizaje, práctica, comunidad, naturaleza, arte y celebración. Durante varios días, EcoCentro Madre Selva se transforma en un espacio para explorar nuevas formas de habitar, diseñar y cuidar la Tierra.",
+    "concepts": ["Aprender", "Practicar", "Compartir", "Celebrar"],
+    "image": {
+      "src": "/festival/img/conexion.webp",
+      "alt": "Experiencia comunitaria en un entorno natural",
+      "caption": "Imagen temporal de experiencias comunitarias de Madre Selva. Reemplazable por fotos reales de Ecos de la Tierra."
+    }
+  },
+  "experience": {
+    "title": "Una experiencia para aprender, practicar y celebrar",
+    "text": "Durante septiembre, EcoCentro Madre Selva abre un espacio para incorporar herramientas regenerativas, compartir en comunidad y celebrar nuevas formas de habitar la Tierra.",
+    "pillars": [
+      {
+        "title": "Aprendizaje",
+        "text": "Permacultura, bioconstrucción, agricultura regenerativa y diseño ecológico."
+      },
+      {
+        "title": "Práctica",
+        "text": "Clases, workshops, dinámicas y experiencias en contacto con la tierra."
+      },
+      {
+        "title": "Comunidad",
+        "text": "Convivencia, intercambio, procesos colectivos y nuevas formas de habitar."
+      },
+      {
+        "title": "Celebración",
+        "text": "Arte, música, danza, espiritualidad y festival final."
+      }
+    ]
+  },
+  "decisionGuide": {
+    "title": "¿Qué experiencia es para vos?",
+    "text": "Usá esta guía para orientarte antes de ver precios y detalles.",
+    "options": [
+      {
+        "title": "Quiero vivir todo el encuentro",
+        "target": "Congreso Festival completo",
+        "text": "Formación, práctica, comunidad y festival final en una sola experiencia.",
+        "ticketId": "congreso-festival-completo"
+      },
+      {
+        "title": "Quiero enfocarme en la formación del Congreso",
+        "target": "Solo Congreso",
+        "text": "La etapa formativa y práctica, sin participar del festival final.",
+        "ticketId": "solo-congreso"
+      },
+      {
+        "title": "Quiero participar únicamente del día de celebración",
+        "target": "Solo Festival",
+        "text": "Una jornada puntual de arte, música, danza y comunidad.",
+        "ticketId": "solo-festival"
+      },
+      {
+        "title": "Quiero formarme profesionalmente en permacultura",
+        "target": "PDC certificado",
+        "text": "Una formación específica en Diseño de Permacultura.",
+        "ticketId": "pdc-certificado"
+      },
+      {
+        "title": "Quiero una experiencia formativa e inmersiva",
+        "target": "PDC + Congreso Festival o Diplomado",
+        "text": "Opciones más extensas para integrar formación, convivencia y práctica.",
+        "ticketId": "pdc-congreso-festival"
+      }
+    ]
   },
   "intro": {
-    "title": "Que es Ecos de la Tierra",
+    "title": "Una experiencia de aprendizaje, convivencia y celebración",
     "text": [
-      "Ecos de la Tierra es el Festival Regenerativo de Madre Selva: una invitacion a habitar la selva, compartir saberes, celebrar en comunidad y acercarse a formas de vida mas conscientes.",
-      "La edicion 2026 esta en etapa de preparacion. El programa completo, las actividades y las condiciones operativas se anunciaran mas adelante."
+      "Durante siete días, EcoCentro Madre Selva se convierte en un espacio de aprendizaje, convivencia y celebración.",
+      "Una experiencia para incorporar herramientas regenerativas, compartir en comunidad y conectar con nuevas formas de habitar la Tierra."
     ]
   },
   "pillars": [
     {
-      "title": "Conectar",
-      "text": "Un espacio para encontrarnos con la tierra, la comunidad y los ritmos vivos de Madre Selva."
+      "title": "Aprender",
+      "text": "Permacultura, bioconstrucción, agricultura regenerativa y diseño ecológico."
     },
     {
-      "title": "Aprender",
-      "text": "Instancias formativas y practicas se comunicaran cuando el programa este confirmado."
+      "title": "Practicar",
+      "text": "Clases, experiencias, dinámicas y actividades en contacto con la tierra."
     },
     {
       "title": "Celebrar",
-      "text": "La celebracion sera parte del encuentro, con actividades a anunciarse proximamente."
-    },
-    {
-      "title": "Regenerar",
-      "text": "Una invitacion a mirar la regeneracion desde la experiencia directa y el cuidado cotidiano."
+      "text": "Arte, música, danza, espiritualidad y comunidad."
     }
   ],
   "includes": [
-    "Alojamiento en camping durante la experiencia",
-    "18 comidas",
-    "Actividades y talleres del festival",
-    "Experiencia completa en Madre Selva",
-    "Alimentacion vegetariana, local, estacional y consciente"
+    "Alimentación sana y consciente",
+    "Experiencias formativas y comunitarias",
+    "Uso de instalaciones ecológicas",
+    "Estadía en carpa propia"
   ],
-  "food": {
-    "title": "Alimentacion consciente",
-    "text": "La experiencia incluye comidas vegetarianas, preparadas con una mirada local, estacional y consciente. El detalle operativo de la alimentacion se informara junto con el programa completo."
+  "importantInfo": {
+    "title": "Antes de elegir tu experiencia",
+    "items": [
+      "La estadía de los paquetes que incluyen alojamiento es en carpa propia.",
+      "Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales.",
+      "La alimentación sana y consciente está incluida según los días de cada paquete.",
+      "El transporte hasta EcoCentro Madre Selva no está incluido.",
+      "La disponibilidad y las formas de pago se consultan por WhatsApp."
+    ]
+  },
+  "essentialInfo": {
+    "title": "Lo esencial antes de venir",
+    "items": [
+      {
+        "title": "Estadía",
+        "text": "Carpa propia en las opciones que incluyen alojamiento."
+      },
+      {
+        "title": "Qué traer",
+        "text": "Carpa, bolsa de dormir, aislante, linterna y elementos personales."
+      },
+      {
+        "title": "Alimentación",
+        "text": "La alimentación sana y consciente está incluida según los días contemplados en cada opción."
+      },
+      {
+        "title": "Transporte",
+        "text": "El traslado hasta EcoCentro Madre Selva no está incluido."
+      },
+      {
+        "title": "Reserva",
+        "text": "La disponibilidad y las formas de pago se confirman por WhatsApp."
+      }
+    ],
+    "note": "La disponibilidad y las formas de pago se confirman por WhatsApp."
+  },
+  "venue": {
+    "title": "En plena naturaleza misionera",
+    "text": "El encuentro sucede en EcoCentro Madre Selva, un espacio de aprendizaje, convivencia e instalaciones ecológicas en Misiones, Argentina.",
+    "image": {
+      "src": "/festival/img/bioconstruccion-aplicada.webp",
+      "alt": "Práctica de bioconstrucción en un espacio natural",
+      "caption": "Imagen temporal de prácticas formativas de Madre Selva. Reemplazable por fotos reales de la edición anterior."
+    }
+  },
+  "commercialStage": {
+    "active": true,
+    "eyebrow": "ETAPA ACTUAL",
+    "title": "Inscripciones abiertas",
+    "text": "Consultá el precio vigente, la disponibilidad y las formas de pago para la experiencia que querés vivir.",
+    "cta": "Consultar disponibilidad",
+    "note": "Las condiciones de inscripción pueden actualizarse según la etapa comercial del evento.",
+    "stageName": "",
+    "closingDate": "",
+    "currentPrice": "",
+    "previousPrice": "",
+    "spotsLabel": "",
+    "urgencyText": ""
+  },
+  "ticketsIntro": "Compará las opciones y abrí el detalle de cada paquete para ver qué incluye antes de escribirnos.",
+  "trainingSection": {
+    "title": "Formaciones para ir más profundo",
+    "text": "Opciones para quienes buscan una formación profesional o una experiencia de aprendizaje más extensa."
   },
   "tickets": [
     {
-      "id": "super-preventa",
-      "name": "Súper Preventa",
-      "spots": "15 cupos",
-      "price": "$390.000 ARS"
+      "id": "congreso-festival-completo",
+      "recommended": true,
+      "badge": "Experiencia completa",
+      "name": "Congreso Festival completo",
+      "period": "20 al 26 de septiembre de 2026",
+      "price": "$390.000 ARS",
+      "audience": "Para quienes quieren vivir la experiencia completa: formación, práctica, comunidad y festival final.",
+      "summaryBenefits": [
+        "Cinco días de Congreso",
+        "Festival final",
+        "Alimentación y camping incluidos"
+      ],
+      "description": "Este paquete integra cinco días de formación y actividades con la jornada final de festival. Combina aprendizaje, práctica, comunidad, música, danza, espiritualidad y celebración consciente.",
+      "includes": [
+        "Cinco días de conferencias, clases, prácticas y actividades relacionadas con desarrollo sustentable",
+        "Contenidos de comunidad, economía consciente, alimentación, ecología, bioconstrucción, permacultura y agricultura regenerativa",
+        "Modelos de diseño ecológico para espacios sustentables",
+        "Juegos, dinámicas grupales, música, baile y actividades comunitarias",
+        "Acceso al Festival del 26 de septiembre",
+        "Alimentación sana y consciente durante todos los días incluidos",
+        "Estadía en carpa propia",
+        "Uso de instalaciones ecológicas",
+        "Participación en espacios de aprendizaje y convivencia comunitaria"
+      ],
+      "excludes": [
+        "Transporte hasta EcoCentro Madre Selva",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Elementos personales de camping"
+      ],
+      "food": "Alimentación sana y consciente durante todos los días incluidos.",
+      "accommodation": "Estadía en carpa propia.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "Integra Congreso y Festival final en una sola experiencia.",
+      "cta": "Consultar por la experiencia completa"
     },
     {
-      "id": "preventa",
-      "name": "Preventa",
-      "spots": "30 cupos",
-      "price": "$490.000 ARS"
+      "id": "solo-congreso",
+      "name": "Solo Congreso",
+      "period": "20 al 25 de septiembre de 2026",
+      "price": "$280.000 ARS",
+      "audience": "Para quienes buscan la etapa formativa y práctica del encuentro sin participar del festival final.",
+      "summaryBenefits": [
+        "Conferencias y clases",
+        "Actividades prácticas",
+        "Alimentación y camping incluidos"
+      ],
+      "description": "Cinco días dedicados al aprendizaje, la práctica y la exploración de herramientas regenerativas mediante conferencias, clases, plenarias, workshops y dinámicas grupales.",
+      "includes": [
+        "Acceso a las actividades del Congreso del 20 al 25 de septiembre",
+        "Conferencias",
+        "Clases",
+        "Plenarias",
+        "Workshops",
+        "Actividades prácticas",
+        "Dinámicas grupales",
+        "Contenidos de bioconstrucción, permacultura, agricultura regenerativa, diseño ecológico, comunidad y economía consciente",
+        "Alimentación sana y consciente durante los días del Congreso",
+        "Estadía en carpa propia",
+        "Acceso a instalaciones ecológicas y espacios comunitarios"
+      ],
+      "excludes": [
+        "Festival del 26 de septiembre",
+        "Transporte",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Equipo personal de camping"
+      ],
+      "food": "Alimentación sana y consciente durante los días del Congreso.",
+      "accommodation": "Estadía en carpa propia.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "No incluye el Festival del 26 de septiembre.",
+      "cta": "Consultar por el Congreso"
     },
     {
-      "id": "entrada-general",
-      "name": "Entrada General",
-      "spots": "35 cupos",
-      "price": "$650.000 ARS"
+      "id": "solo-festival",
+      "name": "Solo Festival",
+      "period": "26 de septiembre de 2026",
+      "price": "$85.000 ARS",
+      "audience": "Para quienes quieren vivir una jornada de arte, espiritualidad, música, danza y celebración comunitaria.",
+      "summaryBenefits": [
+        "Acceso al Festival",
+        "Alimentación incluida",
+        "Una noche de camping"
+      ],
+      "description": "Una jornada dedicada al arte, la espiritualidad, la música, la danza, las terapias alternativas, el encuentro comunitario y la celebración de la vida.",
+      "includes": [
+        "Acceso al día completo de Festival",
+        "Actividades de arte",
+        "Espiritualidad",
+        "Música",
+        "Danza",
+        "Celebración",
+        "Experiencias comunitarias",
+        "Actividades programadas durante la jornada",
+        "Alimentación incluida durante el día",
+        "Una noche de estadía en carpa propia"
+      ],
+      "excludes": [
+        "Actividades del Congreso de los días anteriores",
+        "Transporte",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Equipo personal de camping"
+      ],
+      "food": "Alimentación incluida durante el día.",
+      "accommodation": "Una noche de estadía en carpa propia.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "Es una jornada final de celebración comunitaria.",
+      "cta": "Consultar por el Festival"
     },
     {
-      "id": "guardianes-del-bosque",
-      "name": "Guardianes del Bosque",
-      "spots": "10 cupos",
-      "price": "$850.000 ARS"
+      "id": "pdc-certificado",
+      "name": "PDC certificado",
+      "image": "/festival/img/permacultura-social.webp",
+      "period": "10 días",
+      "price": "$540.000 ARS",
+      "audience": "Formación intensiva y certificada en Diseño de Permacultura.",
+      "summaryBenefits": [
+        "Aprendizaje profesional",
+        "Certificado incluido"
+      ],
+      "description": "Un Curso Certificado de Diseño de Permacultura para aprender a diseñar profesionalmente con una mirada integral y regenerativa.",
+      "includes": [
+        "Diez días de formación intensiva en Diseño de Permacultura",
+        "Pedagogía multidisciplinaria y personalizada",
+        "Herramientas para leer paisajes",
+        "Comprensión de ciclos naturales",
+        "Diseño de proyectos regenerativos",
+        "Diseño de espacios sustentables",
+        "Sistemas productivos",
+        "Agua",
+        "Organización",
+        "Procesos humanos",
+        "Alimentación y breaks durante los diez días",
+        "Estadía en carpa propia",
+        "Certificado avalado por el Instituto de Permacultura de Australia"
+      ],
+      "excludes": [
+        "Congreso Festival, salvo contratación del paquete combinado",
+        "Transporte",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Equipo personal de camping"
+      ],
+      "food": "Alimentación y breaks durante los diez días.",
+      "accommodation": "Estadía en carpa propia.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "Incluye certificado avalado por el Instituto de Permacultura de Australia.",
+      "cta": "Consultar por el PDC"
     },
     {
-      "id": "misiones",
-      "name": "Misiones",
-      "spots": "10 cupos",
-      "price": "$390.000 ARS"
+      "id": "pdc-congreso-festival",
+      "recommended": true,
+      "badge": "Formación + experiencia completa",
+      "name": "PDC + Congreso Festival",
+      "image": "/festival/img/agricultura-sintropica.webp",
+      "period": "10 al 26 de septiembre de 2026",
+      "price": "$930.000 ARS",
+      "audience": "PDC certificado más la experiencia completa de Ecos de la Tierra.",
+      "summaryBenefits": [
+        "Formación profesional",
+        "Congreso y Festival completos"
+      ],
+      "description": "La opción más completa de septiembre: integra el Curso Certificado de Diseño de Permacultura con el Congreso Festival Ecos de la Tierra.",
+      "includes": [
+        "PDC certificado del 10 al 19 de septiembre",
+        "Congreso Festival completo del 20 al 26 de septiembre",
+        "Formación teórica y práctica",
+        "Actividades comunitarias",
+        "Acceso al Festival final",
+        "Alimentación durante todos los días incluidos",
+        "Estadía en carpa propia durante todo el período",
+        "Clases",
+        "Prácticas",
+        "Dinámicas",
+        "Espacios de convivencia",
+        "Experiencia integral de formación, comunidad y celebración regenerativa"
+      ],
+      "excludes": [
+        "Transporte",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Equipo personal de camping"
+      ],
+      "food": "Alimentación durante todos los días incluidos.",
+      "accommodation": "Estadía en carpa propia durante todo el período.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "Integra PDC certificado, Congreso y Festival final.",
+      "cta": "Consultar por PDC + Festival"
+    },
+    {
+      "id": "diplomado-inmersivo",
+      "name": "Diplomado inmersivo",
+      "image": "/festival/img/un-compartir-multicultural.webp",
+      "period": "45 días",
+      "price": "EUR 1.350",
+      "audience": "Una inmersión de formación, convivencia, prácticas y comunidad.",
+      "summaryBenefits": [
+        "PDC y Congreso Festival",
+        "Prácticas, salidas e inmersión comunitaria"
+      ],
+      "description": "Una experiencia de un mes y medio que integra formación, convivencia, prácticas, visitas, actividades comunitarias y un proceso profundo de aprendizaje.",
+      "includes": [
+        "PDC certificado",
+        "Participación completa en el Congreso Festival",
+        "Salidas y paseos",
+        "Visitas a comunidades indígenas guaraníes",
+        "Yoga por las mañanas o prácticas de movimiento y activación corporal",
+        "Dinámicas grupales",
+        "Baile",
+        "Clases teóricas y prácticas",
+        "Bioconstrucción",
+        "Diseño",
+        "Agricultura sintrópica",
+        "Permacultura social",
+        "Arte con barro",
+        "Alimentación de la tierra al plato durante todo el proceso",
+        "Internet según las condiciones del lugar",
+        "Estadía en carpa propia durante los 45 días"
+      ],
+      "excludes": [
+        "Transporte de llegada hasta EcoCentro Madre Selva",
+        "Carpa",
+        "Bolsa de dormir",
+        "Aislante",
+        "Linterna",
+        "Equipo personal de camping"
+      ],
+      "food": "Alimentación de la tierra al plato durante todo el proceso.",
+      "accommodation": "Estadía en carpa propia durante los 45 días.",
+      "camping": "Cada participante debe traer su equipo personal de camping.",
+      "note": "Incluye internet según las condiciones del lugar.",
+      "cta": "Consultar por el Diplomado"
     }
   ],
-  "program": {
-    "title": "Programa proximo a anunciarse",
-    "text": "El cronograma completo, las actividades, facilitadores y horarios se publicaran cuando esten confirmados."
+  "comparisonGroups": [
+    {
+      "id": "congreso-festival",
+      "title": "Congreso Festival",
+      "items": [
+        {
+          "name": "Congreso Festival completo",
+          "details": [
+            { "label": "Duración", "value": "20 al 26 de septiembre" },
+            { "label": "Congreso", "value": "Sí" },
+            { "label": "Festival", "value": "Sí" },
+            { "label": "Certificación", "value": "No" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Sí" },
+            { "label": "Precio", "value": "$390.000 ARS" }
+          ]
+        },
+        {
+          "name": "Solo Congreso",
+          "details": [
+            { "label": "Duración", "value": "20 al 25 de septiembre" },
+            { "label": "Congreso", "value": "Sí" },
+            { "label": "Festival", "value": "No" },
+            { "label": "Certificación", "value": "No" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Sí" },
+            { "label": "Precio", "value": "$280.000 ARS" }
+          ]
+        },
+        {
+          "name": "Solo Festival",
+          "details": [
+            { "label": "Duración", "value": "26 de septiembre" },
+            { "label": "Congreso", "value": "No" },
+            { "label": "Festival", "value": "Sí" },
+            { "label": "Certificación", "value": "No" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Una noche" },
+            { "label": "Precio", "value": "$85.000 ARS" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "formaciones",
+      "title": "Formaciones",
+      "items": [
+        {
+          "name": "PDC certificado",
+          "details": [
+            { "label": "Duración", "value": "10 días" },
+            { "label": "Congreso", "value": "No" },
+            { "label": "Festival", "value": "No" },
+            { "label": "Certificación", "value": "Sí" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Sí" },
+            { "label": "Precio", "value": "$540.000 ARS" }
+          ]
+        },
+        {
+          "name": "PDC + Congreso Festival",
+          "details": [
+            { "label": "Duración", "value": "10 al 26 de septiembre" },
+            { "label": "Congreso", "value": "Sí" },
+            { "label": "Festival", "value": "Sí" },
+            { "label": "Certificación", "value": "Sí" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Sí" },
+            { "label": "Precio", "value": "$930.000 ARS" }
+          ]
+        },
+        {
+          "name": "Diplomado inmersivo",
+          "details": [
+            { "label": "Duración", "value": "45 días" },
+            { "label": "Congreso", "value": "Sí" },
+            { "label": "Festival", "value": "Sí" },
+            { "label": "Certificación", "value": "Sí" },
+            { "label": "Alimentación", "value": "Sí" },
+            { "label": "Camping", "value": "Sí" },
+            { "label": "Precio", "value": "EUR 1.350" }
+          ]
+        }
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "name": "Congreso Festival completo",
+      "items": ["Formación", "Festival", "Alimentación", "Camping"]
+    },
+    {
+      "name": "Solo Congreso",
+      "items": ["Formación", "Sin Festival", "Alimentación", "Camping"]
+    },
+    {
+      "name": "Solo Festival",
+      "items": ["Jornada final", "Alimentación", "Una noche de camping"]
+    },
+    {
+      "name": "PDC",
+      "items": ["Formación certificada", "Alimentación", "Camping"]
+    },
+    {
+      "name": "PDC + Congreso Festival",
+      "items": ["PDC", "Congreso", "Festival", "Alimentación", "Camping"]
+    },
+    {
+      "name": "Diplomado",
+      "items": ["PDC", "Congreso Festival", "Inmersión", "Prácticas", "Salidas", "Alimentación", "Camping"]
+    }
+  ],
+  "closing": {
+    "title": "Ecos de la Tierra no es solo un evento.",
+    "text": "Es una experiencia para aprender, compartir, diseñar y celebrar nuevas formas de habitar la Tierra."
+  },
+  "finalCta": {
+    "title": "¿Todavía no sabés qué opción elegir?",
+    "text": "Escribinos por WhatsApp y te ayudamos a encontrar la experiencia adecuada para vos.",
+    "cta": "Quiero recibir información"
   },
   "faq": [
     {
-      "question": "Cuando es el festival?",
-      "answer": "La comunicacion publica actual es del 20 al 26 de septiembre de 2026."
+      "question": "¿Dónde se realiza?",
+      "answer": "En EcoCentro Madre Selva, Misiones, Argentina."
     },
     {
-      "question": "Cuanto dura la experiencia?",
-      "answer": "La duracion comercial es de 6 dias / 5 noches."
+      "question": "¿La alimentación está incluida?",
+      "answer": "Sí, según los días incluidos en cada opción."
     },
     {
-      "question": "Donde se realiza?",
-      "answer": "En Madre Selva, Colonia Paraiso, Km 10, El Soberbio, Misiones, Argentina."
+      "question": "¿Cómo es la estadía?",
+      "answer": "La estadía es en carpa propia."
     },
     {
-      "question": "Que incluye la entrada?",
-      "answer": "Incluye alojamiento en camping, 18 comidas, actividades, talleres y la experiencia completa de Madre Selva."
+      "question": "¿Qué debo llevar?",
+      "answer": "Sí. Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales."
     },
     {
-      "question": "El programa ya esta confirmado?",
-      "answer": "No. El programa completo se anunciara proximamente."
-    },
-    {
-      "question": "Como consulto o reservo mi lugar?",
-      "answer": "Por ahora el contacto oficial es WhatsApp. El equipo de Madre Selva compartira los pasos vigentes cuando la informacion comercial este abierta."
+      "question": "¿Cómo reservo?",
+      "answer": "Escribiendo por WhatsApp para consultar disponibilidad y formas de pago."
     }
-  ],
-  "refundPolicy": "Si avisás que no vas a poder asistir con al menos 15 días de anticipación al inicio del festival, te devolvemos el dinero abonado. Las cancelaciones realizadas con menos de 15 días de anticipación no tendrán devolución."
+  ]
 }

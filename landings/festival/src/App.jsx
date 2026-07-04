@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import festivalData from './data/festival.json';
 import {
   OFFICIAL_WHATSAPP_NUMBER,
@@ -17,13 +17,16 @@ const RELATED_SERVICE = 'festival';
 const LANDING_NAME = 'festival';
 const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const TICKET_CATEGORY_CODES = {
-  'super-preventa': 'SPREV',
-  preventa: 'PREV',
-  'entrada-general': 'GRAL',
-  'guardianes-del-bosque': 'BOSQ',
-  misiones: 'MIS',
   general: 'GEN',
+  'congreso-festival-completo': 'COMP',
+  'solo-congreso': 'CONG',
+  'solo-festival': 'FEST',
+  'pdc-certificado': 'PDC',
+  'pdc-congreso-festival': 'PDCF',
+  'diplomado-inmersivo': 'DIP',
 };
+const FESTIVAL_PACKAGE_IDS = ['congreso-festival-completo', 'solo-congreso', 'solo-festival'];
+const TRAINING_PACKAGE_IDS = ['pdc-certificado', 'pdc-congreso-festival', 'diplomado-inmersivo'];
 
 let eventPageContextPushed = false;
 
@@ -125,11 +128,126 @@ const pushDataLayer = (eventName, payload = {}) => {
   window.dataLayer.push({ event: eventName, ...payload });
 };
 
+function DetailsModal({ ticket, onClose, ctaProps }) {
+  const closeButtonRef = useRef(null);
+  const titleId = ticket ? `package-modal-title-${ticket.id}` : undefined;
+
+  useEffect(() => {
+    if (!ticket) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [ticket, onClose]);
+
+  if (!ticket) return null;
+
+  return (
+    <div
+      className="festival-modal"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <section className="festival-modal__panel" role="dialog" aria-modal="true" aria-labelledby={titleId}>
+        <button
+          type="button"
+          className="festival-modal__x"
+          aria-label="Cerrar detalles"
+          onClick={onClose}
+          ref={closeButtonRef}
+        >
+          ×
+        </button>
+        <p className="festival-ticket__badge">{ticket.badge || 'Detalles'}</p>
+        <h2 id={titleId}>{ticket.name}</h2>
+        <p className="festival-modal__period">{ticket.period}</p>
+        <strong>{ticket.price}</strong>
+        <p>{ticket.description}</p>
+        <div className="festival-modal__grid">
+          <div>
+            <h3>Incluye</h3>
+            <ul>
+              {ticket.includes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>No incluye</h3>
+            <ul>
+              {ticket.excludes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <dl className="festival-modal__facts">
+          <div>
+            <dt>Alimentación</dt>
+            <dd>{ticket.food}</dd>
+          </div>
+          <div>
+            <dt>Estadía</dt>
+            <dd>{ticket.accommodation}</dd>
+          </div>
+          <div>
+            <dt>Qué traer</dt>
+            <dd>{ticket.camping}</dd>
+          </div>
+        </dl>
+        {ticket.note ? <p className="festival-ticket__note">{ticket.note}</p> : null}
+        <div className="festival-modal__actions">
+          <button type="button" className="festival-secondary-button" onClick={onClose}>
+            Cerrar
+          </button>
+          <a {...ctaProps({ location: ticket.modalLocation, text: ticket.cta, ticket })}>{ticket.cta}</a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function FaqItem({ item }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <details
+      onToggle={(event) => {
+        setIsOpen(event.currentTarget.open);
+      }}
+    >
+      <summary aria-expanded={isOpen}>{item.question}</summary>
+      <p>{item.answer}</p>
+    </details>
+  );
+}
+
 function App() {
   const data = festivalData;
+  const [selectedTicket, setSelectedTicket] = useState(null);
+  const lastDetailsButtonRef = useRef(null);
   const eventContext = useMemo(() => getFestivalContext(data), [data]);
   const whatsappDestination = data.whatsapp.number || OFFICIAL_WHATSAPP_NUMBER;
   const trackingWhatsappUrl = getWhatsappTrackingUrl(whatsappDestination);
+  const festivalTickets = data.tickets
+    .filter((ticket) => FESTIVAL_PACKAGE_IDS.includes(ticket.id))
+    .map((ticket) => ({ ...ticket, modalLocation: 'tickets_modal' }));
+  const trainingTickets = data.tickets
+    .filter((ticket) => TRAINING_PACKAGE_IDS.includes(ticket.id))
+    .map((ticket) => ({ ...ticket, modalLocation: 'training_modal' }));
 
   useEffect(() => {
     if (eventPageContextPushed) return;
@@ -210,11 +328,94 @@ function App() {
     };
   };
 
+  const openDetails = (ticket, event) => {
+    lastDetailsButtonRef.current = event.currentTarget;
+    setSelectedTicket(ticket);
+  };
+
+  const closeDetails = () => {
+    setSelectedTicket(null);
+    window.requestAnimationFrame(() => {
+      lastDetailsButtonRef.current?.focus();
+    });
+  };
+
+  const renderFestivalCard = (ticket) => (
+    <article
+      className={`festival-ticket festival-ticket--event ${ticket.recommended ? 'festival-ticket--featured' : ''}`}
+      id={`ticket-${ticket.id}`}
+      key={ticket.name}
+    >
+      {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
+      <h3>{ticket.name}</h3>
+      <p className="festival-ticket__period">{ticket.period}</p>
+      <strong>{ticket.price}</strong>
+      <p className="festival-ticket__audience">{ticket.audience}</p>
+      <ul className="festival-ticket__includes">
+        {ticket.summaryBenefits.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+      <div className="festival-ticket__actions">
+        <button type="button" className="festival-secondary-button" onClick={(event) => openDetails(ticket, event)}>
+          Ver detalles
+        </button>
+        <a
+          {...ctaProps({
+            location: 'tickets',
+            text: ticket.cta,
+            ticket,
+          })}
+        >
+          {ticket.cta}
+        </a>
+      </div>
+    </article>
+  );
+
+  const renderTrainingCard = (ticket) => (
+    <article
+      className={`festival-training-card ${ticket.recommended ? 'festival-training-card--featured' : ''}`}
+      id={`ticket-${ticket.id}`}
+      key={ticket.name}
+    >
+      <div className="festival-training-card__media" aria-hidden="true">
+        <img src={ticket.image} alt="" loading="lazy" decoding="async" />
+      </div>
+      <div className="festival-training-card__body">
+        {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
+        <h3>{ticket.name}</h3>
+        <p className="festival-ticket__period">{ticket.period}</p>
+        <strong>{ticket.price}</strong>
+        <p className="festival-ticket__audience">{ticket.audience}</p>
+        <ul className="festival-ticket__includes">
+          {ticket.summaryBenefits.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <div className="festival-ticket__actions">
+          <button type="button" className="festival-secondary-button" onClick={(event) => openDetails(ticket, event)}>
+            Ver detalles
+          </button>
+          <a
+            {...ctaProps({
+              location: 'training',
+              text: ticket.cta,
+              ticket,
+            })}
+          >
+            {ticket.cta}
+          </a>
+        </div>
+      </div>
+    </article>
+  );
+
   return (
     <main className="festival-page">
       <section className="festival-hero">
         <div className="festival-hero__media" aria-hidden="true">
-          <img src="/festival/img/conexion.JPG" alt="" />
+          <img src="/festival/img/conexion.webp" alt="" decoding="async" />
         </div>
         <div className="festival-hero__overlay" />
         <div className="festival-container festival-hero__content">
@@ -222,98 +423,90 @@ function App() {
           <h1>{data.hero.title}</h1>
           <p className="festival-hero__concept">{data.hero.subtitle}</p>
           <p className="festival-hero__description">{data.hero.description}</p>
+          <p className="festival-hero__path">{data.hero.pathNote}</p>
           <div className="festival-hero__facts" aria-label="Datos principales del festival">
             <span>{data.dates}</span>
-            <span>{data.duration}</span>
-            <span>{data.location.name}, Misiones</span>
+            <span>{data.location.short}</span>
           </div>
           <a {...ctaProps({ location: 'hero', text: data.hero.cta })}>{data.hero.cta}</a>
           <p className="festival-hero__status">Estado: borrador interno. Programa completo a anunciarse.</p>
         </div>
       </section>
 
-      <section className="festival-section festival-section--intro">
-        <div className="festival-container festival-narrow">
-          <p className="festival-eyebrow">Festival 2026</p>
-          <h2>{data.intro.title}</h2>
-          {data.intro.text.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
-
-      <section className="festival-section">
-        <div className="festival-container">
-          <div className="festival-grid festival-grid--pillars">
-            {data.pillars.map((pillar) => (
-              <article className="festival-card festival-card--pillar" key={pillar.title}>
-                <h2>{pillar.title}</h2>
-                <p>{pillar.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--green">
-        <div className="festival-container festival-two-column">
+      <section className="festival-section festival-section--about">
+        <div className="festival-container festival-about">
           <div>
-            <p className="festival-eyebrow">Incluye</p>
-            <h2>Que incluye la experiencia</h2>
+            <p className="festival-eyebrow">Qué es Ecos de la Tierra</p>
+            <h2>{data.about.title}</h2>
+            <p>{data.about.text}</p>
+            <div className="festival-concepts" aria-label="Conceptos centrales">
+              {data.about.concepts.map((concept) => (
+                <span key={concept}>{concept}</span>
+              ))}
+            </div>
           </div>
-          <ul className="festival-list">
-            {data.includes.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <figure className="festival-about__image">
+            <img src={data.about.image.src} alt={data.about.image.alt} loading="lazy" decoding="async" />
+            <figcaption>{data.about.image.caption}</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section className="festival-section">
-        <div className="festival-container festival-two-column">
-          <div>
-            <p className="festival-eyebrow">Alimentacion</p>
-            <h2>{data.food.title}</h2>
-          </div>
-          <p>{data.food.text}</p>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--tickets">
+      <section className="festival-section festival-section--tickets" id="paquetes-congreso-festival">
         <div className="festival-container">
           <div className="festival-section__header">
-            <p className="festival-eyebrow">Entradas</p>
-            <h2>Valores publicos previstos</h2>
-            <p>Cupos totales: {data.capacity} participantes.</p>
+            <p className="festival-eyebrow">Congreso Festival</p>
+            <h2>Elegí cómo vivir Ecos de la Tierra</h2>
           </div>
           <div className="festival-grid festival-grid--tickets">
-            {data.tickets.map((ticket) => (
-              <article className="festival-ticket" key={ticket.name}>
-                <h3>{ticket.name}</h3>
-                <p>{ticket.spots}</p>
-                <strong>{ticket.price}</strong>
-                <a
-                  {...ctaProps({
-                    location: 'tickets',
-                    text: `Consultar ${ticket.name}`,
-                    ticket,
-                  })}
-                >
-                  Consultar {ticket.name}
-                </a>
-              </article>
-            ))}
+            {festivalTickets.map((ticket) => renderFestivalCard(ticket))}
           </div>
         </div>
       </section>
 
-      <section className="festival-section festival-section--program">
-        <div className="festival-container festival-two-column">
-          <div>
-            <p className="festival-eyebrow">Programa</p>
-            <h2>{data.program.title}</h2>
+      <section className="festival-section festival-section--training" id="formaciones">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Formaciones</p>
+            <h2>{data.trainingSection.title}</h2>
+            <p>{data.trainingSection.text}</p>
           </div>
-          <p>{data.program.text}</p>
+          <div className="festival-training-list">
+            {trainingTickets.map((ticket) => renderTrainingCard(ticket))}
+          </div>
+        </div>
+      </section>
+
+      <section className="festival-section festival-section--essential">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Información esencial</p>
+            <h2>{data.essentialInfo.title}</h2>
+          </div>
+          <div className="festival-essential-grid">
+            {data.essentialInfo.items.map((item) => (
+              <article className="festival-essential-item" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="festival-essential-note">{data.essentialInfo.note}</p>
+        </div>
+      </section>
+
+      <section className="festival-section festival-section--venue">
+        <div className="festival-container festival-venue-layout">
+          <figure className="festival-venue-image">
+            <img src={data.venue.image.src} alt={data.venue.image.alt} loading="lazy" decoding="async" />
+            <figcaption>{data.venue.image.caption}</figcaption>
+          </figure>
+          <div>
+            <p className="festival-eyebrow">EcoCentro Madre Selva</p>
+            <h2>{data.venue.title}</h2>
+            <p>{data.venue.text}</p>
+            <p className="festival-venue-location">{data.location.short}</p>
+          </div>
         </div>
       </section>
 
@@ -321,35 +514,25 @@ function App() {
         <div className="festival-container">
           <div className="festival-section__header">
             <p className="festival-eyebrow">Preguntas frecuentes</p>
-            <h2>Informacion disponible</h2>
+            <h2>Preguntas frecuentes</h2>
           </div>
           <div className="festival-faq">
             {data.faq.map((item) => (
-              <details key={item.question}>
-                <summary>{item.question}</summary>
-                <p>{item.answer}</p>
-              </details>
+              <FaqItem item={item} key={item.question} />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--refund">
-        <div className="festival-container festival-narrow">
-          <p className="festival-eyebrow">Politica de devolucion</p>
-          <h2>Cancelaciones</h2>
-          <p>{data.refundPolicy}</p>
         </div>
       </section>
 
       <section className="festival-final">
         <div className="festival-container festival-narrow">
           <p className="festival-eyebrow">Madre Selva · Misiones</p>
-          <h2>Queres recibir informacion de Ecos de la Tierra?</h2>
-          <p>Escribinos por WhatsApp y te compartimos los pasos disponibles cuando la informacion comercial este abierta.</p>
-          <a {...ctaProps({ location: 'final', text: 'Escribir por WhatsApp' })}>Escribir por WhatsApp</a>
+          <h2>{data.finalCta.title}</h2>
+          <p>{data.finalCta.text}</p>
+          <a {...ctaProps({ location: 'final', text: data.finalCta.cta })}>{data.finalCta.cta}</a>
         </div>
       </section>
+      <DetailsModal ticket={selectedTicket} onClose={closeDetails} ctaProps={ctaProps} />
     </main>
   );
 }
