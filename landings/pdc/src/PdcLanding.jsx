@@ -81,9 +81,34 @@ const iconMap = {
   Zap,
 };
 
-const dynamicValueKeys = ['valueFromSetting', 'titleFromSetting', 'priceFromSetting'];
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const UTM_STORAGE_KEY = 'pdc_utm_params';
+const FIRST_TOUCH_STORAGE_KEY = 'pdc_first_touch_timestamp';
+const WHATSAPP_DEDUP_PREFIX = 'pdc_whatsapp_click_dedup';
+const FUNNEL_REFERENCE_KEY = 'pdc_funnel_reference:inscripcion';
+const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const WHATSAPP_DESTINATION = '5493764257777';
+const TICKET_CATEGORY = 'inscripcion';
+const PDC_CONTEXT = {
+  landing_name: 'pdc',
+  related_service: 'pdc',
+  event_id: 'pdc-2026',
+  event_name: 'PDC Diseño de Permacultura',
+  event_type: 'curso_certificado',
+  event_edition: '2026',
+  event_status: 'published',
+};
+const CTA_LABELS = {
+  header: 'Avanzar inscripción',
+  hero: 'Quiero avanzar con mi inscripción',
+  sticky_sidebar: 'Reservar mi lugar',
+  payment: 'Quiero reservar mi lugar',
+  final: 'Quiero dar el siguiente paso',
+};
 
-const isPendingUrl = (url = '') => /^PENDIENTE_/i.test(String(url).trim());
+let eventPageContextPushed = false;
+
+const dynamicValueKeys = ['valueFromSetting', 'titleFromSetting', 'priceFromSetting'];
 
 const getCountdownParts = (startsAt, now) => {
   const diff = Math.max(new Date(startsAt).getTime() - now, 0);
@@ -152,6 +177,105 @@ const renderMultiline = (text = '') =>
       </Fragment>
     ));
 
+const getStoredUtms = () => {
+  if (typeof window === 'undefined') return {};
+
+  const params = new URLSearchParams(window.location.search);
+  const currentUtms = UTM_KEYS.reduce((acc, key) => {
+    const value = params.get(key);
+    if (value) acc[key] = value;
+    return acc;
+  }, {});
+
+  if (Object.keys(currentUtms).length > 0) {
+    window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(currentUtms));
+    return currentUtms;
+  }
+
+  try {
+    return JSON.parse(window.sessionStorage.getItem(UTM_STORAGE_KEY) || '{}');
+  } catch {
+    return {};
+  }
+};
+
+const getFirstTouchTimestamp = () => {
+  if (typeof window === 'undefined') return null;
+
+  const storedTimestamp = window.sessionStorage.getItem(FIRST_TOUCH_STORAGE_KEY);
+  if (storedTimestamp) return storedTimestamp;
+
+  const timestamp = new Date().toISOString();
+  window.sessionStorage.setItem(FIRST_TOUCH_STORAGE_KEY, timestamp);
+  return timestamp;
+};
+
+const generateReferenceCode = (length = 4) => {
+  const values = new Uint32Array(length);
+
+  if (typeof window !== 'undefined' && window.crypto?.getRandomValues) {
+    window.crypto.getRandomValues(values);
+  } else {
+    for (let index = 0; index < length; index += 1) {
+      values[index] = Math.floor(Math.random() * REFERENCE_CHARACTERS.length);
+    }
+  }
+
+  return Array.from(values, (value) => REFERENCE_CHARACTERS[value % REFERENCE_CHARACTERS.length]).join('');
+};
+
+const getFunnelReference = () => {
+  if (typeof window === 'undefined') {
+    return `PDC-INS-${generateReferenceCode()}`;
+  }
+
+  const storedReference = window.sessionStorage.getItem(FUNNEL_REFERENCE_KEY);
+  if (storedReference) return storedReference;
+
+  const reference = `PDC-INS-${generateReferenceCode()}`;
+  window.sessionStorage.setItem(FUNNEL_REFERENCE_KEY, reference);
+  return reference;
+};
+
+const getPageLocation = () => {
+  if (typeof window === 'undefined') {
+    return {
+      page_url: '',
+      page_path: '',
+    };
+  }
+
+  return {
+    page_url: window.location.href,
+    page_path: window.location.pathname,
+  };
+};
+
+const getTrackingContext = () => ({
+  ...getPageLocation(),
+  ...PDC_CONTEXT,
+  ...getStoredUtms(),
+  first_touch_timestamp: getFirstTouchTimestamp(),
+});
+
+const pushDataLayer = (payload = {}) => {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+};
+
+const buildPdcWhatsappMessage = (funnelReference) =>
+  [
+    'Hola, ya estuve viendo la información del PDC Diseño de Permacultura de Madre Selva y quiero avanzar con mi inscripción.',
+    '',
+    `Referencia: ${funnelReference}`,
+  ].join('\n');
+
+const generateWhatsappUrl = (funnelReference) =>
+  `https://wa.me/${WHATSAPP_DESTINATION}?text=${encodeURIComponent(buildPdcWhatsappMessage(funnelReference))}`;
+
+const getWhatsappTrackingUrl = () => `https://wa.me/${WHATSAPP_DESTINATION}`;
+
 const getInitials = (name = '') =>
   String(name)
     .split(' ')
@@ -171,6 +295,16 @@ const PdcLanding = () => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (eventPageContextPushed) return;
+
+    pushDataLayer({
+      event: 'event_page_context',
+      ...getTrackingContext(),
+    });
+    eventPageContextPushed = true;
   }, []);
 
   useEffect(() => {
@@ -219,18 +353,6 @@ const PdcLanding = () => {
     return item?.[fallbackKey] || item?.value || item?.title || item?.price || '';
   };
 
-  const resolveUrl = (item = {}) => {
-    const url = item?.urlFromSetting ? resolveSetting(item.urlFromSetting) : item?.url || item?.target;
-    return url || '#';
-  };
-
-  const getHref = (url) => (isPendingUrl(url) ? '#' : url || '#');
-
-  const getTarget = (url) => {
-    if (!url || isPendingUrl(url) || String(url).startsWith('#')) return undefined;
-    return '_blank';
-  };
-
   const resolveImage = (imageName) => imageAssets[imageName] || imageName || '';
 
   const resolveAbsoluteImage = (imageName) => {
@@ -238,32 +360,78 @@ const PdcLanding = () => {
     return src ? new URL(src, data.site.siteUrl).toString() : '';
   };
 
-  const trackEvent = (eventName, extraParams = {}) => {
-    if (!eventName || typeof window === 'undefined') return;
-
-    const payload = {
+  const trackWhatsappClick = ({ ctaLocation, ctaText, element }) => {
+    const funnelReference = getFunnelReference();
+    const ctaUrl = generateWhatsappUrl(funnelReference);
+    const trackingPayload = {
+      ...getTrackingContext(),
+      cta_location: ctaLocation,
+      cta_text: ctaText,
+      cta_type: 'whatsapp',
+      cta_url: ctaUrl,
+      ticket_category: TICKET_CATEGORY,
+      funnel_reference: funnelReference,
+      whatsapp_destination: WHATSAPP_DESTINATION,
+      deduplication_scope: 'session_cta_location_ticket_category',
       landing_slug: data.tracking.landingSlug,
       campaign_type: data.tracking.campaignType,
       audience_profile: data.tracking.mainAudienceProfile,
       funnel_strategy: data.tracking.funnelStrategy,
-      ...extraParams
     };
 
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', eventName, payload);
+    if (element) {
+      element.href = ctaUrl;
+      element.dataset.funnelReference = funnelReference;
     }
+
+    pushDataLayer({
+      event: 'cta_click',
+      ...trackingPayload,
+    });
+
+    const deduplicationKey = `${WHATSAPP_DEDUP_PREFIX}:${ctaLocation}:${TICKET_CATEGORY}`;
+    const alreadyTracked =
+      typeof window !== 'undefined' && window.sessionStorage.getItem(deduplicationKey) === 'true';
+
+    if (!alreadyTracked) {
+      pushDataLayer({
+        event: 'click_whatsapp',
+        ...trackingPayload,
+      });
+
+      if (typeof window !== 'undefined') {
+        window.sessionStorage.setItem(deduplicationKey, 'true');
+      }
+    }
+
+    return ctaUrl;
   };
 
-  const trackEvents = (eventNames = [], extraParams = {}) => {
-    eventNames.filter(Boolean).forEach((eventName) => trackEvent(eventName, extraParams));
-  };
+  const getWhatsappCtaProps = (ctaLocation) => {
+    const ctaText = CTA_LABELS[ctaLocation] || CTA_LABELS.final;
 
-  const handleTrackedExternalClick = (event, eventNames, url, ctaLocation) => {
-    trackEvents(eventNames, { cta_location: ctaLocation });
-
-    if (isPendingUrl(url)) {
-      event.preventDefault();
-    }
+    return {
+      href: getWhatsappTrackingUrl(),
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      onClick: (event) => {
+        trackWhatsappClick({
+          ctaLocation,
+          ctaText,
+          element: event.currentTarget,
+        });
+      },
+      'data-event-id': PDC_CONTEXT.event_id,
+      'data-event-name': PDC_CONTEXT.event_name,
+      'data-event-type': PDC_CONTEXT.event_type,
+      'data-event-edition': PDC_CONTEXT.event_edition,
+      'data-event-status': PDC_CONTEXT.event_status,
+      'data-cta-location': ctaLocation,
+      'data-cta-type': 'whatsapp',
+      'data-ticket-category': TICKET_CATEGORY,
+      'data-related-service': PDC_CONTEXT.related_service,
+      'data-whatsapp-destination': WHATSAPP_DESTINATION,
+    };
   };
 
   const Icon = ({ name, ...props }) => {
@@ -271,7 +439,6 @@ const PdcLanding = () => {
     return <IconComponent {...props} />;
   };
 
-  const applicationCtaUrl = resolveUrl(data.application?.cta);
   const testimonials = data.testimonialsSection?.testimonials || [];
   const nextCohort = data.cohortsSection?.cohorts?.[0];
   return (
@@ -289,20 +456,10 @@ const PdcLanding = () => {
             {data.header.logoText}
           </a>
           <a
-            href={getHref(applicationCtaUrl)}
-            target={getTarget(applicationCtaUrl)}
-            rel="noopener noreferrer"
+            {...getWhatsappCtaProps('header')}
             className="btnPrimary btnPrimary--small"
-            onClick={(event) =>
-              handleTrackedExternalClick(
-                event,
-                [data.tracking.secondaryConversionEvent],
-                applicationCtaUrl,
-                'header'
-              )
-            }
           >
-            {data.header.ctaText}
+            {CTA_LABELS.header}
           </a>
         </div>
       </header>
@@ -328,20 +485,10 @@ const PdcLanding = () => {
           </motion.p>
           <motion.div className="pdc-hero__actions" {...fadeInUp} transition={{ delay: 0.24 }}>
             <a
-              href={getHref(applicationCtaUrl)}
-              target={getTarget(applicationCtaUrl)}
-              rel="noopener noreferrer"
+              {...getWhatsappCtaProps('hero')}
               className="btnPrimary pdc-hero__cta"
-              onClick={(event) =>
-                handleTrackedExternalClick(
-                  event,
-                  [data.tracking.secondaryConversionEvent],
-                  applicationCtaUrl,
-                  'hero'
-                )
-              }
             >
-              {data.header.ctaText}
+              {CTA_LABELS.hero}
             </a>
           </motion.div>
           <motion.p className="pdc-hero__price-hint" {...fadeInUp} transition={{ delay: 0.32 }}>
@@ -482,20 +629,10 @@ const PdcLanding = () => {
             <BookingCountdown startsAt={nextCohort?.startsAt} />
 
             <a
-              href={getHref(applicationCtaUrl)}
-              target={getTarget(applicationCtaUrl)}
-              rel="noopener noreferrer"
+              {...getWhatsappCtaProps('sticky_sidebar')}
               className="btnPrimary btnPrimary--wide booking-card__primary-cta"
-              onClick={(event) =>
-                handleTrackedExternalClick(
-                  event,
-                  [data.tracking.secondaryConversionEvent],
-                  applicationCtaUrl,
-                  'sticky_sidebar'
-                )
-              }
             >
-              {data.header.ctaText}
+              {CTA_LABELS.sticky_sidebar}
             </a>
 
             <span className="section-label">{data.sidebar.label}</span>
@@ -652,20 +789,10 @@ const PdcLanding = () => {
                   ))}
                 </div>
                 <a
-                  href={getHref(applicationCtaUrl)}
-                  target={getTarget(applicationCtaUrl)}
-                  rel="noopener noreferrer"
+                  {...getWhatsappCtaProps('payment')}
                   className="btnPrimary btnPrimary--wide logistics-cta"
-                  onClick={(event) =>
-                    handleTrackedExternalClick(
-                      event,
-                      [data.tracking.secondaryConversionEvent],
-                      applicationCtaUrl,
-                      'payment'
-                    )
-                  }
                 >
-                  {data.header.ctaText}
+                  {CTA_LABELS.payment}
                 </a>
               </motion.section>
             ) : null}
@@ -798,20 +925,10 @@ const PdcLanding = () => {
             </div>
 
             <a
-              href={getHref(applicationCtaUrl)}
-              target={getTarget(applicationCtaUrl)}
-              rel="noopener noreferrer"
+              {...getWhatsappCtaProps('final')}
               className="btnPrimary"
-              onClick={(event) =>
-                handleTrackedExternalClick(
-                  event,
-                  [data.tracking.secondaryConversionEvent],
-                  applicationCtaUrl,
-                  'final'
-                )
-              }
             >
-              {data.header.ctaText}
+              {CTA_LABELS.final}
             </a>
 
             <p className="application-note">{data.application.note}</p>
