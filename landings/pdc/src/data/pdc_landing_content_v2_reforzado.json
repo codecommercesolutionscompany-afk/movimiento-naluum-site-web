@@ -1,4 +1,4 @@
-{
+﻿{
   "site": {
     "brand": "MADRE SELVA",
     "organization": "Instituto de Permacultura Na Lu'um",
@@ -21,7 +21,7 @@
     "arrivalNote": "El curso se realiza del 9 al 18 de septiembre de 2026.",
     "location": "Madre Selva, Misiones, Argentina",
     "whatsappNumber": "+5493764257777",
-    "whatsappUrl": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026.",
+    "whatsappUrl": "https://wa.me/5493764257777",
     "earlyBirdDiscount": "",
     "earlyBirdCondition": "",
     "earlyBirdFinalPrice": "600 USD",
@@ -32,8 +32,8 @@
     "foreignPaymentMethod": "PayPal"
   },
   "tracking": {
-    "primaryConversionEvent": "generate_lead_qualified",
-    "secondaryConversionEvent": "click_whatsapp_start",
+    "primaryConversionEvent": "cta_click",
+    "secondaryConversionEvent": "click_whatsapp",
     "landingSlug": "pdc",
     "campaignType": "curso-certificado-diseno-permacultura",
     "mainAudienceProfile": "perfil_2_permacultura_practica_sustentabilidad_vida_natural",
@@ -77,7 +77,7 @@
     "logoText": "MADRE SELVA",
     "logoUrl": "https://movimientonaluum.org",
     "ctaText": "QUIERO INSCRIBIRME",
-    "ctaTarget": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+    "ctaTarget": "https://wa.me/5493764257777"
   },
   "hero": {
     "badge": "CURSO DE DISEÑO EN PERMACULTURA (PDC) 2026 · CURSO CERTIFICADO",
@@ -87,7 +87,7 @@
     "image": "/pdc/pdc_hero_pricipal.webp",
     "primaryCta": {
       "text": "Quiero inscribirme",
-      "target": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+      "target": "https://wa.me/5493764257777"
     },
     "infoBar": [
       {
@@ -215,7 +215,7 @@
     ],
     "cta": {
       "text": "QUIERO INSCRIBIRME",
-      "target": "https://wa.me/5493764257777?text=Hola%2C+quiero+recibir+los+pasos+para+inscribirme+al+PDC+de+Madre+Selva+del+9+al+18+de+septiembre+de+2026."
+      "target": "https://wa.me/5493764257777"
     }
   },
   "cohortsSection": {
