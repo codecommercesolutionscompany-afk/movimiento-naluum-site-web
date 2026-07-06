@@ -1,4 +1,9 @@
-import { getWhatsappHref, getWhatsappTarget, handleWhatsappClick } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTarget,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const resolveHref = (href) => (String(href || '').startsWith('[') ? '#' : href);
 const getLinkHref = (link) => (link.whatsappNumber ? getWhatsappHref(link) : resolveHref(link.href));
@@ -19,7 +24,8 @@ const Footer = ({ content }) => (
             href={getLinkHref(link)}
             target={getLinkTarget(link)}
             rel={getLinkTarget(link) ? 'noreferrer' : undefined}
-            onClick={() => handleWhatsappClick(link)}
+            onClick={(event) => handleWhatsappClick(link, event)}
+            {...(link.whatsappNumber ? getWhatsappTrackingAttributes(link) : {})}
           >
             {link.label}
           </a>

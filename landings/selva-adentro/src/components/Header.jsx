@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getWhatsappHref, getWhatsappTarget, handleWhatsappClick } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTarget,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const Header = ({ content }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +36,8 @@ const Header = ({ content }) => {
           href={getWhatsappHref(content.cta)}
           target={getWhatsappTarget(content.cta)}
           rel={getWhatsappTarget(content.cta) ? 'noopener noreferrer' : undefined}
-          onClick={() => handleWhatsappClick(content.cta)}
+          onClick={(event) => handleWhatsappClick(content.cta, event)}
+          {...getWhatsappTrackingAttributes(content.cta)}
         >
           {content.cta.label}
         </a>
