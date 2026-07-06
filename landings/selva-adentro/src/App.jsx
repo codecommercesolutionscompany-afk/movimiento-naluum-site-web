@@ -16,9 +16,14 @@ import TestimonialsSection from './components/TestimonialsSection.jsx';
 import FAQSection from './components/FAQSection.jsx';
 import FinalCTA from './components/FinalCTA.jsx';
 import { selvaAdentroContent } from './data/selvaAdentroContent.js';
+import { pushEventPageContext } from './utils/whatsapp.js';
 
 const App = () => {
   const [showDeferredContent, setShowDeferredContent] = useState(false);
+
+  useEffect(() => {
+    pushEventPageContext();
+  }, []);
 
   useEffect(() => {
     const reveal = () => setShowDeferredContent(true);

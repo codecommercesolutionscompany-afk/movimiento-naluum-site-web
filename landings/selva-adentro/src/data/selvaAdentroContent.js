@@ -20,10 +20,12 @@ export const selvaAdentroContent = {
     homeUrl: 'https://movimientonaluum.org/proyectos/madre-selva',
     links: [],
     cta: {
-      label: 'Consultar disponibilidad',
+      label: 'Avanzar inscripción',
       whatsappNumber: '5493764257777',
-      whatsappMessage: 'Hola, quiero consultar disponibilidad para Selva Adentro del 3 al 14 de agosto de 2026.',
+      whatsappMessage:
+        'Hola, ya estuve viendo la información de Selva Adentro y quiero avanzar con mi inscripción.',
       ctaLocation: 'header',
+      ticketCategory: 'inscripcion',
     },
   },
   pricing: {
@@ -54,10 +56,12 @@ export const selvaAdentroContent = {
       { icon: 'Utensils', label: 'Alimentación', value: 'Tres comidas diarias' },
     ],
     primaryCta: {
-      label: 'Consultar disponibilidad',
+      label: 'Quiero avanzar con mi inscripción',
       whatsappNumber: '5493764257777',
-      whatsappMessage: 'Hola, quiero consultar disponibilidad para Selva Adentro del 3 al 14 de agosto de 2026.',
+      whatsappMessage:
+        'Hola, ya estuve viendo la información de Selva Adentro y quiero avanzar con mi inscripción.',
       ctaLocation: 'hero',
+      ticketCategory: 'inscripcion',
     },
     secondaryCta: { label: 'Ver qué incluye', href: '#incluye' },
   },
@@ -205,10 +209,12 @@ export const selvaAdentroContent = {
         'Una vez confirmado, recibís la información de pre-llegada.',
       ],
       cta: {
-        label: 'Consultar disponibilidad',
+        label: 'Reservar mi lugar',
         whatsappNumber: '5493764257777',
-        whatsappMessage: 'Hola, quiero consultar disponibilidad para Selva Adentro del 3 al 14 de agosto de 2026.',
+        whatsappMessage:
+          'Hola, ya estuve viendo la información de Selva Adentro y quiero avanzar con mi inscripción.',
         ctaLocation: 'sticky_sidebar',
+        ticketCategory: 'inscripcion',
       },
     },
   },
@@ -311,10 +317,12 @@ export const selvaAdentroContent = {
       { label: 'Programa', value: 'Del 3 al 14 de agosto de 2026', detail: 'Salida: sábado 15 de agosto por la mañana.' },
     ],
     cta: {
-      label: 'Consultar disponibilidad',
+      label: 'Quiero reservar mi lugar',
       whatsappNumber: '5493764257777',
-      whatsappMessage: 'Hola, quiero consultar disponibilidad para Selva Adentro del 3 al 14 de agosto de 2026.',
+      whatsappMessage:
+        'Hola, ya estuve viendo la información de Selva Adentro y quiero avanzar con mi inscripción.',
       ctaLocation: 'investment',
+      ticketCategory: 'inscripcion',
     },
   },
   lodgingPayment: {
@@ -494,10 +502,12 @@ export const selvaAdentroContent = {
       'Una vez confirmado, recibís la información de pre-llegada.',
     ],
     cta: {
-      label: 'Consultar disponibilidad',
+      label: 'Quiero dar el siguiente paso',
       whatsappNumber: '5493764257777',
-      whatsappMessage: 'Hola, quiero consultar disponibilidad para Selva Adentro del 3 al 14 de agosto de 2026.',
+      whatsappMessage:
+        'Hola, ya estuve viendo la información de Selva Adentro y quiero avanzar con mi inscripción.',
       ctaLocation: 'final',
+      ticketCategory: 'inscripcion',
     },
   },
   footer: {
@@ -510,8 +520,10 @@ export const selvaAdentroContent = {
       {
         label: 'WhatsApp',
         whatsappNumber: '5493764257777',
-        whatsappMessage: 'Hola, quiero hacer una consulta sobre Selva Adentro del 3 al 14 de agosto de 2026.',
+        whatsappMessage:
+          'Hola, ya estuve viendo la información de Selva Adentro y quiero hacer una consulta.',
         ctaLocation: 'footer',
+        ticketCategory: 'general',
       },
       { label: 'Web Madre Selva', href: 'https://movimientonaluum.org/proyectos/madre-selva' },
     ],

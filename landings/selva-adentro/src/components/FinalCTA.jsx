@@ -1,5 +1,10 @@
 import Icon from './Icon.jsx';
-import { getWhatsappHref, getWhatsappTarget, handleWhatsappClick } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTarget,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const FinalCTA = ({ content }) => (
   <section id={content.id} className="sa-final-cta">
@@ -20,7 +25,8 @@ const FinalCTA = ({ content }) => (
         href={getWhatsappHref(content.cta)}
         target={getWhatsappTarget(content.cta)}
         rel={getWhatsappTarget(content.cta) ? 'noopener noreferrer' : undefined}
-        onClick={() => handleWhatsappClick(content.cta)}
+        onClick={(event) => handleWhatsappClick(content.cta, event)}
+        {...getWhatsappTrackingAttributes(content.cta)}
       >
         {content.cta.label}
         <Icon name="ArrowRight" size={18} />

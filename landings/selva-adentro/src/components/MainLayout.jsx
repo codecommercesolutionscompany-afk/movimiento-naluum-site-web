@@ -1,6 +1,11 @@
 import Icon from './Icon.jsx';
 import SectionHeading from './SectionHeading.jsx';
-import { getWhatsappHref, getWhatsappTarget, handleWhatsappClick } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTarget,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const getItemValue = (items, label) => items.find((item) => item.label === label)?.value || '';
 
@@ -82,7 +87,8 @@ const MainLayout = ({ content }) => {
             href={getWhatsappHref(content.sidebar.cta)}
             target={getWhatsappTarget(content.sidebar.cta)}
             rel={getWhatsappTarget(content.sidebar.cta) ? 'noopener noreferrer' : undefined}
-            onClick={() => handleWhatsappClick(content.sidebar.cta)}
+            onClick={(event) => handleWhatsappClick(content.sidebar.cta, event)}
+            {...getWhatsappTrackingAttributes(content.sidebar.cta)}
           >
             {content.sidebar.cta.label}
           </a>
