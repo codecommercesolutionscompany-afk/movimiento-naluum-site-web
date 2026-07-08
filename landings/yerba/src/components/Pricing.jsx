@@ -1,18 +1,31 @@
 import React from 'react';
-import { generateWhatsappUrl, trackWhatsappStart } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const Pricing = ({ data }) => {
   const { detail } = data;
-  const number = detail?.cta?.whatsapp_number;
-  const under30Url = generateWhatsappUrl(number, detail?.cta?.messages?.under_30kg);
-  const plus30Url = generateWhatsappUrl(number, detail?.cta?.messages?.['30kg_plus']);
-
-  const handleTierClick = (ctaLocation, quantityTier, displayedPriceArsPerKg) => {
-    trackWhatsappStart({
-      ctaLocation,
-      quantityTier,
-      displayedPriceArsPerKg
-    });
+  const under30Cta = {
+    ctaText: 'Consultar pedido menor a 30 kg',
+    ctaLocation: 'pricing_under_30kg',
+    ticketCategory: 'menos30',
+    whatsappNumber: detail?.cta?.whatsapp_number,
+    whatsappMessage: detail?.cta?.messages?.under_30kg,
+    productVariant: 'under_30kg',
+    quantitySegment: 'menos_30kg',
+    pricePerKg: 7500,
+  };
+  const plus30Cta = {
+    ctaText: 'Consultar pedido desde 30 kg',
+    ctaLocation: 'pricing_30kg_plus',
+    ticketCategory: 'mas30',
+    whatsappNumber: detail?.cta?.whatsapp_number,
+    whatsappMessage: detail?.cta?.messages?.['30kg_plus'],
+    productVariant: '30kg_plus',
+    quantitySegment: 'desde_30kg',
+    pricePerKg: 6500,
   };
 
   return (
@@ -27,11 +40,12 @@ const Pricing = ({ data }) => {
             <p className="yerba-pricing__card-price">$7.500 <span>ARS por kg</span></p>
             <p className="yerba-pricing__card-shipping">El envío se coordina y cotiza según el destino.</p>
             <a
-              href={under30Url}
+              href={getWhatsappHref(under30Cta)}
               target="_blank"
               rel="noopener noreferrer"
               className="yerba-button"
-              onClick={() => handleTierClick('pricing_under_30kg', 'under_30kg', 7500)}
+              onClick={(event) => handleWhatsappClick(under30Cta, event)}
+              {...getWhatsappTrackingAttributes(under30Cta)}
             >
               Consultar pedido menor a 30 kg
             </a>
@@ -44,11 +58,12 @@ const Pricing = ({ data }) => {
             <p className="yerba-pricing__card-price">$6.500 <span>ARS por kg</span></p>
             <p className="yerba-pricing__card-shipping">El envío se coordina y cotiza según el destino.</p>
             <a
-              href={plus30Url}
+              href={getWhatsappHref(plus30Cta)}
               target="_blank"
               rel="noopener noreferrer"
               className="yerba-button yerba-button--inverse"
-              onClick={() => handleTierClick('pricing_30kg_plus', '30kg_plus', 6500)}
+              onClick={(event) => handleWhatsappClick(plus30Cta, event)}
+              {...getWhatsappTrackingAttributes(plus30Cta)}
             >
               Consultar pedido desde 30 kg
             </a>

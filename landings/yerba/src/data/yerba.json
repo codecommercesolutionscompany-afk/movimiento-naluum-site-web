@@ -119,9 +119,9 @@
       "cta": {
         "whatsapp_number": "5493764257777",
         "messages": {
-          "general": "Hola, quiero consultar por Yerba Mate Madre Selva. Quisiera definir la cantidad y conocer el costo de envío según mi destino.",
-          "under_30kg": "Hola, quiero consultar por Yerba Mate Madre Selva. Estoy interesado/a en un pedido menor a 30 kg y vi el precio de $7.500 ARS por kg. Quisiera consultar disponibilidad y costo de envío según mi destino.",
-          "30kg_plus": "Hola, quiero consultar por Yerba Mate Madre Selva. Estoy interesado/a en un pedido desde 30 kg y vi el precio de $6.500 ARS por kg. Quisiera consultar disponibilidad y costo de envío según mi destino."
+          "general": "Hola, ya estuve viendo la información de la Yerba Mate Orgánica de Madre Selva y quiero avanzar con mi compra.",
+          "under_30kg": "Hola, ya estuve viendo la información de la Yerba Mate Orgánica de Madre Selva y quiero consultar por un pedido menor a 30 kg.",
+          "30kg_plus": "Hola, ya estuve viendo la información de la Yerba Mate Orgánica de Madre Selva y quiero consultar por una compra mayorista."
         },
         "primary_label": "Consultar y hacer mi pedido"
       }
