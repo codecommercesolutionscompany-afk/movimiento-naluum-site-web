@@ -1,17 +1,18 @@
 import React from 'react';
-import { generateWhatsappUrl, trackWhatsappStart } from '../utils/whatsapp.js';
+import {
+  getWhatsappHref,
+  getWhatsappTrackingAttributes,
+  handleWhatsappClick,
+} from '../utils/whatsapp.js';
 
 const Hero = ({ data }) => {
   const { title, subtitle, description, badge, detail, image } = data;
-  const generalMessage = detail?.cta?.messages?.general || detail?.cta?.whatsapp_message;
-  const whatsappUrl = generateWhatsappUrl(detail?.cta?.whatsapp_number, generalMessage);
-
-  const handleWhatsappClick = () => {
-    trackWhatsappStart({
-      ctaLocation: 'hero',
-      quantityTier: 'general',
-      displayedPriceArsPerKg: null
-    });
+  const heroCta = {
+    ctaText: detail?.cta?.primary_label || 'Consultar y hacer mi pedido',
+    ctaLocation: 'hero',
+    ticketCategory: 'compra',
+    whatsappNumber: detail?.cta?.whatsapp_number,
+    whatsappMessage: detail?.cta?.messages?.general || detail?.cta?.whatsapp_message,
   };
 
   return (
@@ -45,11 +46,12 @@ const Hero = ({ data }) => {
               </div>
 
               <a
-                href={whatsappUrl}
+                href={getWhatsappHref(heroCta)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="yerba-button yerba-button--large yerba-button--full"
-                onClick={handleWhatsappClick}
+                onClick={(event) => handleWhatsappClick(heroCta, event)}
+                {...getWhatsappTrackingAttributes(heroCta)}
               >
                 {detail?.cta?.primary_label || 'Consultar y hacer mi pedido'}
               </a>
