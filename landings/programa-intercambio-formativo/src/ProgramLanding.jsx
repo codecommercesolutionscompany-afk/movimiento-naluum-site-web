@@ -26,6 +26,132 @@ const SITE_URL = "https://movimientonaluum.org";
 const LANDING_URL = `${SITE_URL}/programa-intercambio-formativo`;
 const heroSeoImage = new URL(heroImage, SITE_URL).toString();
 const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const UTM_STORAGE_KEY = 'residencia_utm_params';
+const FIRST_TOUCH_STORAGE_KEY = 'residencia_first_touch_timestamp';
+const FUNNEL_REFERENCE_KEY = 'residencia_funnel_reference:aplica';
+const FORM_START_DEDUP_PREFIX = 'residencia_form_start_dedup';
+const REFERENCE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const TRACKING_CONTEXT = {
+  landing_name: 'programa-intercambio-formativo',
+  related_service: 'residencia-formativa',
+  event_id: 'residencia-formativa-2026',
+  event_name: 'Residencia Formativa por Rol',
+  event_type: 'programa_formativo',
+  event_edition: 2026,
+  event_status: 'published',
+  program_duration: '2_meses',
+  currency: 'USD',
+  display_price: 133.33,
+};
+
+let pageContextPushed = false;
+
+const readSessionValue = (key) => {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+};
+
+const writeSessionValue = (key, value) => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // Tracking must never block navigation when storage is unavailable.
+  }
+};
+
+const getStoredUtmParams = () => {
+  const stored = readSessionValue(UTM_STORAGE_KEY);
+  if (!stored) return {};
+
+  try {
+    const parsed = JSON.parse(stored);
+    return UTM_PARAMS.reduce((params, name) => {
+      if (parsed?.[name]) params[name] = parsed[name];
+      return params;
+    }, {});
+  } catch {
+    return {};
+  }
+};
+
+const getMergedUtmParams = () => {
+  if (typeof window === 'undefined') return {};
+  const currentParams = new URLSearchParams(window.location.search);
+  const storedParams = getStoredUtmParams();
+
+  return UTM_PARAMS.reduce((params, name) => {
+    const currentValue = currentParams.get(name);
+    if (currentValue) params[name] = currentValue;
+    else if (storedParams[name]) params[name] = storedParams[name];
+    return params;
+  }, {});
+};
+
+const persistUtmParams = () => {
+  const mergedParams = getMergedUtmParams();
+  if (Object.keys(mergedParams).length > 0) {
+    writeSessionValue(UTM_STORAGE_KEY, JSON.stringify(mergedParams));
+  }
+  return mergedParams;
+};
+
+const getFirstTouchTimestamp = () => {
+  const existing = readSessionValue(FIRST_TOUCH_STORAGE_KEY);
+  if (existing) return existing;
+
+  const timestamp = new Date().toISOString();
+  writeSessionValue(FIRST_TOUCH_STORAGE_KEY, timestamp);
+  return timestamp;
+};
+
+const generateReferenceCode = () => {
+  const values = new Uint32Array(4);
+  if (typeof window !== 'undefined' && window.crypto?.getRandomValues) {
+    window.crypto.getRandomValues(values);
+  } else {
+    for (let i = 0; i < values.length; i += 1) {
+      values[i] = Math.floor(Math.random() * 0xffffffff);
+    }
+  }
+
+  return Array.from(values, (value) => REFERENCE_ALPHABET[value % REFERENCE_ALPHABET.length]).join('');
+};
+
+const getFunnelReference = () => {
+  const existing = readSessionValue(FUNNEL_REFERENCE_KEY);
+  if (existing) return existing;
+
+  const reference = `RESI-APLICA-${generateReferenceCode()}`;
+  writeSessionValue(FUNNEL_REFERENCE_KEY, reference);
+  return reference;
+};
+
+const pushDataLayer = (payload) => {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+};
+
+const getFormCtaData = (ctaLocation, cohort = 'sin_seleccionar', applicationRole = 'sin_seleccionar') => ({
+  'data-landing-name': TRACKING_CONTEXT.landing_name,
+  'data-related-service': TRACKING_CONTEXT.related_service,
+  'data-event-id': TRACKING_CONTEXT.event_id,
+  'data-event-name': TRACKING_CONTEXT.event_name,
+  'data-event-type': TRACKING_CONTEXT.event_type,
+  'data-event-edition': String(TRACKING_CONTEXT.event_edition),
+  'data-event-status': TRACKING_CONTEXT.event_status,
+  'data-cta-location': ctaLocation,
+  'data-cta-type': 'external_form',
+  'data-form-provider': 'google_forms',
+  'data-ticket-category': 'aplica',
+  'data-cohort': cohort,
+  'data-application-role': applicationRole,
+});
 
 const animationPropNames = new Set(['initial', 'animate', 'exit', 'whileInView', 'viewport', 'transition']);
 const createStaticMotionComponent = (tag) => ({ children, ...props }) => {
@@ -42,7 +168,7 @@ const cohorts = [
   {
     name: "Cohorte Agosto",
     program: "Residencia Formativa por Rol",
-    slug: "august_2026",
+    slug: "agosto_2026",
     ctaLocation: "cohort_august",
     weekday: "Lunes",
     day: "3",
@@ -55,7 +181,7 @@ const cohorts = [
   {
     name: "Cohorte Octubre",
     program: "Residencia Formativa por Rol",
-    slug: "october_2026",
+    slug: "octubre_2026",
     ctaLocation: "cohort_october",
     weekday: "Lunes",
     day: "5",
@@ -77,32 +203,70 @@ const ProgramLanding = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const utmParams = persistUtmParams();
+    const firstTouchTimestamp = getFirstTouchTimestamp();
+
+    if (!pageContextPushed) {
+      pageContextPushed = true;
+      pushDataLayer({
+        event: 'event_page_context',
+        page_url: window.location.href,
+        page_path: window.location.pathname,
+        ...TRACKING_CONTEXT,
+        ...utmParams,
+        first_touch_timestamp: firstTouchTimestamp,
+      });
+    }
+  }, []);
+
   const getApplicationFormUrl = () => {
     if (typeof window === 'undefined') return APPLICATION_FORM_URL;
 
-    const currentParams = new URLSearchParams(window.location.search);
     const formUrl = new URL(APPLICATION_FORM_URL);
 
     UTM_PARAMS.forEach((param) => {
-      const value = currentParams.get(param);
+      const value = getMergedUtmParams()[param];
       if (value) formUrl.searchParams.set(param, value);
     });
 
     return formUrl.toString();
   };
 
-  const trackApplicationFormStart = (ctaLocation, cohort) => {
+  const trackApplicationFormStart = (event, ctaLocation, cohort = 'sin_seleccionar', applicationRole = 'sin_seleccionar') => {
     if (typeof window === 'undefined') return;
 
+    const normalizedCohort = cohort || 'sin_seleccionar';
+    const normalizedRole = applicationRole || 'sin_seleccionar';
+    const utmParams = getMergedUtmParams();
+    const firstTouchTimestamp = getFirstTouchTimestamp();
+    const funnelReference = getFunnelReference();
+    const formDestination = getApplicationFormUrl();
     const payload = {
-      service: 'residencia_formativa',
+      page_url: window.location.href,
+      page_path: window.location.pathname,
+      ...TRACKING_CONTEXT,
+      ...utmParams,
+      first_touch_timestamp: firstTouchTimestamp,
+      cta_text: event?.currentTarget?.textContent?.trim() || '',
       cta_location: ctaLocation,
+      cta_type: 'external_form',
+      form_provider: 'google_forms',
+      form_destination: formDestination,
+      ticket_category: 'aplica',
+      funnel_reference: funnelReference,
+      cohort: normalizedCohort,
+      application_role: normalizedRole,
+      deduplication_scope: 'session_cta_location_cohort_application_role',
     };
 
-    if (cohort) payload.cohort = cohort;
+    event?.currentTarget?.setAttribute('data-funnel-reference', funnelReference);
+    pushDataLayer({ event: 'cta_click', ...payload });
 
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'application_form_start', payload);
+    const deduplicationKey = `${FORM_START_DEDUP_PREFIX}:${ctaLocation}:${normalizedCohort}:${normalizedRole}`;
+    if (!readSessionValue(deduplicationKey)) {
+      writeSessionValue(deduplicationKey, '1');
+      pushDataLayer({ event: 'application_form_start', ...payload });
     }
   };
 
@@ -163,14 +327,15 @@ const ProgramLanding = () => {
       <header className={`pl-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="pl-header__wrapper">
           <a href={SITE_URL} className="nav-logo">MADRE SELVA</a>
-          <a
-            href={applicationFormUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btnPrimary"
-            style={{ padding: '12px 24px', fontSize: '0.8rem' }}
-            onClick={() => trackApplicationFormStart('header')}
-          >
+            <a
+              href={applicationFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btnPrimary"
+              {...getFormCtaData('header')}
+              style={{ padding: '12px 24px', fontSize: '0.8rem' }}
+              onClick={(event) => trackApplicationFormStart(event, 'header')}
+            >
             APLICAR
           </a>
         </div>
@@ -193,13 +358,14 @@ const ProgramLanding = () => {
           </motion.p>
 
           <motion.div className="pl-hero__actions" {...fadeInUp} transition={{ delay: 0.3 }}>
-            <a
-              href={applicationFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btnPrimary"
-              onClick={() => trackApplicationFormStart('hero')}
-            >
+              <a
+                href={applicationFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btnPrimary"
+                {...getFormCtaData('hero')}
+                onClick={(event) => trackApplicationFormStart(event, 'hero')}
+              >
               APLICAR
             </a>
             <a href="#perfil" className="btnOutlineLight">Ver si esta experiencia es para mí</a>
@@ -376,7 +542,8 @@ const ProgramLanding = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="cohort-card__cta"
-                  onClick={() => trackApplicationFormStart(cohort.ctaLocation, cohort.slug)}
+                  {...getFormCtaData(cohort.ctaLocation, cohort.slug)}
+                  onClick={(event) => trackApplicationFormStart(event, cohort.ctaLocation, cohort.slug)}
                 >
                   <CheckCircle2 size={18} />
                   Aplicar a esta cohorte
@@ -596,15 +763,15 @@ const ProgramLanding = () => {
       </section>
 
       {/* --- BLOQUE 12: CTA FINAL --- */}
-      <section id="aplicar" className="pl-testimonials" style={{ background: '#fff', color: '#111827', padding: '120px 0' }}>
+      <section id="aplicar" className="pl-application-final" style={{ background: '#fff', color: '#111827', padding: '120px 0' }}>
         <div className="container">
-          <motion.div {...fadeInUp} style={{ textAlign: 'center' }}>
+          <motion.div className="pl-application-final__content" {...fadeInUp} style={{ textAlign: 'center' }}>
             <span className="section-label" style={{ color: '#179c55', marginBottom: '20px', display: 'block', textAlign: 'center' }}>Aplicación</span>
             <h2 className="editorial-title" style={{ maxWidth: '900px', margin: '0 auto 40px', textAlign: 'center' }}>Aplicación a Residencia Formativa por Rol</h2>
 
-            <div style={{ maxWidth: '700px', margin: '0 auto 60px', textAlign: 'left', background: '#f9f9f9', padding: '40px', borderRadius: '20px' }}>
+            <div className="pl-application-final__details" style={{ textAlign: 'left', background: '#f9f9f9', borderRadius: '20px' }}>
               <p style={{ fontWeight: 600, marginBottom: '20px' }}>En el formulario de aplicación te pediremos:</p>
-              <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(0, 1fr))', gap: '15px', padding: 0, listStyle: 'none' }}>
+              <ul className="pl-application-final__fields" style={{ listStyle: 'none' }}>
                 <li>• Nombre, Apellido y Edad</li>
                 <li>• Ciudad y País</li>
                 <li>• WhatsApp y Email</li>
@@ -617,19 +784,20 @@ const ProgramLanding = () => {
               <p style={{ marginTop: '30px', fontSize: '0.9rem', opacity: 0.7 }}>Completar el formulario no garantiza el ingreso. Buscamos cuidar la calidad del proceso y la afinidad entre la persona y el rol.</p>
             </div>
 
-            <div style={{ margin: '40px 0', padding: '20px', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', textAlign: 'center' }}>
+            <div className="pl-application-final__investment" style={{ textAlign: 'center' }}>
               <p style={{ fontWeight: 600, fontSize: '1.2rem', color: '#111827', marginBottom: '8px' }}>Inversión total por los dos meses: {PROGRAM_PRICE}</p>
               <p style={{ fontSize: '0.95rem', opacity: 0.7, maxWidth: '500px', margin: '0 auto' }}>Si tu perfil tiene afinidad con la propuesta, Madre Selva te contactará para conversar los próximos pasos.</p>
             </div>
 
-            <div className="pl-hero__actions">
-              <a
-                href={applicationFormUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btnPrimary"
-                onClick={() => trackApplicationFormStart('final')}
-              >
+            <div className="pl-application-final__actions">
+                <a
+                  href={applicationFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btnPrimary"
+                  {...getFormCtaData('final')}
+                  onClick={(event) => trackApplicationFormStart(event, 'final')}
+                >
                 Enviar aplicación
               </a>
             </div>

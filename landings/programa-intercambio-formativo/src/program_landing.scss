@@ -1110,6 +1110,100 @@ $pl-shadow-hover: 0 40px 85px rgba(0,0,0,0.18);
     }
   }
 
+  // --- BLOQUE 12: CTA FINAL ---
+  .pl-application-final {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    .container,
+    &__content,
+    &__details,
+    &__investment,
+    &__actions {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__details {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 40px;
+    }
+
+    &__fields {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+      padding: 0;
+    }
+
+    &__investment {
+      width: 100%;
+      margin: 40px 0;
+      padding: 20px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    &__actions {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    &__actions .btnPrimary {
+      width: min(100%, 320px);
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      padding: 80px 0 !important;
+
+      .container {
+        padding: 0 25px;
+      }
+
+      &__details {
+        padding: 28px 22px;
+      }
+
+      &__fields {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      padding: 64px 0 !important;
+
+      .container {
+        padding: 0 16px;
+      }
+
+      &__details {
+        padding: 24px 18px;
+        margin-bottom: 40px;
+      }
+
+      &__investment {
+        margin: 30px 0;
+        padding: 16px 10px;
+      }
+
+      &__actions .btnPrimary {
+        width: 100%;
+      }
+    }
+  }
+
   // --- BUTTONS ---
   .btnPrimary {
     background: $pl-cta;
