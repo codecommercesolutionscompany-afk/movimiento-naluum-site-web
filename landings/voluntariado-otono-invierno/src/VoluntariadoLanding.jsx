@@ -1,23 +1,21 @@
 import { createElement, useEffect, useState } from 'react';
 import {
   ArrowRight,
-  Calendar,
   CheckCircle2,
-  DollarSign,
   Home,
-  Leaf,
   MapPin,
   Plus,
   Sprout,
   Tent,
-  Users,
   Utensils,
   Wifi,
   XCircle,
 } from 'lucide-react';
 import SEOHelmet from './SEOHelmet.jsx';
 import logoUrl from './assets/images/logo-madre-selva-user.png';
-const heroImage = '/voluntariado-otono-invierno/voluntariado-hero.webp';
+const heroImage = '/voluntariado-otono-invierno/images/voluntariado-grupo-hero.jpg';
+const cultivationImage = '/voluntariado-otono-invierno/images/voluntariado-cultivos.jpg';
+const workImage = '/voluntariado-otono-invierno/images/voluntariado-trabajo.jpg';
 import './voluntariado_landing.scss';
 
 const SITE_URL = 'https://movimientonaluum.org';
@@ -26,6 +24,26 @@ const APPLICATION_FORM_URL = 'https://forms.gle/zjeisEcMoAyntZL26';
 const heroSeoImage = new URL(heroImage, SITE_URL).toString();
 const logoSeoImage = new URL(logoUrl, SITE_URL).toString();
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const UTM_STORAGE_KEY = 'voluntariado_utm_params';
+const FIRST_TOUCH_STORAGE_KEY = 'voluntariado_first_touch_timestamp';
+const FUNNEL_REFERENCE_KEY = 'voluntariado_funnel_reference:inscripcion';
+const FORM_START_DEDUP_PREFIX = 'voluntariado_form_start_dedup';
+const REFERENCE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const TRACKING_CONTEXT = {
+  landing_name: 'voluntariado-otono-invierno',
+  related_service: 'voluntariado',
+  event_id: 'voluntariado-2026',
+  event_name: 'Voluntariado Otoño-Invierno',
+  event_type: 'experiencia_intercambio',
+  event_edition: 2026,
+  event_status: 'published',
+  currency: 'ARS',
+  original_contribution_amount: 150000,
+  contribution_amount: 133333.33,
+  discount_percentage: 11.11,
+  discount_amount: 16666.67,
+  pricing_type: 'promotional',
+};
 
 const isPendingUrl = (url = '') => /^PENDIENTE_/i.test(String(url).trim());
 const getTargetProps = (url) =>
@@ -49,27 +67,106 @@ const buildApplicationUrl = () => {
   return APPLICATION_FORM_URL;
 };
 
+let pageContextPushed = false;
+
+const readSessionValue = (key) => {
+  if (typeof window === 'undefined') return null;
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+};
+
+const writeSessionValue = (key, value) => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // Tracking must never block navigation when storage is unavailable.
+  }
+};
+
 const getStoredUtms = () => {
-  if (typeof window === 'undefined') return {};
+  const stored = readSessionValue(UTM_STORAGE_KEY);
+  if (!stored) return {};
 
   try {
-    return UTM_KEYS.reduce((acc, key) => {
-      const value = window.sessionStorage.getItem(`voi_${key}`);
-      if (value) acc[key] = value;
-      return acc;
+    const parsed = JSON.parse(stored);
+    return UTM_KEYS.reduce((params, key) => {
+      if (parsed?.[key]) params[key] = parsed[key];
+      return params;
     }, {});
   } catch {
     return {};
   }
 };
 
-const trackEvent = (eventName, payload = {}) => {
-  if (typeof window === 'undefined') return;
+const getMergedUtms = () => {
+  if (typeof window === 'undefined') return {};
+  const currentParams = new URLSearchParams(window.location.search);
+  const storedParams = getStoredUtms();
 
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', eventName, payload);
-  }
+  return UTM_KEYS.reduce((params, key) => {
+    const currentValue = currentParams.get(key);
+    if (currentValue) params[key] = currentValue;
+    else if (storedParams[key]) params[key] = storedParams[key];
+    return params;
+  }, {});
 };
+
+const persistUtms = () => {
+  const merged = getMergedUtms();
+  if (Object.keys(merged).length > 0) writeSessionValue(UTM_STORAGE_KEY, JSON.stringify(merged));
+  return merged;
+};
+
+const getFirstTouchTimestamp = () => {
+  const existing = readSessionValue(FIRST_TOUCH_STORAGE_KEY);
+  if (existing) return existing;
+  const timestamp = new Date().toISOString();
+  writeSessionValue(FIRST_TOUCH_STORAGE_KEY, timestamp);
+  return timestamp;
+};
+
+const generateReferenceCode = () => {
+  const values = new Uint32Array(4);
+  if (typeof window !== 'undefined' && window.crypto?.getRandomValues) {
+    window.crypto.getRandomValues(values);
+  } else {
+    for (let index = 0; index < values.length; index += 1) {
+      values[index] = Math.floor(Math.random() * 0xffffffff);
+    }
+  }
+  return Array.from(values, (value) => REFERENCE_ALPHABET[value % REFERENCE_ALPHABET.length]).join('');
+};
+
+const getFunnelReference = () => {
+  const existing = readSessionValue(FUNNEL_REFERENCE_KEY);
+  if (existing) return existing;
+  const reference = `VOL-INS-${generateReferenceCode()}`;
+  writeSessionValue(FUNNEL_REFERENCE_KEY, reference);
+  return reference;
+};
+
+const pushDataLayer = (payload) => {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+};
+
+const getTrackingAttributes = (ctaLocation, volunteerWeek = 'sin_seleccionar', availabilityStatus = 'open') => ({
+  'data-landing-name': TRACKING_CONTEXT.landing_name,
+  'data-related-service': TRACKING_CONTEXT.related_service,
+  'data-event-id': TRACKING_CONTEXT.event_id,
+  'data-event-name': TRACKING_CONTEXT.event_name,
+  'data-event-type': TRACKING_CONTEXT.event_type,
+  'data-event-edition': String(TRACKING_CONTEXT.event_edition),
+  'data-event-status': TRACKING_CONTEXT.event_status,
+  'data-cta-location': ctaLocation,
+  'data-volunteer-week': volunteerWeek,
+  'data-availability-status': availabilityStatus,
+});
 
 const fadeInUp = {
   initial: { opacity: 0, y: 26 },
@@ -79,31 +176,8 @@ const fadeInUp = {
 };
 
 const quickFacts = [
-  { icon: MapPin, label: 'Lugar', value: 'Madre Selva' },
+  { icon: MapPin, label: 'Lugar', value: 'Madre Selva - Colonia Para\u00edso, El Soberbio, Misiones, Argentina' },
   { icon: Home, label: 'Modalidad', value: 'Presencial' },
-  { icon: Calendar, label: 'Formato', value: 'Colaboración de lunes a viernes' },
-  { icon: Leaf, label: 'Horario', value: '07:00 a 13:00' },
-  { icon: Tent, label: 'Alojamiento', value: 'Camping incluido. Traé tu carpa.' },
-  { icon: Users, label: 'Cupos', value: 'Hasta 10 personas por semana' },
-  { icon: DollarSign, label: 'Aporte', value: '$150.000 ARS' },
-  { icon: Utensils, label: 'Incluye', value: 'Tres comidas diarias' },
-];
-
-const includes = [
-  'Estadía en Madre Selva',
-  'Espacio de camping',
-  'Tres comidas diarias',
-  'Comidas incluidas desde el día de llegada',
-  'Desayuno y almuerzo el sábado de salida',
-  'Espacios de uso compartido',
-  'Internet',
-  'Biblioteca',
-  'Yoga',
-  'Actividades recreativas',
-  'Arte programado dentro de la participación',
-  'Aprendizaje constante en la práctica',
-  'Participación en actividades concretas del proyecto',
-  'Vida comunitaria en contacto con la naturaleza',
 ];
 
 const tasks = [
@@ -118,30 +192,86 @@ const tasks = [
 
 const cohorts = [
   {
-    name: 'Semana 2',
+    name: 'Semana 1',
     dates: 'Del lunes 6 al sábado 11 de julio de 2026',
     collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
     exit: 'Sábado de cierre y salida a las 15:30.',
     meals: 'Desayuno y almuerzo incluidos el sábado.',
     location: 'week_july_06',
     selectedWeek: '2026-07-06',
+    normalizedWeek: 'julio_06_2026',
+    displayDates: '6 al 11 de julio de 2026',
+    availabilityStatus: 'closed',
   },
   {
-    name: 'Semana 3',
+    name: 'Semana 2',
     dates: 'Del lunes 20 al sábado 25 de julio de 2026',
     collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
     exit: 'Sábado de cierre y salida a las 15:30.',
     meals: 'Desayuno y almuerzo incluidos el sábado.',
     location: 'week_july_20',
     selectedWeek: '2026-07-20',
+    normalizedWeek: 'julio_20_2026',
+    displayDates: '20 al 25 de julio de 2026',
+    availabilityStatus: 'open',
+  },
+  {
+    name: 'Semana 3',
+    dates: 'Del lunes 31 de agosto al sábado 5 de septiembre de 2026',
+    collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
+    exit: 'Sábado de cierre y salida a las 15:30.',
+    meals: 'Desayuno y almuerzo incluidos el sábado.',
+    location: 'week_august_31',
+    selectedWeek: '2026-08-31',
+    normalizedWeek: 'agosto_31_2026',
+    displayDates: '31 de agosto al 5 de septiembre de 2026',
+    availabilityStatus: 'open',
+  },
+  {
+    name: 'Semana 4',
+    dates: 'Del lunes 28 de septiembre al sábado 3 de octubre de 2026',
+    collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
+    exit: 'Sábado de cierre y salida a las 15:30.',
+    meals: 'Desayuno y almuerzo incluidos el sábado.',
+    location: 'week_september_28',
+    selectedWeek: '2026-09-28',
+    normalizedWeek: 'septiembre_28_2026',
+    displayDates: '28 de septiembre al 3 de octubre de 2026',
+    availabilityStatus: 'open',
+  },
+  {
+    name: 'Semana 5',
+    dates: 'Del lunes 26 al sábado 31 de octubre de 2026',
+    collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
+    exit: 'Sábado de cierre y salida a las 15:30.',
+    meals: 'Desayuno y almuerzo incluidos el sábado.',
+    location: 'week_october_26',
+    selectedWeek: '2026-10-26',
+    normalizedWeek: 'octubre_26_2026',
+    displayDates: '26 al 31 de octubre de 2026',
+    availabilityStatus: 'open',
+  },
+  {
+    name: 'Semana 6',
+    dates: 'Del lunes 30 de noviembre al sábado 5 de diciembre de 2026',
+    collaboration: 'Colaboración de lunes a viernes, de 07:00 a 13:00.',
+    exit: 'Sábado de cierre y salida a las 15:30.',
+    meals: 'Desayuno y almuerzo incluidos el sábado.',
+    location: 'week_november_30',
+    selectedWeek: '2026-11-30',
+    normalizedWeek: 'noviembre_30_2026',
+    displayDates: '30 de noviembre al 5 de diciembre de 2026',
+    availabilityStatus: 'open',
   },
 ];
+
+const OPEN_COHORT_COUNT = cohorts.filter((cohort) => cohort.availabilityStatus === 'open').length;
 
 const lodgingNotes = [
   'El espacio de camping está incluido en el aporte.',
   'Cada participante debe traer obligatoriamente su propia carpa, bolsa de dormir, abrigo suficiente y elementos personales para acampar.',
   'También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional y está sujeto a disponibilidad.',
-  'La yurta no está incluida en los $150.000 ARS y debe consultarse después de la aceptación o durante el proceso correspondiente.',
+  'La yurta no está incluida en los $133.333 ARS y debe consultarse después de la aceptación o durante el proceso correspondiente.',
 ];
 
 const scheduleNotes = [
@@ -168,12 +298,23 @@ const applicationSteps = [
   'Solo después de ser aceptado abonás el aporte para confirmar tu lugar.',
 ];
 
-const includesList = includes;
+const PromotionalPricing = () => (
+  <div className="voi-pricing">
+    <span className="voi-pricing__label">Por persona y por semana · ARS</span>
+    <div className="voi-pricing__values">
+      <del>$150.000 ARS</del>
+      <strong>$133.333 ARS</strong>
+    </div>
+    <span className="voi-pricing__discount">11,11% de descuento</span>
+    <span className="voi-pricing__saving">$16.666,67 ARS de ahorro</span>
+    <p>Precio promocional por cupos limitados</p>
+  </div>
+);
 
 const faqs = [
   {
     q: '¿El voluntariado es gratuito?',
-    a: 'No es gratuito. El aporte es de $150.000 ARS por persona y por la semana completa.',
+    a: 'No es gratuito. El precio promocional es de $133.333 ARS por persona y por la semana completa.',
   },
   {
     q: '¿Qué incluye el aporte?',
@@ -213,7 +354,7 @@ const faqs = [
   },
   {
     q: '¿Existe alojamiento en yurta?',
-    a: 'También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional, no está incluido en los $150.000 ARS, está sujeto a disponibilidad y debe consultarse después de la aceptación o durante el proceso correspondiente.',
+    a: 'También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional, no está incluido en los $133.333 ARS, está sujeto a disponibilidad y debe consultarse después de la aceptación o durante el proceso correspondiente.',
   },
   {
     q: '¿Cuántas comidas están incluidas?',
@@ -320,26 +461,71 @@ const VoluntariadoLanding = () => {
   }, []);
 
   useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      UTM_KEYS.forEach((key) => {
-        const value = params.get(key);
-        if (value) window.sessionStorage.setItem(`voi_${key}`, value);
+    persistUtms();
+    const firstTouchTimestamp = getFirstTouchTimestamp();
+
+    if (!pageContextPushed) {
+      pageContextPushed = true;
+      pushDataLayer({
+        event: 'event_page_context',
+        page_url: window.location.href,
+        page_path: window.location.pathname,
+        ...TRACKING_CONTEXT,
+        ...getMergedUtms(),
+        first_touch_timestamp: firstTouchTimestamp,
       });
-    } catch {
-      // UTMs are optional and should never block the landing.
     }
   }, []);
 
   const chooseCohortHref = '#fechas';
 
-  const handleApplicationClick = (cohort) => {
-    trackEvent('application_form_start', {
-      service: 'voluntariado_otono_invierno',
-      cta_location: cohort.location,
-      selected_week: cohort.selectedWeek,
-      ...getStoredUtms(),
+  const getCommonClickPayload = (event, ctaLocation, ctaType, cohort = null) => ({
+    page_url: window.location.href,
+    page_path: window.location.pathname,
+    ...TRACKING_CONTEXT,
+    ...getMergedUtms(),
+    first_touch_timestamp: getFirstTouchTimestamp(),
+    cta_text: event?.currentTarget?.textContent?.trim() || '',
+    cta_location: ctaLocation,
+    cta_type: ctaType,
+    ticket_category: 'inscripcion',
+    volunteer_week: cohort?.normalizedWeek || 'sin_seleccionar',
+    volunteer_dates: cohort?.dates || 'sin_seleccionar',
+    volunteer_schedule: 'lunes_a_viernes_07_00_13_00',
+    availability_status: cohort?.availabilityStatus || 'open',
+    contribution_amount: TRACKING_CONTEXT.contribution_amount,
+    currency: TRACKING_CONTEXT.currency,
+  });
+
+  const handleInternalClick = (event, ctaLocation) => {
+    pushDataLayer({
+      event: 'cta_click',
+      ...getCommonClickPayload(event, ctaLocation, 'internal_anchor'),
     });
+  };
+
+  const handleApplicationClick = (event, ctaLocation = 'dates_section') => {
+    const funnelReference = getFunnelReference();
+    const payload = {
+      ...getCommonClickPayload(event, ctaLocation, 'external_form'),
+      form_provider: 'google_forms',
+      form_destination: APPLICATION_FORM_URL,
+      funnel_reference: funnelReference,
+      volunteer_week: 'sin_seleccionar',
+      volunteer_dates: 'multiple_open',
+      availability_status: 'multiple_open',
+      available_weeks_count: OPEN_COHORT_COUNT,
+      deduplication_scope: 'session_cta_location',
+    };
+
+    event?.currentTarget?.setAttribute('data-funnel-reference', funnelReference);
+    pushDataLayer({ event: 'cta_click', ...payload });
+
+    const deduplicationKey = `${FORM_START_DEDUP_PREFIX}:${ctaLocation}`;
+    if (!readSessionValue(deduplicationKey)) {
+      writeSessionValue(deduplicationKey, '1');
+      pushDataLayer({ event: 'application_form_start', ...payload });
+    }
   };
 
   return (
@@ -357,7 +543,14 @@ const VoluntariadoLanding = () => {
             <span className="nav-logo__text">MADRE SELVA</span>
           </a>
           <div className="voi-header__actions">
-            <a className="btnPrimary btnPrimary--small" href={chooseCohortHref}>
+            <a
+              className="btnPrimary btnPrimary--small"
+              href={buildApplicationUrl()}
+              onClick={(event) => handleApplicationClick(event, 'header')}
+              {...getTargetProps(APPLICATION_FORM_URL)}
+              {...getTrackingAttributes('header', 'sin_seleccionar', 'multiple_open')}
+              data-available-weeks-count={OPEN_COHORT_COUNT}
+            >
               Postularme
             </a>
           </div>
@@ -366,7 +559,14 @@ const VoluntariadoLanding = () => {
 
       <section className="voi-hero">
         <div className="voi-hero__bg">
-          <img src={heroImage} alt="Vida comunitaria y naturaleza en Madre Selva" loading="eager" />
+          <img
+            src={heroImage}
+            alt="Grupo de personas compartiendo una experiencia en la naturaleza de Madre Selva"
+            loading="eager"
+            fetchPriority="high"
+            width="2000"
+            height="3556"
+          />
         </div>
         <div className="voi-hero__overlay" />
 
@@ -387,7 +587,12 @@ const VoluntariadoLanding = () => {
             compartidos, internet, biblioteca, yoga, actividades recreativas y arte programado.
           </motion.p>
           <motion.div className="voi-hero__actions" {...fadeInUp} transition={{ delay: 0.32 }}>
-            <a className="btnPrimary" href={chooseCohortHref}>
+            <a
+              className="btnPrimary"
+              href={chooseCohortHref}
+              {...getTrackingAttributes('hero')}
+              onClick={(event) => handleInternalClick(event, 'hero')}
+            >
               Ver semanas disponibles
               <ArrowRight size={18} />
             </a>
@@ -463,10 +668,10 @@ const VoluntariadoLanding = () => {
 
         <div className="stats-container">
           {[
-            { icon: Tent, value: 'Camping', label: 'Alojamiento', desc: 'Espacio incluido para acampar con carpa propia.' },
-            { icon: Utensils, value: '3 comidas', label: 'Alimentación', desc: 'Tres comidas diarias, más desayuno y almuerzo el sábado de salida.' },
-            { icon: Wifi, value: 'Internet', label: 'Espacios', desc: 'Uso de espacios compartidos, internet y biblioteca.' },
-            { icon: Sprout, value: 'Práctica', label: 'Aprendizaje', desc: 'Participación diaria en tareas reales del proyecto.' },
+            { icon: Tent, value: 'Alojamiento y convivencia', label: 'Base compartida', desc: 'Estadía en Madre Selva, camping, espacios compartidos y vida comunitaria en contacto con la naturaleza.' },
+            { icon: Utensils, value: 'Alimentación', label: 'Comidas incluidas', desc: 'Tres comidas diarias desde la llegada, más desayuno y almuerzo el sábado de salida.' },
+            { icon: Wifi, value: 'Servicios y bienestar', label: 'Recursos disponibles', desc: 'Internet, biblioteca, yoga y actividades recreativas para acompañar la experiencia.' },
+            { icon: Sprout, value: 'Experiencia y aprendizaje', label: 'Práctica real', desc: 'Arte programado, aprendizaje práctico y participación en actividades concretas del proyecto.' },
           ].map(({ icon: Icon, value, label, desc }, index) => (
             <motion.article className="stat-card" key={label} {...fadeInUp} transition={{ delay: index * 0.08 }}>
               <div className="stat-icon">
@@ -479,17 +684,6 @@ const VoluntariadoLanding = () => {
           ))}
         </div>
 
-        <motion.div className="voi-includes-panel" {...fadeInUp}>
-          <div className="voi-pills-container">
-            {includesList.map((item) => (
-              <span key={item} className="voi-pill">{item}</span>
-            ))}
-          </div>
-          <p className="voi-important-note">
-            Cada participante debe traer obligatoriamente su propia carpa, bolsa de dormir, abrigo suficiente y
-            elementos personales para acampar.
-          </p>
-        </motion.div>
         </section>
 
       <main className="voi-main-layout container">
@@ -529,34 +723,65 @@ const VoluntariadoLanding = () => {
             viewport={{ once: true }}
           >
             <span className="section-label">Datos rápidos</span>
-            <div className="booking-price-box">
-              <span>Aporte por persona y por la semana completa</span>
-              <strong>$150.000 ARS</strong>
-              <p>El aporte contribuye a cubrir alimentación, estadía y logística durante la semana elegida.</p>
-            </div>
-            <a className="btnPrimary btnPrimary--wide" href={chooseCohortHref}>
+            <PromotionalPricing />
+            <p className="booking-price-note">El aporte contribuye a cubrir alimentación, estadía y logística durante la semana elegida.</p>
+            <a
+              className="btnPrimary btnPrimary--wide"
+              href={chooseCohortHref}
+              {...getTrackingAttributes('quick_facts')}
+              onClick={(event) => handleInternalClick(event, 'quick_facts')}
+            >
               Elegir semana para postularme
             </a>
-            <ul className="booking-list">
-              <li>
-                <strong>Horario:</strong>
-                <span>Colaboración de lunes a viernes, de 07:00 a 13:00</span>
-              </li>
-              <li>
-                <strong>Alojamiento:</strong>
-                <span>Camping incluido. Traé tu carpa.</span>
-              </li>
-              <li>
-                <strong>Cupos:</strong>
-                <span>Hasta 10 personas por semana</span>
-              </li>
-            </ul>
             <p className="booking-note">
-              No debés realizar ningún pago antes de recibir la confirmación de aceptación de Madre Selva.
+              El pago se realiza únicamente después de que Madre Selva confirme tu aceptación.
             </p>
           </motion.div>
         </aside>
       </main>
+
+      <section className="voi-story container" aria-label="Trabajo y aprendizaje en Madre Selva">
+        <article className="voi-story__card voi-story__card--image-first">
+          <div className="voi-story__image-wrap">
+            <img
+              src={workImage}
+              alt="Personas colaborando con tierra y herramientas en Madre Selva"
+              loading="lazy"
+              decoding="async"
+              width="1400"
+              height="2489"
+            />
+          </div>
+          <div className="voi-story__copy">
+            <span className="section-label">Trabajo compartido</span>
+            <h2 className="editorial-title">Colaborar también es aprender a sostener lo real.</h2>
+            <p>
+              Las tareas se realizan en equipo, con herramientas, presencia y atención a las necesidades concretas del
+              territorio.
+            </p>
+          </div>
+        </article>
+        <article className="voi-story__card voi-story__card--text-first">
+          <div className="voi-story__copy">
+            <span className="section-label">Contacto con la tierra</span>
+            <h2 className="editorial-title">Una rutina cotidiana entre cultivos, cuidado y práctica.</h2>
+            <p>
+              La experiencia combina trabajo manual, observación y aprendizaje en contacto directo con los ciclos del
+              espacio.
+            </p>
+          </div>
+          <div className="voi-story__image-wrap">
+            <img
+              src={cultivationImage}
+              alt="Grupo de personas compartiendo una experiencia en la naturaleza de Madre Selva"
+              loading="lazy"
+              decoding="async"
+              width="2000"
+              height="3556"
+            />
+          </div>
+        </article>
+      </section>
 
       <section className="container" style={{ marginBottom: '32px' }}>
         <motion.div className="voi-section-block" {...fadeInUp} style={{ textAlign: 'center' }}>
@@ -581,48 +806,39 @@ const VoluntariadoLanding = () => {
         </motion.div>
       </section>
 
-      <section className="container" style={{ marginBottom: '80px' }}>
-        <motion.div className="voi-section-block" {...fadeInUp} style={{ textAlign: 'center' }}>
-          <span className="section-label">Aporte</span>
-          <h2 className="editorial-title" style={{ margin: '0 auto 18px' }}>Aporte por persona y por la semana completa: $150.000 ARS</h2>
-          <p style={{ margin: '0 auto', maxWidth: '760px' }}>
-            El aporte contribuye a cubrir alimentación, estadía y logística durante la semana elegida. Se abona
-            únicamente después de que Madre Selva confirma la aceptación.
-          </p>
-        </motion.div>
-      </section>
-
       <section className="voi-cohorts container" id="fechas">
         <motion.div className="section-intro" {...fadeInUp}>
-          <span className="section-label">Fechas y cupos</span>
-          <h2 className="editorial-title">Dos semanas disponibles durante julio de 2026.</h2>
-          <p className="editorial-lead">
-            El mismo formulario sirve para ambas semanas. Dentro del formulario elegís la semana en la que querés
-            postularte.
-          </p>
+          <span className="section-label">Fechas disponibles</span>
+          <h2 className="editorial-title">Elegí la semana que mejor se adapte a vos.</h2>
         </motion.div>
 
-        <div className="voi-cohorts__grid">
+        <div className="voi-dates-list">
           {cohorts.map((cohort, index) => (
-            <motion.article className="cohort-card" key={cohort.name} {...fadeInUp} transition={{ delay: index * 0.08 }}>
-              <span>{cohort.name}</span>
-              <h3>{cohort.dates}</h3>
-              <p>{cohort.collaboration}</p>
-              <p>{cohort.exit}</p>
-              <p className="cohort-card__note">{cohort.meals}</p>
-              <strong>Hasta 10 personas</strong>
-              <a
-                className="cohort-card__cta"
-                href={buildApplicationUrl()}
-                onClick={() => handleApplicationClick(cohort)}
-                {...getTargetProps(APPLICATION_FORM_URL)}
-              >
-                Postularme a esta semana
-                <ArrowRight size={16} />
-              </a>
-            </motion.article>
+            <motion.div
+              className={`voi-date-row voi-date-row--${cohort.availabilityStatus}`}
+              key={cohort.name}
+              {...fadeInUp}
+              transition={{ delay: index * 0.05 }}
+            >
+              <span className="voi-date-row__status">
+                {cohort.availabilityStatus === 'open' ? 'Disponible' : 'Finalizada'}
+              </span>
+              <time dateTime={cohort.selectedWeek}>{cohort.displayDates}</time>
+            </motion.div>
           ))}
         </div>
+
+        <a
+          className="btnPrimary btnPrimary--wide voi-dates-cta"
+          href={buildApplicationUrl()}
+          onClick={handleApplicationClick}
+          {...getTargetProps(APPLICATION_FORM_URL)}
+          {...getTrackingAttributes('dates_section', 'sin_seleccionar', 'multiple_open')}
+          data-available-weeks-count={OPEN_COHORT_COUNT}
+        >
+          Postularme
+          <ArrowRight size={18} />
+        </a>
       </section>
 
 
@@ -705,7 +921,12 @@ const VoluntariadoLanding = () => {
             </p>
 
             <div className="application-actions">
-              <a className="btnPrimary" href={chooseCohortHref}>
+              <a
+                className="btnPrimary"
+                href={chooseCohortHref}
+                {...getTrackingAttributes('final')}
+                onClick={(event) => handleInternalClick(event, 'final')}
+              >
                 Elegir semana para postularme
                 <ArrowRight size={18} />
               </a>
