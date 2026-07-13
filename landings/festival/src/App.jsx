@@ -21,12 +21,10 @@ const TICKET_CATEGORY_CODES = {
   'congreso-festival-completo': 'COMP',
   'solo-congreso': 'CONG',
   'solo-festival': 'FEST',
-  'pdc-certificado': 'PDC',
-  'pdc-congreso-festival': 'PDCF',
   'diplomado-inmersivo': 'DIP',
 };
 const FESTIVAL_PACKAGE_IDS = ['congreso-festival-completo', 'solo-congreso', 'solo-festival'];
-const TRAINING_PACKAGE_IDS = ['pdc-certificado', 'pdc-congreso-festival', 'diplomado-inmersivo'];
+const TRAINING_PACKAGE_IDS = ['diplomado-inmersivo'];
 
 let eventPageContextPushed = false;
 
@@ -128,6 +126,30 @@ const pushDataLayer = (eventName, payload = {}) => {
   window.dataLayer.push({ event: eventName, ...payload });
 };
 
+const formatTicketPrice = ({ amount, currency }) => {
+  const formattedAmount = new Intl.NumberFormat('es-AR', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
+
+  return currency === 'ARS' ? `$${formattedAmount} ARS` : `${currency} ${formattedAmount}`;
+};
+
+function CommercialStageNote({ stage }) {
+  if (!stage) return null;
+
+  return (
+    <div className="festival-ticket__commercial-stage">
+      <strong>{stage.label}</strong>
+      <span>{stage.validity}</span>
+      <span>{stage.nextStageStarts}</span>
+      <span>
+        Próximo precio de {stage.nextStage}: {formatTicketPrice(stage.nextPrice)}
+      </span>
+    </div>
+  );
+}
+
 function DetailsModal({ ticket, onClose, ctaProps }) {
   const closeButtonRef = useRef(null);
   const titleId = ticket ? `package-modal-title-${ticket.id}` : undefined;
@@ -174,7 +196,7 @@ function DetailsModal({ ticket, onClose, ctaProps }) {
         <p className="festival-ticket__badge">{ticket.badge || 'Detalles'}</p>
         <h2 id={titleId}>{ticket.name}</h2>
         <p className="festival-modal__period">{ticket.period}</p>
-        <strong>{ticket.price}</strong>
+        <strong>{formatTicketPrice(ticket.price)}</strong>
         <p>{ticket.description}</p>
         <div className="festival-modal__grid">
           <div>
@@ -349,7 +371,8 @@ function App() {
       {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
       <h3>{ticket.name}</h3>
       <p className="festival-ticket__period">{ticket.period}</p>
-      <strong>{ticket.price}</strong>
+      <strong>{formatTicketPrice(ticket.price)}</strong>
+      <CommercialStageNote stage={ticket.commercialStage} />
       <p className="festival-ticket__audience">{ticket.audience}</p>
       <ul className="festival-ticket__includes">
         {ticket.summaryBenefits.map((item) => (
@@ -386,7 +409,7 @@ function App() {
         {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
         <h3>{ticket.name}</h3>
         <p className="festival-ticket__period">{ticket.period}</p>
-        <strong>{ticket.price}</strong>
+        <strong>{formatTicketPrice(ticket.price)}</strong>
         <p className="festival-ticket__audience">{ticket.audience}</p>
         <ul className="festival-ticket__includes">
           {ticket.summaryBenefits.map((item) => (
@@ -415,7 +438,7 @@ function App() {
     <main className="festival-page">
       <section className="festival-hero">
         <div className="festival-hero__media" aria-hidden="true">
-          <img src="/festival/img/conexion.webp" alt="" decoding="async" />
+            <img src="/festival/img/diplomado-fuego.webp" alt="" decoding="async" />
         </div>
         <div className="festival-hero__overlay" />
         <div className="festival-container festival-hero__content">

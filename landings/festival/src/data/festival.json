@@ -79,16 +79,10 @@
         "ticketId": "solo-festival"
       },
       {
-        "title": "Quiero formarme profesionalmente en permacultura",
-        "target": "PDC certificado",
-        "text": "Una formación específica en Diseño de Permacultura.",
-        "ticketId": "pdc-certificado"
-      },
-      {
         "title": "Quiero una experiencia formativa e inmersiva",
-        "target": "PDC + Congreso Festival o Diplomado",
-        "text": "Opciones más extensas para integrar formación, convivencia y práctica.",
-        "ticketId": "pdc-congreso-festival"
+        "target": "Diplomado inmersivo",
+        "text": "Una experiencia extensa para integrar formación, convivencia y práctica.",
+        "ticketId": "diplomado-inmersivo"
       }
     ]
   },
@@ -167,12 +161,12 @@
   "commercialStage": {
     "active": true,
     "eyebrow": "ETAPA ACTUAL",
-    "title": "Inscripciones abiertas",
-    "text": "Consultá el precio vigente, la disponibilidad y las formas de pago para la experiencia que querés vivir.",
+    "title": "Súper Preventa",
+    "text": "El Congreso + Festival completo tiene precio de Súper Preventa hasta el 15 de julio de 2026.",
     "cta": "Consultar disponibilidad",
     "note": "Las condiciones de inscripción pueden actualizarse según la etapa comercial del evento.",
-    "stageName": "",
-    "closingDate": "",
+    "stageName": "super-preventa",
+    "closingDate": "15 de julio de 2026",
     "currentPrice": "",
     "previousPrice": "",
     "spotsLabel": "",
@@ -187,10 +181,23 @@
     {
       "id": "congreso-festival-completo",
       "recommended": true,
-      "badge": "Experiencia completa",
-      "name": "Congreso Festival completo",
+      "badge": "Súper Preventa",
+      "name": "Congreso + Festival completo",
       "period": "20 al 26 de septiembre de 2026",
-      "price": "$390.000 ARS",
+      "price": {
+        "amount": 520000,
+        "currency": "ARS"
+      },
+      "commercialStage": {
+        "label": "Súper Preventa",
+        "validity": "Disponible hasta el 15 de julio de 2026",
+        "nextStage": "Preventa",
+        "nextStageStarts": "Comienza el 16 de julio de 2026",
+        "nextPrice": {
+          "amount": 653333.33,
+          "currency": "ARS"
+        }
+      },
       "audience": "Para quienes quieren vivir la experiencia completa: formación, práctica, comunidad y festival final.",
       "summaryBenefits": [
         "Cinco días de Congreso",
@@ -227,7 +234,10 @@
       "id": "solo-congreso",
       "name": "Solo Congreso",
       "period": "20 al 25 de septiembre de 2026",
-      "price": "$280.000 ARS",
+      "price": {
+        "amount": 373333.33,
+        "currency": "ARS"
+      },
       "audience": "Para quienes buscan la etapa formativa y práctica del encuentro sin participar del festival final.",
       "summaryBenefits": [
         "Conferencias y clases",
@@ -267,7 +277,10 @@
       "id": "solo-festival",
       "name": "Solo Festival",
       "period": "26 de septiembre de 2026",
-      "price": "$85.000 ARS",
+      "price": {
+        "amount": 113333.33,
+        "currency": "ARS"
+      },
       "audience": "Para quienes quieren vivir una jornada de arte, espiritualidad, música, danza y celebración comunitaria.",
       "summaryBenefits": [
         "Acceso al Festival",
@@ -303,103 +316,22 @@
       "cta": "Consultar por el Festival"
     },
     {
-      "id": "pdc-certificado",
-      "name": "PDC certificado",
-      "image": "/festival/img/permacultura-social.webp",
-      "period": "10 días",
-      "price": "$540.000 ARS",
-      "audience": "Formación intensiva y certificada en Diseño de Permacultura.",
-      "summaryBenefits": [
-        "Aprendizaje profesional",
-        "Certificado incluido"
-      ],
-      "description": "Un Curso Certificado de Diseño de Permacultura para aprender a diseñar profesionalmente con una mirada integral y regenerativa.",
-      "includes": [
-        "Diez días de formación intensiva en Diseño de Permacultura",
-        "Pedagogía multidisciplinaria y personalizada",
-        "Herramientas para leer paisajes",
-        "Comprensión de ciclos naturales",
-        "Diseño de proyectos regenerativos",
-        "Diseño de espacios sustentables",
-        "Sistemas productivos",
-        "Agua",
-        "Organización",
-        "Procesos humanos",
-        "Alimentación y breaks durante los diez días",
-        "Estadía en carpa propia",
-        "Certificado avalado por el Instituto de Permacultura de Australia"
-      ],
-      "excludes": [
-        "Congreso Festival, salvo contratación del paquete combinado",
-        "Transporte",
-        "Carpa",
-        "Bolsa de dormir",
-        "Aislante",
-        "Linterna",
-        "Equipo personal de camping"
-      ],
-      "food": "Alimentación y breaks durante los diez días.",
-      "accommodation": "Estadía en carpa propia.",
-      "camping": "Cada participante debe traer su equipo personal de camping.",
-      "note": "Incluye certificado avalado por el Instituto de Permacultura de Australia.",
-      "cta": "Consultar por el PDC"
-    },
-    {
-      "id": "pdc-congreso-festival",
-      "recommended": true,
-      "badge": "Formación + experiencia completa",
-      "name": "PDC + Congreso Festival",
-      "image": "/festival/img/agricultura-sintropica.webp",
-      "period": "10 al 26 de septiembre de 2026",
-      "price": "$930.000 ARS",
-      "audience": "PDC certificado más la experiencia completa de Ecos de la Tierra.",
-      "summaryBenefits": [
-        "Formación profesional",
-        "Congreso y Festival completos"
-      ],
-      "description": "La opción más completa de septiembre: integra el Curso Certificado de Diseño de Permacultura con el Congreso Festival Ecos de la Tierra.",
-      "includes": [
-        "PDC certificado del 10 al 19 de septiembre",
-        "Congreso Festival completo del 20 al 26 de septiembre",
-        "Formación teórica y práctica",
-        "Actividades comunitarias",
-        "Acceso al Festival final",
-        "Alimentación durante todos los días incluidos",
-        "Estadía en carpa propia durante todo el período",
-        "Clases",
-        "Prácticas",
-        "Dinámicas",
-        "Espacios de convivencia",
-        "Experiencia integral de formación, comunidad y celebración regenerativa"
-      ],
-      "excludes": [
-        "Transporte",
-        "Carpa",
-        "Bolsa de dormir",
-        "Aislante",
-        "Linterna",
-        "Equipo personal de camping"
-      ],
-      "food": "Alimentación durante todos los días incluidos.",
-      "accommodation": "Estadía en carpa propia durante todo el período.",
-      "camping": "Cada participante debe traer su equipo personal de camping.",
-      "note": "Integra PDC certificado, Congreso y Festival final.",
-      "cta": "Consultar por PDC + Festival"
-    },
-    {
       "id": "diplomado-inmersivo",
       "name": "Diplomado inmersivo",
-      "image": "/festival/img/un-compartir-multicultural.webp",
-      "period": "45 días",
-      "price": "EUR 1.350",
+      "image": "/festival/img/diplomado-estudio.webp",
+      "period": "Comienza el 1 de septiembre · 45 días",
+      "price": {
+        "amount": 1800,
+        "currency": "EUR"
+      },
       "audience": "Una inmersión de formación, convivencia, prácticas y comunidad.",
       "summaryBenefits": [
-        "PDC y Congreso Festival",
+        "Formación certificada y Congreso Festival",
         "Prácticas, salidas e inmersión comunitaria"
       ],
       "description": "Una experiencia de un mes y medio que integra formación, convivencia, prácticas, visitas, actividades comunitarias y un proceso profundo de aprendizaje.",
       "includes": [
-        "PDC certificado",
+        "Formación certificada",
         "Participación completa en el Congreso Festival",
         "Salidas y paseos",
         "Visitas a comunidades indígenas guaraníes",
@@ -429,118 +361,6 @@
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Incluye internet según las condiciones del lugar.",
       "cta": "Consultar por el Diplomado"
-    }
-  ],
-  "comparisonGroups": [
-    {
-      "id": "congreso-festival",
-      "title": "Congreso Festival",
-      "items": [
-        {
-          "name": "Congreso Festival completo",
-          "details": [
-            { "label": "Duración", "value": "20 al 26 de septiembre" },
-            { "label": "Congreso", "value": "Sí" },
-            { "label": "Festival", "value": "Sí" },
-            { "label": "Certificación", "value": "No" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Sí" },
-            { "label": "Precio", "value": "$390.000 ARS" }
-          ]
-        },
-        {
-          "name": "Solo Congreso",
-          "details": [
-            { "label": "Duración", "value": "20 al 25 de septiembre" },
-            { "label": "Congreso", "value": "Sí" },
-            { "label": "Festival", "value": "No" },
-            { "label": "Certificación", "value": "No" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Sí" },
-            { "label": "Precio", "value": "$280.000 ARS" }
-          ]
-        },
-        {
-          "name": "Solo Festival",
-          "details": [
-            { "label": "Duración", "value": "26 de septiembre" },
-            { "label": "Congreso", "value": "No" },
-            { "label": "Festival", "value": "Sí" },
-            { "label": "Certificación", "value": "No" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Una noche" },
-            { "label": "Precio", "value": "$85.000 ARS" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "formaciones",
-      "title": "Formaciones",
-      "items": [
-        {
-          "name": "PDC certificado",
-          "details": [
-            { "label": "Duración", "value": "10 días" },
-            { "label": "Congreso", "value": "No" },
-            { "label": "Festival", "value": "No" },
-            { "label": "Certificación", "value": "Sí" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Sí" },
-            { "label": "Precio", "value": "$540.000 ARS" }
-          ]
-        },
-        {
-          "name": "PDC + Congreso Festival",
-          "details": [
-            { "label": "Duración", "value": "10 al 26 de septiembre" },
-            { "label": "Congreso", "value": "Sí" },
-            { "label": "Festival", "value": "Sí" },
-            { "label": "Certificación", "value": "Sí" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Sí" },
-            { "label": "Precio", "value": "$930.000 ARS" }
-          ]
-        },
-        {
-          "name": "Diplomado inmersivo",
-          "details": [
-            { "label": "Duración", "value": "45 días" },
-            { "label": "Congreso", "value": "Sí" },
-            { "label": "Festival", "value": "Sí" },
-            { "label": "Certificación", "value": "Sí" },
-            { "label": "Alimentación", "value": "Sí" },
-            { "label": "Camping", "value": "Sí" },
-            { "label": "Precio", "value": "EUR 1.350" }
-          ]
-        }
-      ]
-    }
-  ],
-  "comparison": [
-    {
-      "name": "Congreso Festival completo",
-      "items": ["Formación", "Festival", "Alimentación", "Camping"]
-    },
-    {
-      "name": "Solo Congreso",
-      "items": ["Formación", "Sin Festival", "Alimentación", "Camping"]
-    },
-    {
-      "name": "Solo Festival",
-      "items": ["Jornada final", "Alimentación", "Una noche de camping"]
-    },
-    {
-      "name": "PDC",
-      "items": ["Formación certificada", "Alimentación", "Camping"]
-    },
-    {
-      "name": "PDC + Congreso Festival",
-      "items": ["PDC", "Congreso", "Festival", "Alimentación", "Camping"]
-    },
-    {
-      "name": "Diplomado",
-      "items": ["PDC", "Congreso Festival", "Inmersión", "Prácticas", "Salidas", "Alimentación", "Camping"]
     }
   ],
   "closing": {
