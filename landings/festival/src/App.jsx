@@ -452,7 +452,7 @@ function App() {
             <span>{data.location.short}</span>
           </div>
           <a {...ctaProps({ location: 'hero', text: data.hero.cta })}>{data.hero.cta}</a>
-          <p className="festival-hero__status">Estado: borrador interno. Programa completo a anunciarse.</p>
+          <p className="festival-hero__status">Una experiencia formativa inmersiva para aprender, practicar y transformar en comunidad.</p>
         </div>
       </section>
 
