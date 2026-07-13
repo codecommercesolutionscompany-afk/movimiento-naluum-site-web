@@ -7,9 +7,11 @@ export const formatMoney = (value, currency = 'ARS') => {
     return '';
   }
 
+  const hasDecimals = !Number.isInteger(numericValue);
   const formatted = new Intl.NumberFormat('es-AR', {
-    maximumFractionDigits: 0,
-  }).format(Math.round(numericValue));
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: hasDecimals ? 2 : 0,
+  }).format(numericValue);
 
   return `$${formatted}${currency ? ` ${currency}` : ''}`;
 };
