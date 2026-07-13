@@ -186,7 +186,7 @@ jobs:
           check_url "https://movimientonaluum.org/voluntariado-otono-invierno/" "Voluntariado" "Voluntariado"
           check_url "https://movimientonaluum.org/yerba/" "Yerba Mate Madre Selva" "Yerba"
           check_url "https://movimientonaluum.org/festival/" "Ecos de la Tierra 2026" "Festival"
-          check_url "https://movimientonaluum.org/madre-selva/" "Accesos Madre Selva" "Link-in-bio"
+          check_url "https://movimientonaluum.org/madre-selva/" "Madre Selva | Enlaces" "Link-in-bio"
 
       - name: Deployment completed
         shell: bash
