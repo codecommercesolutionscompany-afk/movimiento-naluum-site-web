@@ -13,19 +13,17 @@
     "image": "/pdc/pdc_hero_pricipal.webp",
     "canonical": "https://movimientonaluum.org/pdc"
   },
+  "pricing": {
+    "amount": 533.33,
+    "currency": "USD"
+  },
   "settings": {
-    "programPrice": "600 USD",
-    "foreignPrice": "600 USD",
     "programDuration": "10 días",
     "programDates": "9 al 18 de septiembre de 2026",
     "arrivalNote": "El curso se realiza del 9 al 18 de septiembre de 2026.",
     "location": "Madre Selva, Misiones, Argentina",
     "whatsappNumber": "+5493764257777",
     "whatsappUrl": "https://wa.me/5493764257777",
-    "earlyBirdDiscount": "",
-    "earlyBirdCondition": "",
-    "earlyBirdFinalPrice": "600 USD",
-    "balanceDue": "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante.",
     "baseAccommodation": "Camping en carpa propia",
     "yurtSharedDormPrice": "$15.000 ARS por día",
     "argentinaPaymentMethod": "Mercado Pago",
@@ -189,22 +187,6 @@
     ]
   },
   "sidebar": {
-    "label": "Datos clave",
-    "items": [
-      {
-        "label": "Duración",
-        "valueFromSetting": "programDuration"
-      },
-      {
-        "label": "Fecha",
-        "valueFromSetting": "programDates"
-      },
-      {
-        "label": "Lugar",
-        "valueFromSetting": "location"
-      }
-    ],
-    "description": "La inversión incluye formación intensiva, certificación, alimentación completa, materiales de apoyo, beneficios de continuidad y camping en carpa propia.",
     "processLabel": "Cómo avanzar",
     "process": [
       "Leés la información completa de la experiencia",
@@ -375,7 +357,7 @@
       },
       {
         "question": "¿Cuál es el valor del curso?",
-        "answer": "El valor del curso es de 600 USD por persona."
+        "answer": "El valor del curso es de {programPrice} por persona."
       },
       {
         "question": "¿Qué formas de pago aceptan?",
@@ -419,7 +401,7 @@
     "intro": "Si la propuesta te resuena y ya tenés claro el valor, las fechas y las condiciones principales, escribinos por WhatsApp para confirmar disponibilidad y recibir los pasos de inscripción.",
     "note": "Escribir por WhatsApp inicia el proceso de inscripción, pero no confirma automáticamente el cupo. Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante.",
     "investmentLabel": "Inversión e inscripción",
-    "investmentDescription": "Valor del curso: 600 USD por persona.",
+    "investmentDescription": "Valor del curso: {programPrice} por persona.",
     "cta": {
       "text": "Quiero inscribirme",
       "urlFromSetting": "whatsappUrl",
@@ -508,11 +490,11 @@
   "offerSection": {
     "label": "Inversión e inscripción",
     "title": "Inversión del curso",
-    "lead": "El valor del curso es de 600 USD por persona.",
+    "lead": "El valor del curso es de {programPrice} por persona.",
     "priceCards": [
       {
         "label": "Valor del curso",
-        "valueFromSetting": "programPrice",
+        "valueFromPricing": true,
         "description": "Inversión por persona."
       }
     ],

@@ -110,6 +110,12 @@ let eventPageContextPushed = false;
 
 const dynamicValueKeys = ['valueFromSetting', 'titleFromSetting', 'priceFromSetting'];
 
+const formatPdcPrice = ({ amount, currency }) =>
+  `${currency} ${new Intl.NumberFormat('es-AR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(amount)}`;
+
 const getCountdownParts = (startsAt, now) => {
   const diff = Math.max(new Date(startsAt).getTime() - now, 0);
   const days = Math.floor(diff / 86400000);
@@ -290,6 +296,7 @@ const PdcLanding = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showDeferredContent, setShowDeferredContent] = useState(false);
   const { settings } = data;
+  const formattedProgramPrice = formatPdcPrice(data.pricing);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -343,7 +350,11 @@ const PdcLanding = () => {
 
   const resolveSetting = (settingKey) => (settingKey ? settings?.[settingKey] || '' : '');
 
+  const resolveTemplate = (text = '') => String(text).replaceAll('{programPrice}', formattedProgramPrice);
+
   const resolveValue = (item = {}, fallbackKey = 'value') => {
+    if (item?.valueFromPricing) return formattedProgramPrice;
+
     const settingKey = dynamicValueKeys.find((key) => item?.[key]);
 
     if (settingKey) {
@@ -492,7 +503,7 @@ const PdcLanding = () => {
             </a>
           </motion.div>
           <motion.p className="pdc-hero__price-hint" {...fadeInUp} transition={{ delay: 0.32 }}>
-            Fecha: <strong>{settings.programDates}</strong> · Inversión: <strong>{settings.programPrice}</strong>
+            Fecha: <strong>{settings.programDates}</strong> · Inversión: <strong>{formattedProgramPrice}</strong>
           </motion.p>
         </div>
       </section>
@@ -619,7 +630,7 @@ const PdcLanding = () => {
             <div className="booking-price-highlight">
               <div className="booking-price-highlight__row booking-price-highlight__row--final">
                 <span>Valor del curso</span>
-                <strong>{settings.programPrice}</strong>
+                <strong>{formattedProgramPrice}</strong>
               </div>
               <p>
                 La inscripción queda confirmada una vez realizado el pago correspondiente y enviado el comprobante.
@@ -634,18 +645,6 @@ const PdcLanding = () => {
             >
               {CTA_LABELS.sticky_sidebar}
             </a>
-
-            <span className="section-label">{data.sidebar.label}</span>
-            <ul className="booking-list">
-              {data.sidebar.items.map((item) => (
-                <li key={item.label}>
-                  <strong>{item.label}:</strong>
-                  <span>{resolveValue(item)}</span>
-                </li>
-              ))}
-            </ul>
-
-            <p className="booking-description">{data.sidebar.description}</p>
 
             <span className="section-label section-label--process">{data.sidebar.processLabel}</span>
             <div className="process-list">
@@ -717,7 +716,7 @@ const PdcLanding = () => {
           <motion.section className="card-editorial card-editorial--focus" {...fadeInUp}>
             <span className="section-label">{data.offerSection.label}</span>
             <h2 className="editorial-title">{data.offerSection.title}</h2>
-            <p className="editorial-lead">{data.offerSection.lead}</p>
+            <p className="editorial-lead">{resolveTemplate(data.offerSection.lead)}</p>
             <div className={`price-grid ${data.offerSection.priceCards.length === 1 ? 'price-grid--single' : ''}`}>
               {data.offerSection.priceCards.map((card) => (
                 <div className="price-card" key={card.label}>
@@ -904,7 +903,7 @@ const PdcLanding = () => {
                   style={{ transform: openFaq === index ? 'rotate(45deg)' : 'none' }}
                 />
               </button>
-              {openFaq === index ? <div className="faq-item__content">{faq.answer}</div> : null}
+              {openFaq === index ? <div className="faq-item__content">{resolveTemplate(faq.answer)}</div> : null}
             </div>
           ))}
         </div>
@@ -919,9 +918,9 @@ const PdcLanding = () => {
 
             <div className="investment-box">
               <p>
-                <strong>{data.application.investmentLabel}:</strong> {resolveSetting('programPrice')}
+                <strong>{data.application.investmentLabel}:</strong> {formattedProgramPrice}
               </p>
-              <span>{data.application.investmentDescription}</span>
+              <span>{resolveTemplate(data.application.investmentDescription)}</span>
             </div>
 
             <a
