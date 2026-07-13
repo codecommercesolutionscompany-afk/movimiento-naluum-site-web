@@ -6,8 +6,9 @@ import {
   getWhatsappTrackingAttributes,
   handleWhatsappClick,
 } from '../utils/whatsapp.js';
+import { formatMoney } from '../utils/pricing.js';
 
-const InvestmentSection = ({ content }) => {
+const InvestmentSection = ({ content, pricing }) => {
   return (
     <section id={content.id} className="sa-section sa-section--muted">
       <div className="sa-container">
@@ -16,7 +17,7 @@ const InvestmentSection = ({ content }) => {
           {content.cards.map((card) => (
             <article className="sa-price-card" key={card.label}>
               <span>{card.label}</span>
-              <strong>{card.value}</strong>
+              <strong>{card.type === 'price' ? formatMoney(pricing.amount, pricing.currency) : card.value}</strong>
               {card.detail ? <p>{card.detail}</p> : null}
             </article>
           ))}

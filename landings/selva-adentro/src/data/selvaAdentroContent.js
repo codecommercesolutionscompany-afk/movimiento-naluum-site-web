@@ -30,7 +30,7 @@ export const selvaAdentroContent = {
   },
   pricing: {
     currency: 'ARS',
-    basePrice: 640000,
+    amount: 506666.67,
   },
   startDates: {
     enabled: false,
@@ -181,21 +181,6 @@ export const selvaAdentroContent = {
       },
     ],
     sidebar: {
-      title: 'Datos clave',
-      items: [
-        { label: 'Nombre', value: 'Selva Adentro' },
-        { label: 'Tipo', value: 'Experiencia formativa inmersiva' },
-        { label: 'Duración', value: '12 días' },
-        { label: 'Programa', value: 'Del 3 al 14 de agosto de 2026' },
-        { label: 'Salida', value: 'Sábado 15 de agosto por la mañana' },
-        { label: 'Locación', value: 'Colonia Paraíso, El Soberbio, Misiones' },
-        { label: 'Espacio físico', value: 'Madre Selva' },
-        { label: 'Hospedaje', value: 'Carpa propia' },
-        { label: 'Alimentación', value: 'Tres comidas diarias' },
-        { label: 'Capacidad', value: 'Hasta 20 personas por cohorte' },
-        { label: 'Precio', value: '$640.000 ARS por persona' },
-        { label: 'Medios de pago', value: 'Transferencia, Mercado Pago, Global66, efectivo' },
-      ],
       countdown: {
         label: 'Próxima edición',
         value: 'Lunes 3 de agosto de 2026',
@@ -313,7 +298,7 @@ export const selvaAdentroContent = {
     eyebrow: 'Inversión e inscripción',
     title: 'Inversión e inscripción',
     cards: [
-      { label: 'Inversión total por persona', value: '$640.000 ARS', detail: 'El valor corresponde a los 12 días completos.' },
+      { label: 'Inversión total por persona', type: 'price', detail: 'El valor corresponde a los 12 días completos.' },
       { label: 'Programa', value: 'Del 3 al 14 de agosto de 2026', detail: 'Salida: sábado 15 de agosto por la mañana.' },
     ],
     cta: {

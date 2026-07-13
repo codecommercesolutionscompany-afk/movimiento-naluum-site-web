@@ -6,25 +6,9 @@ import {
   getWhatsappTrackingAttributes,
   handleWhatsappClick,
 } from '../utils/whatsapp.js';
+import { formatMoney } from '../utils/pricing.js';
 
-const getItemValue = (items, label) => items.find((item) => item.label === label)?.value || '';
-
-const MainLayout = ({ content }) => {
-  const basicLabels = [
-    'Nombre',
-    'Tipo',
-    'Duración',
-    'Programa',
-    'Salida',
-    'Locación',
-    'Espacio físico',
-    'Hospedaje',
-    'Alimentación',
-    'Capacidad',
-  ];
-  const basicItems = content.sidebar.items.filter((item) => basicLabels.includes(item.label));
-  const priceValue = getItemValue(content.sidebar.items, 'Precio');
-  const paymentMethods = getItemValue(content.sidebar.items, 'Medios de pago');
+const MainLayout = ({ content, pricing }) => {
   const countdownValue = content.sidebar.countdown.value;
   const countdownNote = content.sidebar.countdown.note;
 
@@ -43,10 +27,10 @@ const MainLayout = ({ content }) => {
             ))}
           </div>
         </div>
-        <aside className="sa-sidebar" aria-label="Datos clave del programa">
+        <aside className="sa-sidebar" aria-label="Resumen de inscripción">
           <div className="sa-sidebar__price-box" aria-label="Inversión e inscripción">
             <span>Inversión total por persona</span>
-            <strong>{priceValue}</strong>
+            <strong>{formatMoney(pricing.amount, pricing.currency)}</strong>
           </div>
 
           <div className="sa-countdown">
@@ -58,22 +42,6 @@ const MainLayout = ({ content }) => {
             </div>
           </div>
 
-          <h3>{content.sidebar.title}</h3>
-          <dl className="sa-sidebar__details">
-            {basicItems.map((item) => (
-              <div key={item.label}>
-                <dt>{item.label}</dt>
-                <dd>{item.value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="sa-sidebar__payment">
-            <h4>Medios de pago</h4>
-            <p>{paymentMethods}</p>
-          </div>
-
-          {content.sidebar.policy ? <p className="sa-sidebar__policy">{content.sidebar.policy}</p> : null}
           <div className="sa-sidebar__process">
             <h4>{content.sidebar.processTitle}</h4>
             {content.sidebar.process.map((step, index) => (

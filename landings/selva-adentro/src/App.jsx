@@ -50,11 +50,11 @@ const App = () => {
           <AffinityFilter content={selvaAdentroContent.affinity} />
           <SpecialSection content={selvaAdentroContent.special} assets={selvaAdentroContent.assets} />
           <IncludesSection content={selvaAdentroContent.includes} />
-          <MainLayout content={selvaAdentroContent.mainLayout} />
+          <MainLayout content={selvaAdentroContent.mainLayout} pricing={selvaAdentroContent.pricing} />
           <FormationSection content={selvaAdentroContent.formation} />
           <FacilitatorsSection content={selvaAdentroContent.facilitators} />
           <PlaceSection content={selvaAdentroContent.place} assets={selvaAdentroContent.assets} />
-          <InvestmentSection content={selvaAdentroContent.investment} />
+          <InvestmentSection content={selvaAdentroContent.investment} pricing={selvaAdentroContent.pricing} />
           <LodgingPaymentSection content={selvaAdentroContent.lodgingPayment} />
           <FiltersSection content={selvaAdentroContent.filters} />
           <TestimonialsSection content={selvaAdentroContent.testimonials} />

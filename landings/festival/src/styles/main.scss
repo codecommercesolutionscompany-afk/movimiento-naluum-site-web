@@ -412,6 +412,22 @@ summary:focus-visible {
   line-height: 1;
 }
 
+.festival-ticket__commercial-stage {
+  display: grid;
+  gap: 0.18rem;
+  color: var(--festival-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.festival-ticket__commercial-stage strong {
+  width: fit-content;
+  padding: 0;
+  background: transparent;
+  color: var(--festival-leaf);
+  font-size: 0.82rem;
+}
+
 .festival-ticket__badge {
   justify-self: start;
   padding: 0.3rem 0.58rem;

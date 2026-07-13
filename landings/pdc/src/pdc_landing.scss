@@ -874,31 +874,6 @@ $pdc-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
     }
   }
 
-  .booking-list {
-    display: grid;
-    gap: 13px;
-    margin: 1.5rem 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
-      gap: 10px;
-      color: $pdc-muted;
-      font-size: 0.95rem;
-
-      strong {
-        color: $pdc-deep;
-      }
-
-      @media (max-width: 420px) {
-        grid-template-columns: 1fr;
-        gap: 2px;
-      }
-    }
-  }
-
   .booking-price-highlight {
     display: grid;
     gap: 14px;
@@ -1041,13 +1016,6 @@ $pdc-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
       font-weight: 750;
       line-height: 1.42;
     }
-  }
-
-  .booking-description {
-    margin: 0 0 1.5rem;
-    color: $pdc-muted;
-    font-size: 0.92rem;
-    line-height: 1.58;
   }
 
   .section-label--process {
