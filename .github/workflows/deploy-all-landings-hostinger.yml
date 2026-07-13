@@ -13,6 +13,7 @@ name: Deploy all landings to Hostinger
       - "landings/voluntariado-otono-invierno/**"
       - "landings/yerba/**"
       - "landings/festival/**"
+      - "landings/link-in-bio/**"
       - ".github/workflows/deploy-all-landings-hostinger.yml"
 
 permissions:
@@ -51,6 +52,7 @@ jobs:
             landings/voluntariado-otono-invierno/package-lock.json
             landings/yerba/package-lock.json
             landings/festival/package-lock.json
+            landings/link-in-bio/package-lock.json
 
       - name: Build PDC
         working-directory: landings/pdc
@@ -89,6 +91,13 @@ jobs:
 
       - name: Build Festival
         working-directory: landings/festival
+        run: |
+          npm ci
+          npm run build
+          test -f dist/index.html
+
+      - name: Build Link-in-bio
+        working-directory: landings/link-in-bio
         run: |
           npm ci
           npm run build
@@ -148,6 +157,7 @@ jobs:
           deploy_landing "landings/voluntariado-otono-invierno/dist" "voluntariado-otono-invierno" "Voluntariado"
           deploy_landing "landings/yerba/dist" "yerba" "Yerba"
           deploy_landing "landings/festival/dist" "festival" "Festival"
+          deploy_landing "landings/link-in-bio/dist" "madre-selva" "Link-in-bio"
 
       - name: Verify public URLs
         shell: bash
@@ -176,6 +186,7 @@ jobs:
           check_url "https://movimientonaluum.org/voluntariado-otono-invierno/" "Voluntariado" "Voluntariado"
           check_url "https://movimientonaluum.org/yerba/" "Yerba Mate Madre Selva" "Yerba"
           check_url "https://movimientonaluum.org/festival/" "Ecos de la Tierra 2026" "Festival"
+          check_url "https://movimientonaluum.org/madre-selva/" "Accesos Madre Selva" "Link-in-bio"
 
       - name: Deployment completed
         shell: bash
