@@ -10,7 +10,7 @@ const CardV3_testimonios = (/* objectContentCardTestimonios */) => {
           "Un servicio excepcional que transformó completamente la forma en que operamos. El equipo fue profesional y atento en todo momento.",
         author: {
           name: "María González",
-          avatar: "img/3.png",
+          avatar: "img/shared/manos-plantines.webp",
           info: {
             title: "Directora de Operaciones",
             text: "Directora de Operaciones",
@@ -22,7 +22,7 @@ const CardV3_testimonios = (/* objectContentCardTestimonios */) => {
           "Implementamos las soluciones recomendadas y vimos resultados inmediatos. La experiencia y conocimiento del equipo son invaluables.",
         author: {
           name: "Carlos Medina",
-          avatar: "img/4.png",
+          avatar: "img/shared/comunidad-circulo.webp",
           info: {
             title: "CEO, Innovatech",
             text: "CEO, Innovatech",

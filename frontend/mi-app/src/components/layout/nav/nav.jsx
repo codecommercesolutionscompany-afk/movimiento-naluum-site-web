@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef, useContext } from 'react';
+import { useState, useCallback, useEffect, useRef, useContext } from 'react';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -7,7 +7,6 @@ import {
   Folder,
   Calendar,
   MessageCircle,
-  ShoppingCart,
   Briefcase,
   ChevronDown,
   Menu,
@@ -21,8 +20,6 @@ import {
   Globe
 } from 'lucide-react';
 
-let DOMAIN = import.meta.env.VITE_API_URL;
-
 import './Nav.scss';
 
 const iconMap = {
@@ -31,7 +28,6 @@ const iconMap = {
   FolderIcon: Folder,
   CalendarIcon: Calendar,
   MessageCircleIcon: MessageCircle,
-  ShoppingCartIcon: ShoppingCart,
   BriefcaseIcon: Briefcase,
   StoreIcon: Store,
   PackageIcon: Package,
@@ -43,7 +39,7 @@ const iconMap = {
 };
 
 const Nav = () => {
-  const { listaRutas, projects, cartItemsCount } = useContext(ContextJsonLoadContext);
+  const { listaRutas, projects } = useContext(ContextJsonLoadContext);
   const listRouters = listaRutas;
   
   if (!listRouters) return null;
@@ -116,7 +112,7 @@ const Nav = () => {
   const isActiveRoute = useCallback((item) => {
     const currentPath = location.pathname;
     
-    if (item.type === 'single' || item.type === 'cart') {
+    if (item.type === 'single') {
       return currentPath === item.path;
     }
     
@@ -185,7 +181,7 @@ const Nav = () => {
       if (isMobile) {
         setOpenDropdown(openDropdown === index ? null : index);
       }
-    } else if (isMobile && item.type !== 'cart') {
+    } else if (isMobile) {
       setIsMobileMenuOpen(false);
       setOpenDropdown(null);
     }
@@ -212,12 +208,12 @@ const Nav = () => {
       const matchedProject = projects.projects.find(p => p.name === subItem.name);
       if (matchedProject) {
         // Retornar la primera imagen o el logo
-        return matchedProject.images?.[0] || matchedProject.logo || '/img/default-preview.jpg';
+        return matchedProject.images?.[0] || matchedProject.logo || '/img/shared/personas-trabajando.webp';
       }
     }
     
     // Para otros dropdowns, usar la imagen del subItem
-    return subItem.image || '/img/default-preview.jpg';
+    return subItem.image || '/img/shared/personas-trabajando.webp';
   }, [projects]);
 
   // Función para obtener el logo (solo para proyectos)
@@ -276,12 +272,12 @@ const Nav = () => {
               >
                 <div className={isProjectDropdown ? 'nav__project-images' : 'nav__standard-images'}>
                   <img
-                    src={`${DOMAIN}${backgroundImage}`}
+                    src={backgroundImage}
                     alt={subItem.name}
                     className={isProjectDropdown ? 'nav__project-background nav__project-background--active' : 'nav__standard-background'}
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src = '/img/default-preview.jpg';
+                      e.target.src = '/img/shared/personas-trabajando.webp';
                     }}
                   />
                   {isProjectDropdown && projectLogo ? (
@@ -311,7 +307,9 @@ const Nav = () => {
     );
   }, [handleDropdownLinkClick, handleDropdownMouseEnter, handleDropdownMouseLeave, isActiveDropdownItem, getItemImage, getProjectLogo, getProjectDescription, projects]);
 
-  const menuItems = listRouters?.['Movimiento Naluum'] || [];
+  const menuItems = (listRouters?.['Movimiento Naluum'] || []).filter(
+    (item) => item.path !== '/carrito-de-compras'
+  );
 
   return (
     <nav className="nav" ref={navRef}>
@@ -330,11 +328,11 @@ const Nav = () => {
             aria-label="Ir al inicio - Movimiento Naluum"
           >
             <img 
-              src="/img/logo_naluum_trasparente.svg" 
+              src="/img/branding/logo-naluum-transparente.svg"
               alt="Logo Movimiento Naluum"
               loading="lazy"
               onError={(e) => {
-                e.target.src = '/img/logo_naluum_fallback.png';
+                e.target.src = '/img/branding/logo-naluum-transparente.svg';
               }}
             />
           </Link>
@@ -366,14 +364,14 @@ const Nav = () => {
               return (
                 <li
                   key={index}
-                  className={`nav__menu-item ${hasDropdown ? 'nav__menu-item--has-dropdown' : ''} ${isActive ? 'nav__menu-item--active' : ''} ${item.type === 'cart' ? 'nav__menu-item--cart' : ''}`}
+                  className={`nav__menu-item ${hasDropdown ? 'nav__menu-item--has-dropdown' : ''} ${isActive ? 'nav__menu-item--active' : ''}`}
                   onMouseEnter={() => handleMouseEnter(index, item)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <Link 
                     to={item.path || '#'}  
                     onClick={(e) => handleClick(e, item, index)} 
-                    className={`nav__menu-link ${isActive ? 'nav__menu-link--active' : ''} ${item.type === 'cart' ? 'nav__menu-link--cart' : ''}`}
+                    className={`nav__menu-link ${isActive ? 'nav__menu-link--active' : ''}`}
                     aria-haspopup={hasDropdown ? "true" : "false"}
                     aria-expanded={openDropdown === index ? "true" : "false"}
                     aria-current={location?.pathname === item.path ? "page" : undefined}
@@ -388,9 +386,6 @@ const Nav = () => {
                         className={`nav__menu-chevron ${openDropdown === index ? 'nav__menu-chevron--open' : ''}`}
                         aria-hidden="true"
                       />
-                    )}
-                    {item.type === 'cart' && item.showBadge && cartItemsCount > 0 && (
-                      <span className="nav__cart-badge">{cartItemsCount}</span>
                     )}
                   </Link>
 

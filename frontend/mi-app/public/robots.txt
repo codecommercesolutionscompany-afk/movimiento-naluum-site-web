@@ -9,7 +9,6 @@ User-agent: *
 Disallow: /admin/        # Evita que los motores rastreen la carpeta 'admin' (administración del sitio)
 Disallow: /login/        # Evita que los motores rastreen la página de login
 Disallow: /profile/      # Evita que los motores rastreen la página de perfil (ajusta según tu sitio)
-Disallow: /cart/         # Evita que los motores rastreen la página del carrito de compras
 
 # 2. Permitir rastreo completo del resto del sitio.
 Allow: /                 # Permite el rastreo de la página principal (y demás páginas) de tu sitio

@@ -528,7 +528,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       order: -1;
     }
 
-    .purchase-card {
+    .enrollment-card {
       background: $white;
       border-radius: $border-radius;
       @include card-shadow;
@@ -564,7 +564,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
 
-      .purchase-btn {
+      .enrollment-btn {
         width: 100%;
         padding: 1rem 2rem;
         background: $accent-brown;

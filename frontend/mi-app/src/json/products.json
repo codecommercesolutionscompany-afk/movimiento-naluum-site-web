@@ -3,24 +3,120 @@
     "id": "yerba-mate-organica",
     "type": "product",
     "title": "Yerba Mate Orgánica",
-    "subtitle": "Producción agroecológica en Misiones.",
-    "description": "Yerba mate cultivada en sistemas agroforestales orgánicos, sin agroquímicos y en equilibrio con la selva misionera. Ofrece un sabor auténtico y natural, cargado de energía vital y nutrientes.",
-    "image": "https://cdn.pixabay.com/photo/2017/01/20/00/30/mate-1992577_1280.jpg",
-    "price": 8.99,
-    "currency": "USD",
-    "badge": "Orgánico",
+    "subtitle": "Yerba regenerativa de la selva misionera. Secado barbacuá tradicional y maduración lenta.",
+    "description": "Yerba mate cultivada en sistemas agroforestales biodiversos, sin monocultivos ni agroquímicos, en tierras regeneradas dentro de la selva misionera. Cosechada a mano en ciclos de luna creciente y menguante, sapecada a fuego vivo y secada lentamente en barbacuá emparrillado durante ~12 horas para conservar sabor y suavidad. Luego se estaciona entre 12 y 24 meses antes de ser molida y envasada de forma artesanal (95% del proceso es manual). Producción limitada, pensada para quienes quieren una yerba limpia, con energía viva y con impacto real en las comunidades que la producen. Venta mayorista a partir de 30 kg, envío a todo Argentina.",
+    "image": "/img/shared/mate-yerba-organica.webp",
+    "price": 7500,
+    "currency": "ARS",
+    "badge": "Orgánico · Regenerativo",
     "stock": 120,
-    "format": "Envío a domicilio",
+    "format": "Venta por menor y mayorista. Envío a todo Argentina por transporte.",
     "highlights": [
-      "100% orgánica",
-      "Producción agroforestal",
-      "Sabor auténtico",
-      "Libre de agroquímicos",
-      "Hecho en Misiones"
+      "100% orgánica y agroecológica (sin pesticidas, sin glifosato)",
+      "Sistema agroforestal regenerativo que protege y mejora la selva misionera",
+      "Secado barbacuá emparrillado a fuego lento (~12h)",
+      "Estacionada 12-24 meses para suavidad y aroma",
+      "Cosecha manual alineada a los ciclos de la luna",
+      "Producción artesanal 95% manual en Madre Selva, Misiones"
     ],
     "rating": 4.8,
-    "sold": 600,
-    "router": "/productos/yerba-mate-organica"
+    "sold": "+3000",
+    "router": "/productos/yerba-mate-organica",
+    "detail": {
+      "images": {
+        "hero": "/img/shared/mate-yerba-organica.webp",
+        "harvest": "/img/products/yerba-mate-organica-cosecha-manual-yerba.webp",
+        "producer": "/img/products/yerba-mate-organica-produccion-en-sistemas-agroforestales-biodiversos.webp",
+        "packaging": "/img/shared/manos-plantines.webp",
+        "community": "/img/products/yerba-mate-organica-trabajo-justo-con-productores-locales.webp"
+      },
+      "producer": {
+        "name": "EcoCentro Madre Selva / Comunidad Agroforestal Suspiro de Selva",
+        "region": "El Soberbio, Misiones, Argentina",
+        "about": "En Madre Selva creemos que producir también es cuidar. Esta yerba nace en tierras regeneradas de Misiones, con saberes transmitidos por generaciones y una forma de trabajo que respeta la naturaleza, fortalece la comunidad y honra el ritual del mate.",
+        "practices": [
+          "Cosecha manual. Selección hoja por hoja.",
+          "Sapecado a fuego vivo. Sella el color y sabor.",
+          "Secado barbacuá 5 días. Calor indirecto tradicional.",
+          "Estacionamiento mínimo 1 mes. Maduración fresca y natural.",
+          "Envasado artesanal. Directo a tu mate."
+        ],
+        "certifications": [
+          "Orgánica y limpia",
+          "Barbacuá tradicional",
+          "Maduración fresca",
+          "Producción comunitaria"
+        ]
+      },
+      "specs": {
+        "net_weight_grams": 1000,
+        "cut": "Molienda equilibrada hoja-palo-polvo, secado barbacuá tradicional y maduración lenta 12-24 meses",
+        "ingredients": "100% Ilex paraguariensis (yerba mate) de selva misionera regenerada. Sin agregados.",
+        "allergens": "Sin gluten. Puede contener trazas de otras hierbas locales de monte.",
+        "expiration": "12 meses desde el envasado (conservar en lugar fresco y seco)",
+        "lot_traceability": true
+      },
+      "variants": [
+        {
+          "sku": "YM-MENOS-30",
+          "label": "Menos de 30 kg",
+          "price": 7500,
+          "stock": 120,
+          "default": true
+        },
+        {
+          "sku": "YM-DESDE-30",
+          "label": "30 kg o más",
+          "price": 6500,
+          "stock": 120,
+          "default": false
+        }
+      ],
+      "usage": {
+        "preparation_tips": [
+          "No usar agua hirviendo: ideal 70-80°C para no quemar la hoja",
+          "Cebar inclinando la yerba a ~45°, creando un 'hueco' para el agua",
+          "Dejar reposar unos segundos antes de la primera cebada para hidratar",
+          "Perfecta para mate caliente, tereré y macerados fríos (cold brew)"
+        ],
+        "best_for": [
+          "Energía limpia y sostenida para trabajo físico y foco mental",
+          "Rondas de comunidad, fogón y charla larga",
+          "Rutinas diarias sin cafeína industrial"
+        ]
+      },
+      "sustainability": {
+        "impact": [
+          "Sistemas agroforestales biodiversos que regeneran suelo y selva nativa en lugar de degradarla",
+          "Sin monocultivo, sin químicos: protege agua, suelo y biodiversidad local (aves, insectos, árboles nativos)",
+          "Economía campesina justa que fortalece redes locales y saberes ancestrales"
+        ],
+        "packaging": {
+          "material": "Bolsas tradicionales de papel madera, amigables con el medio ambiente",
+          "reusability": "Envase 100% biodegradable que podés reutilizar o compostar para devolver a la tierra",
+          "recycling_notes": "Ideal para iniciar semilleros o aportar carbono a tu compostera"
+        }
+      },
+      "shipping": {
+        "ships_from": "EcoCentro Madre Selva, Km 10 Colonia Paraíso, El Soberbio, Misiones, Argentina",
+        "available_regions": [
+          "Argentina (envíos a todo el país a partir de 30 kg, generalmente por Vía Cargo)",
+          "Retiro directo en Madre Selva o en ferias locales en Misiones",
+          "Pedidos internacionales sólo bajo coordinación grupal/comunitaria"
+        ],
+        "delivery_estimate_days": "3-7 días hábiles aprox. dentro de Argentina una vez embalado y despachado (Vía Cargo u otro transporte)",
+        "pickup_available": true,
+        "pickup_details": "Coordinamos la disponibilidad y el despacho por formulario y WhatsApp. Para organizar el envío necesitamos nombre y apellido, DNI y un teléfono de contacto."
+      },
+      "purchase_policy": {
+        "return_policy": "No se aceptan devoluciones de alimentos abiertos. Si el paquete llega dañado o con el sello comprometido, contactanos para evaluar la reposición.",
+        "bulk_discount": "Precio informativo por kilo: menos de 30 kg: $7.500 ARS/kg · 30-100 kg: $6.500 ARS/kg · 100-200 kg: $6.000 ARS/kg. Consultar disponibilidad vigente."
+      },
+      "social": {
+        "instagram": "@madree.selvaa",
+        "whatsapp": "+5493764257777"
+      }
+    }
   },
   {
     "id": "curcuma-organica",
@@ -28,8 +124,8 @@
     "title": "Cúrcuma Orgánica",
     "subtitle": "En polvo o tubérculo fresco.",
     "description": "Cúrcuma producida de manera agroecológica, disponible en polvo o en su forma fresca. Reconocida por sus propiedades medicinales y culinarias, fortalece el sistema inmune y aporta un sabor vibrante a tus comidas.",
-    "image": "https://cdn.pixabay.com/photo/2016/11/19/16/48/turmeric-1839504_1280.jpg",
-    "price": 5.50,
+    "image": "/img/placeholders/pendiente-producto-curcuma.svg",
+    "price": 5.5,
     "currency": "USD",
     "badge": "Medicinal",
     "stock": 80,
@@ -51,7 +147,7 @@
     "title": "E-book Agricultura Sintrópica",
     "subtitle": "Regenerando los suelos.",
     "description": "Un material didáctico para introducirse en la agricultura sintrópica, con principios, prácticas y ejemplos aplicables en diferentes territorios. Ideal para estudiantes, agricultores y comunidades que desean regenerar suelos y ecosistemas.",
-    "image": "https://cdn.pixabay.com/photo/2015/01/08/18/27/ebook-593201_1280.jpg",
+    "image": "/img/placeholders/pendiente-producto-ebook-agricultura.svg",
     "price": 14.99,
     "currency": "USD",
     "badge": "Digital",

@@ -3,28 +3,607 @@
     "id": "curso-certificado-diseno-permacultura",
     "type": "service",
     "category": "curso",
-    "project": "Naluum",
-    "title": "Curso Certificado de Diseño en Permacultura (10 días)",
-    "subtitle": "Curso intensivo para aprender diseño regenerativo y sus bases éticas.",
-    "description": "Aprende la importancia del diseño regenerativo, sus bases éticas y principios, áreas de aplicación y herramientas como permacultura social, diseño del ser, bioconstrucción, diseño de agua, agricultura regenerativa, energías alternativas y diseño social.",
-    "image": "https://cdn.pixabay.com/photo/2019/09/25/18/45/saplings-4504323_1280.png",
-    "price": 0.1,
-    "currency": "ARS",
-    "badge": "Todos los niveles",
+    "project": "Madre Selva / Instituto Na Lu'um",
+    "title": "Curso Certificado de Diseño en Permacultura (PDC)",
+    "subtitle": "Una inmersión intensiva de 10 días en Madre Selva para aprender a diseñar sistemas humanos y ecológicos más coherentes, sostenibles y regenerativos.",
+    "description": "El PDC integra teoría, práctica, vida en comunidad y procesos de regeneración del ser, con certificación del Instituto Na Lu'um y Permaculture Research Institute Australia. Esta experiencia está pensada para personas que quieren pasar de la teoría a la práctica y aprender permacultura dentro de un proyecto real, con territorio, comunidad, diseño, sistemas vivos y decisiones concretas. El PDC, Permaculture Design Course, es una experiencia de vida en comunidad que integra las áreas principales de la sustentabilidad propuestas por la permacultura.",
+    "image": "/img/shared/curso-diseno-permacultura.webp",
+    "price": 600,
+    "currency": "USD",
+    "badge": "PDC 2026 · CURSO CERTIFICADO · 9 al 18 de septiembre de 2026",
     "duration": "10 días",
-    "format": "Presencial y online",
-    "instructor": "Equipo Naluum",
+    "format": "Presencial intensivo en Madre Selva, Misiones, Argentina",
+    "instructor": "Guiado por Tierra Martínez y Beatriz Ramírez",
     "highlights": [
-      "Certificación incluida",
-      "Enfoque ético y profesional",
-      "Herramientas prácticas y sociales",
-      "Materiales incluidos",
-      "Apoyo colaborativo"
+      "Certificación: Na Lu'um + PRI Australia",
+      "Certificación: Certificación del Curso de Diseño de Permacultura, avalada por el Instituto de Permacultura de Australia.",
+      "Práctica real: Clases prácticas por la mañana, observación del territorio, análisis de sistemas vivos y diseño aplicado en Madre Selva.",
+      "Teoría aplicada: Clases teóricas, herramientas de diseño, análisis de casos y desarrollo de propuestas vinculadas a proyectos reales.",
+      "Alimentación completa: Alimentación durante todos los días: 3 comidas diarias y 2 refrigerios diarios.",
+      "Camping base: Estadía base en carpa propia. También existe opción de dormi compartido en yurta, sujeto a disponibilidad y con costo extra.",
+      "Formación profesional en diseño de permacultura",
+      "Aprendizaje en un proyecto real",
+      "Transformación personal y mirada regenerativa",
+      "Primer mes gratis en la comunidad de apoyo"
     ],
-    "rating": 4.9,
-    "students": 120,
-    "date": "2025-08-10",
-    "router": "/servicios/curso-certificado-diseno-permacultura"
+    "rating": 5,
+    "students": 7000,
+    "date": "9 al 18 de septiembre de 2026",
+    "router": "/servicios/curso-certificado-diseno-permacultura",
+    "detail": {
+      "about_project": {
+        "org_name": "Instituto de Permacultura Na Lu'um",
+        "overview": "El Instituto de Permacultura Na Lu'um fue fundado por Tierra Martínez y Beatriz Ramírez, con una trayectoria internacional en procesos de educación vivencial, regeneración y diseño permacultural.",
+        "mission": "Una formación con raíz, trayectoria y certificación internacional, vivida en el territorio de Madre Selva.",
+        "track_record": {
+          "pdc_count": 250,
+          "designers_trained": 7000,
+          "countries": 40,
+          "description": "La información institucional recuperada menciona más de 250 PDC realizados, más de 7000 diseñadores formados y presencia en más de 40 países."
+        }
+      },
+      "images": {
+        "hero": "/img/shared/curso-diseno-permacultura.webp",
+        "community": "/img/shared/curso-diseno-permacultura.webp",
+        "natural_building": "/img/services/curso-certificado-diseno-permacultura-naluum-pdc.webp",
+        "permaculture_garden": "/img/shared/pdc-la-belleza.webp",
+        "workshop": "/img/services/curso-certificado-diseno-permacultura-hero-pdc.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Comunidad del PDC compartiendo vida y aprendizaje en Madre Selva",
+          "caption": "Vida en comunidad y diseño aplicado durante el PDC",
+          "icon": "Users"
+        },
+        "workshop": {
+          "alt": "Grupo de participantes del PDC en una clase vivencial",
+          "caption": "Teoría, práctica y diseño aplicado",
+          "icon": "BookOpen"
+        },
+        "natural_building": {
+          "alt": "Participantes del PDC en territorio de Na Lu'um",
+          "caption": "Aprendizaje en un proyecto real",
+          "icon": "Hammer"
+        },
+        "permaculture_garden": {
+          "alt": "Sistemas agroecológicos y manejo del agua en el PDC",
+          "caption": "Territorio vivo para aprender permacultura",
+          "icon": "Sprout"
+        }
+      },
+      "ui_labels": {
+        "students": "Diseñadores formados",
+        "pdc_count": "PDC realizados",
+        "countries": "Países",
+        "rating": "Valoración"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Eco Centro Madre Selva",
+        "host_role": "Territorio anfitrión del PDC",
+        "host_description": "El curso se realiza en el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera.",
+        "environment": {
+          "ecosystem": "Selva misionera",
+          "nearby_points": [
+            "Madre Selva es una escuela viva donde se integran permacultura, bioarquitectura, agricultura sintrópica, desarrollo sustentable, educación transformadora, producción agroecológica, vida comunitaria y cuidado del territorio.",
+            "No es solamente un lugar bonito para hacer un curso. La selva, el agua, las construcciones, los cultivos, los caminos, los sistemas de organización y la vida cotidiana forman parte del proceso educativo."
+          ],
+          "climate": {
+            "region": "Misiones, Noreste Argentino (cerca de Brasil)",
+            "heat_humidity": "Clima caluroso y húmedo",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Zona de lluvia constante"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Tierra Martínez",
+          "role": "Fundador y referente de Na Lu’um",
+          "bio": "Su trabajo integra práctica, enseñanza, diseño, viajes, acompañamiento de comunidades y creación de espacios reales de regeneración."
+        },
+        {
+          "name": "Beatriz Ramírez",
+          "role": "Fundadora y referente de Madre Selva / Na Lu’um",
+          "bio": "Su mirada une diseño social, bioconstrucción, educación transformadora, vida comunitaria y procesos regenerativos."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "El PDC, Permaculture Design Course, es una experiencia de vida en comunidad que integra las áreas principales de la sustentabilidad propuestas por la permacultura.",
+        "why_it_matters": "El PDC une formación profesional, aprendizaje en un proyecto real y transformación personal aplicada al diseño regenerativo.",
+        "pedagogy_axes": [
+          "Éticas y principios de la permacultura",
+          "Bases filosóficas del diseño regenerativo",
+          "Lectura del paisaje y observación del territorio",
+          "Diseño de agua: captación, cosecha, infiltración y uso consciente",
+          "Suelo vivo y regeneración de la fertilidad",
+          "Sistemas productivos agroecológicos",
+          "Agricultura regenerativa y sintrópica",
+          "Diseño de huertas, bosques comestibles y sistemas alimentarios",
+          "Bioarquitectura y hábitats saludables",
+          "Energías, flujos y eficiencia en el diseño",
+          "Zonas, sectores y planificación del territorio",
+          "Economía regenerativa y emprendimientos sustentables",
+          "Organización de proyectos como sistemas vivos",
+          "Permacultura social y vínculos humanos",
+          "Reingeniería del ser aplicada al diseño",
+          "Diseño de proyectos ecológicamente sustentables y económicamente viables",
+          "Elaboración de propuestas de diseño aplicadas a un caso real"
+        ],
+        "intended_for": "Este PDC puede ser para vos si...",
+        "prerequisites": "El PDC no requiere experiencia previa, pero sí pide disposición real para vivir una formación intensiva y comunitaria."
+      },
+      "logistics": {
+        "dates": {
+          "start": "2026-09-09",
+          "end": "2026-09-18",
+          "arrival_note": "El curso se realiza del 9 al 18 de septiembre de 2026."
+        },
+        "daily_rhythm": {
+          "note": "Jornadas completas de 5:00 a 22:00",
+          "schedule_blocks": [
+            "Mañana · Prácticas, recorridos, observación del territorio y ejercicios de campo",
+            "Tarde · Clases teóricas, herramientas de diseño, análisis de casos y propuestas grupales",
+            "Vida cotidiana · Comunidad, alimentación compartida, servicio amoroso y cierre diario"
+          ]
+        },
+        "intensity": "El PDC no requiere experiencia previa, pero sí pide disposición real para vivir una formación intensiva y comunitaria."
+      },
+      "academic_package": {
+        "includes": [
+          "Certificación: Certificación del Curso de Diseño de Permacultura, avalada por el Instituto de Permacultura de Australia.",
+          "Práctica real: Clases prácticas por la mañana, observación del territorio, análisis de sistemas vivos y diseño aplicado en Madre Selva.",
+          "Teoría aplicada: Clases teóricas, herramientas de diseño, análisis de casos y desarrollo de propuestas vinculadas a proyectos reales.",
+          "Alimentación completa: Alimentación durante todos los días: 3 comidas diarias y 2 refrigerios diarios.",
+          "Camping base: Estadía base en carpa propia. También existe opción de dormi compartido en yurta, sujeto a disponibilidad y con costo extra.",
+          "Continuidad: Primer mes gratis en la comunidad de apoyo y precio mensual especial para continuar."
+        ],
+        "certification": {
+          "issued_by": [
+            "Instituto Na Lu'um",
+            "Permaculture Research Institute Australia"
+          ],
+          "note_quality_standard": "Alineado a estándares PRI PDC Teachers"
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Alimentación completa durante todos los días: 3 comidas diarias y 2 refrigerios diarios.",
+          "diet_policy": "Consultar necesidades alimentarias puntuales antes de confirmar la inscripción.",
+          "extras": "El transporte no está incluido. Cada participante llega por su cuenta a Madre Selva."
+        },
+        "lodging": {
+          "base_included": "Camping en carpa propia",
+          "upgrade_options": [
+            "Dormi compartido en yurta: $15.000 ARS por día (Sujeto a disponibilidad)"
+          ],
+          "upgrade_note": "La yurta compartida tiene costo extra y está sujeta a disponibilidad."
+        },
+        "transport": {
+          "included": false,
+          "note": "El transporte hasta Madre Selva no está incluido."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Zona de dengue",
+          "Zona de fiebre amarilla",
+          "Selva con insectos y reptiles → traer botas de goma y camisas manga larga"
+        ],
+        "water_food_safety": "El agua es potable. No hay problema con los alimentos servidos.",
+        "medical_access": [
+          "Centro de salud a 1 km",
+          "Hospital y clínicas privadas a 25 km y 85 km"
+        ],
+        "insurance_note": "Para participantes internacionales se recomienda seguro de salud con opción de vuelo de regreso en caso de emergencia (no excluyente)."
+      },
+      "family_policy": {
+        "kids_allowed": true,
+        "details": "Niños y jóvenes son bienvenidos.",
+        "conditions": [
+          "No hay guardería ni actividades exclusivas para menores",
+          "Los padres/tutores son responsables en todo momento",
+          "Los menores también abonan alimentos y alojamiento según tipo"
+        ]
+      },
+      "audience": {
+        "who_can_join": "El PDC no requiere experiencia previa, pero sí pide disposición real para vivir una formación intensiva y comunitaria.",
+        "ideal_for": [
+          "Querés aprender permacultura con profundidad y llevarla a la práctica.",
+          "Tenés un terreno, una idea, una comunidad, un emprendimiento o una búsqueda que necesitás ordenar.",
+          "Querés diseñar proyectos regenerativos, sustentables y económicamente viables.",
+          "Te interesa producir alimentos sanos, cuidar el agua, construir mejor y crear economías alternativas.",
+          "Sentís que el cambio externo también necesita un proceso interno.",
+          "Estás dispuesta/o a invertir tiempo, energía, dinero y compromiso en tu transformación."
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "https://movimientonaluum.org/pdc",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      },
+      "overview_title": "Viví la permacultura en la práctica",
+      "highlights_title": "Qué incluye la experiencia",
+      "roles_title": "Una formación integral para diseñar otra forma de habitar",
+      "process_title": "No es un curso más. Es una inmersión en diseño permacultural aplicado.",
+      "participant_expectations_title": "Qué necesitás para participar",
+      "testimonials_title": "Lo que abre una formación vivencial",
+      "receive_summary": "Durante 10 días, el PDC combina formación profesional, práctica aplicada, convivencia, certificación y beneficios de continuidad para que puedas integrar herramientas reales de diseño permacultural.",
+      "client_receives": [
+        {
+          "title": "Certificación",
+          "description": "Aval académico. Certificación del Curso de Diseño de Permacultura, avalada por el Instituto de Permacultura de Australia."
+        },
+        {
+          "title": "Práctica real",
+          "description": "Territorio. Clases prácticas por la mañana, observación del territorio, análisis de sistemas vivos y diseño aplicado en Madre Selva."
+        },
+        {
+          "title": "Teoría aplicada",
+          "description": "Diseño. Clases teóricas, herramientas de diseño, análisis de casos y desarrollo de propuestas vinculadas a proyectos reales."
+        },
+        {
+          "title": "Alimentación completa",
+          "description": "Incluido. Alimentación durante todos los días: 3 comidas diarias y 2 refrigerios diarios."
+        },
+        {
+          "title": "Camping base",
+          "description": "Hospedaje. Estadía base en carpa propia. También existe opción de dormi compartido en yurta, sujeto a disponibilidad y con costo extra."
+        },
+        {
+          "title": "Continuidad",
+          "description": "Comunidad. Primer mes gratis en la comunidad de apoyo y precio mensual especial para continuar."
+        }
+      ],
+      "stats": [
+        {
+          "icon": "Clock",
+          "value": "10 días",
+          "label": "Duración",
+          "tone": "stat-green"
+        },
+        {
+          "icon": "Award",
+          "value": "Na Lu'um + PRI",
+          "label": "Certificación",
+          "tone": "stat-emerald"
+        },
+        {
+          "icon": "Users",
+          "value": "7000+",
+          "label": "Diseñadores formados",
+          "tone": "stat-teal"
+        },
+        {
+          "icon": "MapPin",
+          "value": "40+",
+          "label": "Países",
+          "tone": "stat-green"
+        }
+      ],
+      "pricing_plans": [],
+      "cohorts": [
+        {
+          "name": "PDC Septiembre 2026",
+          "date": "Miércoles 9 de septiembre de 2026. Finaliza el 18 de septiembre de 2026",
+          "availability": "Consultar disponibilidad",
+          "startsAt": "2026-09-09T05:00:00-03:00",
+          "endsAt": "2026-09-18T22:00:00-03:00"
+        }
+      ],
+      "roles": [
+        {
+          "name": "Diseño en Permacultura",
+          "purpose": "Principios, ética y herramientas para observar sistemas, leer patrones y diseñar soluciones regenerativas aplicables a la vida, el territorio y los proyectos."
+        },
+        {
+          "name": "Bioconstrucción",
+          "purpose": "Introducción práctica al uso de materiales naturales, construcción consciente y formas de habitar más coherentes con el entorno."
+        },
+        {
+          "name": "Agricultura orgánica y regenerativa",
+          "purpose": "Bases para comprender sistemas de producción vegetal, suelo vivo, soberanía alimentaria y prácticas regenerativas."
+        },
+        {
+          "name": "Diseño hidrológico",
+          "purpose": "Herramientas para observar, cuidar y diseñar el movimiento del agua dentro de sistemas vivos y territorios reales."
+        },
+        {
+          "name": "Permacultura social y educación regenerativa",
+          "purpose": "Diseño de relaciones, comunidades, procesos educativos y formas de organización más humanas, colaborativas y sostenibles."
+        },
+        {
+          "name": "Reingeniería del Ser y vida en comunidad",
+          "purpose": "Procesos de conciencia, servicio amoroso y convivencia como parte del aprendizaje profundo de la permacultura."
+        }
+      ],
+      "process_steps": [
+        {
+          "title": "Mañanas",
+          "description": "Durante las mañanas se realizan principalmente prácticas, recorridos, observaciones, ejercicios de campo, reconocimiento del territorio, análisis de sistemas vivos y prácticas vinculadas al diseño."
+        },
+        {
+          "title": "Tardes",
+          "description": "Durante las tardes se trabajan clases teóricas, marcos conceptuales, herramientas de diseño, ejercicios grupales, análisis de casos y desarrollo de propuestas."
+        },
+        {
+          "title": "Integración",
+          "description": "La idea es aprender haciendo, observando, pensando, diseñando y compartiendo con otras personas que también buscan una vida más coherente y regenerativa."
+        },
+        {
+          "title": "Intensidad",
+          "description": "No es un curso pasivo. Es una experiencia activa, profunda y participativa."
+        }
+      ],
+      "participant_expectations": [
+        "Disponibilidad para participar los 10 días completos, del 9 al 18 de septiembre de 2026.",
+        "Apertura para convivir, participar y aprender en comunidad.",
+        "Disposición física y emocional para una formación intensiva.",
+        "Interés real en permacultura, sustentabilidad, diseño regenerativo o proyectos de vida ligados a la tierra.",
+        "Escribir por WhatsApp desde la landing para confirmar disponibilidad y próximos pasos.",
+        "Traer carpa propia si se usa la opción de camping incluido.",
+        "Gestionar transporte propio hasta Madre Selva.",
+        "Consultar con anticipación si se necesita dormi compartido en yurta."
+      ],
+      "not_for": [
+        "No es un voluntariado.",
+        "No es una experiencia turística.",
+        "No es una actividad para mirar desde afuera.",
+        "No es un curso pasivo para recibir información sin participar.",
+        "No es para quien no pueda sostener intensidad, convivencia y compromiso diario.",
+        "Buscamos cuidar la calidad del proceso y la afinidad con la experiencia. El PDC requiere presencia, apertura y compromiso real."
+      ],
+      "faq": [
+        {
+          "question": "¿Necesito experiencia previa para hacer el PDC?",
+          "answer": "No. El PDC está abierto a personas sin experiencia previa, siempre que tengan interés real, apertura para aprender y disposición para participar activamente durante toda la experiencia."
+        },
+        {
+          "question": "¿El curso entrega certificación?",
+          "answer": "Sí. Al finalizar, recibís la certificación del Curso de Diseño de Permacultura avalada por el Instituto de Permacultura de Australia, en formato electrónico."
+        },
+        {
+          "question": "¿Qué incluye la inversión?",
+          "answer": "Incluye 10 días de formación intensiva, clases prácticas por la mañana, clases teóricas por la tarde, diseño aplicado en un proyecto real, certificación, alimentación completa, 3 comidas diarias, 2 refrigerios diarios, material audiovisual de apoyo, beneficios de continuidad y camping en carpa propia."
+        },
+        {
+          "question": "¿Cuál es el valor del curso?",
+          "answer": "El valor del curso es de 600 USD por persona."
+        },
+        {
+          "question": "¿Dónde se realiza?",
+          "answer": "En el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera."
+        },
+        {
+          "question": "¿Qué hospedaje incluye?",
+          "answer": "La estadía base es en carpa propia. Cada participante debe traer carpa, bolsa de dormir, aislante o colchoneta, linterna y todo lo necesario para acampar cómodamente."
+        },
+        {
+          "question": "¿Hay opción de yurta?",
+          "answer": "Sí. Hay opción de dormi compartido en yurta, sujeto a disponibilidad, con cama, luz, espacio para guardar ropa, sábanas y cobertores. El valor es de $15.000 ARS por día."
+        },
+        {
+          "question": "¿El transporte está incluido?",
+          "answer": "No. Cada participante llega por su cuenta a Madre Selva."
+        },
+        {
+          "question": "¿Cómo aplico o consulto disponibilidad?",
+          "answer": "Escribís por WhatsApp desde la landing con el mensaje prearmado. Desde ahí confirmamos disponibilidad, resolvemos dudas puntuales y te compartimos los pasos para avanzar con la inscripción."
+        },
+        {
+          "question": "¿Es una experiencia turística o un voluntariado?",
+          "answer": "No. Es una formación profesional, vivencial y transformadora. No es turismo, no es voluntariado y no es una actividad para mirar desde afuera."
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Natalia María Josefina",
+          "handle": "@nataliabereciartu",
+          "link": "https://www.instagram.com/nataliabereciartu/",
+          "title": "Profundidad con el mundo",
+          "quote": "Haber hecho el PDC a mis 27 años me conectó en mayor profundidad con el mundo de lo posible, me impulsó a ser responsable con mis sueños y también a ser consciente de los ritmos que cada proyecto necesita como organismo vivo.",
+          "image": "/img/testimonials/testimonio-pdc-1.webp",
+          "rating": 5
+        },
+        {
+          "name": "Yeru",
+          "handle": "",
+          "link": "",
+          "title": "Cuidado y conciencia en el camino",
+          "quote": "Principalmente la palabra que me viene es cuidado. Mucho cuidado de las personas que están sosteniendo esto. Se sintió muy cómodo... Hacen nacer un sentimiento de conciencia ante los pasos que uno va viviendo en el mundo, hacen tomar conciencia de un montón de cosas que yo realmente no las tenía dentro de mi bagaje.",
+          "image": "/img/testimonials/yeru-testimonio.webp",
+          "rating": 5
+        },
+        {
+          "name": "Fabián Luna",
+          "handle": "",
+          "link": "",
+          "title": "Un espacio de confianza para soltarse",
+          "quote": "Fue la experiencia y sensación de confianza... me parece nodal el que se cree un espacio de confianza para poder soltarse, expresar ese sueño y también interactuar y que se retroalimenta en este diseño... totalmente enriquecedora esa dimensión propuesta.",
+          "image": "/img/testimonials/fabian-luna-testimonio.webp",
+          "rating": 5
+        }
+      ],
+      "info_sections": [
+        {
+          "id": "afinidad",
+          "title": "No es solo aprender permacultura. Es vivirla en contexto real.",
+          "lead": "Esta experiencia está pensada para personas que quieren pasar de la teoría a la práctica y aprender permacultura dentro de un proyecto real, con territorio, comunidad, diseño, sistemas vivos y decisiones concretas.",
+          "highlight": "No es turismo, no es voluntariado y no es una actividad para mirar desde afuera. Es una formación profesional, vivencial y transformadora para personas dispuestas a invertir tiempo, energía, dinero y compromiso en su aprendizaje."
+        },
+        {
+          "id": "dimensiones",
+          "title": "Tres dimensiones para aprender permacultura con profundidad",
+          "lead": "El PDC une formación profesional, aprendizaje en un proyecto real y transformación personal aplicada al diseño regenerativo.",
+          "items": [
+            {
+              "title": "Formación profesional en diseño de permacultura",
+              "description": "Aprendés bases éticas, filosóficas, técnicas y metodológicas para observar, ordenar y crear sistemas vivos donde agua, suelo, alimentos, viviendas, economía, relaciones y organización funcionen de manera más armónica."
+            },
+            {
+              "title": "Aprendizaje en un proyecto real",
+              "description": "El curso se desarrolla dentro de Madre Selva, una escuela viva con sistemas productivos, construcciones, procesos comunitarios y decisiones de diseño que se aplican todos los días."
+            },
+            {
+              "title": "Transformación personal y mirada regenerativa",
+              "description": "Diseñar también implica mirar cómo tomamos decisiones, cómo nos relacionamos, cómo habitamos el territorio y desde qué lugar queremos crear futuro."
+            }
+          ]
+        },
+        {
+          "id": "temas-del-curso",
+          "title": "Qué vas a trabajar durante el PDC",
+          "lead": "El objetivo es que no solo recibas información, sino que aprendas a pensar como diseñadora o diseñador permacultural.",
+          "items": [
+            "Éticas y principios de la permacultura",
+            "Bases filosóficas del diseño regenerativo",
+            "Lectura del paisaje y observación del territorio",
+            "Diseño de agua: captación, cosecha, infiltración y uso consciente",
+            "Suelo vivo y regeneración de la fertilidad",
+            "Sistemas productivos agroecológicos",
+            "Agricultura regenerativa y sintrópica",
+            "Diseño de huertas, bosques comestibles y sistemas alimentarios",
+            "Bioarquitectura y hábitats saludables",
+            "Energías, flujos y eficiencia en el diseño",
+            "Zonas, sectores y planificación del territorio",
+            "Economía regenerativa y emprendimientos sustentables",
+            "Organización de proyectos como sistemas vivos",
+            "Permacultura social y vínculos humanos",
+            "Reingeniería del ser aplicada al diseño",
+            "Diseño de proyectos ecológicamente sustentables y económicamente viables",
+            "Elaboración de propuestas de diseño aplicadas a un caso real"
+          ]
+        },
+        {
+          "id": "para-vos-si",
+          "title": "Este PDC puede ser para vos si...",
+          "items": [
+            "Querés aprender permacultura con profundidad y llevarla a la práctica.",
+            "Tenés un terreno, una idea, una comunidad, un emprendimiento o una búsqueda que necesitás ordenar.",
+            "Querés diseñar proyectos regenerativos, sustentables y económicamente viables.",
+            "Te interesa producir alimentos sanos, cuidar el agua, construir mejor y crear economías alternativas.",
+            "Sentís que el cambio externo también necesita un proceso interno.",
+            "Estás dispuesta/o a invertir tiempo, energía, dinero y compromiso en tu transformación."
+          ]
+        },
+        {
+          "id": "trayectoria",
+          "title": "Más de 25 años formando diseñadores de permacultura",
+          "lead": "El Instituto de Permacultura Na Lu'um fue fundado por Tierra Martínez y Beatriz Ramírez, con una trayectoria internacional en procesos de educación vivencial, regeneración y diseño permacultural.",
+          "paragraphs": [
+            "La información institucional recuperada menciona más de 250 PDC realizados, más de 7000 diseñadores formados y presencia en más de 40 países.",
+            "El marco académico se basa en la tradición del Permaculture Design Course y está alineado a estándares PRI PDC Teachers."
+          ],
+          "highlight": "Una formación con raíz, trayectoria y certificación internacional, vivida en el territorio de Madre Selva."
+        },
+        {
+          "id": "lugar",
+          "title": "Madre Selva: un territorio diseñado para aprender",
+          "lead": "El curso se realiza en el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera.",
+          "paragraphs": [
+            "Madre Selva es una escuela viva donde se integran permacultura, bioarquitectura, agricultura sintrópica, desarrollo sustentable, educación transformadora, producción agroecológica, vida comunitaria y cuidado del territorio.",
+            "No es solamente un lugar bonito para hacer un curso. La selva, el agua, las construcciones, los cultivos, los caminos, los sistemas de organización y la vida cotidiana forman parte del proceso educativo."
+          ],
+          "highlight": "Durante los 10 días vas a habitar un espacio donde muchas de las ideas del curso ya están siendo practicadas."
+        },
+        {
+          "id": "inversion-reserva",
+          "title": "Inversión del programa",
+          "lead": "El valor del curso es de 600 USD por persona.",
+          "items": [
+            {
+              "title": "Valor del curso",
+              "value": "600 USD",
+              "description": "Precio por persona para la formación completa."
+            }
+          ]
+        },
+        {
+          "id": "hospedaje",
+          "title": "Estadía base en carpa y opción de yurta",
+          "lead": "La estadía base es en carpa propia. Cada participante debe traer su equipo para acampar cómodamente.",
+          "groups": [
+            {
+              "title": "Camping en carpa propia",
+              "value": "Incluido",
+              "items": [
+                "Carpa",
+                "Bolsa de dormir",
+                "Aislante o colchoneta",
+                "Linterna",
+                "Todo lo necesario para acampar cómodamente"
+              ]
+            },
+            {
+              "title": "Dormi compartido en yurta",
+              "value": "$15.000 ARS por día",
+              "description": "Sujeto a disponibilidad",
+              "items": [
+                "Cama",
+                "Luz",
+                "Espacio para guardar ropa",
+                "Sábanas",
+                "Cobertores"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "beneficios",
+          "title": "El PDC también abre continuidad de aprendizaje",
+          "lead": "Quienes participan de este PDC acceden a beneficios para seguir profundizando después de la formación intensiva.",
+          "items": [
+            {
+              "title": "Primer mes gratis en la comunidad de apoyo",
+              "description": "Espacio para seguir aprendiendo, mantenerse conectado y formar parte de una red con experiencia en permacultura y proyectos regenerativos."
+            }
+          ]
+        },
+        {
+          "id": "como-avanzar",
+          "title": "Cómo avanzar",
+          "lead": "La inversión incluye formación intensiva, certificación, alimentación completa, materiales de apoyo, beneficios de continuidad y camping en carpa propia. El transporte no está incluido. La yurta compartida tiene costo extra y está sujeta a disponibilidad.",
+          "items": [
+            "Leés la información completa de la experiencia",
+            "Nos escribís por WhatsApp desde la landing",
+            "Confirmamos disponibilidad y resolvemos dudas puntuales"
+          ]
+        },
+        {
+          "id": "inscripcion",
+          "title": "Avanzá con tu inscripción al PDC",
+          "lead": "Si la propuesta te resuena y ya tenés claro el valor, las fechas y las condiciones principales, escribinos por WhatsApp para confirmar disponibilidad y recibir los pasos de inscripción.",
+          "paragraphs": [
+            "Valor del curso: 600 USD por persona."
+          ],
+          "highlight": "Si querés dejar de mirar la permacultura desde afuera, este puede ser tu lugar. No venís solo a escuchar conceptos. Venís a vivir una experiencia intensiva, comunitaria y aplicada para aprender herramientas reales de diseño regenerativo."
+        }
+      ],
+      "cta": {
+        "price_description": "Valor del curso: 600 USD.",
+        "price_items": [
+          "10 días",
+          "9 al 18 de septiembre de 2026",
+          "Certificación Na Lu'um + PRI Australia",
+          "Alimentación completa",
+          "Camping en carpa propia"
+        ],
+        "primary_label": "Aplicar a la formación",
+        "primary_hint": "Abre WhatsApp para consultar disponibilidad y avanzar con la inscripción.",
+        "support_title": "¿Tenés dudas sobre el PDC?",
+        "support_text": "Podés escribirnos para revisar fechas, reserva, hospedaje o requisitos antes de confirmar.",
+        "support_label": "Consultar por WhatsApp",
+        "footer_title": "Si querés dejar de mirar la permacultura desde afuera, este puede ser tu lugar.",
+        "footer_subtitle": "No venís solo a escuchar conceptos. Venís a vivir una experiencia intensiva, comunitaria y aplicada para aprender herramientas reales de diseño regenerativo.",
+        "footer_label": "Aplicar a la formación",
+        "footer_hint": "Abre WhatsApp para iniciar la inscripción al PDC."
+      }
+    },
+    "description_strong": "No es turismo, no es voluntariado y no es una actividad para mirar desde afuera. Es una formación profesional, vivencial y transformadora para personas dispuestas a invertir tiempo, energía, dinero y compromiso en su aprendizaje."
   },
   {
     "id": "curso-agricultura-sintropica",
@@ -34,7 +613,7 @@
     "title": "Curso de Agricultura Sintrópica",
     "subtitle": "Aprende a regenerar suelos y crear sistemas agroforestales sostenibles.",
     "description": "Metodología desarrollada por Ernst Götsch, aplicada en Madre Selva. Incluye fundamentos de sucesión natural, manejo de podas, diseño agroforestal y regeneración del suelo para soberanía alimentaria.",
-    "image": "https://cdn.pixabay.com/photo/2016/11/29/04/49/adventure-1867028_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-agricultura-sintropica.svg",
     "price": 129.99,
     "currency": "USD",
     "badge": "Todos los niveles",
@@ -60,7 +639,7 @@
     "title": "Cursos de Bioconstrucción",
     "subtitle": "Formación práctica en técnicas de construcción natural.",
     "description": "Aprende técnicas y principios de construcción natural aplicados a proyectos arquitectónicos sostenibles, utilizando materiales y métodos ancestrales adaptados a contextos actuales.",
-    "image": "https://cdn.pixabay.com/photo/2017/03/18/17/01/ivy-2154500_1280.jpg",
+    "image": "/img/shared/curso-bioconstruccion.webp",
     "price": 199.99,
     "currency": "USD",
     "badge": "Intermedio",
@@ -86,7 +665,7 @@
     "title": "Máster en Diseño Regenerativo",
     "subtitle": "Formación online de un año en diseño de permacultura profesional.",
     "description": "Curso avanzado que profundiza en el diseño regenerativo como herramienta profesional, integrando principios éticos, sostenibilidad y aplicación práctica en diversos contextos.",
-    "image": "https://cdn.pixabay.com/photo/2017/03/18/17/01/ivy-2154500_1280.jpg",
+    "image": "/img/shared/curso-bioconstruccion.webp",
     "price": 799.99,
     "currency": "USD",
     "badge": "Avanzado",
@@ -112,7 +691,7 @@
     "title": "Consultorías Personalizadas",
     "subtitle": "Acompañamiento integral para iniciar proyectos regenerativos.",
     "description": "Guiamos y apoyamos a personas que desean comenzar un proyecto regenerativo, ayudándolos a definir objetivos claros, estrategias y pasos concretos para su implementación exitosa.",
-    "image": "https://cdn.pixabay.com/photo/2018/03/08/13/14/flora-3208629_1280.jpg",
+    "image": "/img/services/consultorias-personalizadas.webp",
     "price": 99.99,
     "currency": "USD",
     "badge": "Todos los niveles",
@@ -137,7 +716,7 @@
     "title": "Creación de Redes Locales con Procesos Educativos",
     "subtitle": "Fortalecemos comunidades mediante cursos y talleres en alianza con anfitriones locales.",
     "description": "Brindamos herramientas y procesos educativos para crear redes comunitarias autosustentables que impulsen el desarrollo local y la cooperación solidaria.",
-    "image": "https://cdn.pixabay.com/photo/2017/01/14/10/57/friends-1973211_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-redes-locales.svg",
     "price": 79.99,
     "currency": "USD",
     "badge": "Todos los niveles",
@@ -162,7 +741,7 @@
     "title": "Diseño e Implementación de Proyectos Sustentables",
     "subtitle": "Acompañamiento educativo para crear proyectos regenerativos exitosos.",
     "description": "Ofrecemos acompañamiento integral para diseñar e implementar proyectos sustentables que generen impacto positivo en el entorno, integrando educación, participación comunitaria y sostenibilidad.",
-    "image": "https://cdn.pixabay.com/photo/2019/09/25/18/45/saplings-4504323_1280.png",
+    "image": "/img/services/diseno-implementacion-proyectos-sustentables.webp",
     "price": 159.99,
     "currency": "USD",
     "badge": "Intermedio",
@@ -187,7 +766,7 @@
     "title": "Hospedaje en Cabañas en Medio de la Selva",
     "subtitle": "Vive una experiencia única en cabañas ecológicas rodeadas de naturaleza.",
     "description": "Hospédate en nuestras cabañas construidas con materiales naturales, ubicadas en un entorno selvático, ideales para descansar y reconectar con la naturaleza.",
-    "image": "https://cdn.pixabay.com/photo/2017/01/20/00/30/cabin-1992567_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-hospedaje-cabanas.svg",
     "price": 59.99,
     "currency": "USD",
     "badge": "Experiencia natural",
@@ -212,7 +791,7 @@
     "title": "Camping en Medio de la Selva",
     "subtitle": "Acampa bajo las estrellas rodeado de fauna y flora nativa.",
     "description": "Zona de camping con acceso a servicios básicos y áreas comunes, perfecta para aventureros que buscan una experiencia más cercana a la naturaleza.",
-    "image": "https://cdn.pixabay.com/photo/2016/11/29/04/49/adventure-1867028_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-camping.svg",
     "price": 15.99,
     "currency": "USD",
     "badge": "Aventura",
@@ -237,7 +816,7 @@
     "title": "Programa de Aprendices",
     "subtitle": "Formación práctica en sostenibilidad y vida en la selva.",
     "description": "Programa para aprender y participar en actividades de cuidado ambiental, agricultura regenerativa, bioconstrucción y manejo sostenible de recursos.",
-    "image": "https://cdn.pixabay.com/photo/2016/11/18/15/54/learning-1839650_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-aprendices.svg",
     "price": 199.99,
     "currency": "USD",
     "badge": "Todos los niveles",
@@ -262,7 +841,7 @@
     "title": "Programa de Voluntariado",
     "subtitle": "Contribuye al cuidado del ecosistema y vive una experiencia transformadora.",
     "description": "Únete como voluntario para apoyar proyectos de conservación, educación ambiental y desarrollo comunitario en la selva.",
-    "image": "https://cdn.pixabay.com/photo/2015/07/10/17/26/volunteer-839075_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-voluntariado.svg",
     "price": 0,
     "currency": "USD",
     "badge": "Voluntariado",
@@ -287,7 +866,7 @@
     "title": "Visitas Guiadas de Fin de Semana",
     "subtitle": "Recorre el Eco Centro Madre Selva y conoce proyectos regenerativos.",
     "description": "Ofrecemos recorridos guiados para conocer nuestros sistemas de permacultura, agricultura sintropica, bioconstrucción y biodiversidad local.",
-    "image": "https://cdn.pixabay.com/photo/2016/11/18/15/54/learning-1839650_1280.jpg",
+    "image": "/img/placeholders/pendiente-servicio-visitas-guiadas.svg",
     "price": 19.99,
     "currency": "USD",
     "badge": "Todos los niveles",
@@ -303,5 +882,1913 @@
     "students": 120,
     "date": "2025-09-12",
     "router": "/servicios/visitas-guiadas"
+  },
+  {
+    "id": "selva-adentro",
+    "type": "service",
+    "category": "programa",
+    "project": "Movimiento Nálu’um / Madre Selva",
+    "title": "Selva Adentro",
+    "subtitle": "No vengas a mirar otra forma de vivir. Vení a practicarla.",
+    "description": "Selva Adentro es una experiencia formativa inmersiva de 12 días en Madre Selva, en Colonia Paraíso, El Soberbio, Misiones, para aprender haciendo, vivir en comunidad y reconectar con la tierra a través de bioconstrucción, agricultura, arte, territorio y convivencia.",
+    "description_strong": "Durante 12 días vas a participar de prácticas reales, compartir la vida cotidiana del espacio y entrar en contacto directo con la tierra, la selva y los ritmos de la comunidad.",
+    "image": "/img/shared/bitacora-madre-selva.webp",
+    "price": 640000,
+    "currency": "ARS",
+    "badge": "Experiencia formativa inmersiva",
+    "duration": "12 días",
+    "instructor": "Equipo Madre Selva",
+    "highlights": [
+      "Aprendizaje vivencial en territorio real",
+      "Prácticas de bioconstrucción y agricultura",
+      "Arte, tierra y expresión como ejes transversales",
+      "Convivencia comunitaria y servicios amorosos",
+      "Alojamiento en carpa y alimentación incluida",
+      "Actividades territoriales con traslados internos incluidos"
+    ],
+    "rating": 5,
+    "students": 0,
+    "date": "Fecha de próxima cohorte a confirmar",
+    "router": "/servicios/selva-adentro",
+    "detail": {
+      "overview_title": "Selva Adentro",
+      "highlights_title": "Qué hace especial a Selva Adentro",
+      "roles_title": "Ejes de Selva Adentro",
+      "process_title": "Proceso de inscripción",
+      "participant_expectations_title": "Para quién es",
+      "testimonials_title": "Voces de experiencias en Madre Selva",
+      "application_url": "",
+      "date_selector": {
+        "enabled": true,
+        "label": "Eleg? la fecha de inicio",
+        "help_text": "Fechas 2026: primer lunes de febrero a mayo y de agosto a noviembre.",
+        "months": [
+          2,
+          3,
+          4,
+          5,
+          8,
+          9,
+          10,
+          11
+        ],
+        "years": [
+          2026
+        ],
+        "limit": 8,
+        "query_param": "fecha_inicio"
+      },
+      "about_project": {
+        "org_name": "Madre Selva",
+        "overview": "Madre Selva es el espacio físico donde sucede Selva Adentro: un lugar de naturaleza, aprendizaje, convivencia y práctica real ubicado en Colonia Paraíso, El Soberbio, Misiones.",
+        "mission": "La experiencia propone aprender desde el cuerpo, la tierra y la comunidad. No se trata de mirar una forma de vida desde afuera, sino de practicarla durante 12 días con acompañamiento, tareas reales y espacios de integración.",
+        "track_record": {
+          "designers_trained": 0,
+          "countries": 1,
+          "description": "Selva Adentro se organiza como una experiencia formativa de 12 días con prácticas, clases, convivencia, salidas territoriales y cierre de integración."
+        }
+      },
+      "images": {
+        "community": "/img/services/selva-adentro-vida-en-comun-unidad.webp",
+        "natural_building": "/img/shared/bioconstruccion-mantenimiento.webp",
+        "permaculture_garden": "/img/shared/agroecologia-cuidado-agua.webp",
+        "workshop": "/img/shared/trabajo-comunitario-aprendizaje.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Convivencia y aprendizaje en Madre Selva",
+          "caption": "Vida comunitaria y aprendizaje cotidiano",
+          "icon": "Users"
+        },
+        "workshop": {
+          "alt": "Prácticas formativas en Madre Selva",
+          "caption": "Aprender haciendo en territorio real",
+          "icon": "Hammer"
+        },
+        "natural_building": {
+          "alt": "Prácticas de bioconstrucción en Madre Selva",
+          "caption": "Bioconstrucción práctica",
+          "icon": "Home"
+        },
+        "permaculture_garden": {
+          "alt": "Prácticas de agricultura en Madre Selva",
+          "caption": "Agricultura y cuidado de la tierra",
+          "icon": "Leaf"
+        }
+      },
+      "ui_labels": {
+        "students": "Duración",
+        "countries": "Locación",
+        "rating": "Experiencia"
+      },
+      "stats": [
+        {
+          "icon": "Clock",
+          "value": "12 días",
+          "label": "Duración",
+          "tone": "stat-green"
+        },
+        {
+          "icon": "Award",
+          "value": "$640.000",
+          "label": "Valor base ARS",
+          "tone": "stat-emerald"
+        },
+        {
+          "icon": "Calendar",
+          "value": "$320.000",
+          "label": "Reserva base 50%",
+          "tone": "stat-teal"
+        },
+        {
+          "icon": "MapPin",
+          "value": "Madre Selva",
+          "label": "Espacio físico",
+          "tone": "stat-green"
+        }
+      ],
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Madre Selva · Colonia Paraíso, El Soberbio, Misiones",
+        "host_role": "Espacio físico de la experiencia",
+        "host_description": "La locación es Colonia Paraíso, El Soberbio, Misiones. Madre Selva es el espacio físico donde sucede la experiencia: un entorno de selva, aprendizaje, convivencia y práctica real.",
+        "environment": {
+          "ecosystem": "Selva misionera subtropical",
+          "nearby_points": [
+            "Madre Selva como espacio de convivencia y aprendizaje",
+            "Arroyo La Yerba",
+            "Saltos del Moconá",
+            "Salida al pueblo y encuentro con vecinos"
+          ],
+          "climate": {
+            "region": "Colonia Paraíso, El Soberbio, Misiones",
+            "heat_humidity": "Clima cálido y húmedo propio de la selva misionera",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Lluvias frecuentes según la época del año"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Yona",
+          "role": "Bioconstrucción práctica y recorrido de selva",
+          "bio": "Acompaña prácticas de bioconstrucción y el recorrido de selva para abrir la experiencia desde el contacto directo con el territorio."
+        },
+        {
+          "name": "Bea",
+          "role": "Teoría de bioconstrucción, agricultura y apoyo formativo",
+          "bio": "Acompaña espacios teóricos, integración de contenidos y apoyo formativo durante las etapas del programa."
+        },
+        {
+          "name": "Ahe",
+          "role": "Arte, Tierra y Expresión",
+          "bio": "Facilita bloques sensibles que integran barro, expresión, creatividad, conexión con la materia y presencia."
+        },
+        {
+          "name": "Mabel",
+          "role": "Agricultura práctica",
+          "bio": "Acompaña prácticas de agricultura, producción y cuidado de la tierra desde la experiencia concreta del lugar."
+        },
+        {
+          "name": "Silvia",
+          "role": "Agricultura práctica",
+          "bio": "Acompaña prácticas de agricultura y sistemas vivos durante la segunda etapa del programa."
+        }
+      ],
+      "program": {
+        "why_it_matters": "Selva Adentro es para personas que no quieren solo escuchar teoría, sino vivir un proceso práctico, comunitario y real.",
+        "pedagogy_axes": [
+          "Bioconstrucción",
+          "Agricultura",
+          "Territorio y comunidad",
+          "Arte, tierra y expresión",
+          "Selva y observación",
+          "Convivencia y servicios comunitarios"
+        ],
+        "intended_for": "Personas interesadas en aprender haciendo, convivir, colaborar y acercarse a una forma de vida más simple, coherente y conectada con la tierra.",
+        "prerequisites": "No se plantea experiencia previa como requisito excluyente. Lo importante es tener disposición a participar activamente, convivir, aprender haciendo y adaptarse al entorno."
+      },
+      "logistics": {
+        "dates": {
+          "start": "",
+          "end": "",
+          "arrival_note": "La fecha de la próxima cohorte está pendiente de confirmación."
+        },
+        "daily_rhythm": {
+          "note": "Ritmo diario base sujeto a ajustes por clima, necesidades del territorio y organización del grupo.",
+          "schedule_blocks": [
+            "06:00 · Inicio / activación",
+            "07:00 · Desayuno",
+            "08:00 · Actividades",
+            "13:00 · Almuerzo",
+            "15:30 · Bloque de tarde",
+            "18:30 · Cierre de jornada",
+            "19:15 · Cena"
+          ]
+        },
+        "intensity": "Experiencia presencial e inmersiva, con prácticas, convivencia, caminatas, salidas territoriales y participación activa en la vida cotidiana del grupo.",
+        "arrival_instructions": "Las indicaciones de llegada a Madre Selva se comparten durante el proceso de confirmación.",
+        "packing_list": [
+          "Carpa y elementos personales de descanso",
+          "Ropa cómoda para trabajo y caminatas",
+          "Calzado cerrado o botas",
+          "Protección para lluvia y humedad",
+          "Botella reutilizable",
+          "Elementos personales de higiene"
+        ]
+      },
+      "cohorts": [
+        {
+          "name": "Próxima cohorte",
+          "date": "Fecha a confirmar",
+          "location": "Madre Selva · Colonia Paraíso, El Soberbio, Misiones"
+        }
+      ],
+      "academic_package": {
+        "includes": [
+          "Programa formativo de 12 días en Madre Selva, Colonia Paraíso, El Soberbio, Misiones",
+          "Alojamiento en carpa",
+          "Alimentación incluida",
+          "Prácticas de bioconstrucción",
+          "Prácticas de agricultura",
+          "Clases teóricas y espacios de integración",
+          "Bloques de Arte, Tierra y Expresión",
+          "Recorrido de selva con Yona",
+          "Fogón",
+          "Cena de los sentidos",
+          "Encuentro con vecinos",
+          "Visita a Saltos del Moconá",
+          "Traslado ida y vuelta al pueblo para las actividades incluidas",
+          "Cierre y espacio de feedback"
+        ]
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "La alimentación está incluida durante la experiencia.",
+          "diet_policy": "La comida se organiza desde la dinámica del espacio y la convivencia del grupo.",
+          "extras": "Consumos personales fuera del programa base van por cuenta de cada participante."
+        },
+        "lodging": {
+          "base_included": "Alojamiento en carpa dentro de Madre Selva.",
+          "upgrade_options": [],
+          "upgrade_note": "La experiencia está pensada como una inmersión con alojamiento en carpa."
+        },
+        "transport": {
+          "included": false,
+          "note": "El traslado hasta Madre Selva no está confirmado como incluido. Sí están incluidos traslados internos vinculados a actividades del programa."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Disposición a vivir en carpa",
+          "Adaptación a los ritmos del territorio",
+          "Participación activa en tareas comunitarias",
+          "Apertura a convivir, colaborar y aprender haciendo",
+          "Respeto por los acuerdos del grupo y del espacio"
+        ],
+        "water_food_safety": "La alimentación está incluida y se organiza dentro de la experiencia.",
+        "medical_access": [
+          "Referencias locales se comparten durante la información de pre-llegada"
+        ],
+        "insurance_note": "Se recomienda contar con cobertura personal para viajar y participar de actividades en territorio."
+      },
+      "audience": {
+        "who_can_join": "Personas que buscan una experiencia práctica, real y participativa en bioconstrucción, agricultura, vida natural y aprendizaje vivencial.",
+        "ideal_for": [
+          "Personas que quieren aprender haciendo, no solo mirar o escuchar teoría",
+          "Personas abiertas a convivir, colaborar y participar en tareas comunitarias",
+          "Personas interesadas en bioconstrucción, agricultura y vida natural",
+          "Personas que desean reconectar con la tierra, la naturaleza y una forma de vida más simple",
+          "Personas con disposición a vivir en carpa y adaptarse a los ritmos del territorio"
+        ]
+      },
+      "roles": [
+        {
+          "name": "Bioconstrucción",
+          "orientation": "Primera etapa del programa",
+          "purpose": "Incluye prácticas con Yona y espacios teóricos con Bea para comprender materiales, procesos y formas de construir en relación con el entorno."
+        },
+        {
+          "name": "Agricultura",
+          "orientation": "Segunda etapa del programa",
+          "purpose": "Incluye prácticas con Mabel y Silvia, junto a espacios teóricos con Bea, para acercarse a la producción, el cuidado de la tierra y los sistemas vivos."
+        },
+        {
+          "name": "Territorio y comunidad",
+          "orientation": "Fin de semana territorial",
+          "purpose": "Integra salida al pueblo, Arroyo La Yerba, encuentro con vecinos y visita a Saltos del Moconá."
+        },
+        {
+          "name": "Arte, tierra y expresión",
+          "orientation": "Bloques transversales",
+          "purpose": "Bloques con Ahe y Bea que integran barro, expresión, sensibilidad, creatividad y conexión con la materia."
+        },
+        {
+          "name": "Selva y observación",
+          "orientation": "Recorrido de selva",
+          "purpose": "Recorrido con Yona para conocer el territorio, observar el entorno y abrir la experiencia desde el contacto directo con el lugar."
+        },
+        {
+          "name": "Convivencia y servicios comunitarios",
+          "orientation": "Vida cotidiana del grupo",
+          "purpose": "Incluye organización diaria, colaboración, servicios amorosos y participación activa en la vida del grupo."
+        }
+      ],
+      "process_steps": [
+        {
+          "title": "Formulario",
+          "description": "Completás el formulario de aplicación."
+        },
+        {
+          "title": "Evaluación",
+          "description": "Revisamos tu perfil y el encaje con la experiencia."
+        },
+        {
+          "title": "WhatsApp",
+          "description": "Seguimos el proceso por WhatsApp para resolver dudas y avanzar."
+        },
+        {
+          "title": "Reserva",
+          "description": "Confirmás tu lugar con el 50% del valor total."
+        },
+        {
+          "title": "Pre-llegada",
+          "description": "Recibís la información necesaria para prepararte antes de llegar."
+        }
+      ],
+      "info_sections": [
+        {
+          "id": "especial",
+          "title": "Qué hace especial a Selva Adentro",
+          "lead": "No es una experiencia para mirar desde afuera. Es una inmersión para participar, convivir y aprender desde el cuerpo, la tierra y la comunidad.",
+          "items": [
+            {
+              "title": "Aprendizaje vivencial",
+              "description": "La práctica es el centro de la experiencia."
+            },
+            {
+              "title": "Territorio real",
+              "description": "Madre Selva funciona como espacio vivo de aprendizaje cotidiano."
+            },
+            {
+              "title": "Bioconstrucción y agricultura",
+              "description": "Vas a participar de prácticas concretas con facilitadores del territorio."
+            },
+            {
+              "title": "Comunidad y convivencia",
+              "description": "El grupo sostiene acuerdos, tareas y ritmos compartidos."
+            },
+            {
+              "title": "Arte, tierra y expresión",
+              "description": "Bloques sensibles para conectar creatividad, barro y presencia."
+            },
+            {
+              "title": "Una pausa con sentido",
+              "description": "Doce días para volver a escuchar el cuerpo, la tierra y las preguntas importantes."
+            }
+          ]
+        },
+        {
+          "id": "formacion",
+          "title": "La Formación",
+          "lead": "Selva Adentro es una experiencia de 12 días organizada en etapas para entrar, practicar, integrar y cerrar.",
+          "items": [
+            {
+              "title": "Día 1",
+              "description": "Llegada, recepción, instalación en carpas y primera adaptación al lugar."
+            },
+            {
+              "title": "Día 2",
+              "description": "Introducción general, servicios amorosos, tabla organizativa, recorrido de selva con Yona y teoría introductoria de bioconstrucción con Bea."
+            },
+            {
+              "title": "Días 3 a 5",
+              "description": "Prácticas de bioconstrucción con Yona, teoría con Bea y bloques especiales. El viernes se integra un fogón."
+            },
+            {
+              "title": "Día 6",
+              "description": "Salida al pueblo y visita al Arroyo La Yerba como parte del eje territorial."
+            },
+            {
+              "title": "Día 7",
+              "description": "Integración comunitaria con vecinos y visita a Saltos del Moconá."
+            },
+            {
+              "title": "Días 8 a 11",
+              "description": "Prácticas de agricultura con Mabel y Silvia, teoría con Bea y bloques especiales de integración. El día 11 se realiza la Cena de los sentidos."
+            },
+            {
+              "title": "Día 12",
+              "description": "Cierre del proceso, integración final y espacio de devolución."
+            }
+          ]
+        },
+        {
+          "id": "inversion",
+          "title": "Inversión y reserva",
+          "items": [
+            {
+              "title": "Inversión base",
+              "description": "$640.000 ARS"
+            },
+            {
+              "title": "Precio promocional",
+              "description": "$480.000 ARS con 25% de descuento durante los 10 días previos a cada fecha."
+            },
+            {
+              "title": "Reserva base",
+              "description": "50% = $320.000 ARS"
+            },
+            {
+              "title": "Reserva con promo activa",
+              "description": "50% = $240.000 ARS"
+            },
+            {
+              "title": "Saldo",
+              "description": "El saldo restante se abona hasta una semana antes de llegar, según el precio vigente de la fecha elegida."
+            },
+            {
+              "title": "Política de devolución",
+              "description": "La seña se devuelve si cancelás con al menos un mes de anticipación al inicio del programa."
+            }
+          ]
+        },
+        {
+          "id": "hospedaje",
+          "title": "Hospedaje",
+          "items": [
+            {
+              "title": "Hospedaje",
+              "description": "Alojamiento en carpa, experiencia inmersiva en Madre Selva, convivencia comunitaria y alimentación incluida."
+            }
+          ]
+        },
+        {
+          "id": "no-incluye",
+          "title": "No incluye",
+          "items": [
+            "Traslado hasta Madre Selva, en Colonia Paraíso, El Soberbio, Misiones, salvo que se defina lo contrario",
+            "En la salida al pueblo solo está incluido el traslado; lo que cada participante consuma, compre o gaste allí va por su cuenta",
+            "Gastos personales",
+            "Compras individuales",
+            "Actividades no confirmadas o fuera del programa base"
+          ]
+        },
+        {
+          "id": "lugar",
+          "title": "El lugar",
+          "lead": "La experiencia sucede en el espacio físico Madre Selva, ubicado en Colonia Paraíso, El Soberbio, Misiones.",
+          "paragraphs": [
+            "Madre Selva es un espacio de naturaleza, aprendizaje, convivencia y práctica real. El entorno no funciona como escenografía, sino como parte activa del aprendizaje.",
+            "La experiencia se vive en contacto directo con la tierra, la selva y los ritmos del lugar."
+          ]
+        }
+      ],
+      "participant_expectations": [
+        "Personas que buscan una experiencia práctica, real y participativa",
+        "Personas interesadas en bioconstrucción, agricultura, vida natural y aprendizaje vivencial",
+        "Personas que quieren aprender haciendo, no solo mirar o escuchar teoría",
+        "Personas abiertas a convivir, colaborar y participar en tareas comunitarias",
+        "Personas que desean reconectar con la tierra, la naturaleza y una forma de vida más simple",
+        "Personas con disposición a vivir en carpa y adaptarse a los ritmos del territorio"
+      ],
+      "not_for": [
+        "No es una pausa pasiva",
+        "No es una experiencia para consumir desde afuera",
+        "No es una promesa automática de cambio personal",
+        "No es para personas que no quieren participar activamente",
+        "No es para quienes buscan comodidad total o una experiencia solo para la foto",
+        "No es una propuesta barata de intercambio por alojamiento"
+      ],
+      "faq": [
+        {
+          "question": "¿Qué es Selva Adentro?",
+          "answer": "Selva Adentro es una experiencia formativa inmersiva de 12 días en Madre Selva para aprender haciendo, vivir en comunidad y reconectar con la tierra."
+        },
+        {
+          "question": "¿Cuánto dura la experiencia?",
+          "answer": "La experiencia dura 12 días."
+        },
+        {
+          "question": "¿Dónde se realiza?",
+          "answer": "Se realiza en Madre Selva, el espacio físico del programa, ubicado en Colonia Paraíso, El Soberbio, Misiones."
+        },
+        {
+          "question": "¿Qué incluye?",
+          "answer": "Incluye el programa de 12 días, alojamiento en carpa, alimentación, prácticas de bioconstrucción y agricultura, bloques de arte, recorrido de selva, fogón, Cena de los sentidos, actividades territoriales y cierre."
+        },
+        {
+          "question": "¿El alojamiento está incluido?",
+          "answer": "Sí. El alojamiento incluido es en carpa."
+        },
+        {
+          "question": "¿La alimentación está incluida?",
+          "answer": "Sí. La alimentación está incluida durante la experiencia."
+        },
+        {
+          "question": "¿Cómo reservo mi lugar?",
+          "answer": "La reserva es del 50% del precio vigente para la fecha elegida. Sobre el valor base es $320.000 ARS. Si la promo está activa, la reserva queda en $240.000 ARS."
+        },
+        {
+          "question": "¿La seña se devuelve?",
+          "answer": "Sí. La seña se devuelve si avisás la cancelación con al menos un mes de anticipación al inicio del programa."
+        },
+        {
+          "question": "¿Necesito experiencia previa?",
+          "answer": "No está planteado como requisito excluyente. Lo importante es tener disposición a participar, convivir, aprender haciendo y adaptarse al entorno."
+        },
+        {
+          "question": "¿Es una propuesta de intercambio de trabajo?",
+          "answer": "No. Es una experiencia formativa con inversión, estructura, actividades y proceso de inscripción."
+        },
+        {
+          "question": "¿El traslado hasta Madre Selva está incluido?",
+          "answer": "El traslado hasta Madre Selva no está confirmado como incluido. Sí aparecen como incluidos traslados internos vinculados a actividades del programa, como pueblo, Arroyo La Yerba, vecinos y Saltos del Moconá."
+        }
+      ],
+      "testimonials": [
+        {
+          "name": "Ayelén",
+          "handle": "@Urakalindi",
+          "title": "Herramientas para la práctica",
+          "quote": "Me llevo muchísimas herramientas para aplicar en la práctica de la permacultura. Me sentí contenida y muy a gusto en todo el proceso.",
+          "image": "/img/testimonials/testimonio-ayelen.webp",
+          "rating": 5
+        },
+        {
+          "name": "Leo",
+          "handle": "@leoglen_1",
+          "title": "Proceso teórico, operativo y vivencial",
+          "quote": "Es hermosísimo ver el proceso, tanto teórico como operativo y, sobre todo, vivencial. Una formación completa.",
+          "image": "/img/testimonials/testimonio-leo.webp",
+          "rating": 5
+        },
+        {
+          "name": "Claudia",
+          "handle": "@clau_tierra",
+          "title": "Energía especial del lugar",
+          "quote": "Sentís una energía especial con el lugar, la tierra y las personas. Ves la vida misma crecer mientras aprendes.",
+          "image": "/img/testimonials/testimonio-claudia.webp",
+          "rating": 5
+        },
+        {
+          "name": "Awen",
+          "handle": "@Awenvie",
+          "title": "Aprendizaje incorporado",
+          "quote": "Siento que aprendí un montón. Pude incorporar conocimientos que no tenía y me voy muy feliz por toda la experiencia.",
+          "image": "/img/testimonials/testimonio-awen.webp",
+          "rating": 5
+        },
+        {
+          "name": "Gabriel",
+          "handle": "@Elitinerantetaller",
+          "title": "Un proceso con corazón",
+          "quote": "Este lugar es un oasis que se puede replicar para generar núcleos de vida real. Es un proceso con corazón.",
+          "image": "/img/testimonials/testimonio-gabriel.webp",
+          "rating": 5
+        },
+        {
+          "name": "Participante anónimo",
+          "handle": "Comunidad Nálu’um",
+          "title": "Manos en la tierra",
+          "quote": "Pasar de la teoría a meter las manos en la tierra, construir juntos y habitar el espacio desde el respeto absoluto cambia tu paradigma.",
+          "image": "/img/shared/bitacora-madre-selva.webp",
+          "rating": 5
+        }
+      ],
+      "cta": {
+        "price_description": "Incluye programa de 12 días, alojamiento en carpa, alimentación y actividades internas confirmadas. Valor base: $640.000 ARS.",
+        "primary_label": "Aplicar al programa",
+        "primary_hint": "Iniciá el proceso de aplicación. El cierre se continúa por WhatsApp después del formulario.",
+        "note": "Valor base: $640.000 ARS. Promo automática: $480.000 ARS durante los 10 días previos a cada fecha. Reserva base: $320.000 ARS.",
+        "support_title": "¿Tenés preguntas?",
+        "support_text": "Podés escribirnos para consultar por fechas, reserva, llegada o preparación antes de aplicar.",
+        "support_label": "Consultar por WhatsApp",
+        "footer_title": "Aplicá a Selva Adentro",
+        "footer_subtitle": "Si sentís que esta experiencia resuena con tu momento, completá el formulario. Vamos a revisar tu perfil y continuar el proceso por WhatsApp.",
+        "footer_label": "Aplicar al programa",
+        "footer_hint": "Iniciá el proceso de aplicación a Selva Adentro.",
+        "price_items": [
+          "12 días",
+          "Carpa",
+          "Alimentación",
+          "Bioconstrucción",
+          "Agricultura",
+          "Actividades territoriales"
+        ]
+      },
+      "receive_summary": "Selva Adentro combina formación práctica, vida comunitaria y contacto directo con el territorio durante 12 días en Madre Selva.",
+      "client_receives": [
+        {
+          "title": "Aprendizaje vivencial",
+          "description": "Vas a aprender haciendo, con prácticas reales y acompañamiento durante el proceso."
+        },
+        {
+          "title": "Bioconstrucción y agricultura",
+          "description": "Participás de prácticas concretas con facilitadores vinculados al territorio."
+        },
+        {
+          "title": "Arte, tierra y expresión",
+          "description": "Integrás sensibilidad, creatividad, barro, materia y presencia en bloques transversales."
+        },
+        {
+          "title": "Convivencia comunitaria",
+          "description": "Compartís organización diaria, servicios amorosos y vida cotidiana del grupo."
+        },
+        {
+          "title": "Territorio y salidas incluidas",
+          "description": "El programa integra recorrido de selva, pueblo, Arroyo La Yerba, vecinos y Saltos del Moconá."
+        },
+        {
+          "title": "Cierre e integración",
+          "description": "La experiencia finaliza con cierre, feedback e integración del proceso vivido."
+        }
+      ],
+      "price_promotion": {
+        "enabled": true,
+        "discount_percent": 25,
+        "window_days_before_start": 10,
+        "label": "Promo -25%",
+        "active_text": "Oferta activa"
+      }
+    }
+  },
+  {
+    "id": "voluntariado-residencial-madre-selva",
+    "type": "service",
+    "category": "programa",
+    "project": "Madre Selva",
+    "title": "Residencia Formativa por Rol - Madre Selva",
+    "subtitle": "No es voluntariado general. Es una residencia formativa con rol definido, aprendizaje aplicado y aporte concreto.",
+    "description": "Programa residencial de 2 meses donde personas con una base previa en comunicación, agricultura, agroecología, agricultura sintrópica o bioconstrucción se integran a Madre Selva para ocupar un rol concreto. La experiencia combina convivencia, trabajo aplicado, acompañamiento y una entrega final útil para la continuidad del proceso.",
+    "description_strong": "Participar no significa solamente estar presente: significa ocupar un lugar, sostener un proceso y dejar algo claro, simple y continuable.",
+    "image": "/img/services/voluntariado-residencial-madre-selva-hero-voluntariado-residencial.webp",
+    "price": 133.33,
+    "currency": "USD",
+    "badge": "Residencia formativa · 2 meses",
+    "duration": "2 meses",
+    "format": "Residencial + formativa + aplicada",
+    "instructor": "Equipo Madre Selva",
+    "highlights": [
+      "Residencia de 2 meses en Madre Selva con alojamiento y comidas incluidas",
+      "Participación activa en uno de los 3 roles oficiales",
+      "Acompañamiento y aprendizaje desde la práctica diaria",
+      "Integración gradual a la vida, visión y dinámica del espacio",
+      "Evaluación al finalizar el primer mes y posibilidad de profundizar en el segundo",
+      "Entrega final útil para tu proceso y para la continuidad de Madre Selva"
+    ],
+    "rating": 5,
+    "students": 0,
+    "date": "Cohortes 2026: 3 de agosto y 5 de octubre",
+    "router": "/servicios/voluntariado-residencial-madre-selva",
+    "detail": {
+      "about_project": {
+        "org_name": "Madre Selva",
+        "overview": "Madre Selva es un territorio vivo en Misiones, Argentina, donde la formación sucede en convivencia con procesos reales de tierra, comunidad, infraestructura natural y comunicación. Esta residencia ordena la participación desde roles claros para que cada aporte tenga dirección, aprendizaje y continuidad.",
+        "mission": "Atraer personas con capacidades reales en áreas importantes para el espacio, acompañarlas en una experiencia aplicada y construir bases útiles para que los proyectos puedan seguir creciendo cuando la residencia termine.",
+        "track_record": {
+          "pdc_count": 2,
+          "designers_trained": 3,
+          "countries": 2,
+          "description": "La residencia se organiza alrededor de 3 roles principales, 2 meses de experiencia y 2 cohortes activas durante 2026."
+        }
+      },
+      "images": {
+        "community": "/img/services/voluntariado-residencial-madre-selva-convivencia-responsabilidades-compartidas.webp",
+        "natural_building": "/img/shared/bioconstruccion-mantenimiento.webp",
+        "permaculture_garden": "/img/shared/agroecologia-cuidado-agua.webp",
+        "workshop": "/img/shared/trabajo-comunitario-aprendizaje.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Convivencia residencial en Madre Selva",
+          "caption": "Convivencia y responsabilidades compartidas",
+          "icon": "Users"
+        },
+        "workshop": {
+          "alt": "Trabajo aplicado y aprendizaje cotidiano en Madre Selva",
+          "caption": "Trabajo aplicado y aprendizaje diario",
+          "icon": "Hammer"
+        },
+        "natural_building": {
+          "alt": "Procesos de bioconstrucción y mejora de espacios",
+          "caption": "Bioconstrucción y continuidad de obra",
+          "icon": "Home"
+        },
+        "permaculture_garden": {
+          "alt": "Procesos agrícolas y agroecológicos en el territorio",
+          "caption": "Agricultura, agroecología y cuidado del territorio",
+          "icon": "Droplets"
+        }
+      },
+      "ui_labels": {
+        "students": "Roles principales",
+        "pdc_count": "Meses de residencia",
+        "countries": "Cohortes 2026",
+        "rating": "Etapas del proceso"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Madre Selva",
+        "host_role": "Territorio anfitrión y escuela viva",
+        "host_description": "La experiencia se desarrolla en Madre Selva, con alojamiento en yurta compartida, comidas diarias, acceso a biblioteca, internet según disponibilidad del territorio y convivencia en un entorno de aprendizaje aplicado.",
+        "environment": {
+          "ecosystem": "Selva misionera subtropical",
+          "nearby_points": [
+            "Espacios de convivencia y aprendizaje",
+            "Procesos agrícolas y agroecológicos en desarrollo",
+            "Zonas de bioconstrucción y mejora de infraestructura"
+          ],
+          "climate": {
+            "region": "Misiones, Argentina",
+            "heat_humidity": "Clima cálido y húmedo, con noches frescas según la estación",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Lluvias frecuentes"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Equipo Madre Selva",
+          "role": "Acompañamiento del proceso y de los roles",
+          "bio": "Durante la primera semana se comparte la visión del espacio y se ordena el plan de trabajo. Desde la segunda semana, cada participante avanza en su rol con acompañamiento, devolución y 3 horas teóricas semanales."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "Es una residencia formativa por rol, con aprendizaje aplicado, evaluación intermedia y una entrega final concreta.",
+        "why_it_matters": "Permite que la participación no quede difusa: cada persona ocupa una función, aprende en territorio, aporta a necesidades reales y deja una base que pueda seguir teniendo valor.",
+        "pedagogy_axes": [
+          "Claridad de rol y expectativa",
+          "Aprendizaje con aplicación práctica",
+          "Convivencia y responsabilidad compartida",
+          "Evaluación al finalizar el primer mes",
+          "Entrega final útil, simple y continuable",
+          "Coherencia con la filosofía y los valores de Madre Selva"
+        ],
+        "intended_for": "Personas con una base previa en comunicación, redes, contenido, registro audiovisual, agricultura, agroecología, agricultura sintrópica, bioconstrucción, carpintería, arquitectura natural, albañilería o mejora de espacios.",
+        "prerequisites": "Compromiso con los 2 meses, disposición a la convivencia, responsabilidad sobre un plan concreto, apertura a recibir devolución y capacidad de dejar una entrega final útil."
+      },
+      "logistics": {
+        "dates": {
+          "start": "",
+          "end": "",
+          "arrival_note": "Cohortes activas 2026: lunes 3 de agosto y lunes 5 de octubre, todo el día, en Madre Selva - Misiones, Argentina."
+        },
+        "daily_rhythm": {
+          "note": "La experiencia combina práctica, observación, investigación, documentación y desarrollo del proyecto asignado.",
+          "schedule_blocks": [
+            "Semana 1 - Ingreso, integración, visión de Madre Selva y estructura del plan de trabajo",
+            "Mañanas - Trabajo de campo, observación directa, ejecución práctica e implementación del rol",
+            "Tardes - Investigación, organización, creación, documentación y desarrollo del proyecto",
+            "Desde la semana 2 - Aplicación del rol + 3 horas teóricas semanales",
+            "Mes 1 - Evaluación formal de avance, actitud, compromiso, integración y claridad del segundo mes",
+            "Mes 2 - Continuidad con ajustes y cierre con una entrega final útil para Madre Selva"
+          ]
+        },
+        "intensity": "Moderada, con responsabilidades concretas y adaptación al ritmo del territorio.",
+        "arrival_instructions": "Llegar a Posadas o San Vicente y coordinar el tramo final hacia Madre Selva según las indicaciones compartidas al confirmar la postulación.",
+        "internet_policy": "Internet disponible según la conectividad del territorio. Se recomienda traer datos móviles si la comunicación personal o laboral es imprescindible.",
+        "packing_list": [
+          "Ropa cómoda y de trabajo",
+          "Calzado apto para barro o lluvia",
+          "Abrigo para la noche",
+          "Cuaderno o herramienta de registro",
+          "Celular, cámara o computadora si tu rol lo requiere",
+          "Productos de higiene biodegradables",
+          "Botella de agua reutilizable",
+          "Bolsa de dormir o manta personal"
+        ]
+      },
+      "academic_package": {
+        "includes": [
+          "Residencia de 2 meses en Madre Selva",
+          "Alojamiento en yurta compartida",
+          "Desayuno, almuerzo y cena",
+          "Internet libre según disponibilidad del territorio",
+          "Acceso a biblioteca",
+          "Acompañamiento vinculado al rol",
+          "Plan de trabajo definido y seguimiento de avance",
+          "Acceso complementario a clases teóricas y/o prácticas disponibles",
+          "Evaluación al finalizar el primer mes",
+          "Cierre con entrega final clara, accionable y útil"
+        ],
+        "certification": {
+          "issued_by": [
+            "Madre Selva"
+          ],
+          "note_quality_standard": "Constancia de participación sujeta al cumplimiento del proceso, la evaluación intermedia y la entrega final."
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Incluye desayuno, almuerzo y cena durante la residencia.",
+          "diet_policy": "La alimentación se organiza según la dinámica comunitaria y las posibilidades del territorio.",
+          "extras": "Comunicar necesidades alimentarias antes de confirmar la participación."
+        },
+        "lodging": {
+          "base_included": "Alojamiento en yurta compartida durante los 2 meses de residencia.",
+          "upgrade_options": [],
+          "upgrade_note": ""
+        },
+        "transport": {
+          "included": false,
+          "note": "Traslado no incluido. Las indicaciones de llegada se comparten durante el proceso de postulación."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Integrarse a los acuerdos de convivencia del espacio",
+          "Sostener responsabilidad, buena actitud y comunicación clara",
+          "Cuidar los espacios comunes, el agua y los materiales disponibles",
+          "Aceptar devolución y ajustar el plan si hace falta",
+          "Cerrar el proceso con una entrega final útil y continuable"
+        ],
+        "water_food_safety": "Agua y cocina comunitaria disponibles con acuerdos de cuidado compartido.",
+        "medical_access": [
+          "Referencias de salud locales se comparten al ingreso",
+          "Se recomienda contar con cobertura o seguro personal para estadías prolongadas"
+        ],
+        "insurance_note": "Recomendado seguro personal para los 2 meses de residencia."
+      },
+      "family_policy": {
+        "kids_allowed": false,
+        "details": "Proceso residencial con foco formativo, convivencia y responsabilidades específicas por rol.",
+        "conditions": [
+          "Participación plena en la residencia",
+          "Compromiso con el plan de trabajo y la entrega final"
+        ]
+      },
+      "audience": {
+        "who_can_join": "Personas con una base previa en un área específica y ganas de vivir una experiencia de aprendizaje aplicada en territorio.",
+        "ideal_for": [
+          "Redes y comunicación: contenido, narrativa visual, escritura, registro audiovisual y documentación de procesos",
+          "Agricultura y agricultura sintrópica: agroecología, huerta, sistemas regenerativos y producción de alimentos",
+          "Bioconstrucción: arquitectura natural, carpintería, albañilería, diseño o mejora de espacios",
+          "Otros oficios alineados a necesidades reales de Madre Selva"
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "https://forms.gle/1kdFz1e76oY82EXd9",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      },
+      "overview_title": "Sobre la residencia",
+      "highlights_title": "Puntos clave del programa",
+      "application_url": "https://forms.gle/1kdFz1e76oY82EXd9",
+      "stats": [
+        {
+          "icon": "Users",
+          "value": "3",
+          "label": "Roles principales",
+          "tone": "stat-green"
+        },
+        {
+          "icon": "Clock",
+          "value": "2 meses",
+          "label": "Duración",
+          "tone": "stat-emerald"
+        },
+        {
+          "icon": "Calendar",
+          "value": "2",
+          "label": "Cohortes 2026",
+          "tone": "stat-teal"
+        },
+        {
+          "icon": "Leaf",
+          "value": "5",
+          "label": "Etapas del proceso",
+          "tone": "stat-green"
+        }
+      ],
+      "cohorts": [
+        {
+          "name": "Cohorte agosto",
+          "date": "Lunes 3 de agosto de 2026",
+          "location": "Madre Selva - Misiones, Argentina",
+          "availability": "3 lugares disponibles"
+        },
+        {
+          "name": "Cohorte octubre",
+          "date": "Lunes 5 de octubre de 2026",
+          "location": "Madre Selva - Misiones, Argentina",
+          "availability": "3 lugares disponibles"
+        }
+      ],
+      "roles": [
+        {
+          "name": "Redes y Comunicación",
+          "orientation": "Para personas con base en comunicación, contenido, redes sociales, escritura, narrativa visual o registro audiovisual.",
+          "purpose": "Ayuda a traducir la vida, la visión y los procesos de Madre Selva en una comunicación clara, sensible y coherente.",
+          "can_include": [
+            "Registro del día a día",
+            "Contenido para redes",
+            "Banco de imágenes o videos",
+            "Organización de material comunicacional",
+            "Propuesta de continuidad para futuras publicaciones"
+          ]
+        },
+        {
+          "name": "Agricultura y Agricultura Sintrópica",
+          "orientation": "Para personas con interés o base en agricultura, agroecología, huerta, sistemas regenerativos o producción de alimentos.",
+          "purpose": "Permite aprender y aportar dentro de procesos vivos vinculados a la tierra y al cuidado del territorio.",
+          "can_include": [
+            "Trabajo de campo",
+            "Observación del territorio",
+            "Apoyo en prácticas agrícolas",
+            "Registro de procesos",
+            "Criterios de continuidad o propuestas de mejora"
+          ]
+        },
+        {
+          "name": "Bioconstrucción",
+          "orientation": "Para personas con interés o base en bioconstrucción, arquitectura natural, carpintería, albañilería, diseño o mejora de espacios.",
+          "purpose": "Participa en proyectos físicos concretos y deja una base útil para su continuidad.",
+          "can_include": [
+            "Trabajo práctico",
+            "Mejora de espacios",
+            "Apoyo en obra",
+            "Organización de etapas o materiales",
+            "Diagnóstico de necesidades y recomendaciones de continuidad"
+          ]
+        }
+      ],
+      "process_steps": [
+        {
+          "title": "Ingreso e integración",
+          "description": "La persona conoce el espacio, entiende la lógica de funcionamiento, recibe el marco de su rol y ordena su plan de trabajo."
+        },
+        {
+          "title": "Desarrollo del rol",
+          "description": "Durante el primer mes ejecuta tareas concretas, se adapta al ritmo del lugar y demuestra si puede sostener la responsabilidad asumida."
+        },
+        {
+          "title": "Evaluación intermedia",
+          "description": "Al finalizar el primer mes se revisan compromiso, actitud, avance real, integración y claridad del plan para el segundo mes."
+        },
+        {
+          "title": "Continuidad o ajuste",
+          "description": "La continuidad puede sostenerse como viene, continuar con ajustes o cerrarse antes si el proceso no está funcionando."
+        },
+        {
+          "title": "Cierre y entrega final",
+          "description": "Al completar los 2 meses, la persona deja una entrega concreta vinculada a su rol y útil para Madre Selva."
+        }
+      ],
+      "participant_expectations": [
+        "Asumir un rol definido y sostenerlo con responsabilidad",
+        "Comprometerse con los 2 meses de residencia",
+        "Integrarse a la convivencia y a los acuerdos del espacio",
+        "Trabajar sobre un plan concreto y mostrar avances reales",
+        "Recibir devolución, ajustar si hace falta y cerrar con una entrega final útil"
+      ],
+      "not_for": [
+        "Un voluntariado abierto sin foco",
+        "Turismo barato o estadía libre sin responsabilidad",
+        "Una experiencia solo de techo y comida",
+        "Colaboración general sin rol definido",
+        "Una residencia sin evaluación",
+        "Una forma de venir a ver qué onda sin compromiso"
+      ],
+      "evaluation": {
+        "summary": "Al cumplirse el primer mes, cada participante pasa por una revisión formal con presentación grupal, devolución individual y revisión de avances.",
+        "criteria": [
+          "Avance real del proyecto asignado",
+          "Capacidad de aplicación",
+          "Coherencia con la filosofía del lugar",
+          "Actitud, aptitud, compromiso y responsabilidad",
+          "Integración a la convivencia",
+          "Claridad del plan para el segundo mes"
+        ],
+        "continuity_note": "La continuidad al segundo mes no es automática."
+      },
+      "final_delivery": {
+        "summary": "La experiencia no termina con haber participado. Termina cuando queda algo claro, simple, accionable y continuable.",
+        "examples": [
+          "Una estructura de trabajo reutilizable",
+          "Un proyecto definido y ordenado",
+          "Una base de continuidad o propuesta de seguimiento",
+          "Recursos claros para quienes sigan",
+          "Un documento, diagnóstico, banco de contenido, protocolo o guía de próximos pasos"
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Esto es un voluntariado?",
+          "answer": "No es voluntariado general. Es una residencia formativa por rol, con aprendizaje aplicado, responsabilidad concreta y entrega final."
+        },
+        {
+          "question": "¿Cuánto dura la residencia?",
+          "answer": "Dura 2 meses."
+        },
+        {
+          "question": "¿Puedo participar si no tengo experiencia previa?",
+          "answer": "El programa está pensado para personas que ya tienen una base previa en un área específica."
+        },
+        {
+          "question": "¿Qué roles están disponibles?",
+          "answer": "Redes y Comunicación, Agricultura y Agricultura Sintrópica, y Bioconstrucción."
+        },
+        {
+          "question": "¿Qué pasa al finalizar el primer mes?",
+          "answer": "Se realiza una evaluación formal. Madre Selva puede decidir continuidad, continuidad con ajustes o cierre anticipado."
+        },
+        {
+          "question": "¿Qué significa dejar una entrega final?",
+          "answer": "Significa cerrar el proceso con algo útil para la continuidad: documento, diagnóstico, banco de contenido, protocolo, propuesta de seguimiento u otro recurso claro."
+        },
+        {
+          "question": "¿Puedo proponer otro rol?",
+          "answer": "Sí, siempre que esté alineado a necesidades reales de Madre Selva y pueda sostenerse con responsabilidad."
+        },
+        {
+          "question": "¿Cómo se realiza la postulación?",
+          "answer": "El primer paso es completar el formulario de postulación. Luego el equipo revisa el perfil, el rol y la cohorte disponible."
+        }
+      ],
+      "cta": {
+        "price_description": "Incluye residencia, alojamiento, comidas, guía del rol, formación y entrega final.",
+        "primary_label": "Ir al formulario de postulación",
+        "primary_hint": "Completá el formulario para que el equipo revise tu postulación",
+        "note": "La postulación es el primer paso. La confirmación del lugar es manual.",
+        "support_title": "¿Tenés preguntas?",
+        "support_text": "Podés consultar antes de postular si necesitás aclarar requisitos, rol o fechas.",
+        "support_label": "Hacer una consulta",
+        "footer_title": "¿Querés postular a una cohorte?",
+        "footer_subtitle": "Leé la información, elegí el rol que mejor se alinea con tu experiencia y completá el formulario para que el equipo revise tu postulación.",
+        "footer_label": "Completar formulario de postulación",
+        "footer_hint": "Completá el formulario para iniciar la postulación",
+        "price_items": [
+          "2 meses",
+          "Alojamiento",
+          "Comidas",
+          "Guía del rol",
+          "Formación",
+          "Entrega final"
+        ]
+      },
+      "receive_summary": "La residencia no ofrece solo estadía. Ofrece una experiencia completa de vida, aprendizaje aplicado y participación real en Madre Selva, con condiciones concretas para que puedas sostener el proceso durante 2 meses.",
+      "client_receives": [
+        {
+          "title": "Residencia completa de 2 meses",
+          "description": "Vas a vivir en Madre Selva durante el proceso, con alojamiento en yurta compartida, desayuno, almuerzo y cena incluidos."
+        },
+        {
+          "title": "Un rol activo y definido",
+          "description": "No venís a hacer ayuda general: aplicás a Redes y Comunicación, Agricultura y Agricultura Sintrópica o Bioconstrucción, con un plan de trabajo concreto."
+        },
+        {
+          "title": "Acompañamiento práctico",
+          "description": "Recibís guía, devolución y seguimiento vinculado al rol, aprendiendo desde la práctica diaria y real del territorio."
+        },
+        {
+          "title": "Formación en contexto real",
+          "description": "El aprendizaje sucede habitando el rol, observando un sistema vivo, participando en tareas concretas y conectando práctica, criterio y sentido."
+        },
+        {
+          "title": "Convivencia en entorno natural",
+          "description": "Te integrás a una experiencia comunitaria en Madre Selva, con acceso a biblioteca, internet según disponibilidad del territorio y vida cotidiana compartida."
+        },
+        {
+          "title": "Profundización en el segundo mes",
+          "description": "Si pasás la evaluación del primer mes, podés acceder en el segundo mes al Programa de Aprendices de 12 días como formación complementaria."
+        },
+        {
+          "title": "Evaluación y feedback",
+          "description": "Al finalizar el primer mes se revisan avance, actitud, compromiso, integración y claridad del plan para continuar."
+        },
+        {
+          "title": "Entrega final concreta",
+          "description": "Cerrás el proceso dejando algo útil y continuable: una base de trabajo, diagnóstico, banco de contenido, propuesta, protocolo o guía de próximos pasos."
+        }
+      ]
+    }
+  },
+  {
+    "id": "festival-eco-de-la-tierra",
+    "type": "festival",
+    "category": "festival",
+    "project": "Madre Selva / Movimiento Ná Lu'um",
+    "title": "Festival Eco de la Tierra",
+    "subtitle": "Encuentro cultural, comunitario y regenerativo en la Selva Misionera.",
+    "description": "El Festival Eco de la Tierra es un encuentro vivo que une arte, territorio y regeneración real. Tres días de música, círculos de palabra, bioconstrucción en vivo, feria de saberes, comida consciente y tejido comunitario. No es solo festival: es comunidad en acto, convocada desde el Movimiento Ná Lu’um y Madre Selva para encender memoria colectiva y responsabilidad con la Tierra.",
+    "image": "/img/hero/hero-festival-eco-de-la-tierra.webp",
+    "price": 0,
+    "currency": "USD",
+    "badge": "Encuentro comunitario",
+    "duration": "3 días",
+    "format": "Presencial · Madre Selva (Misiones, Argentina)",
+    "instructor": "Equipo Madre Selva + Movimiento Ná Lu'um + invitadxs territoriales",
+    "highlights": [
+      "Música y artistas en territorio",
+      "Rondas de medicina comunitaria / palabra / escucha",
+      "Talleres abiertos de permacultura y bioconstrucción",
+      "Feria de economías vivas y producción local",
+      "Cocina consciente y comida comunitaria",
+      "Espacios de niñez y familias en clave de respeto"
+    ],
+    "rating": 5,
+    "students": 0,
+    "date": "2026-12-05",
+    "router": "/servicios/festival-eco-de-la-tierra",
+    "detail": {
+      "about_project": {
+        "org_name": "Movimiento Ná Lu'um / Madre Selva",
+        "overview": "Reunión territorial donde conocimiento, música, alimento y trabajo real conviven. Es celebración pero también declaración política del cuidado de la vida.",
+        "mission": "Volver a encontrarnos en torno a la Tierra y recordar que regenerar no es moda, es responsabilidad compartida.",
+        "track_record": {
+          "pdc_count": 250,
+          "designers_trained": 7000,
+          "countries": 40,
+          "description": "Más de dos décadas encendiendo procesos comunitarios, educativos y regenerativos en múltiples territorios."
+        }
+      },
+      "images": {
+        "community": "/img/services/festival-eco-de-la-tierra-musica-palabra-y-celebracion-en-territorio.webp",
+        "natural_building": "/img/services/festival-eco-de-la-tierra-bioconstruccion-en-vivo-y-participacion.webp",
+        "permaculture_garden": "/img/services/festival-eco-de-la-tierra-sistemas-vivos-en-la-selva-misionera.webp",
+        "workshop": "/img/services/festival-eco-de-la-tierra-talleres-abiertos-y-circulos-de-intercambio.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Festival con música, rondas y tejido comunitario",
+          "caption": "Música, palabra y celebración en territorio",
+          "icon": "Music"
+        },
+        "workshop": {
+          "alt": "Talleres y feria de saberes abiertos",
+          "caption": "Talleres abiertos y círculos de intercambio",
+          "icon": "Sparkles"
+        },
+        "natural_building": {
+          "alt": "Demostraciones de bioconstrucción en vivo",
+          "caption": "Bioconstrucción en vivo y participación",
+          "icon": "Hammer"
+        },
+        "permaculture_garden": {
+          "alt": "Recorridos por sistemas de agua, suelo y alimento",
+          "caption": "Sistemas vivos en la selva misionera",
+          "icon": "Trees"
+        }
+      },
+      "ui_labels": {
+        "students": "Asistentes",
+        "pdc_count": "Procesos",
+        "countries": "Países",
+        "rating": "Valoración"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Madre Selva",
+        "host_role": "Territorio anfitrión y nodo vivo del Movimiento Ná Lu’um",
+        "host_description": "Centro de Permacultura y regeneración en Misiones, Argentina. Selva, agua y comunidad en práctica.",
+        "environment": {
+          "ecosystem": "Selva misionera (Reserva de la Biosfera Yabotí)",
+          "nearby_points": [
+            "Río Uruguay",
+            "Saltos del Moconá",
+            "Sistemas agroforestales y bioconstrucciones en uso real"
+          ],
+          "climate": {
+            "region": "Misiones, NE Argentina",
+            "heat_humidity": "Clima cálido y húmedo",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Alta pluviosidad"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Movimiento Ná Lu'um",
+          "role": "Tejido pedagógico y comunitario",
+          "bio": "Red internacional de regeneración del Ser, la Sociedad y el Paisaje activa hace más de 25 años."
+        },
+        {
+          "name": "Equipo Madre Selva",
+          "role": "Cuidado del territorio anfitrión",
+          "bio": "Comunidad residente que sostiene agua, alimento, infraestructura viva y acuerdos de convivencia."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "No es un PDC académico. Es un encuentro cultural y político de territorio.",
+        "why_it_matters": "Te encontrás con comunidad real, no con discurso vacío. Se comparte música, palabra, comida, construcción y procesos de tierra viva.",
+        "pedagogy_axes": [
+          "Permacultura aplicada y sistemas de agua/suelo",
+          "Bioconstrucción en vivo",
+          "Economía comunitaria y trueque consciente",
+          "Escucha activa y memoria colectiva",
+          "Cuidado común de la infancia",
+          "Arte como herramienta de regeneración"
+        ],
+        "intended_for": "Personas que quieren pertenecer a algo vivo sin disfrazarlo de marketing verde.",
+        "prerequisites": "Respeto por el territorio y por la comunidad. No venís a consumir: venís a participar."
+      },
+      "logistics": {
+        "dates": {
+          "start": "2026-12-05",
+          "end": "2026-12-07",
+          "arrival_note": "Ingreso el día anterior para acampar tranquilo y no caer en pleno círculo de apertura."
+        },
+        "daily_rhythm": {
+          "note": "Ritmo orgánico entre talleres, música, cuidado del fuego y comida común.",
+          "schedule_blocks": [
+            "Mañana · Recorridos guiados por sistemas vivos de Madre Selva",
+            "Mediodía · Espacio de comida consciente y trueque local",
+            "Tarde · Talleres abiertos (bioconstrucción, agua, suelo, comunidad)",
+            "Noche · Rondas de palabra, música y celebración colectiva"
+          ]
+        },
+        "intensity": "Intenso a nivel emocional y social. Mucha interacción humana real. Clima subtropical húmedo.",
+        "camping_note": "Zona de camping disponible. Opciones de cabaña / domo / yurta con aporte extra y cupo limitado."
+      },
+      "academic_package": {
+        "includes": [
+          "Acceso a talleres abiertos",
+          "Espacios de conversación directa con el equipo residente",
+          "Participación en rondas comunitarias",
+          "Entrada a las actividades musicales y culturales nocturnas"
+        ],
+        "certification": {
+          "issued_by": [
+            "Movimiento Ná Lu'um",
+            "Madre Selva"
+          ],
+          "note_quality_standard": "No es una certificación técnica. Es experiencia territorial y comunitaria."
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Comida comunitaria consciente disponible durante el festival (no incluida en el aporte base).",
+          "diet_policy": "Cocina real de territorio. No prometemos menú boutique. Si necesitás dieta específica, traé tu base.",
+          "extras": "Feria de alimentos locales y medicinas naturales."
+        },
+        "lodging": {
+          "base_included": "Espacio de carpa propia en zona de camping.",
+          "upgrade_options": [
+            "Cabañas",
+            "Domos",
+            "Yurtas"
+          ],
+          "upgrade_note": "Aporte extra. Cupos limitados. Reservar con anticipación."
+        },
+        "transport": {
+          "included": false,
+          "note": "Traslado hasta Madre Selva por cuenta de cada participante. Coordinamos referencias de llegada rural."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Selva subtropical con insectos",
+          "Posible presencia de mosquitos (dengue / fiebre amarilla en la región)",
+          "Terreno natural con barro, raíces, pendientes"
+        ],
+        "water_food_safety": "Agua potable disponible en el predio. Cocina comunitaria en sitio.",
+        "medical_access": [
+          "Centro de salud cercano",
+          "Hospital más grande a ~25 km"
+        ],
+        "insurance_note": "Recomendado seguro médico básico, especialmente si venís de otro país."
+      },
+      "family_policy": {
+        "kids_allowed": true,
+        "details": "Festival familiar, pero no infantilizado.",
+        "conditions": [
+          "No hay guardería",
+          "Territorio natural sin vallas",
+          "Pedimos respeto por los espacios de escucha comunitaria"
+        ]
+      },
+      "audience": {
+        "who_can_join": "Personas que quieren comunidad real, no solo fotos para redes.",
+        "ideal_for": [
+          "Gente que siente llamado de Tierra",
+          "Personas que quieren tejer red y no saben por dónde empezar",
+          "Familias buscando referencias de vida regenerativa",
+          "Artistas, cuidadores, educadores, sembradores"
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      }
+    }
+  },
+  {
+    "id": "camping-madre-selva",
+    "type": "service",
+    "category": "turismo",
+    "project": "Madre Selva",
+    "title": "Camping y Dormis en Madre Selva",
+    "subtitle": "Dormí bajo las estrellas: Camping o Yurta en la selva.",
+    "description": "Nuestro espacio en plena selva misionera es un laboratorio vivo. Ofrecemos tres modalidades de estadía: Camping solo (traé tu equipo), Camping con desayuno, o la comodidad de nuestros Dormis en Yurta (Bed & Breakfast). Disfrutá de baños composteros, duchas con biofiltros, agua de naciente y cocina comunitaria. Política de residuo cero.",
+    "image": "/img/services/camping-madre-selva-hero-camping.webp",
+    "price": 10000,
+    "currency": "ARS",
+    "badge": "Turismo regenerativo · Residuo cero",
+    "duration": "Por noche",
+    "format": "Residencial (Carpa o Yurta)",
+    "instructor": "Equipo Madre Selva",
+    "highlights": [
+      "Opción Camping o Dormi (Yurta)",
+      "Baños composteros y biofiltros naturales",
+      "Agua de naciente pura y cuidada",
+      "Cocina comunitaria a leña",
+      "Senderos naturales y arroyo para descanso"
+    ],
+    "rating": 4.9,
+    "students": 0,
+    "date": "",
+    "router": "/servicios/camping-madre-selva",
+    "detail": {
+      "about_project": {
+        "org_name": "Eco Centro Madre Selva",
+        "overview": "Escuela Viva de sustentabilidad y centro de investigación en regeneración ubicada en la selva misionera (Misiones, Argentina).",
+        "mission": "Vivir, mostrar y enseñar modos de habitar que regeneren tierra, cultura y vínculos.",
+        "track_record": {
+          "pdc_count": 250,
+          "designers_trained": 7000,
+          "countries": 40,
+          "description": "Más de una década regenerando 22+ hectáreas con agroforestería y bioconstrucción."
+        }
+      },
+      "images": {
+        "community": "/img/services/camping-madre-selva-vivir-simple-bajo-las-estrellas.webp",
+        "natural_building": "/img/services/camping-madre-selva-un-espacio-pensado.webp",
+        "permaculture_garden": "/img/services/camping-madre-selva-camping-cartel.webp",
+        "workshop": "/img/services/camping-madre-selva-un-compartir-multicultural.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Zona de camping con carpas y fogón",
+          "caption": "Vivir simple, bajo las estrellas",
+          "icon": "Tent"
+        },
+        "workshop": {
+          "alt": "Interior de la Yurta y áreas comunes",
+          "caption": "Descanso confortable y multicultural",
+          "icon": "Home"
+        },
+        "natural_building": {
+          "alt": "Baños composteros y biofiltros en el camping",
+          "caption": "Un espacio pensado para estar",
+          "icon": "Droplets"
+        },
+        "permaculture_garden": {
+          "alt": "Senderos, arroyo y vegetación nativa",
+          "caption": "Selva misionera para respirar",
+          "icon": "Trees"
+        }
+      },
+      "ui_labels": {
+        "students": "Visitantes",
+        "pdc_count": "Procesos",
+        "countries": "Países",
+        "rating": "Valoración"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Eco Centro Madre Selva",
+        "host_role": "Sede y territorio vivo",
+        "host_description": "Espacio comunitario inmerso en la selva misionera con sistemas de agua, suelo y energía diseñados desde la permacultura.",
+        "environment": {
+          "ecosystem": "Selva misionera subtropical",
+          "nearby_points": [
+            "Arroyo dentro del predio",
+            "Sistemas agroforestales en sucesión",
+            "Áreas de bioconstrucción en uso"
+          ],
+          "climate": {
+            "region": "Misiones, NE de Argentina",
+            "heat_humidity": "Caluroso y húmedo",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Lluvias frecuentes"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Equipo Madre Selva",
+          "role": "Cuidado del territorio y acompañamiento de visitantes",
+          "bio": "Comunidad residente que sostiene sistemas de agua, suelo y vida comunitaria."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "Experiencia de turismo regenerativo con opciones de Camping o Dormi.",
+        "why_it_matters": "Dormir en territorio vivo cambia la relación con la naturaleza y enseña prácticas concretas de cuidado.",
+        "pedagogy_axes": [
+          "Cultura de residuo cero",
+          "Uso consciente del agua (biofiltros y naciente)",
+          "Vida sencilla y comunitaria"
+        ],
+        "intended_for": "Quienes quieren descansar, reconectar y aprender desde la práctica cotidiana.",
+        "prerequisites": "Para camping: traer carpa. Para todos: predisposición a convivir en entorno natural."
+      },
+      "pricing_plans": [
+        {
+          "name": "Opción 1: Solo Camping",
+          "price": 15000,
+          "description": "Traés tu carpa y todo tu equipo.",
+          "includes_breakfast": false
+        },
+        {
+          "name": "Opción 2: Camping con Desayuno",
+          "price": 22000,
+          "description": "Traés tu carpa. Incluye desayuno y acceso full a instalaciones.",
+          "includes_breakfast": true
+        },
+        {
+          "name": "Opción 3: Dormis Compartidos (Yurta)",
+          "price": 30000,
+          "description": "Cama en dormi compartido (Yurta). Incluye desayuno y ropa de cama.",
+          "includes_breakfast": true
+        }
+      ],
+      "logistics": {
+        "dates": {
+          "start": "",
+          "end": "",
+          "arrival_note": "Check-in 14:00 · Check-out 11:00. Sujeto a cupo y clima."
+        },
+        "daily_rhythm": {
+          "note": "Ritmo libre en entorno natural con espacios comunes compartidos.",
+          "schedule_blocks": [
+            "Mañana · Desayuno (según plan) y arroyo",
+            "Mediodía · Cocina comunitaria a leña",
+            "Tarde · Lectura, mate y descanso"
+          ]
+        },
+        "intensity": "Suave. Exposición a clima subtropical húmedo."
+      },
+      "academic_package": {
+        "includes": [
+          "Acceso a baños composteros y biofiltros",
+          "Uso de cocina comunitaria a leña e internet",
+          "Agua de naciente",
+          "Acceso al arroyo y senderos"
+        ],
+        "certification": {
+          "issued_by": [
+            "Eco Centro Madre Selva"
+          ],
+          "note_quality_standard": "No aplica"
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Depende de la opción elegida.",
+          "diet_policy": "Opciones con desayuno incluyen alimentos básicos. Resto de comidas autogestionadas.",
+          "extras": "Venta ocasional de productos locales."
+        },
+        "lodging": {
+          "base_included": "Camping: Espacio para carpa propia.",
+          "upgrade_options": [
+            "(Solo Camping): $15.000",
+            "(Camping + Desayuno): $22.000",
+            "(Dormi en Yurta + Desayuno): $30.000 - Cama y confort extra."
+          ],
+          "upgrade_note": "Sujeto a disponibilidad."
+        },
+        "transport": {
+          "included": false,
+          "note": "Traslado por cuenta del visitante."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Región con mosquitos (dengue/fiebre amarilla en la zona)",
+          "Selva con barro, raíces y pendientes"
+        ],
+        "water_food_safety": "Agua potable de naciente. Espacios de lavado con biofiltros.",
+        "medical_access": [
+          "Centro de salud cercano",
+          "Hospital a ~25 km"
+        ],
+        "insurance_note": "Recomendado seguro personal para visitantes de otras provincias/países."
+      },
+      "family_policy": {
+        "kids_allowed": true,
+        "details": "Apto familias con cuidado responsable en entorno natural.",
+        "conditions": [
+          "No hay guardería",
+          "Territorio natural sin vallas"
+        ]
+      },
+      "audience": {
+        "who_can_join": "Toda persona con respeto por el territorio y sus normas.",
+        "ideal_for": [
+          "Amantes de la naturaleza",
+          "Personas que buscan descanso consciente",
+          "Viajeros que buscan camping o hostel ecológico"
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      }
+    }
+  },
+  {
+    "id": "restaurante-madre-selva",
+    "type": "service",
+    "category": "turismo",
+    "project": "Madre Selva",
+    "title": "Restaurante Madre Selva",
+    "subtitle": "Alimentación viva que nutre cuerpo, alma y tierra.",
+    "description": "Cocina con propósito hecha con productos frescos, locales y regenerativos. Platos veganos y vegetarianos, opciones con carne de manejo responsable, y bebidas naturales con frutas locales. Menú del día según la estación y lo que ofrece la huerta.",
+    "image": "/img/services/restaurante-madre-selva-hero-cocina.webp",
+    "price": 0,
+    "currency": "ARS",
+    "badge": "Alimentación consciente · Solo con reserva",
+    "duration": "Servicio por turno",
+    "format": "Con reserva previa",
+    "instructor": "Equipo de cocina Madre Selva",
+    "highlights": [
+      "Ingredientes agroecológicos y agroforestales",
+      "Platos veganos, vegetarianos y con carne consciente",
+      "Bebidas naturales y jugos de frutas locales",
+      "Menú estacional según disponibilidad real",
+      "Comer para regenerar el territorio"
+    ],
+    "rating": 5,
+    "students": 0,
+    "date": "",
+    "router": "/servicios/restaurante-madre-selva",
+    "detail": {
+      "about_project": {
+        "org_name": "Eco Centro Madre Selva",
+        "overview": "Cocina que refleja la filosofía de vida del territorio: coherencia entre lo que se siembra y lo que se sirve.",
+        "mission": "Alimentar bien como acto de amor y regeneración.",
+        "track_record": {
+          "pdc_count": 250,
+          "designers_trained": 7000,
+          "countries": 40,
+          "description": "Huertas agroecológicas y sistemas agroforestales en producción continua."
+        }
+      },
+      "images": {
+        "community": "/img/services/restaurante-madre-selva-comer-para-regenerar-el-territorio.webp",
+        "natural_building": "/img/services/restaurante-madre-selva-bioconstruccion-y-coherencia-espacial.webp",
+        "permaculture_garden": "/img/services/restaurante-madre-selva-ingrediente-de-huerta-y-bosque-comestible.webp",
+        "workshop": "/img/services/restaurante-madre-selva-origen-tecnicas-y-estacionalidad.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Comedor Madre Selva con experiencia compartida",
+          "caption": "Comer para regenerar el territorio",
+          "icon": "Utensils"
+        },
+        "workshop": {
+          "alt": "Preparación del menú y pedagogía del alimento",
+          "caption": "Origen, técnicas y estacionalidad",
+          "icon": "ChefHat"
+        },
+        "natural_building": {
+          "alt": "Arquitectura natural presente en el comedor",
+          "caption": "Bioconstrucción y coherencia espacial",
+          "icon": "Home"
+        },
+        "permaculture_garden": {
+          "alt": "Huerta y cosecha estacional del territorio",
+          "caption": "Ingredientes de huerta y bosque comestible",
+          "icon": "Wheat"
+        }
+      },
+      "ui_labels": {
+        "students": "Comensales",
+        "pdc_count": "Procesos",
+        "countries": "Países",
+        "rating": "Valoración"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Eco Centro Madre Selva",
+        "host_role": "Cocina y comedor comunitario",
+        "host_description": "Restaurante consciente que cocina con lo que ofrece el territorio y la temporada.",
+        "environment": {
+          "ecosystem": "Selva misionera",
+          "nearby_points": [
+            "Huertas agroecológicas",
+            "Viveros y áreas de recolección",
+            "Sistemas de agua y compost en funcionamiento"
+          ],
+          "climate": {
+            "region": "Misiones, NE de Argentina",
+            "heat_humidity": "Caluroso y húmedo",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Lluvias frecuentes"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Equipo de cocina Madre Selva",
+          "role": "Preparación del menú, servicio y pedagogía del alimento",
+          "bio": "Cocina local con prácticas regenerativas y estacionales."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "No es un PDC. Es una experiencia culinaria regenerativa.",
+        "why_it_matters": "Comer bien sostiene salud y territorio.",
+        "pedagogy_axes": [
+          "Soberanía alimentaria",
+          "Cocina estacional",
+          "Ingredientes regenerativos"
+        ],
+        "intended_for": "Quienes valoran una alimentación consciente y con sentido.",
+        "prerequisites": "Reserva previa obligatoria."
+      },
+      "logistics": {
+        "dates": {
+          "start": "",
+          "end": "",
+          "arrival_note": "Reservar con anticipación. Cupos por turno."
+        },
+        "daily_rhythm": {
+          "note": "Servicio por turnos según agenda.",
+          "schedule_blocks": [
+            "Apertura · Recepción",
+            "Servicio · Menú del día",
+            "Cierre · Agradecimiento"
+          ]
+        },
+        "intensity": "Suave. Espacio de disfrute y calma."
+      },
+      "academic_package": {
+        "includes": [
+          "Menú del día con ingredientes locales",
+          "Bebidas naturales disponibles (con costo)",
+          "Contexto pedagógico sobre el origen de los alimentos"
+        ],
+        "certification": {
+          "issued_by": [
+            "Eco Centro Madre Selva"
+          ],
+          "note_quality_standard": "No aplica"
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Servicio gastronómico con menú del día.",
+          "diet_policy": "Opciones veganas, vegetarianas y con carne consciente.",
+          "extras": "Bebidas naturales, yerba mate local."
+        },
+        "lodging": {
+          "base_included": "No incluye alojamiento.",
+          "upgrade_options": [
+            "Consultar por camping o dormis"
+          ],
+          "upgrade_note": "Reservas por separado."
+        },
+        "transport": {
+          "included": false,
+          "note": "Traslado por cuenta del visitante."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Clima subtropical húmedo"
+        ],
+        "water_food_safety": "Manipulación segura y alimentos de huerta.",
+        "medical_access": [
+          "Centro de salud cercano"
+        ],
+        "insurance_note": "Opcional."
+      },
+      "family_policy": {
+        "kids_allowed": true,
+        "details": "Espacio apto familias.",
+        "conditions": [
+          "Cuidado responsable de niñas y niños"
+        ]
+      },
+      "audience": {
+        "who_can_join": "Todo público con reserva previa.",
+        "ideal_for": [
+          "Personas que valoran comida real",
+          "Viajeros que buscan experiencias con sentido",
+          "Familias y grupos pequeños"
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      }
+    }
+  },
+  {
+    "id": "visitas-guiadas-madre-selva",
+    "type": "service",
+    "category": "turismo",
+    "project": "Madre Selva",
+    "title": "Visitas Guiadas en Madre Selva",
+    "subtitle": "Cómo la permacultura transforma la vida (recorrido educativo).",
+    "description": "Sábados y domingos de 10:00 a 13:30 abrimos el territorio para recorrer bioconstrucciones, huertas agroforestales, viveros y zonas de reforestación. Incluye almuerzo casero (bebidas no incluidas) y degustación de yerba mate orgánica Madre Selva. Tiempo libre para el arroyo.",
+    "image": "/img/services/visitas-guiadas-madre-selva-hero.webp",
+    "price": 30000,
+    "currency": "ARS",
+    "badge": "Recorrido educativo · Con almuerzo",
+    "duration": "3.5 horas",
+    "format": "Sáb y dom · 10:00–13:30",
+    "instructor": "Equipo Madre Selva",
+    "highlights": [
+      "Recorrido por sistemas vivos (agua, suelo, energía)",
+      "Bioconstrucción, agroforestería y reforestación",
+      "Almuerzo casero (bebidas no incluidas)",
+      "Degustación de yerba mate orgánica",
+      "Tiempo libre en el arroyo"
+    ],
+    "rating": 5,
+    "students": 0,
+    "date": "",
+    "router": "/servicios/visitas-guiadas-madre-selva",
+    "detail": {
+      "about_project": {
+        "org_name": "Eco Centro Madre Selva",
+        "overview": "Proyecto de vida sustentable que integra diseño regenerativo, bioconstrucción y agricultura sintrópica.",
+        "mission": "Compartir filosofía y práctica de la regeneración con visitantes.",
+        "track_record": {
+          "pdc_count": 250,
+          "designers_trained": 7000,
+          "countries": 40,
+          "description": "22+ hectáreas restauradas y comunidad de aprendizaje activa."
+        }
+      },
+      "images": {
+        "community": "/img/services/visitas-guiadas-madre-selva-aprendizaje-en-territorio-vivo.webp",
+        "natural_building": "/img/services/visitas-guiadas-madre-selva-conexion.webp",
+        "permaculture_garden": "/img/services/visitas-guiadas-madre-selva-agroforesteria-y-propagacion.webp",
+        "workshop": "/img/services/visitas-guiadas-madre-selva-diseno-aplicado-y-preguntas-en-ruta.webp"
+      },
+      "image_meta": {
+        "community": {
+          "alt": "Grupo en recorrido educativo por Madre Selva",
+          "caption": "Aprendizaje en territorio vivo",
+          "icon": "Users"
+        },
+        "workshop": {
+          "alt": "Explicaciones técnicas de agua, suelo y energía",
+          "caption": "Diseño aplicado y preguntas en ruta",
+          "icon": "BookOpen"
+        },
+        "natural_building": {
+          "alt": "Regeneracion del ser",
+          "caption": "Conexion-reflexion",
+          "icon": "Home"
+        },
+        "permaculture_garden": {
+          "alt": "Huertas, viveros y áreas de reforestación",
+          "caption": "Agroforestería y propagación",
+          "icon": "Sprout"
+        }
+      },
+      "ui_labels": {
+        "students": "Visitantes",
+        "pdc_count": "Procesos",
+        "countries": "Países",
+        "rating": "Valoración"
+      },
+      "host_location": {
+        "is_itinerant": false,
+        "host_name": "Eco Centro Madre Selva",
+        "host_role": "Territorio anfitrión",
+        "host_description": "Sistemas productivos, energéticos y comunitarios en funcionamiento real.",
+        "environment": {
+          "ecosystem": "Selva misionera",
+          "nearby_points": [
+            "Áreas de bioconstrucción",
+            "Huertas agroforestales y viveros",
+            "Zonas de reforestación"
+          ],
+          "climate": {
+            "region": "Misiones, NE de Argentina",
+            "heat_humidity": "Caluroso y húmedo",
+            "summer_average_celsius": 32,
+            "summer_max_celsius": 38.5,
+            "rain_pattern": "Lluvias frecuentes"
+          }
+        }
+      },
+      "facilitators": [
+        {
+          "name": "Equipo Madre Selva",
+          "role": "Guía del recorrido y transmisión pedagógica",
+          "bio": "Facilitadores con experiencia en permacultura aplicada y vida comunitaria."
+        }
+      ],
+      "program": {
+        "what_is_pdc": "No es un PDC. Es una visita guiada educativa intensiva.",
+        "why_it_matters": "Ves sistemas reales funcionando y comprendés su lógica.",
+        "pedagogy_axes": [
+          "Diseño de agua y suelo",
+          "Bioconstrucción",
+          "Agroforestería y regeneración"
+        ],
+        "intended_for": "Toda persona interesada en conocer la práctica real de la permacultura.",
+        "prerequisites": "Reserva previa. Calzado cómodo y ropa acorde al clima."
+      },
+      "logistics": {
+        "dates": {
+          "start": "",
+          "end": "",
+          "arrival_note": "Sábados y domingos · 10:00 a 13:30. Llegar 15 minutos antes."
+        },
+        "daily_rhythm": {
+          "note": "Recorrido guiado más almuerzo casero y tiempo libre.",
+          "schedule_blocks": [
+            "10:00 · Apertura y presentación",
+            "10:15–12:15 · Recorrido por sistemas vivos",
+            "12:30–13:30 · Almuerzo casero (bebidas no incluidas)"
+          ]
+        },
+        "intensity": "Moderada por caminatas en terreno natural."
+      },
+      "academic_package": {
+        "includes": [
+          "Guía y explicaciones técnicas",
+          "Almuerzo casero",
+          "Degustación de yerba mate orgánica"
+        ],
+        "certification": {
+          "issued_by": [
+            "Eco Centro Madre Selva"
+          ],
+          "note_quality_standard": "No aplica"
+        }
+      },
+      "on_site_includes": {
+        "food": {
+          "description": "Almuerzo casero incluido (bebidas no incluidas).",
+          "diet_policy": "Menú local. Consultar por restricciones alimentarias con anticipación.",
+          "extras": "Bebidas naturales disponibles con costo."
+        },
+        "lodging": {
+          "base_included": "No incluye alojamiento.",
+          "upgrade_options": [
+            "Consultar por camping"
+          ],
+          "upgrade_note": "Reservas aparte."
+        },
+        "transport": {
+          "included": false,
+          "note": "Traslado por cuenta del visitante."
+        }
+      },
+      "health_and_environment": {
+        "area_notes": [
+          "Mosquitos y alta humedad",
+          "Terreno natural con barro y raíces"
+        ],
+        "water_food_safety": "Agua potable disponible. Alimentos elaborados en sitio.",
+        "medical_access": [
+          "Centro de salud cercano",
+          "Hospital a ~25 km"
+        ],
+        "insurance_note": "Recomendado seguro personal."
+      },
+      "family_policy": {
+        "kids_allowed": true,
+        "details": "Apto para familias con niñas y niños acompañados.",
+        "conditions": [
+          "Sin guardería",
+          "Respeto por el ritmo del grupo"
+        ]
+      },
+      "audience": {
+        "who_can_join": "Todo público con interés genuino.",
+        "ideal_for": [
+          "Estudiantes y curiosos de la permacultura",
+          "Viajeros y familias",
+          "Docentes y gestores comunitarios"
+        ]
+      },
+      "contact": {
+        "instagram": "@madree.selvaa",
+        "facebook": "Madree.selvaa",
+        "youtube": "",
+        "website": "",
+        "email": "institutonaluum@gmail.com",
+        "whatsapp_telegram": "+5493764257777"
+      }
+    }
   }
 ]

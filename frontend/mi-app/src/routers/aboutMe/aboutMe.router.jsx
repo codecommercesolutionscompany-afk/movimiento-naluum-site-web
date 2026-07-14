@@ -26,9 +26,6 @@ const TimeLineHistory = lazy(() => import('../../components/seccion/history_abou
 // 📂 Styles
 import './aboutMe.router.scss';
 
-let DOMAIN = import.meta.env.VITE_API_URL;
-
-
 // Loading component para Suspense
 const LoadingFallback = () => (
   <div className="loading-fallback" aria-label="Cargando contenido">
@@ -85,7 +82,7 @@ const AboutMe = () => {
         title="Sobre Naluum | Movimiento de Regeneración Planetaria"
         description="Descubre la historia del movimiento Naluum, conoce a nuestros fundadores y nuestra misión de transformar el mundo a través de soluciones sostenibles innovadoras que regeneran nuestro planeta."
         keywords="Naluum, regeneración planetaria, sostenibilidad, medio ambiente, innovación sostenible, fundadores Naluum, valores empresariales, conciencia ambiental"
-        image="/img/hero_sobreMi.jpg"
+        image="/img/hero/sobre-nosotros.webp"
         canonicalUrl={window.location.href}
         ogType="website"
       >
@@ -102,7 +99,7 @@ const AboutMe = () => {
         <Header>
           <section className='aboutMe__header-img-container' aria-label="Imagen hero">
             <img 
-              src="/img/curso1.jpg" 
+              src="/img/shared/curso-diseno-permacultura.webp"
               alt="Vista panorámica del movimiento Naluum - Regeneración planetaria en acción" 
               className="aboutMe__header-img"
               loading="eager"
@@ -141,7 +138,7 @@ const AboutMe = () => {
           <section className='aboutMe__content-history' aria-label="Historia de Naluum">
             <Suspense fallback={<LoadingFallback />}>
               <FadeInOnView {...fadeInProps}>
-                <TimeLineHistory index={0} titles={titles} showHeroBg={true} heroBgImage={`${DOMAIN}/img/logo_naluum_trasparente.svg`}  />
+                <TimeLineHistory index={0} titles={titles} showHeroBg={true} heroBgImage="/img/branding/logo-naluum-transparente.svg" />
               </FadeInOnView>
             </Suspense>
           </section>

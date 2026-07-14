@@ -55,24 +55,11 @@
     ]
   },
   {
-    "id": "faq-6",
-    "category": "pagos",
-    "question": "¿Qué métodos de pago aceptan?",
-    "answer": "Aceptamos tarjetas de crédito y débito (Visa, MasterCard, American Express), transferencias bancarias, PayPal y pagos en efectivo para compras presenciales. También ofrecemos planes de pago sin intereses para cursos y programas de formación.",
-    "links": [
-      {
-        "text": "Ver opciones de financiamiento",
-        "url": "/pagos/financiamiento",
-        "external": false
-      }
-    ]
-  },
-  {
     "id": "faq-7",
-    "category": "pagos",
+    "category": "productos",
     "question": "¿Realizan envíos a todo el país?",
-    "answer": "Sí, realizamos envíos a todo el territorio nacional. Los costos varían según la ubicación y el peso del pedido. Para compras superiores a $100 USD, el envío es gratuito. Los productos digitales y cursos online no tienen costos de envío.",
-    "additionalInfo": "Tiempo estimado de entrega: 3-5 días hábiles para zonas urbanas, 5-10 días para zonas rurales."
+    "answer": "Consulta con nuestro equipo la cobertura, disponibilidad y condiciones de entrega para cada producto.",
+    "additionalInfo": "Los tiempos dependen de la ubicación y del producto consultado."
   },
   {
     "id": "faq-8",
@@ -96,8 +83,8 @@
   {
     "id": "faq-10",
     "category": "productos",
-    "question": "¿Cómo accedo al E-book de Agricultura Sintrópica después de comprarlo?",
-    "answer": "Inmediatamente después de confirmar tu pago, recibirás un correo con el enlace de descarga. El E-book viene en formato PDF interactivo con videos insertados, gráficos y enlaces a recursos adicionales. Puedes descargarlo en cualquier dispositivo y tendrás acceso de por vida, incluyendo futuras actualizaciones.",
+    "question": "¿Cómo consulto la disponibilidad del E-book de Agricultura Sintrópica?",
+    "answer": "Desde la ficha del E-book puedes contactar a nuestro equipo para conocer su disponibilidad, contenido y modalidad de acceso.",
     "additionalInfo": "El E-book incluye 150+ páginas con casos de estudio, diagramas de diseño y lista de especies recomendadas para diferentes climas.",
     "links": [
       {
@@ -137,25 +124,14 @@
     "id": "faq-14",
     "category": "general",
     "question": "¿Cómo puedo unirme a la comunidad Naluum?",
-    "answer": "Puedes unirte participando en nuestros cursos, comprando productos o simplemente suscribiéndote a nuestro boletín. También tenemos grupos locales en diferentes ciudades donde realizamos actividades mensuales, intercambio de semillas y proyectos comunitarios.",
+    "answer": "Puedes unirte participando en nuestros cursos, actividades y grupos locales. En diferentes ciudades realizamos encuentros, intercambio de semillas y proyectos comunitarios.",
     "links": [
       {
         "text": "Unirse a la comunidad",
         "url": "/comunidad",
         "external": false
-      },
-      {
-        "text": "Suscribirse al boletín",
-        "url": "/newsletter",
-        "external": false
       }
     ]
-  },
-  {
-    "id": "faq-15",
-    "category": "pagos",
-    "question": "¿Tienen política de devoluciones?",
-    "answer": "Sí, aceptamos devoluciones dentro de los 30 días posteriores a la compra para productos físicos en su estado original. Para cursos online, ofrecemos garantía de satisfacción de 7 días. Los cursos presenciales no son reembolsables, pero pueden reprogramarse con 48 horas de anticipación."
   },
   {
     "id": "faq-16",
@@ -194,8 +170,7 @@
     "id": "faq-19",
     "category": "madre-selva",
     "question": "¿Los productos de Madre Selva provienen de prácticas sostenibles?",
-    "answer": "Sí. Todos nuestros productos se elaboran siguiendo principios de agricultura regenerativa y prácticas sostenibles que respetan el ciclo natural de la tierra. Además, buscamos que los empaques sean biodegradables o reutilizables.",
-    "additionalInfo": "Cada compra contribuye al mantenimiento y expansión de nuestros proyectos regenerativos."
+    "answer": "Sí. Todos nuestros productos se elaboran siguiendo principios de agricultura regenerativa y prácticas sostenibles que respetan el ciclo natural de la tierra. Además, buscamos que los empaques sean biodegradables o reutilizables."
   },
   {
     "id": "faq-20",
@@ -215,7 +190,7 @@
     "id": "faq-22",
     "category": "productos",
     "question": "¿El E-book incluye soporte o consultas posteriores?",
-    "answer": "Sí, con la compra del E-book tienes acceso a nuestro grupo privado de Facebook donde puedes hacer preguntas, compartir experiencias y recibir apoyo de la comunidad y nuestros expertos. Además, organizamos webinars mensuales gratuitos para profundizar en temas específicos del libro.",
+    "answer": "Consulta con nuestro equipo qué recursos de acompañamiento están disponibles actualmente para el E-book.",
     "links": [
       {
         "text": "Ver contenido del E-book",
@@ -230,5 +205,35 @@
     "question": "¿Cómo debo almacenar la Yerba Mate para mantener su frescura?",
     "answer": "Guarda la yerba mate en su envase original o en un recipiente hermético, en un lugar fresco y seco, alejado de la luz directa. Evita la humedad para prevenir la formación de hongos. Una vez abierto el paquete, consúmelo dentro de 6 meses para disfrutar de su máximo sabor y propiedades.",
     "additionalInfo": "Tip: Puedes dividir el contenido en porciones más pequeñas y congelar lo que no uses inmediatamente para preservar mejor su frescura."
+  },
+  {
+    "id": 1,
+    "category": "servicios",
+    "question": "¿Qué tipo de servicios y asesorías ofrecen?",
+    "answer": "Ofrecemos capacitaciones inmersivas, cursos certificados de diseño en permacultura (PDC), bioconstrucción, y asesorías para proyectos regenerativos a nivel personal, comunitario e institucional en distintas partes del mundo."
+  },
+  {
+    "id": 3,
+    "category": "madre-selva",
+    "question": "¿Dónde queda el Eco Centro Madre Selva?",
+    "answer": "Madre Selva se encuentra inmerso en la selva misionera, específicamente en Colonia Paraíso, a unos 27 km de El Soberbio, Provincia de Misiones, Argentina. Es un santuario vivo de 22 hectáreas dedicado a la pedagogía regenerativa."
+  },
+  {
+    "id": 4,
+    "category": "madre-selva",
+    "question": "¿Cuáles son las opciones de alojamiento?",
+    "answer": "El alojamiento es rústico y comunitario. Para los voluntariados y cursos, ofrecemos zona de camping (para carpa propia) y opciones de 'dormis' como cabañas compartidas o yurtas, promoviendo siempre la vida simple y el cuidado del entorno."
+  },
+  {
+    "id": 5,
+    "category": "madre-selva",
+    "question": "¿Hace falta experiencia previa para inscribirse?",
+    "answer": "¡Para nada! No exigimos conocimientos técnicos previos. Lo fundamental es venir con el corazón abierto, actitud de servicio, disposición para el trabajo físico moderado (clima subtropical) y ganas de aprender trabajando en comunidad."
+  },
+  {
+    "id": 6,
+    "category": "productos",
+    "question": "¿Qué tipo de productos ofrecen?",
+    "answer": "Ofrecemos productos elaborados desde el respeto por la Madre Tierra: alimentos agroecológicos, fitomedicina, semillas, así como libros, manuales y recursos didácticos de permacultura editados por el movimiento."
   }
 ]

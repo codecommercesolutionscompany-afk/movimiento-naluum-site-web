@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import './FAQ.scss';
 
 const FAQ = ({ 
@@ -11,8 +11,12 @@ const FAQ = ({
 
   // Filtrar FAQs solo para la categoría seleccionada
   const filteredFaqs = useMemo(() => {
-    if (defaultCategory === 'all') return faqs;
-    return faqs.filter(faq => faq.category === defaultCategory);
+    const categoryFaqs =
+      defaultCategory === 'all'
+        ? faqs
+        : faqs.filter((faq) => faq.category === defaultCategory);
+
+    return categoryFaqs;
   }, [faqs, defaultCategory]);
 
   const toggleAccordion = (index) => {

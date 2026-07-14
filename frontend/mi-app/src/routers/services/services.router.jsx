@@ -75,17 +75,17 @@ const fadeInProps = {
   speed: prefersReducedMotion ? 'fast' : "slow"
 };
 const timerProps = {
-  img: "/img/3.png",
+  img: "/img/shared/manos-plantines.webp",
   titles: {
     main: "",
     subtitle: "Festival Eco de la Tierra",
   },
   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-  buttonText: "Inscríbete ahora",
+  buttonText: "Quiero participar",
   timer: {
     targetDate: "2025-09-23T18:59:59",
-  },
-  link: "/servicios/laboratorios-alimentacion-viva",
+    link: "/servicios/laboratorios-alimentacion-viva",
+  }
 };
 
 const Services = () => {
@@ -132,7 +132,7 @@ const Services = () => {
         keywords="tecnología, software, negocios, soluciones digitales, emprendimientos"
         author="Neyen Frandino"
         url="https://miempresa.com"
-        image="/img/7.png"
+        image="/img/shared/hojas-bosque.webp"
       />
 
       {isExactServicesRoute && !id && (
@@ -140,7 +140,7 @@ const Services = () => {
           <Header>
             <div className="services--header__container">
               <div className="services--header__img">
-                <img src="/img/fotosubscribirse.jpg" alt="" />
+                <img src="/img/shared/comunidad-suscripcion.webp" alt="" />
               </div>
 
               <div className="services--header__content">

@@ -1,13 +1,13 @@
 {
-  "img": "/img/3.png",
+  "img": "/img/hero/hero-festival-eco-de-la-tierra.webp",
   "titles": {
-    "main": "¡Prepárate para el gran día!",
+    "main": "",
     "subtitle": "Festival Eco de la Tierra"
   },
   "text": "Celebra con nosotros la conexión con la naturaleza en una jornada llena de música, talleres, charlas y experiencias sostenibles para toda la familia.",
-  "buttonText": "Inscríbete ahora",
+  "buttonText": "Iniciar inscripción",
   "timer": {
-    "targetDate": "2025-09-20T18:59:59"
+    "targetDate": "2026-09-21T00:00:00"
   },
   "id": "festival-eco-de-la-tierra"
 }

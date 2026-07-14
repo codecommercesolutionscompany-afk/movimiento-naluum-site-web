@@ -48,7 +48,7 @@ const Blog = () => {
         keywords="tecnología, software, negocios, soluciones digitales, emprendimientos"
         author="Neyen Frandino"
         url="https://miempresa.com"
-        image="https://miempresa.com/default-image.jpg"
+        image={new URL('/img/blog/permacultura-portada.webp', window.location.origin).href}
       />
  
       {/* Si NO hay id => estoy en /blog => muestro listado */}
@@ -57,7 +57,7 @@ const Blog = () => {
           <Header>
             <div className="blog--header__container">
               <div className="blog--header__img">
-                <img src="/img/no_comprimirda.jpg" alt="blog" />
+                <img src="/img/blog/siembra-misiones-portada.webp" alt="blog" />
               </div>
 
               <div className="blog--header__content">
@@ -98,11 +98,11 @@ const Blog = () => {
                     {/* Imagen */}
                     <div className="blog__content--card-image">
                       <img
-                        src={item.card?.image || "/img/placeholder-blog.jpg"}
+                        src={item.card?.image || "/img/blog/permacultura-portada.webp"}
                         alt={item.title}
                         loading="lazy"
                         onError={(e) => {
-                          e.target.src = "/img/placeholder-blog.jpg";
+                          e.target.src = "/img/blog/permacultura-portada.webp";
                         }}
                       />
                     </div>

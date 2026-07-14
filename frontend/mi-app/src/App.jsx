@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Routes, Route, useLocation  } from "react-router-dom";
-
-import listRouters from './json/listRouters.json';
-import projects from './json/projects.json';
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 // 📂 Layout
 import Nav from './components/layout/nav/nav';
@@ -22,20 +19,14 @@ import AboutMe from './routers/aboutMe/aboutMe.router';
 import Blog from './routers/blog/blog.router';
 import Contact from './routers/contact/contact.router';
 import Projects from './routers/projects/projects.router';
-import LandingPage from './routers/landingPage/landingPage';
 import CalendarRouter from './routers/calendar.router/calendar.router';
 import Products from './routers/products/products.router';
-import ShoppingCart from './routers/shoppingCart/shoppingCart';
-import Payment from './routers/payment/payment';
 
 
 // 📂 Detalles (subpáginas de routers)
 import ProductDetail from './routers/products/products_detail';
 import ServiceDetail from './routers/services/services_detail';
 import BlogDetail from './routers/blog/blog_detail';
-
-// seccion
-import PaymentStatus from './components/seccion/payment_status/payment_status';
 
 import './App.scss';
 
@@ -46,13 +37,6 @@ const App = () => {
 
   const transitioningRef = useRef(false);
 
-  useEffect(() => {
-    const DOMAIN = import.meta.env.VITE_API_URL;
-    document.documentElement.style.setProperty('--dominio', DOMAIN);
-    console.log("Dominio desde variable de entorno:", DOMAIN);
-  }, []);
-
-  
   useEffect(() => {
     if (!document.startViewTransition || transitioningRef.current) {
       setCurrentPath(location.pathname);
@@ -73,21 +57,15 @@ const App = () => {
     <div className="App">
       {/* <UserTracker /> */}
       
-      {
-        currentPath === 'landingPage' || currentPath === '/landingPage' || currentPath.includes('/landingPage') ?
-        null :       
-          <>
-            <div className='App__nav'>
-              <Nav listRouters={listRouters} projects={projects} />
-            </div>
+      <>
+        <div className='App__nav'>
+          <Nav />
+        </div>
 
-            <div className='app__back-button'>
-              {
-                currentPath === '/payment' || currentPath.includes('/payment') ? null: <ButtonBack />
-              }
-            </div>
-          </>
-      }
+        <div className='app__back-button'>
+          <ButtonBack />
+        </div>
+      </>
   
       <ScrollToTop />
 
@@ -98,11 +76,11 @@ const App = () => {
 
           <Route path="/sobre-nosotros" element={<AboutMe />} />
           <Route path="/contacto" element={<Contact />} />
-          {/* <Route path="/carrito-de-compras" element={<ShoppingCart />} /> */}
-
-          <Route path="/landingPage" element={<LandingPage />} />
           <Route path="/calendario" element={<CalendarRouter />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/payment" element={<Navigate to="/productos" replace />} />
+          <Route path="/checkout" element={<Navigate to="/productos" replace />} />
+          <Route path="/carrito-de-compras" element={<Navigate to="/productos" replace />} />
+          <Route path="/payment-status" element={<Navigate to="/" replace />} />
 
           <Route path="/productos/*" element={<Products />}>
             <Route path=":id" element={<ProductDetail />} />
@@ -115,8 +93,6 @@ const App = () => {
           <Route path="/blog" element={<Blog />}>
             <Route path="/blog/:id" element={<BlogDetail />} />
           </Route>
-
-          <Route path="/payment-status" element={ <PaymentStatus />}></Route>
 
         </Routes>
       </main>

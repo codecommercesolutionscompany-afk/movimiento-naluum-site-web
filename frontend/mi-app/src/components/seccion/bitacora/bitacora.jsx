@@ -7,7 +7,7 @@ const bitacora = [
         id: 1,
         title: '🌱 Rehabilitamos suelos, pero también vínculos.',
         description: 'Trabajamos regenerando la tierra y fortaleciendo la conexión entre las personas.',
-        image: '/img/4.png',
+        image: '/img/shared/comunidad-circulo.webp',
         fecha: '2022-06-01',
         routeSeccion: '/bitacora/1',
     },
@@ -15,7 +15,7 @@ const bitacora = [
         id: 2,
         title: '🔥 Encendemos fogones, pero también la memoria colectiva.',
         description: 'Creamos espacios de encuentro donde las historias, saberes y sentires se comparten.',
-        image: '/img/5.png',
+        image: '/img/shared/equipo-diseno-colaborativo.webp',
         fecha: '2022-06-02',
         routeSeccion: '/bitacora/2',
     },
@@ -23,7 +23,7 @@ const bitacora = [
         id: 3,
         title: '🏡 Diseñamos espacios, pero sobre todo, formas nuevas de habitar.',
         description: 'Pensamos y construimos entornos sostenibles que nutren cuerpo, alma y comunidad.',
-        image: '/img/7.png',
+        image: '/img/shared/hojas-bosque.webp',
         fecha: '2022-06-03',
         routeSeccion: '/bitacora/3',
     },
@@ -31,7 +31,7 @@ const bitacora = [
         id: 4,
         title: '🌾 Cultivamos alimentos, pero también autonomía.',
         description: 'Promovemos huertas comunitarias y saberes ancestrales para una vida autosuficiente.',
-        image: '/img/personas_trabajando.jpg',
+        image: '/img/shared/personas-trabajando.webp',
         fecha: '2022-06-04',
         routeSeccion: '/bitacora/4',
     },
@@ -53,7 +53,7 @@ const Bitacora = () => {
             <div className='bitacora__content'>
                 <div className='bitacora__content__header'>
                     <div className='bitacora__content__header-img'>
-                        <img src="/img/Bitacoradelatierra1.jpg" alt="Bitacora de la Tierra" />
+                        <img src="/img/blog/bitacora-de-la-tierra.webp" alt="Bitacora de la Tierra" />
                     </div>
                     
                     <div className='bitacora__content__header-text'>

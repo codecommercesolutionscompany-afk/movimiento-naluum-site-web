@@ -21,14 +21,14 @@
           "name": "Todos los Productos",
           "path": "/productos",
           "icon": "PackageIcon",
-          "image": "/img/mate.jpg",
+          "image": "/img/shared/mate-yerba-organica.webp",
           "description": "Explora nuestra colección completa de productos naturales y conscientes"
         },
         {
           "name": "Todos los Servicios",
           "path": "/servicios",
           "icon": "BriefcaseIcon",
-          "image": "/img/3.png",
+          "image": "/img/shared/comunidad-suscripcion.webp",
           "description": "Descubre nuestros servicios de transformación y crecimiento personal"
         }
       ]
@@ -64,14 +64,14 @@
           "name": "Blog",
           "path": "/blog",
           "icon": "PenToolIcon",
-          "image": "/img/blog-preview.jpg",
-          "description": "Artículos, reflexiones y sabiduría compartida de nuestra comunidad"
+          "image": "/img/blog/blog-menu-flor.webp",
+          "description": "Artículos, reflexiones y sabiduría compartidas"
         },
         {
           "name": "Calendario de Eventos",
           "path": "/calendario",
           "icon": "CalendarIcon",
-          "image": "/img/eventos-preview.jpg",
+          "image": "/img/sections/menu-calendario.webp",
           "description": "Próximos talleres, ceremonias y encuentros del movimiento"
         }
       ]

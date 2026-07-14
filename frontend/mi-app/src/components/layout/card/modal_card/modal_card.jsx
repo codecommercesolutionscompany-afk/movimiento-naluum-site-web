@@ -2,9 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Star, Clock, Users, Monitor, Sparkles,
-  ArrowRight, ShoppingCart, BookOpen, Calendar, Share2
+  ArrowRight, MessageCircle, BookOpen, Calendar, Share2, Expand
 } from 'lucide-react';
-import { FaExpandArrowsAlt } from 'react-icons/fa';
 
 import DiscountBadge from '../../../ui/discount_badge/discount_badge';
 
@@ -28,7 +27,7 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
     const isProduct = rawType.includes('product') || rawType.includes('producto');
     const isService = rawType.includes('service') || rawType.includes('servicio') || rawType.includes('curso');
     const base = isProduct ? 'product' : isService ? 'service' : 'product';
-    const action = isProduct ? 'compra' : 'inscripción';
+    const action = isProduct ? 'consulta' : 'inscripción';
     return { base, action };
   }, [course]);
 
@@ -311,7 +310,7 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
             onClick={handleEnrollClick}
             style={{ opacity: isLoading ? 0.8 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
           >
-            <ShoppingCart size={20} /> Comprar Ahora <ArrowRight size={18} />
+            <MessageCircle size={20} /> {derived.base === 'product' ? 'Consultar' : 'Quiero inscribirme'} <ArrowRight size={18} />
           </button>
 
           <div className="card_modal__buttons-floating">
@@ -320,7 +319,7 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
             </button>
 
             <Link to={buildCourseUrl()} className="card_modal__vermas-link" title="Expandir">
-              <FaExpandArrowsAlt />
+              <Expand size={18} />
             </Link>
           </div>
         </div>

@@ -1,8 +1,6 @@
 import { useContext, useState, useMemo, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useQueryParam } from '../../../hooks/useQueryParams';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
-import { MethodStatePaymentContext } from '../../../context/method_state_payment/method_state_payment.context';
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -21,7 +19,7 @@ import Grid from '../../seccion/grid/grid';
 import CtaImgCuentaRgresiva from '../../seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CtaHablemos from '../../seccion/cta_hablemos/cta_hablemos';
 import TestimonialCard from '../../seccion/testimonial_card/testimonial_card';
-import Newsletter from '../../seccion/newsletter/newsletter';
+import SupportModalContent from '../../seccion/support_modal/support_modal';
 import FAQ from '../../seccion/FAQ/FAQ';
 import MessageFinal from '../../seccion/message_final/message_final';
 import FadeInOnView from '../../seccion/fadeInOnView/fadeInOnView';
@@ -33,15 +31,9 @@ import Modal from '../../ui/modal/modal';
 import Button from '../../ui/button/button';
 
 // ------------------------------
-// 📂 Integraciones
-import PaymentMethodSelector from '../../integrations/payment_method/payment_method_selector';
-
-// ------------------------------
 // 📂 Styles
 import './madre_selva.scss';
 
-let DOMAIN = import.meta.env.VITE_API_URL;
-console.log("DOMAIN:", DOMAIN);
 // ------------------------------
 // ⚙️ Animaciones y configuración
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -58,13 +50,13 @@ const fadeInProps = {
 // ------------------------------
 // 🕓 Contenido dinámico
 // const timerProps = {
-//   img: "/img/3.png",
+//   img: "/img/shared/manos-plantines.webp",
 //   titles: {
 //     main: "",
 //     subtitle: "Festival Eco de la Tierra",
 //   },
 //   text: "Únete al próximo Festival Eco de la Tierra: un encuentro de saberes, música y experiencias regenerativas para celebrar la vida en comunidad.",
-//   buttonText: "Inscríbete ahora",
+//   buttonText: "Quiero participar",
 //   timer: {
 //     targetDate: "2025-09-23T18:59:59",
 //   },
@@ -76,7 +68,7 @@ const objectContentCard = {
   title: "Centro de investigación en agricultura sintrópica y diseño regenerativo.",
   text: "22 hectáreas de selva misionera donde la naturaleza, la ciencia y la comunidad se entrelazan para regenerar el futuro.",
   buttonPrimary: ["Explorar el universo de Madre Selva", "/madreSelva"],
-  image: "/img/message_final.jpg",
+  image: "/img/sections/mensaje-accion-regenerativa.webp",
 };
 
 const titles = {
@@ -94,49 +86,49 @@ const actividadesMadreSelva = [
     title: '🌳 Caminatas guiadas por la selva',
     description:
       'Explora senderos vivos y descubre cómo cada especie contribuye a la regeneración del ecosistema.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-caminatas-selva.svg',
   },
   {
     id: 2,
     title: '🪵 Talleres de construcción natural',
     description:
       'Aprende técnicas sostenibles con materiales locales: bioconstrucción, adobe y bambú.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-construccion-natural.svg',
   },
   {
     id: 3,
     title: '🌾 Agricultura sintrópica en acción',
     description:
       'Participa en nuestras huertas regenerativas y conecta con los ciclos naturales de la tierra.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-agricultura-sintropica.svg',
   },
   {
     id: 4,
     title: '💧 Rutas del agua',
     description:
       'Conoce los sistemas de captación, filtrado y uso responsable del agua en el ecosistema.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-rutas-agua.svg',
   },
   {
     id: 5,
     title: '🔥 Encuentros alrededor del fuego',
     description:
       'Vivencias colectivas de canto, historia y transmisión de saberes ancestrales.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-encuentros-fuego.svg',
   },
   {
     id: 6,
     title: '🔬 Experiencias de investigación',
     description:
       'Participa en proyectos de observación sobre biodiversidad, suelos y restauración ambiental.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-investigacion.svg',
   },
   {
     id: 7,
     title: '🛖 Vivencias inmersivas',
     description:
       'Vive la experiencia de habitar Madre Selva: aprendizaje, contemplación y acción regenerativa.',
-    image: `${DOMAIN}/img/caminatas.jpg`,
+    image: '/img/placeholders/pendiente-actividad-vivencias-inmersivas.svg',
   },
 ];
 
@@ -147,8 +139,6 @@ const MadreSelva = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
-  const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (servicioIdParam && servicios?.length > 0) {
@@ -164,19 +154,13 @@ const MadreSelva = () => {
     setTriggerElement(e.currentTarget);
     setIsModalOpen({ isOpen: status, item });
     setServicioIdParam(item.id);
-  }, [setServicioIdParam, navigate]);
+  }, [setServicioIdParam]);
 
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setTriggerElement(null);
     removeServicioIdParam();
   }, [removeServicioIdParam]);
-
-  const handlePayment = useCallback((item, method) => {
-    if (method && item) {
-      setMethodStatePayment({ item, method });
-    }
-  }, [setMethodStatePayment]);
 
   const modalContent = useMemo(() => {
     if (!isModalOpen.isOpen || !isModalOpen.item) return null;
@@ -188,14 +172,11 @@ const MadreSelva = () => {
         showPointer={true}
       >
         <ModalCard course={isModalOpen.item}>
-          <PaymentMethodSelector
-            item={isModalOpen.item}
-            onMethodSelect={(method) => handlePayment(isModalOpen.item, method)}
-          />
+          <SupportModalContent item={isModalOpen.item} />
         </ModalCard>
       </Modal>
     );
-  }, [isModalOpen, handleCloseModal, triggerElement, handlePayment]);
+  }, [isModalOpen, handleCloseModal, triggerElement]);
 
   // Filtrar servicios de Madre Selva
   const servicesMadreSelva = useMemo(() => {
@@ -215,7 +196,7 @@ const MadreSelva = () => {
       'madre selva, permacultura, regeneración, selva misionera, agricultura sintrópica, educación ambiental, ecología, Naluum, sostenibilidad, restauración ecológica',
     author: 'Neyen Frandino',
     url: 'https://miempresa.com/projects/madre-selva',
-    image: 'https://miempresa.com/images/madre-selva-cover.jpg',
+    image: new URL('/img/shared/ecocentro-madre-selva.webp', window.location.origin).href,
   };
 
   return (
@@ -233,12 +214,12 @@ const MadreSelva = () => {
       <div 
         className='madreSelva__header' 
         id="inicio"
-        style={{ backgroundImage: `url(${DOMAIN}/img/madreSelva.png)` }}
+        style={{ backgroundImage: 'url(/img/shared/ecocentro-madre-selva.webp)' }}
       >
         <Header>
           <div className='madreSelva__header__content'>
             <div className='madreSelva__header__content__logo'>
-              <img src={`${DOMAIN}/img/madre_selva_logo_asd.svg`} alt="Logo Madre Selva" />
+              <img src="/img/branding/logo-madre-selva.svg" alt="Logo Madre Selva" />
             </div>
             <div className='madreSelva__header__content__title'>
               <p>
@@ -330,10 +311,6 @@ const MadreSelva = () => {
               <MissionCarousel cards={memoizedCards} autoPlayInterval={5000} />
             </div>
           </FadeInOnView>
-        </div>
-
-        <div className='madreSelva__content--newsletter' id='newsletter'>
-          <Newsletter />
         </div>
 
         <div className='madreSelva__content--FAQ' id='FAQ'>

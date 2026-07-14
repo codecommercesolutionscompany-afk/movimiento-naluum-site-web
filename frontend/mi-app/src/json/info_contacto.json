@@ -1,19 +1,62 @@
-{
-  "contacto": {
-    "nombre": "Mi Empresa",
-    "direccion": "Av. Siempre Viva 742, Springfield",
-    "telefono": "+54 9 11 1234-5678",
-    "email": "contacto@miempresa.com",
-    "sitio_web": "https://www.miempresa.com",
-    "redes_sociales": {
-      "facebook": "https://www.facebook.com/miempresa",
-      "instagram": "https://www.instagram.com/miempresa",
-      "linkedin": "https://www.linkedin.com/company/miempresa"
-    },
-    "horarios": {
-      "lunes_a_viernes": "09:00 - 18:00",
-      "sabados": "10:00 - 14:00",
-      "domingos": "Cerrado"
+[
+  {
+    "proyecto": "Global",
+    "contacto": {
+      "nombre": "Global",
+      "direccion": "Av. Innovación 123, Ciudad Autónoma",
+      "telefono": "+5493764257777",
+      "email": "contacto@global.com",
+      "sitio_web": "https://www.global.com",
+      "redes_sociales": {
+        "facebook": "https://www.facebook.com/global",
+        "instagram": "https://www.instagram.com/global",
+        "linkedin": "https://www.linkedin.com/company/global"
+      },
+      "horarios": {
+        "lunes_a_viernes": "09:00 - 18:00",
+        "sabados": "10:00 - 14:00",
+        "domingos": "Cerrado"
+      }
+    }
+  },
+  {
+    "proyecto": "Madre Selva",
+    "contacto": {
+      "nombre": "Eco Centro Madre Selva",
+      "direccion": "Kilómetro 10, Colonia Paraíso, El Soberbio, Misiones, Argentina",
+      "telefono": "+5493764257777",
+      "email": "madreselvaecocentro@gmail.com",
+      "sitio_web": null,
+      "redes_sociales": {
+        "facebook": "https://www.facebook.com/EcoCentroMadreSelva",
+        "instagram": "https://www.instagram.com/madree.selvaa",
+        "tiktok": "https://www.tiktok.com/@naluum.Permacultura"
+      },
+      "horarios": {
+        "lunes_a_viernes": "08:00 - 17:00",
+        "sabados": "08:00 - 13:00",
+        "domingos": "Cerrado"
+      }
+    }
+  },
+  {
+    "proyecto": "Na Lu'um",
+    "contacto": {
+      "nombre": "Instituto de Permacultura Na Lu'um",
+      "direccion": "Coto 7 Interior 807 2-D Selva Nova, Playa del Carmen, México",
+      "telefono": "+5493764257777",
+      "email": "naluumpermacultura@gmail.com",
+      "sitio_web": null,
+      "redes_sociales": {
+        "facebook": "https://www.facebook.com/Permacultura.Naluum",
+        "instagram": "https://www.instagram.com/naluum.permacultura",
+        "tiktok": "https://www.tiktok.com/@naluum.permacultura"
+      },
+      "horarios": {
+        "lunes_a_viernes": "08:00 - 17:00",
+        "sabados": "08:00 - 13:00",
+        "domingos": "Cerrado"
+      }
     }
   }
-}
+]

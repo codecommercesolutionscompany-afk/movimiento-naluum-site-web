@@ -75,14 +75,14 @@ const Contact = () => {
                     keywords="regeneración, comunidad, agricultura regenerativa, soluciones sostenibles, plantines, tecnología social"
                     author="Neyen Frandino"
                     url="https://miempresa.com"
-                    image="https://miempresa.com/img/logo_naluum_og.jpg"
+                    image={new URL('/img/branding/movimiento-naluum-og.jpg', window.location.origin).href}
                 />
             </>
           
             <Header>
                 <div className='contact--header__container'>
                     <div className='contact--header__img'>
-                        <img src="/img/contactos_img_inicial.jpg" alt="" />
+                        <img src="/img/hero/contacto.webp" alt="" />
                     </div>
                     
                     <div className='contact--header__content'>

@@ -269,19 +269,6 @@ $breakpoint-sm: 480px;
     &-item {
       position: relative;
 
-      &--cart {
-        margin-left: auto;
-        
-        .nav__menu-link {
-          position: relative;
-          padding: 0.5rem;
-          
-          &:hover {
-            background-color: rgba($primary-color, 0.1);
-          }
-        }
-      }
-
       &--has-dropdown {
         .nav__menu-link {
           &::after {
@@ -329,14 +316,6 @@ $breakpoint-sm: 480px;
       gap: 0.5rem;
       border: 1px solid transparent;
       
-      &--cart {
-        padding: 0.5rem !important;
-        
-        &:hover {
-          background-color: rgba($primary-color, 0.1);
-        }
-      }
-
       &--active {
         @include active-state;
         font-weight: 600;
@@ -373,26 +352,6 @@ $breakpoint-sm: 480px;
     }
   }
 
-  // ========================================
-  // CART BADGE
-  // ========================================
-  
-  &__cart-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: $primary-color;
-    color: $dark-bg;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.1rem 0.4rem;
-    border-radius: 12px;
-    min-width: 20px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  // ========================================
   // DROPDOWN SECTION
   // ========================================
 
@@ -926,21 +885,6 @@ $breakpoint-sm: 480px;
           border-bottom: none;
         }
         
-        &--cart {
-          margin-left: 0;
-          border-bottom: none;
-          padding-top: 1rem;
-          
-          .nav__menu-link {
-            justify-content: center;
-            background-color: rgba($primary-color, 0.1);
-            
-            &:hover {
-              background-color: rgba($primary-color, 0.2);
-            }
-          }
-        }
-
         &--has-dropdown {
           .nav__menu-link {
             &::after {
@@ -972,13 +916,6 @@ $breakpoint-sm: 480px;
         border: none;
         border-left: 4px solid transparent;
         
-        &--cart {
-          padding: 0.75rem 1rem !important;
-          border-radius: 6px;
-          margin: 0 1rem;
-          width: calc(100% - 2rem);
-        }
-
         &--active {
           background-color: $active-bg;
           color: $active-text;

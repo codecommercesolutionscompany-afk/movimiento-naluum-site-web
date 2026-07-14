@@ -536,7 +536,7 @@ $easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
           content: '';
           position: absolute;
           inset: 0;
-          background-image: url('/img/fondopapel2.png');
+          background-image: url('/img/backgrounds/textura-papel.webp');
           background-repeat: no-repeat;
           background-size: cover;
           background-position: bottom;
@@ -560,7 +560,7 @@ $easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
           content: '';
           position: absolute;
           inset: 0;
-          background-image: url('/img/fondopapel2.png');
+          background-image: url('/img/backgrounds/textura-papel.webp');
           background-repeat: no-repeat;
           background-size: cover;
           background-position: center;
@@ -634,7 +634,7 @@ $easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
         content: '';
         position: absolute;
         inset: 0;
-        background-image: url('/img/fondopapel2.png');
+        background-image: url('/img/backgrounds/textura-papel.webp');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
@@ -657,7 +657,7 @@ $easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
         content: '';
         position: absolute;
         inset: 0;
-        background-image: url('/img/fondopapel2.png');
+        background-image: url('/img/backgrounds/textura-papel.webp');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: bottom;
@@ -667,9 +667,6 @@ $easing-smooth: cubic-bezier(0.4, 0.0, 0.2, 1);
       }
     }
 
-    .global__content--newsletter {
-      position: relative;
-    }
   }
 }
 

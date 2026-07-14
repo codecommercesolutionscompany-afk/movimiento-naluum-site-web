@@ -20,9 +20,6 @@ import {
 import SEOHelmet from '../../components/seo/SEOHelmet/SEOHelmet';
 import './blog_detail.scss';
 
-let DOMAIN = import.meta.env.VITE_API_URL;
-
- 
 const BlogDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -185,7 +182,7 @@ const BlogDetail = () => {
             {/* Hero Section */}
             <div className="blog-detail__hero" 
                  style={{
-                     backgroundImage: blogPost.card?.image ? `url(${DOMAIN}${blogPost.card.image})` : 'none'
+                     backgroundImage: blogPost.card?.image ? `url(${blogPost.card.image})` : 'none'
                  }}>
                 <div className="hero-pattern"></div>
                 <div className="hero-overlay"></div>
@@ -286,7 +283,7 @@ const BlogDetail = () => {
                                 {section.image && !imageErrors[`section-${index}`] && (
                                     <div className="section-image-container">
                                         <img 
-                                            src={`${DOMAIN}${section.image}`} 
+                                            src={section.image}
                                             alt={section.heading || `Imagen de sección ${index + 1}`}
                                             className="section-image"
                                             onError={() => handleImageError(`section-${index}`)}

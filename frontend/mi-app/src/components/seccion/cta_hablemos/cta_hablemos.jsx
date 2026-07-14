@@ -4,9 +4,6 @@ import { EmailContext } from '../../../context/email/email_context';
 import { Mail, MessageCircle, Instagram, Leaf, Send, User, AtSign, AlertCircle, CheckCircle } from 'lucide-react';
 import './cta_hablemos.scss';
 
-let DOMAIN = import.meta.env.VITE_API_URL;
- 
-
 const CtaHablemos = ({
     proyecto = "Na Lu'um",
     showSocialMedia = true, // prop para mostrar/ocultar redes sociales
@@ -183,7 +180,7 @@ const CtaHablemos = ({
                                 </div>
                                 <div className="modern-contact__image-content">
                                     <div className="modern-contact__profile-image">
-                                        <img src={`${DOMAIN}/img/4.png`} alt={`${contacto?.nombre}`} loading="lazy" />
+                                        <img src="/img/shared/comunidad-circulo.webp" alt={`${contacto?.nombre}`} loading="lazy" />
                                     </div>
                                     <div className="modern-contact__profile-info">
                                         <h3>{contacto?.nombre}</h3>

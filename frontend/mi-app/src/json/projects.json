@@ -1,41 +1,28 @@
 {
-    "projects": [
-      {
-        "name": "Naluum",
-        "description": "Naluum es un proyecto de código abierto que busca crear una plataforma de aprendizaje en línea para la comunidad de la permacultura de Madre Selva.",
-        "images": [
-          "https://cdn.pixabay.com/photo/2022/09/30/17/54/savoy-cabbage-7489978_1280.jpg",
-          "https://cdn.pixabay.com/photo/2018/03/08/13/14/flora-3208629_1280.jpg",
-          "https://cdn.pixabay.com/photo/2017/03/18/17/01/ivy-2154500_1280.jpg",
-          "https://cdn.pixabay.com/photo/2019/09/25/18/45/saplings-4504323_1280.png",
-          "https://cdn.pixabay.com/photo/2018/03/08/13/14/flora-3208629_1280.jpg"
-        ],
-        "logo": "/img/logo_naluum_trasparente.svg"
-      },
-      {
-        "name": "Madre Selva",
-        "description": "Madre Selva es una comunidad de la permacultura que busca crear una plataforma de aprendizaje en línea para la comunidad de la permacultura de Madre Selva.",
-        "images": [
-          "/img/madreSelva.png",
-          "/img/3.png",
-          "/img/5.png",
-          "/img/logo_madre_selva.svg",
-          "/img/7.png"
-        ],
-        "logo": "/img/madre_selva_logo_asd.svg"
-      },
-      {
-        "name": "Global",
-        "description": "Global es un proyecto de código abierto que busca crear una plataforma de aprendizaje en línea para la comunidad de la permacultura de Madre Selva.",
-        "images": [
-          "https://cdn.pixabay.com/photo/2022/09/30/17/54/savoy-cabbage-7489978_1280.jpg",
-          "https://cdn.pixabay.com/photo/2018/03/08/13/14/flora-3208629_1280.jpg",
-          "https://cdn.pixabay.com/photo/2017/03/18/17/01/ivy-2154500_1280.jpg",
-          "https://cdn.pixabay.com/photo/2019/09/25/18/45/saplings-4504323_1280.png",
-          "https://cdn.pixabay.com/photo/2018/03/08/13/14/flora-3208629_1280.jpg"
-        ],
-        "logo": "/img/logoglobal.png"
-      }
-    ]
-  }
-  
+  "projects": [
+    {
+      "name": "Naluum",
+      "description": "Naluum es el núcleo educativo del Movimiento Naluum, encargado de llevar formación, acompañamiento y eventos pedagógicos a todo el mundo.",
+      "images": [
+        "/img/shared/pdc-la-belleza.webp"
+      ],
+      "logo": "/img/branding/logo-naluum-transparente.svg"
+    },
+    {
+      "name": "Madre Selva",
+      "description": "En el corazón de Misiones, Madre Selva renace como un eco centro de investigación que regenera 22 hectáreas de selva nativa. Su propósito es compartir conocimientos sobre permacultura y sostenibilidad, inspirando a más personas a reconectarse con la tierra.",
+      "images": [
+        "/img/shared/ecocentro-madre-selva.webp"
+      ],
+      "logo": "/img/branding/logo-madre-selva.svg"
+    },
+    {
+      "name": "Global",
+      "description": "No somos una empresa. Somos un tejido vivo de personas comprometidas con la regeneración de la vida. Nacidos desde la experiencia del Movimiento Na Lu'um y nutrida por décadas de trabajo en territorios diversos, co-creamos realidades donde la vida puede florecer.",
+      "images": [
+        "/img/projects/proyecto-global-menu.webp"
+      ],
+      "logo": "/img/branding/logo-global.webp"
+    }
+  ]
+}

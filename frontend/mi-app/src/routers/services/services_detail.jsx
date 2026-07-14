@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   Calendar,
@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Share2,
   Heart,
-  ShieldCheck,
   Award
 } from 'lucide-react';
 
@@ -164,8 +163,8 @@ const ServiceDetail = () => {
     setIsSupportModalOpen(true);
   };
 
-  /** 🔹 Botón de compra **/
-  const handlePurchase = () => {
+  /** Acción de inscripción por contacto **/
+  const handleEnrollment = () => {
     const updatedService = {
       ...currentService,
       type: `${currentService.type || 'servicio'} inscripción`
@@ -275,11 +274,6 @@ const ServiceDetail = () => {
             <h2 className="section__title">Información adicional</h2>
             <div className="info-cards">
               <div className="info-card">
-                <ShieldCheck size={24} />
-                <h4>Garantía</h4>
-                <p>30 días de garantía de satisfacción</p>
-              </div>
-              <div className="info-card">
                 <Award size={24} />
                 <h4>Certificación</h4>
                 <p>Incluye certificado oficial</p>
@@ -289,14 +283,14 @@ const ServiceDetail = () => {
         </div>
 
         <aside className="service-detail__sidebar">
-          <div className="purchase-card">
+          <div className="enrollment-card">
             <div className="price-section">
               <span className="price">{formatPrice(currentService.price)}</span>
               <span className="price-label">Precio total</span>
             </div>
 
-            <button className="purchase-btn" onClick={handlePurchase}>
-              Inscribirme ahora
+            <button className="enrollment-btn" onClick={handleEnrollment}>
+              Quiero inscribirme
               <ArrowRight size={20} />
             </button>
 
@@ -336,10 +330,6 @@ const ServiceDetail = () => {
               </div>
             </div>
 
-            <div className="guarantee">
-              <ShieldCheck size={20} />
-              <p>Incluye garantía de satisfacción</p>
-            </div>
           </div>
         </aside>
 

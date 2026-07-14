@@ -1,29 +1,29 @@
 [
-    {
-        "id": "festival-eco-de-la-tierra",
-        "type": "event",
-        "category": "festival",
-        "project": "Naluum",
-        "title": "Festival Eco de la Tierra",
-        "subtitle": "Celebrando la conexión con la naturaleza y la vida sostenible.",
-        "description": "Vive una jornada llena de música, talleres, charlas y experiencias diseñadas para reconectar con la naturaleza y aprender sobre prácticas sostenibles. Un espacio para disfrutar en comunidad, con actividades para todas las edades y propuestas para cuidar el planeta.",
-        "image": "https://cdn.pixabay.com/photo/2017/04/18/16/30/earth-2231545_1280.jpg",
-        "price": 0,
-        "currency": "ARS",
-        "badge": "Entrada libre y gratuita",
-        "duration": "1 día",
-        "format": "Presencial",
-        "instructor": "Equipo Naluum y colaboradores",
-        "highlights": [
-            "Talleres de sostenibilidad",
-            "Música en vivo",
-            "Charlas inspiradoras",
-            "Mercado ecológico",
-            "Actividades para toda la familia"
-        ],
-        "rating": 5,
-        "students": 300,
-        "date": "2025-09-20",
-        "router": "/eventos/festival-eco-de-la-tierra"
-    }
+  {
+    "id": "festival-eco-de-la-tierra",
+    "type": "event",
+    "category": "festival",
+    "project": "Naluum",
+    "title": "Festival Eco de la Tierra",
+    "subtitle": "Celebrando la conexión con la naturaleza y la vida sostenible.",
+    "description": "Vive una jornada llena de música, talleres, charlas y experiencias diseñadas para reconectar con la naturaleza y aprender sobre prácticas sostenibles. Un espacio para disfrutar en comunidad, con actividades para todas las edades y propuestas para cuidar el planeta.",
+    "image": "/img/hero/hero-festival-eco-de-la-tierra.webp",
+    "price": 0,
+    "currency": "ARS",
+    "badge": "",
+    "duration": "",
+    "format": "Presencial",
+    "instructor": "Equipo Naluum y colaboradores",
+    "highlights": [
+      "Talleres de sostenibilidad",
+      "Música en vivo",
+      "Charlas inspiradoras",
+      "Mercado ecológico",
+      "Actividades para toda la familia"
+    ],
+    "rating": 5,
+    "students": 300,
+    "date": "2026-09-21",
+    "router": "/eventos/festival-eco-de-la-tierra"
+  }
 ]

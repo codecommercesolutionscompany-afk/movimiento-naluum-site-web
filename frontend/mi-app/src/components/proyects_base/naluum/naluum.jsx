@@ -1,8 +1,6 @@
 import { useContext, useState, useMemo, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useQueryParam } from '../../../hooks/useQueryParams';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
-import { MethodStatePaymentContext } from '../../../context/method_state_payment/method_state_payment.context';
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -21,7 +19,7 @@ import Grid from '../../seccion/grid/grid';
 import CtaImgCuentaRgresiva from '../../seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CtaHablemos from '../../seccion/cta_hablemos/cta_hablemos';
 import TestimonialCard from '../../seccion/testimonial_card/testimonial_card';
-import Newsletter from '../../seccion/newsletter/newsletter';
+import SupportModalContent from '../../seccion/support_modal/support_modal';
 import FAQ from '../../seccion/FAQ/FAQ';
 import MessageFinal from '../../seccion/message_final/message_final';
 import FadeInOnView from '../../seccion/fadeInOnView/fadeInOnView';
@@ -32,14 +30,8 @@ import Modal from '../../ui/modal/modal';
 import Button from '../../ui/button/button';
 
 // ------------------------------
-// 📂 Integrations
-import PaymentMethodSelector from '../../integrations/payment_method/payment_method_selector';
-
-// ------------------------------
 // 📂 Styles
 import './naluum.scss';
-
-let DOMAIN = import.meta.env.VITE_API_URL;
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -53,17 +45,17 @@ const fadeInProps = {
 };
 
 const timerProps = {
-  img: "/img/3.png",
+  img: "/img/shared/manos-plantines.webp",
   titles: {
     main: "",
     subtitle: "Festival Eco de la Tierra",
   },
   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-  buttonText: "Inscríbete ahora",
+  buttonText: "Quiero participar",
   timer: {
-    targetDate: "2025-09-23T18:59:59"
-  },
-  link: "/servicios/laboratorios-alimentacion-viva"
+    targetDate: "2025-09-23T18:59:59",
+    link: "/servicios/laboratorios-alimentacion-viva"
+  }
 };
 
 const objectContentCard = {
@@ -71,7 +63,7 @@ const objectContentCard = {
   title: "El corazón pedagógico del Movimiento Naluum",
   text: "Naluum es el núcleo educativo del Movimiento Naluum, encargado de llevar formación, acompañamiento y eventos pedagógicos a todo el mundo. Es el puente entre el conocimiento consciente y las personas, ofreciendo cursos, experiencias formativas y apoyo a proyectos que buscan transformar su realidad desde la colaboración, la regeneración y el aprendizaje continuo.",
   buttonPrimary: ["Explorar el universo pedagógico de Naluum", "/naluum"],
-  image: "/img/naluum_crad_question.JPG"
+  image: "/img/projects/naluum-pregunta.webp"
 };
 
 const titles = {
@@ -85,8 +77,6 @@ const Naluum = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
-  const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (servicioIdParam && servicios?.length > 0) {
@@ -102,19 +92,13 @@ const Naluum = () => {
     setTriggerElement(e.currentTarget);
     setIsModalOpen({ isOpen: status, item });
     setServicioIdParam(item.id);
-  }, [setServicioIdParam, navigate]);
+  }, [setServicioIdParam]);
 
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setTriggerElement(null);
     removeServicioIdParam();
   }, [removeServicioIdParam]);
-
-  const handlePayment = useCallback((item, method) => {
-    if (method && item) {
-      setMethodStatePayment({ item, method });
-    }
-  }, [setMethodStatePayment]);
 
   const modalContent = useMemo(() => {
     if (!isModalOpen.isOpen || !isModalOpen.item) return null;
@@ -126,14 +110,11 @@ const Naluum = () => {
         showPointer={true}
       >
         <ModalCard course={isModalOpen.item}>
-          <PaymentMethodSelector
-            item={isModalOpen.item}
-            onMethodSelect={(method) => handlePayment(isModalOpen.item, method)}
-          />
+          <SupportModalContent item={isModalOpen.item} />
         </ModalCard>
       </Modal>
     );
-  }, [isModalOpen, handleCloseModal, triggerElement, handlePayment]);
+  }, [isModalOpen, handleCloseModal, triggerElement]);
 
   return (
     <div className='naluum__container'>
@@ -143,14 +124,14 @@ const Naluum = () => {
         keywords="educación consciente, movimiento naluum, formación regenerativa, aprendizaje colaborativo, pedagogía viva, cursos naluum, desarrollo humano, transformación social"
         author="Movimiento Naluum"
         url="https://movimientonaluum.com/naluum"
-        image="https://movimientonaluum.com/img/preview_naluum.jpg"
+        image={new URL('/img/branding/movimiento-naluum-og.jpg', window.location.origin).href}
       />
 
-    <div className='naluum__header' id="inicio" style={{ backgroundImage: `url('${DOMAIN}/img/inicio_naluum.svg')` }}>
+    <div className='naluum__header' id="inicio" style={{ backgroundImage: "url('/img/hero/inicio-naluum.svg')" }}>
       <Header>
         <div className='naluum__header__content'>
           <div className='naluum__header__content__logo'>
-            <img src={`${DOMAIN}/img/logo_naluum_trasparente.svg`} alt="Logo de Naluum - Movimiento Educativo Consciente" />
+            <img src="/img/branding/logo-naluum-transparente.svg" alt="Logo de Naluum - Movimiento Educativo Consciente" />
           </div>
         </div>
       </Header>
@@ -165,7 +146,7 @@ const Naluum = () => {
 
         <div className='naluum__content--history'>
           <FadeInOnView {...fadeInProps}>
-            <TimeLineHistory index={1} titles={titles} showHeroBg={true} heroBgImage={`${DOMAIN}/img/logo_naluum_trasparente.svg`} theme={'naluum'} />
+            <TimeLineHistory index={1} titles={titles} showHeroBg={true} heroBgImage="/img/branding/logo-naluum-transparente.svg" theme={'naluum'} />
           </FadeInOnView>
         </div>
 
@@ -207,10 +188,6 @@ const Naluum = () => {
           <FadeInOnView {...fadeInProps}>
             <MessageFinal indexMessage={0} />
           </FadeInOnView>
-        </div>
-
-        <div className='naluum__content--newsletter' id='newsletter'>
-          <Newsletter />
         </div>
 
         <div className='naluum__content--FAQ' id='FAQ'>

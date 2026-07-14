@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./footer.scss";
 import { 
   Facebook, 
@@ -12,14 +11,13 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
 
   // Objeto estático con toda la información del footer
   const footerData = {
     company: {
       name: "Movimiento Naluum",
       description: "Transformamos tu negocio hacia un futuro sostenible con soluciones innovadoras que regeneran nuestro planeta mientras impulsan tu éxito.",
-      logo: '/img/logo_naluum_trasparente.svg'
+      logo: '/img/branding/logo-naluum-transparente.svg'
     },
     socialMedia: [
       { name: "Facebook", icon: Facebook, url: "https://facebook.com", color: "#1877f2" },
@@ -50,11 +48,6 @@ const Footer = () => {
         }
       ]
     },
-    newsletter: {
-      title: "Newsletter Verde",
-      description: "Únete a nuestra comunidad y recibe las últimas noticias sobre sostenibilidad e innovación verde.",
-      placeholder: "Tu email para un futuro verde..."
-    },
     legal: {
       copyright: `© ${new Date().getFullYear()} Movimien Naluum. Todos los derechos reservados. Juntos por un planeta mejor.`,
       links: [
@@ -62,17 +55,6 @@ const Footer = () => {
         { name: "Términos de Servicio", url: "/terms" },
         { name: "Política de Sostenibilidad", url: "/sustainability" }
       ]
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim() && email.includes('@')) {
-      console.log("Newsletter subscription:", email);
-      alert("¡Gracias por suscribirte a nuestro newsletter verde! 🌱");
-      setEmail("");
-    } else {
-      alert("Por favor, ingresa un email válido");
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import { EmailContext } from '../../../context/email/email_context';
 import './support_modal.scss';
 
@@ -13,9 +13,14 @@ const messageTitle = {
 const normalize = (s = '') =>
   s.normalize?.('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() || String(s).toLowerCase();
 
-const SupportModalContent = ({ onClose, item }) => {
+const SupportModalContent = ({ item }) => {
   const { sendEmail } = useContext(EmailContext);
-  console.log('📩 SupportModalContent - Item recibido:', item);
+  const {
+    title: itemTitle,
+    id: itemId,
+    type: itemType,
+    itemType: itemKind,
+  } = item || {};
 
   const [contactMethod, setContactMethod] = useState(null);
 
@@ -35,51 +40,52 @@ const SupportModalContent = ({ onClose, item }) => {
 
   // ===== Derivar intención/ctx desde item.type / item.itemType =====
   const ctx = useMemo(() => {
-    const raw = normalize(`${item?.type || ''} ${item?.itemType || ''}`);
-    const isPurchase = raw.includes('compra');
+    const raw = normalize(`${itemType || ''} ${itemKind || ''}`);
     const isEnroll = raw.includes('inscripcion'); // cubre inscripción/inscripcion por normalize
     const isSupport = raw.includes('soporte');
     const isProduct = raw.includes('product') || raw.includes('producto');
     const isService = raw.includes('service') || raw.includes('servicio');
-    const base = isProduct ? 'product' : isService ? 'service' : 'unknown';
-    return { isPurchase, isEnroll, isSupport, base, raw };
-  }, [item]);
+    const isEvent = raw.includes('event') || raw.includes('evento') || raw.includes('particip');
+    const isProject = raw.includes('project') || raw.includes('proyecto');
+    const base = isProduct ? 'product' : isService ? 'service' : isEvent ? 'event' : isProject ? 'project' : 'item';
+    return { isEnroll, isSupport, isEvent, isProject, base };
+  }, [itemKind, itemType]);
 
-  /** 🔹 Acción según el tipo (para WhatsApp) */
-  const action = ctx.isPurchase
-    ? 'comprar'
-    : ctx.isEnroll
+  /** Acción según el tipo (para WhatsApp) */
+  const action = ctx.isEnroll
     ? 'inscribirme'
+    : ctx.isEvent
+    ? 'participar en'
     : ctx.isSupport
     ? 'recibir soporte sobre'
     : 'hacer una consulta sobre';
 
   const WHATSAPP_MESSAGE = `Hola, quiero ${action} ${
-    item?.title ? `"${item.title}"` : ctx.base === 'service' ? 'un servicio' : 'un producto'
-  }${item?.id ? ` (ID ${item.id})` : ''}.`;
+    itemTitle ? `"${itemTitle}"` : `este ${ctx.base}`
+  }${itemId ? ` (ID ${itemId})` : ''}.`;
 
   /** 🔹 Pre-cargar asunto/mensaje y sincronizar tipo según intención */
   useEffect(() => {
     if (!item) return;
 
-    const productName = item?.title || 'Producto o servicio';
-    const productId = item?.id ? `#${item.id}` : '';
+    const productName = itemTitle || 'Producto o servicio';
+    const productId = itemId ? `#${itemId}` : '';
 
     let subject = '';
     let message = '';
     let lockSubject = false;
     let derivedType = 'Consulta';
 
-    if (ctx.isPurchase) {
-      subject = `Consulta para comprar ${productName} ${productId}`.trim();
-      message = `Hola, quiero comprar "${productName}". ¿Podrían brindarme más detalles sobre el proceso de compra, medios de pago y tiempos de entrega/confirmación?`;
-      lockSubject = false;
-      derivedType = 'Compra';
-    } else if (ctx.isEnroll) {
+    if (ctx.isEnroll) {
       subject = `Inscripción al servicio ${productName} ${productId}`.trim();
       message = `Hola, quiero inscribirme en "${productName}". ¿Podrían indicarme los pasos a seguir, fechas de inicio y requisitos?`;
       lockSubject = true; // usualmente bloqueado
       derivedType = 'Inscripción';
+    } else if (ctx.isEvent) {
+      subject = `Participación en ${productName} ${productId}`.trim();
+      message = `Hola, quiero participar en "${productName}". ¿Podrían brindarme información sobre fechas, ubicación y disponibilidad?`;
+      lockSubject = true;
+      derivedType = 'Participación';
     } else if (ctx.isSupport) {
       subject = `Soporte para ${productName} ${productId}`.trim();
       message = `Hola, necesito ayuda con "${productName}". Detallo a continuación:`;
@@ -99,7 +105,7 @@ const SupportModalContent = ({ onClose, item }) => {
       type: derivedType,
     }));
     setIsSubjectLocked(lockSubject);
-  }, [item, ctx.isPurchase, ctx.isEnroll, ctx.isSupport]);
+  }, [ctx.isEnroll, ctx.isEvent, ctx.isSupport, item, itemId, itemTitle]);
 
   /** 🔹 Manejo de inputs */
   const handleInputChange = (e) => {
@@ -133,16 +139,21 @@ const SupportModalContent = ({ onClose, item }) => {
       nombre_completo: formData.name,
       email: formData.email,
       asunto: formData.subject,
-      tipo_consulta: formData.type, // Compra | Inscripción | Soporte | Consulta
+      tipo_consulta: formData.type,
       tipo_class: (formData.type || '').toLowerCase(),
       mensaje: formData.message,
       fecha_hora: new Date().toLocaleString('es-AR', {
         dateStyle: 'short',
         timeStyle: 'short',
       }),
-      producto_nombre: item?.title || 'Sin especificar',
-      producto_id: item?.id ?? 'N/A',
-      producto_tipo: item?.type || item?.itemType || 'N/A',
+      elemento_nombre: itemTitle || 'Sin especificar',
+      elemento_id: itemId ?? 'N/A',
+      elemento_tipo: itemType || itemKind || 'N/A',
+      // Se conservan estas claves porque la plantilla de contacto de EmailJS
+      // puede usarlas actualmente, aunque la consulta sea sobre un servicio.
+      producto_nombre: itemTitle || 'Sin especificar',
+      producto_id: itemId ?? 'N/A',
+      producto_tipo: itemType || itemKind || 'N/A',
     };
 
     try {
@@ -153,7 +164,6 @@ const SupportModalContent = ({ onClose, item }) => {
         return;
       }
 
-      console.log('📤 Enviando datos por email:', emailData);
       const response = await sendEmail(emailData);
 
       if (response?.success) {
@@ -179,7 +189,7 @@ const SupportModalContent = ({ onClose, item }) => {
   };
 
   const messageText =
-    normalize(item?.type).includes('product') || normalize(item?.type).includes('service')
+    normalize(itemType).includes('product') || normalize(itemType).includes('service')
       ? messageTitle.informacionProductos
       : messageTitle.soporteTecnico;
 

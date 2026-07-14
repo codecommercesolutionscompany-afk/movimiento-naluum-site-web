@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Home, User, ShoppingBag, Mail, MessageCircle, HelpCircle } from 'lucide-react';
+import { Home, User, ShoppingBag, Mail, HelpCircle } from 'lucide-react';
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -27,7 +27,6 @@ const routes_subpage = [
   { id: "sobre-naluum", name: "Sobre mí", path: "#sobre-mi", icon: User },
   { id: "servicios", name: "Servicios", path: "#servicios", icon: ShoppingBag },
   { id: "contacto", name: "Contacto", path: "#contacto", icon: Mail },
-  { id: "newsletter", name: "Newsletter", path: "#newsletter", icon: MessageCircle },
   { id: "FAQ", name: "Preguntas Frecuentes", path: "#FAQ", icon: HelpCircle },
 ];
 
@@ -42,7 +41,7 @@ const Projects = () => {
       title: 'Madre Selva | Regeneración de la selva misionera y permacultura viva',
       description:
         'Madre Selva es un santuario de 22 hectáreas en la selva misionera donde aplicamos principios de permacultura, restauración ecológica y aprendizaje vivencial. Proyecto raíz del movimiento Naluum para regenerar la Tierra desde la acción local.',
-      image: 'https://miempresa.com/images/madre-selva-cover.jpg',
+      image: new URL('/img/shared/ecocentro-madre-selva.webp', window.location.origin).href,
       keywords:
         'madre selva, selva misionera, regeneración ecológica, permacultura, reforestación, sostenibilidad, restauración ambiental, Naluum',
     },
@@ -50,7 +49,7 @@ const Projects = () => {
       title: 'Naluum | Movimiento global de permacultura y pedagogía regenerativa',
       description:
         'Naluum es un movimiento global que integra, permacultura y procesos pedagógicos para regenerar la conexión entre humanidad y naturaleza. Llevamos el conocimiento y la práctica de la permacultura al mundo.',
-      image: 'https://miempresa.com/images/naluum-cover.jpg',
+      image: new URL('/img/shared/pdc-la-belleza.webp', window.location.origin).href,
       keywords:
         'naluum, permacultura, pedagogía regenerativa, sostenibilidad, educación ambiental, comunidad global, ecología profunda',
     },
@@ -58,7 +57,7 @@ const Projects = () => {
       title: 'Global | Consultoría permacultural para proyectos sostenibles',
       description:
         'Global es la consultoría de Naluum que acompaña a empresas y emprendedores en la creación de proyectos sostenibles. Aplicamos principios de permacultura al diseño organizacional, estrategias digitales y desarrollo regenerativo.',
-      image: 'https://miempresa.com/images/global-cover.jpg',
+      image: new URL('/img/projects/proyecto-global-menu.webp', window.location.origin).href,
       keywords:
         'global, consultoría permacultural, sostenibilidad empresarial, economía regenerativa, diseño organizacional, innovación verde, Naluum, permacultura aplicada',
     },
@@ -69,7 +68,7 @@ const Projects = () => {
     title: 'Proyectos Naluum | Ecosistema de permacultura y regeneración planetaria',
     description:
       'Explora los proyectos del movimiento Naluum: una red de iniciativas que integran permacultura, educación regenerativa y tecnología al servicio de la Tierra.',
-    image: 'https://miempresa.com/images/default-cover.jpg',
+    image: new URL('/img/branding/movimiento-naluum-og.jpg', window.location.origin).href,
     keywords:
       'naluum, permacultura, regeneración, sostenibilidad, educación ambiental, proyectos ecológicos, movimiento global, tecnología regenerativa',
   };

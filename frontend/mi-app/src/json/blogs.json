@@ -8,7 +8,7 @@
       "category": "Agricultura",
       "card": {
         "description": "Consejos básicos para sembrar en la tierra roja de Misiones y aprovechar al máximo el clima subtropical.",
-        "image": "/img/no_comprimirda.jpg"
+        "image": "/img/blog/siembra-misiones-portada.webp"
       },
       "content": {
         "introduction": "Sembrar en Misiones, Argentina, requiere conocer el clima subtropical húmedo de la región y las características de la tierra roja, rica en minerales pero exigente en el manejo del agua.",
@@ -33,6 +33,78 @@
           }
         ],
         "conclusion": "Si se aplican buenas prácticas, la tierra misionera puede ser muy fértil y productiva. Además, la abundancia de lluvias favorece un crecimiento saludable, aunque también exige un buen drenaje."
+      }
+    },
+    {
+      "id": "que-es-la-permacultura",
+      "title": "¿Qué es la Permacultura?",
+      "subtitle": "Desde un pensamiento regenerativo y sistémico",
+      "date": "2025-09-10",
+      "category": "Permacultura",
+      "card": {
+        "description": "Una mirada profunda sobre la Permacultura desde el pensamiento regenerativo y sistémico, por Beatriz Ramírez y Tierra Martínez.",
+        "image": "/img/blog/permacultura-portada.webp"
+      },
+      "content": {
+        "introduction": "La Permacultura es una ciencia de diseño que nos ayuda a crear una base agrícola permanente, como punto de partida para la generación de espacios sustentables. Co-creada por Bill Mollison y David Holmgren en los años 70, ha evolucionado hacia una herramienta de cambio de paradigma que promueve la regeneración de los sistemas de vida en la Tierra.",
+        "authors": [
+          "Beatriz Ramírez",
+          "Tierra Martínez"
+        ],
+        "sections": [
+          {
+            "heading": "Del pensamiento sustentable al pensamiento regenerativo",
+            "text": "El mundo entendió la sustentabilidad como algo que puede sostenerse en el tiempo, pero sin atender a las bases que permiten vivir en armonía con la Tierra. El pensamiento regenerativo va más allá: reconoce que somos parte de un ecosistema vivo, donde la constante es el cambio. Adaptarse a estos cambios nos vuelve resilientes y más estables en el tiempo.",
+            "image": "/img/blog/pensamiento-regenerativo.webp"
+          },
+          {
+            "heading": "La observación como base del diseño",
+            "text": "La permacultura se fundamenta en el diseño, partiendo de la observación profunda de los patrones naturales. Este proceso consciente permite generar proyectos armónicos con la naturaleza, basados en éticas, principios y bases que orientan la creación de hábitats abundantes y sostenibles.",
+            "image": "/img/blog/observacion-base-del-diseno.webp"
+          },
+          {
+            "heading": "El valor del conocimiento ancestral",
+            "text": "Una de las bases de la permacultura es el rescate de los conocimientos ancestrales. Las comunidades originarias comprenden cómo interactuar con su entorno de manera equilibrada. Hoy, frente al cambio climático, es necesario readaptar esos saberes a los nuevos contextos para diseñar un conocimiento más rico, que combine lo antiguo y lo nuevo.",
+            "image": "/img/blog/conocimiento-ancestral.webp"
+          },
+          {
+            "heading": "El diseño como herramienta regenerativa",
+            "text": "El diseño en permacultura nos invita a entender los problemas para encontrar soluciones que regeneren los sistemas. Cada diseño es único, adaptado al territorio y su cultura. Desde la planeación y la observación, el diseño nos permite crear proyectos más coherentes, eficientes y orgánicos, donde todos los elementos se interconectan.",
+            "image": "/img/blog/diseno-herramienta-regenerativa.webp"
+          },
+          {
+            "heading": "Ética y principios de la permacultura",
+            "text": "La permacultura está sostenida por tres éticas fundamentales: el cuidado de la Tierra, el cuidado de las personas y el reparto justo. En el enfoque social de Na Lu'um se suma una cuarta ética: el cuidado del espíritu, entendida como la conexión profunda con las energías sutiles de la vida y la Tierra. Este equilibrio espiritual es clave para generar coherencia entre lo que pensamos, sentimos y hacemos.",
+            "image": "/img/blog/eticas-permacultura.webp"
+          },
+          {
+            "heading": "Bases de la permacultura",
+            "list": [
+              "La naturaleza como nuestra maestra.",
+              "Rescate del conocimiento ancestral.",
+              "Rescate del conocimiento tradicional.",
+              "Integración del nuevo conocimiento."
+            ],
+            "image": "/img/blog/bases-permacultura.webp"
+          },
+          {
+            "heading": "La flor de la permacultura y el cambio de paradigma",
+            "text": "La flor de la permacultura, propuesta por Holmgren, es una herramienta para repensar nuestras ciudades, pueblos y comunidades desde un enfoque sistémico. Cada pétalo representa un ámbito de transformación —social, ecológico, económico, espiritual— hacia un modelo de vida más armónico con la Tierra.",
+            "image": "/img/blog/flor-permacultura.webp"
+          },
+          {
+            "heading": "Permacultura social y cuidado del espíritu",
+            "text": "La permacultura social propone incluir el cuidado del espíritu como cuarta ética. Esta conexión espiritual, más allá de cualquier religión, nos recuerda que somos parte de una red viva de energía y conciencia. Cuando diseñamos desde el corazón, regeneramos no solo el entorno, sino también nuestras relaciones humanas.",
+            "image": "/img/blog/permacultura-social.webp"
+          },
+          {
+            "heading": "La magia de la permacultura",
+            "text": "La permacultura nos reconecta con la magia pura de la vida. Es una herramienta que transforma, sana y regenera los sistemas obsoletos —económicos, sociales, educativos, ecológicos— invitándonos a diseñar desde el amor y la cooperación. Nos enseña a dejar la prisa, el materialismo y el consumo para vivir en coherencia con los ritmos de la naturaleza.",
+            "image": "/img/blog/magia-de-la-permacultura.webp"
+          }
+        ],
+        "conclusion": "La permacultura es una metodología viva que integra la sabiduría ancestral y el pensamiento moderno. Nos invita a rediseñar nuestra forma de habitar la Tierra, desde la observación, la colaboración y la espiritualidad. Es, en esencia, una herramienta para la regeneración de la vida, la paz y la abundancia.",
+        "footer_image": "/img/blog/footer-master-diseno-regenerativo.webp"
       }
     }
   ]

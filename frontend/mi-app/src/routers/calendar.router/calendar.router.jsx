@@ -8,17 +8,17 @@ import './calendar.router.scss';
 
 
 const timerProps = {
-  img: "/img/3.png",
+  img: "/img/shared/manos-plantines.webp",
   titles: {
     main: "",
     subtitle: "Festival Eco de la Tierra",
   },
   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-  buttonText: "Inscríbete ahora",
+  buttonText: "Quiero participar",
   timer: {
-    targetDate: "2025-09-23T18:59:59"
-  },
-  link : "/servicios/laboratorios-alimentacion-viva"
+    targetDate: "2025-09-23T18:59:59",
+    link: "/servicios/laboratorios-alimentacion-viva"
+  }
 };
 
 const CalendarRouter = () => {

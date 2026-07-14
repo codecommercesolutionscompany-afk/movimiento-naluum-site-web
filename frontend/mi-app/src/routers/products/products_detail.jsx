@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
 
@@ -7,7 +7,7 @@ import SupportModalContent from '../../components/seccion/support_modal/support_
 
 import {
   Calendar, Clock, Users, Monitor, Star, CheckCircle,
-  ArrowRight, Share2, Heart, ShieldCheck, Award
+  ArrowRight, Share2, Heart, Award
 } from 'lucide-react';
 
 import './products_detail.scss';
@@ -102,11 +102,11 @@ const ProductsDetail = ({ type = 'product' }) => {
     setIsSupportModalOpen(true);
   };
 
-  /** 🔹 Botón de compra **/
-  const handlePurchase = () => {
+  /** Acción de consulta **/
+  const handleConsult = () => {
     const updatedItem = {
       ...currentItem,
-      type: `${currentItem.type || 'product'} compra`,
+      type: `${currentItem.type || 'product'} consulta`,
     };
     setSelectedItem(updatedItem);
     setIsSupportModalOpen(true);
@@ -227,11 +227,6 @@ const ProductsDetail = ({ type = 'product' }) => {
             <h2 className="section__title">Información adicional</h2>
             <div className="info-cards">
               <div className="info-card">
-                <ShieldCheck size={24} />
-                <h4>Garantía</h4>
-                <p>30 días de garantía de satisfacción</p>
-              </div>
-              <div className="info-card">
                 <Award size={24} />
                 <h4>Certificación</h4>
                 <p>Incluye certificado oficial</p>
@@ -242,14 +237,14 @@ const ProductsDetail = ({ type = 'product' }) => {
 
         {/* ===== SIDEBAR ===== */}
         <aside className="products-detail__sidebar">
-          <div className="purchase-card">
+          <div className="inquiry-card">
             <div className="price-section">
               <span className="price">{formatPrice(currentItem.price)}</span>
               <span className="price-label">Precio total</span>
             </div>
 
-            <button className="purchase-btn" onClick={handlePurchase}>
-              {type === 'product' ? 'Comprar ahora' : 'Inscribirme ahora'}
+            <button className="inquiry-btn" onClick={handleConsult}>
+              {type === 'product' ? 'Consultar' : 'Quiero inscribirme'}
               <ArrowRight size={20} />
             </button>
 
@@ -289,10 +284,6 @@ const ProductsDetail = ({ type = 'product' }) => {
               </div>
             </div>
 
-            <div className="guarantee">
-              <ShieldCheck size={20} />
-              <p>Incluye garantía de satisfacción</p>
-            </div>
           </div>
         </aside>
 

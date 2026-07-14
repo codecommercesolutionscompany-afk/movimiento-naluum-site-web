@@ -3,34 +3,34 @@
     {
       "id": 1,
       "name": "YERBA MATE ORGÁNICA",
-      "image": "https://cdn.pixabay.com/photo/2017/01/20/00/30/mate-1992577_1280.jpg",
-      "rating": 5,
-      "title": "PURA ENERGÍA NATURAL",
-      "description": "Esta yerba mate orgánica es increíble. El sabor es auténtico y me da la energía que necesito sin químicos. Se nota la diferencia con la producción agroforestal.",
-      "author": "Ana Martínez"
+      "image": "/img/testimonials/testimonio-neyen.webp",
+      "rating": 4,
+      "title": "FRECURA NATURAL",
+      "description": "Me gusta por tener ese frescor e intensidad en su variable de picado fino. A demas por que se que es un producto 100% natural",
+      "author": "Neyen Frandino"
     },
     {
       "id": 2,
       "name": "YERBA MATE ORGÁNICA",
-      "image": "https://cdn.pixabay.com/photo/2017/01/20/00/30/mate-1992577_1280.jpg",
+      "image": "/img/testimonials/testimonio-silvia-1.webp",
       "rating": 5,
       "title": "SABOR AUTÉNTICO DE MISIONES",
-      "description": "Como misionero, puedo decir que esta yerba mate mantiene el sabor tradicional de nuestra tierra. 100% recomendable para quienes buscan calidad sin agroquímicos.",
-      "author": "Roberto Silva"
+      "description": "Me gusta la yerba de madre selva porqe sabemos como es el proceso de inicio a final",
+      "author": "Silvia Rodriguez"
     },
     {
       "id": 3,
-      "name": "CÚRCUMA ORGÁNICA",
-      "image": "https://cdn.pixabay.com/photo/2016/11/19/16/48/turmeric-1839504_1280.jpg",
+      "name": "YERBA MATE ORGÁNICA",
+      "image": "/img/testimonials/testimonio-mate-beta.webp",
       "rating": 5,
-      "title": "MEDICINA NATURAL EN CASA",
-      "description": "Uso la cúrcuma tanto en polvo como fresca. Sus propiedades antiinflamatorias son notables y le da un sabor espectacular a mis comidas. Excelente calidad orgánica.",
-      "author": "Lucía Fernández"
+      "title": "Cambió mi forma de tomar mate",
+      "description": "Madre Selva cambió mi forma de tomar mate, su sabor especial y único me conectó con mis raíces.. con la sabiduría de la tierra... y ya no disfruto otra yerba igual.",
+      "author": "Betania Machado"
     },
     {
       "id": 4,
       "name": "CÚRCUMA ORGÁNICA",
-      "image": "https://cdn.pixabay.com/photo/2016/11/19/16/48/turmeric-1839504_1280.jpg",
+      "image": "/img/placeholders/pendiente-testimonio-curcuma.svg",
       "rating": 4,
       "title": "VERSÁTIL Y MEDICINAL",
       "description": "Me encanta tener ambas presentaciones. El polvo para condimentar y el tubérculo fresco para preparar infusiones. Mi sistema inmune se siente fortalecido.",
@@ -39,7 +39,7 @@
     {
       "id": 5,
       "name": "E-BOOK AGRICULTURA SINTRÓPICA",
-      "image": "https://cdn.pixabay.com/photo/2015/01/08/18/27/ebook-593201_1280.jpg",
+      "image": "/img/placeholders/pendiente-testimonio-ebook-agricultura.svg",
       "rating": 5,
       "title": "CONOCIMIENTO TRANSFORMADOR",
       "description": "Este e-book cambió mi perspectiva sobre la agricultura. Los principios y ejemplos son muy claros, perfecto para comenzar a regenerar mi huerta familiar.",
@@ -48,7 +48,7 @@
     {
       "id": 6,
       "name": "E-BOOK AGRICULTURA SINTRÓPICA",
-      "image": "https://cdn.pixabay.com/photo/2015/01/08/18/27/ebook-593201_1280.jpg",
+      "image": "/img/placeholders/pendiente-testimonio-ebook-agricultura.svg",
       "rating": 5,
       "title": "GUÍA PRÁCTICA Y COMPLETA",
       "description": "Como estudiante de agronomía, este material me ha sido invaluable. La información es actualizada y los enfoques regenerativos son el futuro de la agricultura.",
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "name": "E-BOOK AGRICULTURA SINTRÓPICA",
-      "image": "https://cdn.pixabay.com/photo/2015/01/08/18/27/ebook-593201_1280.jpg",
+      "image": "/img/placeholders/pendiente-testimonio-ebook-agricultura.svg",
       "rating": 4,
       "title": "IDEAL PARA PRINCIPIANTES",
       "description": "Descarga inmediata y contenido muy bien explicado. Perfecto para quienes queremos aprender sobre suelos y ecosistemas de manera práctica y accesible.",
@@ -68,7 +68,7 @@
     {
       "id": 1,
       "name": "ASESORAMIENTO AGROECOLÓGICO",
-      "image": "https://images.unsplash.com/photo-1594631661960-7ac9372c2d2d?w=400&h=300&fit=crop",
+      "image": "/img/placeholders/pendiente-testimonio-asesoramiento-agroecologico.svg",
       "rating": 5,
       "title": "CON CONSCIENCIA Y PROPÓSITO",
       "description": "Te ayudamos a transformar tu forma de producir con prácticas regenerativas y agricultura natural.",
@@ -77,7 +77,7 @@
     {
       "id": 2,
       "name": "DISEÑO DE HUERTAS",
-      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/testimonio-comunidad-2.webp",
       "rating": 5,
       "title": "CULTIVA EN TU ESPACIO",
       "description": "Diseñamos huertas adaptadas a tu espacio, promoviendo biodiversidad y soberanía alimentaria.",
@@ -86,7 +86,7 @@
     {
       "id": 3,
       "name": "CAPACITACIÓN COMUNITARIA",
-      "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/servicios-madreselva-3.webp",
       "rating": 5,
       "title": "APRENDIZAJE VIVO",
       "description": "Formaciones presenciales y virtuales sobre agroecología y prácticas ancestrales.",
@@ -95,7 +95,7 @@
     {
       "id": 4,
       "name": "PROGRAMA DE VOLUNTARIADO",
-      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/servicios-madreselva-4.webp",
       "rating": 5,
       "title": "VIVE LA EXPERIENCIA",
       "description": "Únete al programa de voluntariado para apoyar proyectos regenerativos y conectarte con la comunidad madreSelva.",
@@ -104,7 +104,7 @@
     {
       "id": 5,
       "name": "PROGRAMA DE APRENDICES",
-      "image": "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/servicios-madreselva-5.webp",
       "rating": 5,
       "title": "FORMACIÓN CON PROPÓSITO",
       "description": "Capacitación práctica para jóvenes y adultos que desean aprender y formar parte de la regeneración agroecológica.",
@@ -114,17 +114,17 @@
   "servicios_naluum": [
     {
       "id": 1,
-      "name": "ASESORAMIENTO AGROECOLÓGICO Naluum",
-      "image": "https://images.unsplash.com/photo-1594631661960-7ac9372c2d2d?w=400&h=300&fit=crop",
+      "name": "PDC",
+      "image": "/img/testimonials/testimonio-pdc-1.webp",
       "rating": 5,
-      "title": "CON CONSCIENCIA Y PROPÓSITO",
-      "description": "Te ayudamos a transformar tu forma de producir, desde prácticas regenerativas hasta la implementación de cultivos biodinámicos.",
-      "author": "Equipo Naluum"
+      "title": "Profundidad con el mundo",
+      "description": "Haber hecho el PDC a mis 27 años me conectó en mayor profundidad con el mundo de lo posible, me impulsó a ser responsable con mis sueños y también a ser consciente de los ritmos que cada proyecto necesita como organismo vivo. Estar en grupo y considerar la compañía de lo invisible también fue un impulso para ampliar la mirada sobre las energías que atraviesan los diseños.",
+      "author": "Natalia María Josefina"
     },
     {
       "id": 2,
       "name": "TIENDAS CONSCIENTES",
-      "image": "https://images.unsplash.com/photo-1594631661960-7ac9372c2d2d?w=400&h=300&fit=crop",
+      "image": "/img/placeholders/pendiente-testimonio-tiendas-conscientes.svg",
       "rating": 5,
       "title": "UN ESPACIO DIFERENTE",
       "description": "Desarrollamos espacios de comercialización para productos orgánicos, locales y con propósito.",
@@ -135,7 +135,7 @@
     {
       "id": 1,
       "name": "CAMILA TORRES",
-      "image": "https://images.unsplash.com/photo-1594631661960-7ac9372c2d2d?w=400&h=300&fit=crop",
+      "image": "/img/placeholders/pendiente-testimonio-movimiento.svg",
       "rating": 5,
       "title": "TRANSFORMADOR",
       "description": "Naluum me devolvió la fe en que podemos regenerar lo que parecía perdido. Es más que un movimiento, es una esperanza.",
@@ -144,7 +144,7 @@
     {
       "id": 2,
       "name": "JUAN PABLO MÉNDEZ",
-      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/testimonio-comunidad-2.webp",
       "rating": 5,
       "title": "RECONEXIÓN",
       "description": "Participar en las actividades del movimiento me ayudó a reconectar con la tierra y conmigo mismo.",
@@ -155,7 +155,7 @@
     {
       "id": 1,
       "name": "BELÉN RUIZ",
-      "image": "https://images.unsplash.com/photo-1594631661960-7ac9372c2d2d?w=400&h=300&fit=crop",
+      "image": "/img/placeholders/pendiente-testimonio-naluum.svg",
       "rating": 5,
       "title": "TRANSFORMACIÓN",
       "description": "Naluum no solo me enseñó sobre agroecología, me transformó como persona y me dio herramientas reales.",
@@ -164,7 +164,7 @@
     {
       "id": 2,
       "name": "DIEGO FERNÁNDEZ",
-      "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop",
+      "image": "/img/testimonials/testimonio-comunidad-2.webp",
       "rating": 5,
       "title": "PROPÓSITO",
       "description": "El equipo de Naluum acompaña con humanidad y coherencia. Se nota que hacen todo con propósito.",

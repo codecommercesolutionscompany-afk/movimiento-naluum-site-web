@@ -28,8 +28,6 @@ const Grid = lazy(() => import("../../components/seccion/grid/grid"));
 import "./products.router.scss";
 
 
-let DOMAIN = import.meta.env.VITE_API_URL;
-console.log(DOMAIN)
 // ------------------------------
 // Loading Component
 const LoadingSpinner = () => (
@@ -45,7 +43,7 @@ const SEO_CONFIG = {
     title: "Productos Ecológicos y Naturales | Naluum - Bienestar Sostenible",
     description: "Descubre nuestra selección de productos ecológicos: alimentos orgánicos, cosmética natural y artículos sostenibles. Cuida tu salud y el planeta con Naluum.",
     keywords: "productos ecológicos, alimentos orgánicos, cosmética natural, productos sostenibles, bienestar natural, productos eco-friendly, tienda ecológica, productos biodegradables",
-    image: "/img/productos-hero-seo.jpg",
+    image: "/img/products/productos-portada.webp",
     type: "website",
     structuredData: {
       "@context": "https://schema.org",
@@ -65,7 +63,7 @@ const SEO_CONFIG = {
     title: `${product?.name || 'Producto'} - Naluum | Productos Ecológicos`,
     description: product?.description || "Producto natural y sostenible de alta calidad. Elaborado con ingredientes orgánicos certificados.",
     keywords: `${product?.category || ''}, producto ecológico, natural, orgánico, sostenible, ${product?.tags?.join(', ') || ''}`,
-    image: product?.image || "/img/producto-default-seo.jpg",
+    image: product?.image || "/img/products/productos-portada.webp",
     type: "product",
     price: product?.price,
     availability: product?.stock > 0 ? "InStock" : "OutOfStock",
@@ -108,13 +106,13 @@ const getAnimationProps = () => {
 // ------------------------------
 // Timer Configuration
 // const timerProps = {
-//   img: `${DOMAIN}/img/3.png`,
+//   img: '/img/shared/manos-plantines.webp',
 //   titles: {
 //     main: "",
 //     subtitle: "Festival Eco de la Tierra",
 //   },
 //   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-//   buttonText: "Inscríbete ahora",
+//   buttonText: "Quiero participar",
 //   timer: {
 //     targetDate: "2025-09-23T18:59:59"
 //   },
@@ -230,7 +228,7 @@ const Products = () => {
             <header className="products--header__container" role="banner">
               <div className="products--header__img">
                 <img 
-                  src={`${DOMAIN}/img/initial_products.jpg`} 
+                  src="/img/products/productos-portada.webp"
                   alt="Productos ecológicos y naturales de Naluum" 
                   loading="eager"
                   width="1920"
@@ -268,7 +266,7 @@ const Products = () => {
                     content: '';
                     position: absolute;
                     inset: 0;
-                    background-image: url(${DOMAIN}/img/fondopapel2.png);
+                    background-image: url(/img/backgrounds/textura-papel.webp);
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: bottom;
@@ -295,7 +293,7 @@ const Products = () => {
                     content: '';
                     position: absolute;
                     inset: 0;
-                    background-image: url(${DOMAIN}/img/fondopapel2.png);
+                    background-image: url(/img/backgrounds/textura-papel.webp);
                     background-repeat: no-repeat;
                     background-size: cover;
                     background-position: bottom;
@@ -331,7 +329,7 @@ const Products = () => {
                       content: '';
                       position: absolute;
                       inset: 0;
-                      background-image: url(${DOMAIN}/img/fondopapel2.png);
+                      background-image: url(/img/backgrounds/textura-papel.webp);
                       background-repeat: no-repeat;
                       background-size: cover;
                       background-position: bottom;

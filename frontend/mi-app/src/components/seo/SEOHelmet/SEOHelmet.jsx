@@ -18,7 +18,7 @@ const SEOHelmet = ({
     url = "https://miempresa.com",
 
     // Imagen que se muestra cuando se comparte el sitio (debe estar alojada en la web)
-    image = "https://miempresa.com/default-image.jpg",
+    image = new URL('/img/blog/permacultura-portada.webp', window.location.origin).href,
     }) => {
         
     return (

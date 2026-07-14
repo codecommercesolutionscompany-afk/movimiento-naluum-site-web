@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './founders.scss';
-let DOMAIN = import.meta.env.VITE_API_URL;
-
 const Founders = () => {
   const [expandedCard, setExpandedCard] = useState(null);
   
@@ -12,7 +10,7 @@ const founders = [
     role: "Co-Fundador y Coordinador General",
     bio: "Diseñador en Permacultura y educador internacional con más de 25 años de experiencia en procesos de regeneración ecológica, social y cultural. Ha trabajado en más de 40 países desarrollando proyectos de diseño regenerativo, educación y desarrollo comunitario. Co-fundador del Instituto Na Lu’um y del Eco Centro Madre Selva (Argentina), impulsa espacios de aprendizaje vivo donde se integran la sabiduría ancestral, la ciencia moderna y la espiritualidad práctica para construir una humanidad en equilibrio con la Tierra.",
     quote: "Solo cuando recordamos cómo habitar la Tierra con humildad y propósito, comienza la verdadera transformación.",
-    image: `${DOMAIN}/img/tierra_martinez.jpg`
+    image: '/img/testimonials/tierra-martinez.webp'
   },
   {
     id: 2,
@@ -20,7 +18,7 @@ const founders = [
     role: "Co-Fundadora y Directora General de Campo",
     bio: "Diseñadora en Permacultura especializada en Bioconstrucción y Diseño Social, con más de 15 años de experiencia. Co-facilitadora de los cursos de Diseño en Permacultura del Instituto Na Lu’um, ha trabajado en más de 30 países compartiendo herramientas para la regeneración ecológica y humana. De origen mexicana, coordina programas educativos en Madre Selva y el Instituto Na Lu’um, impulsando una educación viva que une conocimiento, propósito y acción.",
     quote: "La vida es muy sencilla, solo que la complicamos en nombre de la búsqueda incansable de quienes somos, sin saber que ya somos alguien desde que hacemos.",
-    image: `${DOMAIN}/img/beatriz_ramirez.jpg`
+    image: '/img/testimonials/beatriz-ramirez.webp'
   }
 ];
 
@@ -31,7 +29,7 @@ const familyFounder = {
   role: "Unidos por un propósito común",
   bio: "El Instituto de Permacultura Na Lu'um International tiene como propósito común la regeneración planetaria a través de procesos educativos en diseño de permacultura, bioconstrucción, permacultura social, reingeniería del ser, diseño hidrológico y agricultura sintrópica. Somos una familia unida por la regeneración de los sistemas. La Familia Na Lu'um sostiene un proceso educativo mediante una organización viva, donde cada integrante aporta desde su servicio al proyecto.",
   quote: "Somos una familia unida por la regeneración de la Tierra, sosteniendo una organización viva al servicio del cambio.",
-  image: `${DOMAIN}/img/familia_na_luum.jpg`
+  image: '/img/placeholders/pendiente-persona-familia-naluum.svg'
 };
 
 

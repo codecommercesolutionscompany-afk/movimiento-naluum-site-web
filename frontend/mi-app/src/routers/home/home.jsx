@@ -1,8 +1,6 @@
-import { useState, useRef, useCallback, useMemo, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useCallback, useMemo, useContext, useEffect } from 'react';
 
 import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
-import { MethodStatePaymentContext } from '../../context/method_state_payment/method_state_payment.context';
 import { useQueryParam } from '../../hooks/useQueryParams';
 
 
@@ -42,16 +40,6 @@ import SupportModalContent from '../../components/seccion/support_modal/support_
 import Button from '../../components/ui/button/button';
 import LineLogoSeparacion from '../../components/ui/line_logo_separacion/line_logo_separacion';
 import Modal from '../../components/ui/modal/modal';
-
-
-// ------------------------------
-// 📂 Integrations
-// Servicios externos, pasarelas de pago, APIs de terceros
-import PaymentForm from '../../components/integrations/payment-form/payment-form';
-import MercadoPagoCard from '../../components/integrations/mercado_pago_card/mercado_pago_card';
-import PaymentMethodSelector from '../../components/integrations/payment_method/payment_method_selector';
-
-let DOMAIN = import.meta.env.VITE_API_URL;
 
 
 // ------------------------------
@@ -96,13 +84,13 @@ const fadeInProps = {
 
 // Timer Configuration
 // const timerProps = {
-//   img: `${DOMAIN}/img/3.png`,
+//   img: '/img/shared/manos-plantines.webp',
 //   titles: {
 //     main: "",
 //     subtitle: "Festival Eco de la Tierra",
 //   },
 //   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-//   buttonText: "Inscríbete ahora",
+//   buttonText: "Quiero participar",
 //   timer: {
 //     targetDate: "2025-09-23T18:59:59"
 //   },
@@ -114,49 +102,49 @@ const missionCards = [
    id: 1,
    title: '🌱 Regeneramos territorios, pero también comunidades.',
    description: 'Trabajamos con permacultura y agricultura sintrópica para sanar la tierra y fortalecer vínculos comunitarios a través de nuestra red global.',
-   image: '/img/4.png',
+   image: '/img/shared/comunidad-circulo.webp',
  },
  {
    id: 2,
    title: '🔥 Rescatamos saberes ancestrales, pero también encendemos el futuro.',
    description: 'Conectamos la sabiduría maya y de pueblos originarios con técnicas regenerativas modernas para crear soluciones innovadoras.',
-   image: '/img/5.png',
+   image: '/img/shared/equipo-diseno-colaborativo.webp',
  },
  {
    id: 3,
    title: '🏡 Diseñamos con bioconstrucción, pero sobre todo, nuevas formas de habitar.',
    description: 'Creamos espacios sustentables con materiales naturales que nutren la conexión entre las personas y la Madre Tierra.',
-   image: '/img/7.png',
+   image: '/img/shared/hojas-bosque.webp',
  },
  {
    id: 4,
    title: '🌾 Cultivamos alimentos, pero también soberanía alimentaria.',
    description: 'Promovemos huertas comunitarias y técnicas agroecológicas para lograr autonomía y abundancia local en cada territorio.',
-   image: '/img/personas_trabajando.jpg',
+   image: '/img/shared/personas-trabajando.webp',
  },
  {
    id: 5,
    title: '💧 Gestionamos agua, pero también vida.',
    description: 'Diseñamos sistemas hidrológicos regenerativos que honran el agua como fuente sagrada de toda existencia.',
-   image: '/img/brote_mano.jpg',
+   image: '/img/sections/gestion-agua-vida.webp',
  },
  {
    id: 6,
    title: '🛠 Construimos herramientas, pero también redes de cambio.',
    description: 'Capacitamos facilitadores que replican metodologías regenerativas, creando una constelación de proyectos interconectados.',
-   image: '/img/4.png',
+   image: '/img/shared/comunidad-circulo.webp',
  },
  {
    id: 7,
    title: '🌍 Conectamos proyectos locales, pero también transformamos globalmente.',
    description: 'Desde grupos locales hasta alianzas continentales, tejemos una red viva que regenera el planeta proyecto a proyecto.',
-   image: '/img/3.png',
+   image: '/img/shared/manos-plantines.webp',
  },
  {
    id: 8,
    title: '🎓 Enseñamos permacultura, pero también despertamos propósito.',
    description: 'Nuestros cursos y talleres no solo transmiten técnicas, sino que ayudan a cada persona a encontrar su lugar en la regeneración.',
-   image: '/img/personas_trabajando.jpg',
+   image: '/img/shared/personas-trabajando.webp',
  }
 ];
 
@@ -165,7 +153,7 @@ const objectContentCard = {
    title: "Una red global de regeneración",
    text: "El Movimiento Naluum es una comunidad viva que emergió hace más de dos décadas en las selvas del Caribe mexicano. Lo que comenzó como un instituto itinerante de permacultura se transformó en un movimiento mundial que conecta proyectos regenerativos través de una red descentralizada de grupos locales, redes nacionales y alianzas continentales, basado en el respeto por saberes ancestrales, regeneración de territorios y abundancia para todas las formas de vida.",
    buttonPrimary: ["Conocer más sobre el Movimiento", '/movimiento_naluum'],
-   image: `${DOMAIN}/img/personas_trabajando.jpg`
+   image: '/img/shared/personas-trabajando.webp'
 }
 
 // SEO: Datos estructurados para Schema.org
@@ -175,7 +163,7 @@ const structuredData = {
   "name": "Movimiento Naluum",
   "description": "Movimiento que impulsa soluciones regenerativas para transformar vidas, conectar comunidades y sanar la Tierra",
   "url": "https://movimientonaluum.org",
-  "logo": "https://movimientonaluum.org/img/logo_naluum_trasparente.svg",
+  "logo": new URL('/img/branding/logo-naluum-transparente.svg', window.location.origin).href,
   "sameAs": [
     "https://www.facebook.com/movimientonaluum",
     "https://www.instagram.com/movimientonaluum",
@@ -204,11 +192,7 @@ const breadcrumbSchema = {
 const Home = () => {
 
   const { products, servicios, testimonios, timerProps } = useContext(ContextJsonLoadContext);
-  const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
-
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
-  const navigate = useNavigate();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
 
@@ -244,19 +228,13 @@ const Home = () => {
     setIsModalOpen({ isOpen: status, item });
     setServicioIdParam(item.id);
 
-  }, [setServicioIdParam, navigate]);
+  }, [setServicioIdParam]);
 
   const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setTriggerElement(null);
     removeServicioIdParam();
   }, [removeServicioIdParam]);
-
-  const handlePayment = useCallback((item, method) => {
-    if (method && item) {
-      setMethodStatePayment({ item, method });
-    }
-  }, [setMethodStatePayment]);
 
   const memoizedCards = useMemo(() => missionCards, []);
 
@@ -270,10 +248,6 @@ const Home = () => {
         showPointer={true}
       >
         <ModalCard course={isModalOpen.item}>
-          {/* <PaymentMethodSelector
-            item={isModalOpen.item}
-            onMethodSelect={(method) => handlePayment(isModalOpen.item, method)}
-          /> */}
           <SupportModalContent
             onClose={handleCloseModal}
             item={isModalOpen.item}
@@ -281,7 +255,7 @@ const Home = () => {
         </ModalCard>
       </Modal>
     );
-  }, [isModalOpen, handleCloseModal, triggerElement, handlePayment]);
+  }, [isModalOpen, handleCloseModal, triggerElement]);
 
   return (
     <main className='home__container' aria-label="Página principal" itemScope itemType="https://schema.org/WebPage">
@@ -291,7 +265,7 @@ const Home = () => {
         keywords="regeneración, permacultura, agricultura regenerativa, soluciones sostenibles, educación ambiental, comunidad sustentable, diseño regenerativo, tecnología social, agroecología, desarrollo sostenible"
         author="Movimiento Naluum"
         url="https://movimientonaluum.org"
-        image={`${DOMAIN}/img/logo_naluum_trasparente.svg`}
+        image="/img/branding/logo-naluum-transparente.svg"
         type="website"
         locale="es_ES"
         siteName="Movimiento Naluum"
@@ -307,7 +281,7 @@ const Home = () => {
       <Header>
         <div className='home__header-img-container'>
           <img 
-            src={`${DOMAIN}/img/Fotodeinicio.jpg`} 
+            src="/img/hero/brote-regeneracion.webp"
             alt="Comunidad del Movimiento Naluum trabajando en proyectos regenerativos" 
             className="home__header-img"
             loading="eager"
@@ -320,7 +294,7 @@ const Home = () => {
           <div className='home__header-logo'>
             <div className='home__header-logo-img'>
               <img 
-                src={`${DOMAIN}/img/logo_naluum_trasparente.svg`} 
+                src="/img/branding/logo-naluum-transparente.svg"
                 alt="Logo Movimiento Naluum - Soluciones Regenerativas" 
                 width="200"
                 height="200"

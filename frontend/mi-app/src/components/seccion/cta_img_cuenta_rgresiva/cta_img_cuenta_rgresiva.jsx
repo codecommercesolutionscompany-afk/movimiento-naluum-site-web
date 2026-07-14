@@ -1,20 +1,21 @@
 import { useState, useEffect, useContext, useMemo, useCallback } from 'react';
-import { MethodStatePaymentContext } from '../../../context/method_state_payment/method_state_payment.context.jsx';
+import { useNavigate } from 'react-router-dom';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load.jsx';
+import Modal from '../../ui/modal/modal';
+import SupportModalContent from '../support_modal/support_modal';
 import './cta_img_cuenta_rgresiva.scss';
-
-const DOMAIN = import.meta.env.VITE_API_URL;
 
 const CtaImgCuentaRgresiva = ({
   img,
-  titles = { main: '', subtitle: "¿Ya tienes una cuenta?" },
-  text = "Accede a tu cuenta para ver tus productos y servicios.",
-  buttonText = "Inscríbete",
+  titles = { main: '', subtitle: 'Conocé la propuesta' },
+  text = 'Contactanos para recibir más información.',
+  buttonText = 'Quiero participar',
   timer = { targetDate: null },
   id = "curso-certificado-diseno-permacultura"
 }) => {
-  const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
   const { eventos } = useContext(ContextJsonLoadContext);
+  const navigate = useNavigate();
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -56,43 +57,44 @@ const CtaImgCuentaRgresiva = ({
     return eventos.find((evento) => evento.id === id) || null;
   }, [eventos, id]);
 
-  // --- 🔹 Manejo de la acción principal
+  const contactItem = useMemo(() => {
+    return {
+      ...(filterItem || {}),
+      id: filterItem?.id || id,
+      title: filterItem?.title || titles.main || 'esta propuesta',
+      type: 'event participation',
+      itemType: 'event participation',
+    };
+  }, [filterItem, id, titles.main]);
+
+  const configuredUrl = timer?.link || filterItem?.externalUrl || filterItem?.url || filterItem?.link || filterItem?.router;
+  const isExternalUrl = /^https?:\/\//i.test(configuredUrl || '');
+  const isValidInternalUrl = /^\/(productos|servicios|proyectos|contacto|calendario|blog|sobre-nosotros)(\/|$)/.test(configuredUrl || '');
+
+  // --- Acción informativa o de contacto
   const handlePrimaryAction = useCallback(
     (e) => {
       e.stopPropagation();
 
-      if (!filterItem) {
-        console.warn("⚠️ No se encontró el evento con el id proporcionado.");
+      if (isExternalUrl) {
+        window.open(configuredUrl, '_blank', 'noopener,noreferrer');
         return;
       }
 
-      const normalizedItem = {
-        id: filterItem.id,
-        title: filterItem.title,
-        subtitle: filterItem.subtitle || filterItem.description,
-        image: filterItem.image,
-        badge: filterItem.badge || '',
-        icon: filterItem.icon || (filterItem.type === 'service' ? '🌱' : ''),
-        category: filterItem.category || '',
-        price: filterItem.price,
-        currency: filterItem.currency || 'USD',
-        content: filterItem.content || '',
-        originalData: filterItem,
-        itemType: filterItem.type,
-        originalPrice: filterItem.originalPrice || filterItem.price,
-      };
+      if (isValidInternalUrl) {
+        navigate(configuredUrl);
+        return;
+      }
 
-      // Guardar en contexto para flujo de pago
-      setMethodStatePayment({ normalizedItem });
-      console.log("🚀 Normalized Item enviado al contexto:", normalizedItem);
+      setIsContactOpen(true);
     },
-    [filterItem, setMethodStatePayment]
+    [configuredUrl, isExternalUrl, isValidInternalUrl, navigate]
   );
 
   // --- Determinar la URL final de la imagen
   const finalImageUrl = useMemo(() => {
     if (!img) return null;
-    return img.startsWith('http') ? img : `${DOMAIN}${img}`;
+    return img;
   }, [img]);
 
   return (
@@ -146,7 +148,6 @@ const CtaImgCuentaRgresiva = ({
               <button
                 onClick={handlePrimaryAction}
                 className="cta-cuenta-regresiva__link"
-                disabled={!filterItem}
               >
                 <span>{buttonText}</span>
               </button>
@@ -154,6 +155,9 @@ const CtaImgCuentaRgresiva = ({
           </div>
         </div>
       </div>
+      <Modal isOpenModal={isContactOpen} onClose={() => setIsContactOpen(false)}>
+        {contactItem && <SupportModalContent item={contactItem} />}
+      </Modal>
     </div>
   );
 };

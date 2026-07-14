@@ -7,13 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "validate:content": "node scripts/validate-content-assets.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@mercadopago/sdk-react": "^0.0.24",
-    "@stripe/react-stripe-js": "^3.5.1",
-    "@stripe/stripe-js": "^6.1.0",
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.483.0",
     "react": "^18.0.0",

@@ -1,8 +1,6 @@
-import { useContext, useState, useMemo, useCallback, useEffect, use } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useQueryParam } from '../../../hooks/useQueryParams';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
-import { MethodStatePaymentContext } from '../../../context/method_state_payment/method_state_payment.context';
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -21,7 +19,7 @@ import Grid from '../../seccion/grid/grid';
 import CtaImgCuentaRgresiva from '../../seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CtaHablemos from '../../seccion/cta_hablemos/cta_hablemos';
 import TestimonialCard from '../../seccion/testimonial_card/testimonial_card';
-import Newsletter from '../../seccion/newsletter/newsletter';
+import SupportModalContent from '../../seccion/support_modal/support_modal';
 import FAQ from '../../seccion/FAQ/FAQ';
 import MessageFinal from '../../seccion/message_final/message_final';
 import FadeInOnView from '../../seccion/fadeInOnView/fadeInOnView';
@@ -32,14 +30,8 @@ import Modal from '../../ui/modal/modal';
 import Button from '../../ui/button/button';
 
 // ------------------------------
-// 📂 Integrations
-import PaymentMethodSelector from '../../integrations/payment_method/payment_method_selector';
-
-// ------------------------------
 // 📂 Styles
 import './global.scss';
-
-let DOMAIN = import.meta.env.VITE_API_URL;
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -53,17 +45,17 @@ const fadeInProps = {
 };
 
 const timerProps = {
-  img: "/img/3.png",
+  img: "/img/shared/manos-plantines.webp",
   titles: {
     main: "",
     subtitle: "Festival Eco de la Tierra",
   },
   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-  buttonText: "Inscríbete ahora",
+  buttonText: "Quiero participar",
   timer: {
-    targetDate: "2025-09-23T18:59:59"
-  },
-  link : "/servicios/laboratorios-alimentacion-viva"
+    targetDate: "2025-09-23T18:59:59",
+    link: "/servicios/laboratorios-alimentacion-viva"
+  }
 };
 
 const titles = {
@@ -85,11 +77,8 @@ const Global = () => {
     const [triggerElement, setTriggerElement] = useState(null);
     const [isLoadPeges, setIsLoadPeges] = useState(false);
     const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
-    const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
-    
     const [headerAnimationState, setHeaderAnimationState] = useState('initial');
     const [isHovered, setIsHovered] = useState(false);
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (prefersReducedMotion) {
@@ -116,17 +105,13 @@ const Global = () => {
         setTriggerElement(e.currentTarget);
         setIsModalOpen({ isOpen: status, item });
         setServicioIdParam(item.id);
-    }, [setServicioIdParam, navigate]);
+    }, [setServicioIdParam]);
 
     const handleCloseModal = useCallback(() => {
         setIsModalOpen(false);
         setTriggerElement(null);
         removeServicioIdParam();
     }, [removeServicioIdParam]);
-
-    const handlePayment = useCallback((item, method) => {
-        if (method && item) setMethodStatePayment({ item, method });
-    }, [setMethodStatePayment]);
 
     const modalContent = useMemo(() => {
         if (!isModalOpen.isOpen || !isModalOpen.item) return null;
@@ -138,14 +123,11 @@ const Global = () => {
                 showPointer={true}
             >
                 <ModalCard course={isModalOpen.item}>
-                    <PaymentMethodSelector
-                        item={isModalOpen.item}
-                        onMethodSelect={(method) => handlePayment(isModalOpen.item, method)}
-                    />
+                    <SupportModalContent item={isModalOpen.item} />
                 </ModalCard>
             </Modal>
         );
-    }, [isModalOpen, handleCloseModal, triggerElement, handlePayment]);
+    }, [isModalOpen, handleCloseModal, triggerElement]);
 
     const handleKeyPress = (e) => {
         if ((e.key === 'Enter' || e.key === ' ') && headerAnimationState === 'hover-ready') {
@@ -217,7 +199,7 @@ const Global = () => {
                 keywords="consultoría regenerativa, Na Lu'um, permacultura, regeneración, sostenibilidad, ecosocial, sabiduría ancestral, innovación, pedagogía, comunidad, transición ecológica"
                 author="Movimiento Na Lu'um | Coordinación Global"
                 url="https://miempresa.com/projects/global"
-                image="https://miempresa.com/images/global-cover.jpg"
+                image={new URL('/img/projects/proyecto-global-menu.webp', window.location.origin).href}
             />
 
             <div className='global__header' id="inicio">
@@ -232,7 +214,7 @@ const Global = () => {
                         aria-label="Global header con contenido interactivo"
                     >
                         <div className="global__header__content__logo" style={getLogoStyles()}>
-                            <img src={`${DOMAIN}/img/fondo_transparente_global.svg`} alt="Logo Global" style={{ animationPlayState: (headerAnimationState === 'hover-ready' && isHovered) ? 'paused' : 'running' }} />
+                            <img src="/img/branding/fondo-transparente-global.svg" alt="Logo Global" style={{ animationPlayState: (headerAnimationState === 'hover-ready' && isHovered) ? 'paused' : 'running' }} />
                         </div>
                         <div className="global__header__content__titles" style={getTitlesStyles()}>
                             <h1 style={getChildStyles(0.15)}>CONSULTORÍA REGENERATIVA INTERNACIONAL</h1>
@@ -251,7 +233,7 @@ const Global = () => {
                     <FadeInOnView {...fadeInProps}>
                         <div className='global__content--question__card'>
                             <div className='global__content--question__card__img'>
-                                <img src="/img/elequipo.jpg" alt="Global" />
+                                <img src="/img/sections/equipo-global.webp" alt="Global" />
                             </div>
                             <div className='global__content--question__card__text'>
                                 <h2>{globalCard.titulo}</h2>
@@ -264,7 +246,7 @@ const Global = () => {
 
                 <div className='global__content--history'>
                     <FadeInOnView {...fadeInProps}>
-                        <TimeLineHistory index={3} theme={'global'} titles={titles} showHeroBg={true} heroBgImage={`${DOMAIN}/img/fondo_transparente_global.svg`} />
+                        <TimeLineHistory index={3} theme={'global'} titles={titles} showHeroBg={true} heroBgImage="/img/branding/fondo-transparente-global.svg" />
                     </FadeInOnView>
                 </div>
 
@@ -313,10 +295,6 @@ const Global = () => {
                     <FadeInOnView {...fadeInProps}>
                         <MessageFinal indexMessage={0} />
                     </FadeInOnView>
-                </div>
-
-                <div className='global__content--newsletter' id='newsletter'>
-                    <Newsletter />
                 </div>
 
                 <div className='global__content--FAQ' id='FAQ'>

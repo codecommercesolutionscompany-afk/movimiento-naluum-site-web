@@ -1,12 +1,10 @@
-import { useContext, useState, useMemo } from 'react';
-import { MethodStatePaymentContext } from '../../../../src/context/method_state_payment/method_state_payment.context';
+import { useState, useMemo } from 'react';
 import SupportModalContent from '../support_modal/support_modal'; 
 import Modal from '../../ui/modal/modal';
 
 import './grid.scss';
 
 const Grid = ({ items = [], slice, setIsOpen }) => {
-  const { setMethodStatePayment } = useContext(MethodStatePaymentContext);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState({ statusOpenModal: false, item: null }); 
   // Límite de items a mostrar
   const limit = useMemo(() => (typeof slice === 'number' ? slice : items.length), [slice, items.length]);
@@ -77,17 +75,14 @@ const Grid = ({ items = [], slice, setIsOpen }) => {
     const raw = String(normalizedItem.itemType || '').toLowerCase();
     const isProduct = raw.includes('product') || raw.includes('producto');
     const baseType = isProduct ? 'product' : 'service';
-    const action = isProduct ? 'compra' : 'inscripción';
+    const action = isProduct ? 'consulta' : 'inscripción';
 
     // Construir el payload como lo esperan los otros componentes
     const enriched = {
       ...normalizedItem.originalData,
-      type: `${baseType} ${action}`,      // ej: 'service inscripción' | 'product compra'
+      type: `${baseType} ${action}`,      // ej: 'service inscripción' | 'product consulta'
       itemType: `${baseType} ${action}`,  // duplico por compatibilidad con checks existentes
     };
-
-    // (Opcional) guardar en contexto si luego usás pasarela de pago
-    // setMethodStatePayment({ item: enriched });
 
     setIsSupportModalOpen({ statusOpenModal: true, item: enriched });
   };
@@ -99,7 +94,6 @@ const Grid = ({ items = [], slice, setIsOpen }) => {
     }
   };
 
-  console.log(isSupportModalOpen)
   return (
     <div className="grid">
       <div className="grid__container">
@@ -185,9 +179,9 @@ const Grid = ({ items = [], slice, setIsOpen }) => {
                   <button
                     className="grid__card-button-main"
                     onClick={(e) => handlePrimaryAction(normalizedItem, e)}
-                    aria-label={`${(normalizedItem.itemType || '').toLowerCase().includes('product') ? 'Comprar' : 'Inscribirse'} ${normalizedItem.title}`}
+                    aria-label={`${(normalizedItem.itemType || '').toLowerCase().includes('product') ? 'Consultar' : 'Quiero inscribirme en'} ${normalizedItem.title}`}
                   >
-                    {(normalizedItem.itemType || '').toLowerCase().includes('product') ? 'Comprar ahora' : 'Inscribirse ahora'}
+                    {(normalizedItem.itemType || '').toLowerCase().includes('product') ? 'Consultar' : 'Quiero inscribirme'}
                   </button>
                 </div>
               </div>
