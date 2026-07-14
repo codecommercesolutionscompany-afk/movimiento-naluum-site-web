@@ -10,12 +10,9 @@ import DiscountBadge from '../../../ui/discount_badge/discount_badge';
 import './modal_card.scss';
 
 const ModalCard = ({ course, children, onPrimaryAction }) => {
-  if (!course) return null;
-
   const [isVisible, setIsVisible] = useState(false);
   const [activeHighlight, setActiveHighlight] = useState(0);
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [isLoading] = useState(false);
 
   // normalizador simple
   const normalize = (s = '') =>
@@ -131,7 +128,7 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
       try {
         await navigator.share(shareData);
         return;
-      } catch (err) {
+      } catch {
         // cae a copiar si falla
       }
     }
@@ -163,6 +160,8 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
       alert('Función de compartir no disponible en este navegador');
     }
   };
+
+  if (!course) return null;
 
   return (
     <>
@@ -308,7 +307,6 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
           <button
             className="card_modal__action-button"
             onClick={handleEnrollClick}
-            style={{ opacity: isLoading ? 0.8 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
           >
             <MessageCircle size={20} /> {derived.base === 'product' ? 'Consultar' : 'Quiero inscribirme'} <ArrowRight size={18} />
           </button>

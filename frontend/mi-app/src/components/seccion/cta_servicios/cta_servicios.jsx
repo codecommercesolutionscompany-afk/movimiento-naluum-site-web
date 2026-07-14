@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 
-import { Link } from 'react-router-dom';
 // ------------------------------
 // 📂 SEO y Meta
 // Importaciones de componentes relacionados con SEO y metadata
@@ -52,11 +51,7 @@ import { ContextJsonLoadContext } from '../../../context/context_json_load/conte
 // Estilos globales, variables SCSS y temas
 import './cta_servicios.scss';
 const CTAServicios = () => {
-    const { dataImpactoReal } = useContext(ContextJsonLoadContext);
-
-    if (!dataImpactoReal || dataImpactoReal.length === 0) {
-        return <div className="cta-servicios__loading">Cargando...</div>;
-    }
+    const { dataImpactoReal = [] } = useContext(ContextJsonLoadContext);
     return(
         <div className="cta-servicios__container">
             <div className="cta-section" style={{ backgroundImage: 'url(/img/sections/cta-sobre-nosotros.webp)' }}

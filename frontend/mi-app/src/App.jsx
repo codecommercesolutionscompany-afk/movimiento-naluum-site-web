@@ -10,7 +10,6 @@ import ScrollToTop from './components/ui/scrollToTop/ScrollToTop';
 import ButtonBack from './components/ui/button_back/button_back';
 
 // 📂 Tracking y métricas
-import UserTracker from './components/tracking/userTracker/userTracker';
 
 // 📂 Páginas principales (Routers)
 import Home from './routers/home/home';
@@ -27,6 +26,7 @@ import Products from './routers/products/products.router';
 import ProductDetail from './routers/products/products_detail';
 import ServiceDetail from './routers/services/services_detail';
 import BlogDetail from './routers/blog/blog_detail';
+import NotFound from './routers/notFound/notFound';
 
 import './App.scss';
 
@@ -55,8 +55,6 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <UserTracker /> */}
-      
       <>
         <div className='App__nav'>
           <Nav />
@@ -81,6 +79,9 @@ const App = () => {
           <Route path="/checkout" element={<Navigate to="/productos" replace />} />
           <Route path="/carrito-de-compras" element={<Navigate to="/productos" replace />} />
           <Route path="/payment-status" element={<Navigate to="/" replace />} />
+          <Route path="/movimiento-naluum" element={<Navigate to="/" replace />} />
+          <Route path="/movimiento_naluum" element={<Navigate to="/" replace />} />
+          <Route path="/nosotros" element={<Navigate to="/sobre-nosotros" replace />} />
 
           <Route path="/productos/*" element={<Products />}>
             <Route path=":id" element={<ProductDetail />} />
@@ -93,6 +94,8 @@ const App = () => {
           <Route path="/blog" element={<Blog />}>
             <Route path="/blog/:id" element={<BlogDetail />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
       </main>

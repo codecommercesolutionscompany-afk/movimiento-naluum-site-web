@@ -1,4 +1,3 @@
-import React from 'react';
 import './discount_badge.scss';
 
 const DiscountBadge = ({ originalPrice, currentPrice }) => {

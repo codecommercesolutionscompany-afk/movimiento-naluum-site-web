@@ -74,20 +74,6 @@ const fadeInProps = {
   easing: prefersReducedMotion ? 'linear' : "bounce",
   speed: prefersReducedMotion ? 'fast' : "slow"
 };
-const timerProps = {
-  img: "/img/shared/manos-plantines.webp",
-  titles: {
-    main: "",
-    subtitle: "Festival Eco de la Tierra",
-  },
-  text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-  buttonText: "Quiero participar",
-  timer: {
-    targetDate: "2025-09-23T18:59:59",
-    link: "/servicios/laboratorios-alimentacion-viva",
-  }
-};
-
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [filteredServices, setFilteredServices] = useState([]);

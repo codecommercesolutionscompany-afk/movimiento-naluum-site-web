@@ -26,7 +26,6 @@ import Grid from '../../components/seccion/grid/grid';
 import CtaImgCuentaRgresiva from '../../components/seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CardDataImpacto from '../../components/seccion/card_data_impacto/card_data_impacto';
 import BeforeAndAfter from '../../components/seccion/before_and_after/before_and_after';
-import Testimonios from '../../components/seccion/testimonios/testimonios';
 import Bitacora from '../../components/seccion/bitacora/bitacora';
 import CtaHablemos from '../../components/seccion/cta_hablemos/cta_hablemos';
 import MessageFinal from '../../components/seccion/message_final/message_final';
@@ -152,7 +151,7 @@ const objectContentCard = {
    question: "¿Qué es el Movimiento Naluum?",
    title: "Una red global de regeneración",
    text: "El Movimiento Naluum es una comunidad viva que emergió hace más de dos décadas en las selvas del Caribe mexicano. Lo que comenzó como un instituto itinerante de permacultura se transformó en un movimiento mundial que conecta proyectos regenerativos través de una red descentralizada de grupos locales, redes nacionales y alianzas continentales, basado en el respeto por saberes ancestrales, regeneración de territorios y abundancia para todas las formas de vida.",
-   buttonPrimary: ["Conocer más sobre el Movimiento", '/movimiento_naluum'],
+   buttonPrimary: ["Conocer más sobre el Movimiento", '/sobre-nosotros'],
    image: '/img/shared/personas-trabajando.webp'
 }
 
@@ -191,7 +190,7 @@ const breadcrumbSchema = {
 
 const Home = () => {
 
-  const { products, servicios, testimonios, timerProps } = useContext(ContextJsonLoadContext);
+  const { products, servicios, timerProps } = useContext(ContextJsonLoadContext);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
@@ -285,7 +284,7 @@ const Home = () => {
             alt="Comunidad del Movimiento Naluum trabajando en proyectos regenerativos" 
             className="home__header-img"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             width="1920"
             height="1080"
           />
@@ -485,7 +484,7 @@ const Home = () => {
       </section>
 
       {/* SEO: CSS para ocultar visualmente pero mantener accesible para screen readers */}
-      <style jsx>{`
+      <style>{`
         .visually-hidden {
           position: absolute;
           width: 1px;

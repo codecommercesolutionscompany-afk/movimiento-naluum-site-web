@@ -9,7 +9,6 @@ import SEOHelmet from '../../seo/SEOHelmet/SEOHelmet';
 // ------------------------------
 // 📂 Layout
 import Header from '../../layout/header/header';
-import CardV2Img from '../../layout/card/cardV2_Img/cardV2_img';
 import ModalCard from '../../layout/card/modal_card/modal_card';
 
 // ------------------------------
@@ -71,11 +70,10 @@ const globalCard = {
 };
 
 const Global = () => {
-    const { servicios, FAQ: faqData, products } = useContext(ContextJsonLoadContext);
+    const { servicios = [], FAQ: faqData = [], products = [] } = useContext(ContextJsonLoadContext);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [triggerElement, setTriggerElement] = useState(null);
-    const [isLoadPeges, setIsLoadPeges] = useState(false);
     const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
     const [headerAnimationState, setHeaderAnimationState] = useState('initial');
     const [isHovered, setIsHovered] = useState(false);
@@ -97,8 +95,6 @@ const Global = () => {
             if (item) setIsModalOpen({ isOpen: true, item });
         }
     }, [servicioIdParam, servicios]);
-
-    if (!servicios || !products) return null;
 
     const handleOpenModal = useCallback((status, e, item) => {
         if (!item || !item.id) return;
@@ -185,12 +181,6 @@ const Global = () => {
         return servicios.filter((item) => item.type === 'service' && item.project?.toLowerCase().trim() === 'madre selva');
     }, [servicios]);
 
-    useEffect(() => {
-        if (isLoadPeges) return;
-        const timer = setTimeout(() => setIsLoadPeges(true), 1000);
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
         <div className='global__container'>
             <SEOHelmet 
@@ -198,7 +188,7 @@ const Global = () => {
                 description="Global es una red viva de consultoría regenerativa nacida del Movimiento Na Lu'um. Acompañamos procesos ecosociales, pedagógicos y tecnológicos inspirados en la permacultura, la sabiduría ancestral y la innovación contemporánea."
                 keywords="consultoría regenerativa, Na Lu'um, permacultura, regeneración, sostenibilidad, ecosocial, sabiduría ancestral, innovación, pedagogía, comunidad, transición ecológica"
                 author="Movimiento Na Lu'um | Coordinación Global"
-                url="https://miempresa.com/projects/global"
+                url="https://movimientonaluum.org/proyectos/global"
                 image={new URL('/img/projects/proyecto-global-menu.webp', window.location.origin).href}
             />
 

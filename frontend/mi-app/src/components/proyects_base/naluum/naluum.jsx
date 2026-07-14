@@ -73,7 +73,7 @@ const titles = {
 };
 
 const Naluum = () => {
-  const { servicios, FAQ: faqData } = useContext(ContextJsonLoadContext);
+  const { servicios = [], FAQ: faqData = [] } = useContext(ContextJsonLoadContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
@@ -84,8 +84,6 @@ const Naluum = () => {
       if (item) setIsModalOpen({ isOpen: true, item });
     }
   }, [servicioIdParam, servicios]);
-
-  if (!servicios) return null;
 
   const handleOpenModal = useCallback((status, e, item) => {
     if (!item || !item.id) return;

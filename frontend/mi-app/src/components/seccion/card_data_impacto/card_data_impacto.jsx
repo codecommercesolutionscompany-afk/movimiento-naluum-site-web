@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import './card_data_impacto.scss';
 
 import {ContextJsonLoadContext} from '../../../context/context_json_load/context_json_load'
 
 // Componente individual para cada card con su propio hook
-const ImpactCard = ({ item, index }) => {
+const ImpactCard = ({ item }) => {
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const elementRef = useRef(null);
@@ -21,14 +21,13 @@ const ImpactCard = ({ item, index }) => {
             { threshold: 0.2 }
         );
 
-        if (elementRef.current) {
-            observer.observe(elementRef.current);
+        const element = elementRef.current;
+        if (element) {
+            observer.observe(element);
         }
 
         return () => {
-            if (elementRef.current) {
-                observer.disconnect();
-            }
+            observer.disconnect();
         };
     }, []);
 
@@ -99,27 +98,16 @@ const ImpactCard = ({ item, index }) => {
 };
  
 const CardDataImpacto = () => {
-    const { dataImpactoReal } = useContext(ContextJsonLoadContext);
+    const { dataImpactoReal = [] } = useContext(ContextJsonLoadContext);
     
     // Validación de datos
-    if (!dataImpactoReal || !Array.isArray(dataImpactoReal)) {
-        return (
-            <div className='card-data-impacto'>
-                <div className='card-data-impacto__grid'>
-                    <p>Cargando datos...</p>
-                </div>
-            </div>
-        );
-    }
-    
     return (
         <div className='card-data-impacto'>
             <div className='card-data-impacto__grid'>
-                {dataImpactoReal.slice(0, 4).map((item, index) => (
+                {dataImpactoReal.slice(0, 4).map((item) => (
                     <ImpactCard 
-                        key={index} 
+                        key={item.id || item.title}
                         item={item} 
-                        index={index} 
                     />
                 ))}
             </div>

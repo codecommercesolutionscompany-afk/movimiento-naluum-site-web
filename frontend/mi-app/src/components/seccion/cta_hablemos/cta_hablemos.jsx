@@ -39,7 +39,7 @@ const CtaHablemos = ({
 
     const { nombre, correo, mensaje } = formState;
 
-    const validateField = (field, value) => {
+    const validateField = useCallback((field, value) => {
         const fieldErrors = {};
         switch (field) {
             case 'nombre':
@@ -62,16 +62,16 @@ const CtaHablemos = ({
                 break;
         }
         return fieldErrors;
-    };
+    }, []);
 
-    const validateForm = () => {
+    const validateForm = useCallback(() => {
         let formErrors = {};
         Object.keys(formState).forEach(field => {
             const fieldErrors = validateField(field, formState[field]);
             formErrors = { ...formErrors, ...fieldErrors };
         });
         return formErrors;
-    };
+    }, [formState, validateField]);
 
     const handleInputChange = useCallback((field, value) => {
         setFormState(prev => ({ ...prev, [field]: value }));
@@ -98,7 +98,7 @@ const CtaHablemos = ({
         }
 
         if (submitStatus) setSubmitStatus(null);
-    }, [errors, isFormSubmitted, submitStatus, proyecto]);
+    }, [errors, isFormSubmitted, submitStatus, proyecto, validateField]);
 
     const handleSubmit = useCallback(async (e) => {
         e?.preventDefault();
@@ -123,13 +123,14 @@ const CtaHablemos = ({
                 setFocusedField('');
                 setAdditionalData(prev => ({ ...prev, userInputs: {} }));
             } else {
-                setSubmitStatus('error');
+                setSubmitStatus(response?.reason === 'configuration' ? 'configuration' : 'error');
             }
-        } catch (error) {
-            console.error('Error al enviar email:', error);
+        } catch {
             setSubmitStatus('error');
+        } finally {
+            setIsFormSubmitted(false);
         }
-    }, [additionalData, sendEmail, formState]);
+    }, [additionalData, sendEmail, formState, validateForm]);
 
     const handleFocus = (field) => {
         setFocusedField(field);
@@ -207,6 +208,12 @@ const CtaHablemos = ({
                                     <div className="modern-contact__status modern-contact__status--error">
                                         <AlertCircle size={14} />
                                         <span>Error al enviar. Por favor intenta nuevamente.</span>
+                                    </div>
+                                )}
+                                {submitStatus === 'configuration' && (
+                                    <div className="modern-contact__status modern-contact__status--error" role="alert">
+                                        <AlertCircle size={14} />
+                                        <span>El formulario por correo no está disponible temporalmente. Podés usar los otros medios de contacto.</span>
                                     </div>
                                 )}
 

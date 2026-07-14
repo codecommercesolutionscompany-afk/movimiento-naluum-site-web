@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import './Modal.scss';
 
-const Modal = ({ isOpenModal, onClose, children }) => {
+const Modal = ({ isOpenModal, onClose, children, triggerElement }) => {
   const isOpen = isOpenModal;
+  const closeButtonRef = useRef(null);
 
   // Si no está abierto, no renderiza nada
-  if (!isOpen) return null;
-
   useEffect(() => {
     // Permite cerrar el modal con la tecla Escape
     const handleEscape = (e) => {
@@ -17,17 +17,24 @@ const Modal = ({ isOpenModal, onClose, children }) => {
     };
 
     if (isOpen) {
+      const previousActiveElement = document.activeElement;
+      const focusFrame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
       // Agrega clase CSS al body para bloquear el scroll
       document.body.classList.add('modal-open');
       document.addEventListener('keydown', handleEscape);
 
       return () => {
+        window.cancelAnimationFrame(focusFrame);
         document.removeEventListener('keydown', handleEscape);
         // Elimina la clase del body al cerrar
         document.body.classList.remove('modal-open');
+        const focusTarget = triggerElement?.isConnected ? triggerElement : previousActiveElement;
+        focusTarget?.focus?.();
       };
     }
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, triggerElement]);
+
+  if (!isOpen) return null;
 
   // Cerrar el modal con el botón "×"
   const handleCloseClick = () => {
@@ -47,7 +54,7 @@ const Modal = ({ isOpenModal, onClose, children }) => {
 
   const modalContent = (
     // 🔸 Quitamos el onClick del backdrop para evitar cierre por clic fuera
-    <div className="modal__backdrop">
+    <div className="modal__backdrop" role="dialog" aria-modal="true" aria-label="Información">
       <div className="modal__content" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
@@ -58,6 +65,7 @@ const Modal = ({ isOpenModal, onClose, children }) => {
         onClick={handleCloseClick}
         aria-label="Cerrar modal"
         type="button"
+        ref={closeButtonRef}
       >
         ×
       </button>
@@ -66,6 +74,16 @@ const Modal = ({ isOpenModal, onClose, children }) => {
 
   // Renderiza el modal en el body (fuera del flujo normal de la app)
   return createPortal(modalContent, document.body);
+};
+
+Modal.propTypes = {
+  isOpenModal: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]).isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  triggerElement: PropTypes.shape({
+    focus: PropTypes.func,
+    isConnected: PropTypes.bool,
+  }),
 };
 
 export default Modal;

@@ -1,30 +1,4 @@
-# ================================================
-# Este es el archivo robots.txt para tu sitio web
-# Se utiliza para indicar a los motores de búsqueda 
-# cómo deben rastrear las páginas de tu sitio web.
-# ================================================
-
-# 1. Bloquear áreas privadas del sitio para evitar que los motores de búsqueda las rastreen.
 User-agent: *
-Disallow: /admin/        # Evita que los motores rastreen la carpeta 'admin' (administración del sitio)
-Disallow: /login/        # Evita que los motores rastreen la página de login
-Disallow: /profile/      # Evita que los motores rastreen la página de perfil (ajusta según tu sitio)
+Allow: /
 
-# 2. Permitir rastreo completo del resto del sitio.
-Allow: /                 # Permite el rastreo de la página principal (y demás páginas) de tu sitio
-
-# 3. Evitar que los motores de búsqueda rastreen páginas de error.
-Disallow: /404           # Evita que los motores rastreen la página de error 404
-
-# 4. Especificar la ubicación de tu archivo 'sitemap.xml'
-Sitemap: https://tudominio.com/sitemap.xml
-# IMPORTANTE: Este archivo ayuda a los motores de búsqueda a encontrar todas las páginas de tu sitio
-# Si tienes varias versiones del sitemap (por ejemplo, si el sitio tiene contenido dinámico o varias secciones),
-# puedes agregar más de una línea 'Sitemap:' apuntando a diferentes URLs del sitemap.
-
-# 5. Permitir que los motores rastreen páginas importantes como 'Términos de servicio' o 'Política de privacidad'
-Allow: /terminos-de-servicio/  # Permite rastrear la página de 'Términos de servicio' si la tienes
-Allow: /privacidad/           # Permite rastrear la página de 'Política de privacidad' si la tienes
-
-# 6. Ejemplo adicional de cómo bloquear una página específica o una ruta privada:
-# Disallow: /ejemplo-de-pagina-privada/   # Si tienes páginas que no deseas que los motores rastreen, puedes añadirlas aquí.
+Sitemap: https://movimientonaluum.org/sitemap.xml

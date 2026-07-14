@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './cta_logros_reconocimientos.scss';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const petals = [
   { className: "petal-1", rotate: "rotate(0 100 70)" },
@@ -90,14 +90,6 @@ const CtaLogrosReconocimientos = ({redirectRouter}) => {
         transition: 'all 0.8s ease-out',
         transformOrigin: 'center'
     });
-
-    // Función para calcular la posición de cada pétalo
-    const getPetalPosition = (index, centerX, centerY, radius) => {
-        const angle = (index * 45) * (Math.PI / 180); // 45 grados entre pétalos
-        const x = centerX + Math.sin(angle) * radius;
-        const y = centerY - Math.cos(angle) * radius;
-        return { x, y, angle: index * 45 };
-    };
 
     return (
         <div className='cta-logros-reconocimientos__container'>
@@ -208,10 +200,12 @@ const CtaLogrosReconocimientos = ({redirectRouter}) => {
                                         ry="16"
                                         fill="#F7DC6F"
                                         transform={petal.rotate}
+                                        style={petalStyle(index, petalsVisible[index])}
                                         />
                                     ))}
-                                    <circle className="flower-center" cx="100" cy="40" r="10" fill="#8F764C" />
-                                    <circle className="flower-inner" cx="100" cy="40" r="6" fill="#63502D" />
+                                    <circle className="flower-center" cx="100" cy="40" r="10" fill="#8F764C" style={{ opacity: flowerCenterVisible ? 1 : 0 }} />
+                                    <circle className="flower-inner" cx="100" cy="40" r="6" fill="#63502D" style={{ opacity: flowerInnerVisible ? 1 : 0 }} />
+                                    <circle className="flower-dot" cx="100" cy="40" r="2" fill="#F7DC6F" style={{ opacity: flowerDotVisible ? 1 : 0 }} />
                                 </g>
                             </svg>
                         </div>

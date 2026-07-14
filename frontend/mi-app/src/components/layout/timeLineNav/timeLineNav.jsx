@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './timelineNav.scss';
 
@@ -11,11 +11,8 @@ const TimelineNav = ({ sections }) => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  if (!sections || sections.length === 0) {
-    return null; // No sections to display
-  }
-
   useEffect(() => {
+    if (!sections?.length) return undefined;
     // Configurar el observer solo para secciones con hash
     const hashSections = sections.filter(section => section.path?.startsWith('#'));
     
@@ -102,8 +99,6 @@ const TimelineNav = ({ sections }) => {
   }, [sections, location, activeSection]);
 
   const handleNavClick = (section) => {
-    console.log('Navigating to:', section.path);
-    
     // Si el path empieza con #, es una navegación por hash (scroll)
     if (section.path?.startsWith('#')) {
       // Remover el # para obtener el ID del elemento
@@ -122,8 +117,6 @@ const TimelineNav = ({ sections }) => {
         
         // Actualizar la URL con el hash
         window.history.pushState(null, '', section.path);
-      } else {
-        console.warn(`Element with id "${elementId}" not found`);
       }
     } else {
       // Es una ruta normal, usar navigate
@@ -138,6 +131,8 @@ const TimelineNav = ({ sections }) => {
     // Actualizar la sección activa inmediatamente
     setActiveSection(section.id);
   };
+
+  if (!sections?.length) return null;
 
   const getActiveIndex = () => {
     return sections.findIndex(section => section.id === activeSection);
@@ -191,7 +186,7 @@ const TimelineNav = ({ sections }) => {
       {/* Indicador móvil de sección activa */}
       <div className="mobile-indicator">
         <div className="indicator-content">
-          {sections.map((section, index) => (
+          {sections.map((section) => (
             <div
               key={section.id}
               className={`indicator-dot ${activeSection === section.id ? 'active' : ''}`}

@@ -1,10 +1,7 @@
 import "./footer.scss";
 import { 
   Facebook, 
-  Twitter, 
   Instagram, 
-  Linkedin, 
-  Youtube,
   MapPin,
   Mail,
   Phone
@@ -20,41 +17,34 @@ const Footer = () => {
       logo: '/img/branding/logo-naluum-transparente.svg'
     },
     socialMedia: [
-      { name: "Facebook", icon: Facebook, url: "https://facebook.com", color: "#1877f2" },
-      { name: "Twitter", icon: Twitter, url: "https://twitter.com", color: "#1da1f2" },
-      { name: "Instagram", icon: Instagram, url: "https://instagram.com", color: "#e4405f" },
-      { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com", color: "#0077b5" },
-      { name: "YouTube", icon: Youtube, url: "https://youtube.com", color: "#ff0000" }
+      { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/Permacultura.Naluum", color: "#1877f2" },
+      { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/naluum.permacultura", color: "#e4405f" }
     ],
     contact: {
       title: "Contáctanos",
       info: [
         { 
           icon: MapPin, 
-          text: "Av. Regeneración 2030, Buenos Aires, Argentina",
+          text: "Coto 7 Interior 807 2-D Selva Nova, Playa del Carmen, México",
           type: "address"
         },
         { 
           icon: Mail, 
-          text: "contacto@ecoregen.com",
+          text: "naluumpermacultura@gmail.com",
           type: "email",
-          link: "mailto:contacto@ecoregen.com"
+          link: "mailto:naluumpermacultura@gmail.com"
         },
         { 
           icon: Phone, 
-          text: "+54 11 2030-4050",
+          text: "+54 9 376 425-7777",
           type: "phone",
-          link: "tel:+541120304050"
+          link: "tel:+5493764257777"
         }
       ]
     },
     legal: {
-      copyright: `© ${new Date().getFullYear()} Movimien Naluum. Todos los derechos reservados. Juntos por un planeta mejor.`,
-      links: [
-        { name: "Política de Privacidad", url: "/privacy" },
-        { name: "Términos de Servicio", url: "/terms" },
-        { name: "Política de Sostenibilidad", url: "/sustainability" }
-      ]
+      copyright: `© ${new Date().getFullYear()} Movimiento Naluum. Todos los derechos reservados. Juntos por un planeta mejor.`,
+      links: ["Política de Privacidad", "Términos de Servicio", "Política de Sostenibilidad"]
     }
   };
 
@@ -72,11 +62,11 @@ const Footer = () => {
             <p className="footer__description">{footerData.company.description}</p>
             
             <div className="footer__social">
-              {footerData.socialMedia.map((social, index) => {
+              {footerData.socialMedia.map((social) => {
                 const IconComponent = social.icon;
                 return (
                   <a 
-                    key={index}
+                    key={social.name}
                     href={social.url} 
                     className="footer__social-link"
                     aria-label={social.name}
@@ -95,10 +85,10 @@ const Footer = () => {
           <div className="footer__section">
             <h3 className="footer__title">{footerData.contact.title}</h3>
             <ul className="footer__contact-list">
-              {footerData.contact.info.map((item, index) => {
+              {footerData.contact.info.map((item) => {
                 const IconComponent = item.icon;
                 return (
-                  <li key={index} className="footer__contact-item">
+                  <li key={item.type} className="footer__contact-item">
                     <div className="footer__contact-icon">
                       <IconComponent size={16} />
                     </div>
@@ -121,10 +111,10 @@ const Footer = () => {
           <div className="footer__bottom-content">
             <p className="footer__copyright">{footerData.legal.copyright}</p>
             <div className="footer__legal-links">
-              {footerData.legal.links.map((link, index) => (
-                <a key={index} href={link.url} className="footer__legal-link">
-                  {link.name}
-                </a>
+              {footerData.legal.links.map((link) => (
+                <span key={link} className="footer__legal-link">
+                  {link}
+                </span>
               ))}
             </div>
           </div>

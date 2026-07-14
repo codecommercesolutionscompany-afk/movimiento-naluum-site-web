@@ -2,8 +2,6 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import './carrusel_imagenes.scss';
 
 const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 }) => {
-  // console.log('MissionCarousel RENDER'); // Puedes usar para debug
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay);
 
@@ -19,8 +17,6 @@ const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 
   }, [isAutoPlaying, cards.length, autoPlayInterval]);
 
   // Handlers con useCallback para evitar recreación
-  const goToSlide = useCallback((index) => setCurrentIndex(index), []);
-
   const goToPrevious = useCallback(() => {
     setCurrentIndex(currentIndex => (currentIndex === 0 ? cards.length - 1 : currentIndex - 1));
   }, [cards.length]);
@@ -72,17 +68,6 @@ const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 
     </div>
   )), [cards, currentIndex]);
 
-  // Memorizar dots
-  const dots = useMemo(() => cards.map((_, index) => (
-    <button
-      key={index}
-      className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-      onClick={() => goToSlide(index)}
-      aria-label={`Ir a la imagen ${index + 1}`}
-      type="button"
-    />
-  )), [cards.length, currentIndex, goToSlide]);
-
   if (cards.length === 0) {
     return <div className="mission-carousel">No hay imágenes para mostrar</div>;
   }
@@ -125,8 +110,6 @@ const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 
         </button>
       </div>
  
-      {/* <div className="carousel-dots">{dots}</div> */}
-
       <div className="carousel-progress">
         <div className="carousel-progress-bar" style={progressBarStyle} />
       </div>
@@ -157,4 +140,3 @@ const areEqual = (prevProps, nextProps) => {
 };
 
 export default React.memo(MissionCarousel, areEqual);
- 

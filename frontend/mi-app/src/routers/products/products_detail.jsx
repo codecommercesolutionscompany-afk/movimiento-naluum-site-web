@@ -97,7 +97,6 @@ const ProductsDetail = ({ type = 'product' }) => {
       ...currentItem,
       type: `${currentItem.type || type} soporte`,
     };
-    console.log('Abriendo modal de soporte para:', updatedItem);
     setSelectedItem(updatedItem);
     setIsSupportModalOpen(true);
   };
@@ -111,8 +110,6 @@ const ProductsDetail = ({ type = 'product' }) => {
     setSelectedItem(updatedItem);
     setIsSupportModalOpen(true);
   };
-
-  console.log('Current Item:', isSupportModalOpen);
 
   return (
     <div className={`products-detail ${isVisible ? 'visible' : ''}`}>
@@ -156,7 +153,9 @@ const ProductsDetail = ({ type = 'product' }) => {
                     try {
                       await navigator.share(shareData);
                     } catch (error) {
-                      console.error('Error al compartir:', error);
+                      if (import.meta.env.DEV && error?.name !== 'AbortError') {
+                        console.error('No se pudo compartir el contenido.');
+                      }
                     }
                   } else {
                     await navigator.clipboard.writeText(window.location.href);

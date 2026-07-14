@@ -40,9 +40,7 @@ const iconMap = {
 
 const Nav = () => {
   const { listaRutas, projects } = useContext(ContextJsonLoadContext);
-  const listRouters = listaRutas;
-  
-  if (!listRouters) return null;
+  const listRouters = listaRutas || {};
   
   const [isScroll, setIsScroll] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -246,7 +244,7 @@ const Nav = () => {
         onMouseEnter={handleDropdownMouseEnter}
         onMouseLeave={handleDropdownMouseLeave}
       >
-        {item.subItems.map((subItem, subIndex) => {
+        {item.subItems.map((subItem) => {
           // Para proyectos, verificar si existe en el contexto
           if (isProjectDropdown && projects?.projects) {
             const matchedProject = projects.projects.find(p => p.name === subItem.name);
@@ -260,7 +258,7 @@ const Nav = () => {
 
           return (
             <li 
-              key={subIndex} 
+              key={subItem.path || subItem.name}
               className={`nav__dropdown-item ${isProjectDropdown ? '' : 'nav__dropdown-item--standard'} ${isActive ? 'nav__dropdown-item--active' : ''}`}
             >
               <Link 
@@ -307,9 +305,7 @@ const Nav = () => {
     );
   }, [handleDropdownLinkClick, handleDropdownMouseEnter, handleDropdownMouseLeave, isActiveDropdownItem, getItemImage, getProjectLogo, getProjectDescription, projects]);
 
-  const menuItems = (listRouters?.['Movimiento Naluum'] || []).filter(
-    (item) => item.path !== '/carrito-de-compras'
-  );
+  const menuItems = listRouters['Movimiento Naluum'] || [];
 
   return (
     <nav className="nav" ref={navRef}>
@@ -317,7 +313,7 @@ const Nav = () => {
         {/* Logo */}
         <div className="nav__logo">
           <Link 
-            to="/movimiento-naluum/" 
+            to="/"
             className="nav__logo-link"
             onClick={() => {
               if (isMobile && isMobileMenuOpen) {
@@ -331,9 +327,6 @@ const Nav = () => {
               src="/img/branding/logo-naluum-transparente.svg"
               alt="Logo Movimiento Naluum"
               loading="lazy"
-              onError={(e) => {
-                e.target.src = '/img/branding/logo-naluum-transparente.svg';
-              }}
             />
           </Link>
         </div>
@@ -363,7 +356,7 @@ const Nav = () => {
               
               return (
                 <li
-                  key={index}
+                  key={item.path || item.name}
                   className={`nav__menu-item ${hasDropdown ? 'nav__menu-item--has-dropdown' : ''} ${isActive ? 'nav__menu-item--active' : ''}`}
                   onMouseEnter={() => handleMouseEnter(index, item)}
                   onMouseLeave={handleMouseLeave}

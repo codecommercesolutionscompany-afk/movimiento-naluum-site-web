@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -78,4 +77,3 @@ const CardV2Img = ({ objectContentCard, buttonTrue = true }) => {
 }
 
 export default CardV2Img;
- 

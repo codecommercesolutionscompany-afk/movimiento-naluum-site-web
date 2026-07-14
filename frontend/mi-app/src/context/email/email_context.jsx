@@ -1,36 +1,47 @@
-import React, { createContext, useCallback } from "react";
-import emailjs from "@emailjs/browser";
+import { createContext, useCallback, useMemo } from 'react';
+import emailjs from '@emailjs/browser';
 
 export const EmailContext = createContext({
-  sendEmail: () => {},
+  sendEmail: async () => ({ success: false, reason: 'configuration' }),
+  isEmailConfigured: false,
 });
 
 export const EmailProvider = ({ children }) => {
+  const config = useMemo(() => ({
+    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  }), []);
+  const isEmailConfigured = Boolean(config.serviceId && config.templateId && config.publicKey);
+
   const sendEmail = useCallback(async (emailData) => {
-    console.log("📧 Enviando email con EmailJS:", emailData);
-    try {
-
-      // ✅ Enviar el correo usando EmailJS
-      const response = await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,   // tu service ID
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  // tu template ID
-        emailData,                                 // datos dinámicos del template
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY    // tu public key
-      );
-
-      console.log("✅ Email enviado con éxito:", response);
-      return { success: true, response };
-
-    } catch (err) {
-      console.error("❌ Error enviando email con EmailJS:", err);
-      return { success: false, error: err };
+    if (!isEmailConfigured) {
+      if (import.meta.env.DEV) {
+        console.error('EmailJS no está configurado. Revisa las variables VITE_EMAILJS requeridas.');
+      }
+      return { success: false, reason: 'configuration' };
     }
-  }, []);
 
-  return (
-    <EmailContext.Provider value={{ sendEmail }}>
-      {children}
-    </EmailContext.Provider>
+    try {
+      const response = await emailjs.send(
+        config.serviceId,
+        config.templateId,
+        emailData,
+        config.publicKey,
+      );
+      return { success: true, response };
+    } catch {
+      if (import.meta.env.DEV) {
+        console.error('EmailJS no pudo enviar el mensaje.');
+      }
+      return { success: false, reason: 'send' };
+    }
+  }, [config, isEmailConfigured]);
+
+  const value = useMemo(
+    () => ({ sendEmail, isEmailConfigured }),
+    [isEmailConfigured, sendEmail],
   );
-};
 
+  return <EmailContext.Provider value={value}>{children}</EmailContext.Provider>;
+};

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useContext, useMemo } from 'react';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
 import './time_line_history.scss';
 
@@ -34,7 +34,10 @@ const TimeLineHistory = ({
   const [isVisible, setIsVisible] = useState({});
   const chapterRefs = useRef([]);
 
-  const chapters = time_line_history?.[index]?.items || [];
+  const chapters = useMemo(
+    () => time_line_history?.[index]?.items || [],
+    [index, time_line_history],
+  );
 
   // Efecto para detectar scroll y activar animaciones
   useEffect(() => {

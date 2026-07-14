@@ -22,7 +22,7 @@ const valores = [
   },
 ];
 
-const Valores = ({/* listValures */}) => {
+const Valores = () => {
 
     return(
         <div className='valores__container'>

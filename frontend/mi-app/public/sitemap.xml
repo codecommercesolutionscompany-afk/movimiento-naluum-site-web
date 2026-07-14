@@ -1,46 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <!-- Página principal -->
-    <url>
-        <!-- URL de la página principal -->
-        <loc>https://tudominio.com/</loc>
-        
-        <!-- Fecha de la última modificación de la página (utiliza la fecha en la que la página fue actualizada por última vez) -->
-        <lastmod>2025-04-21</lastmod>
-        
-        <!-- Prioridad de la página en relación a otras páginas del sitio (1.00 es la más alta) -->
-        <priority>1.00</priority>
-    </url>
-
-    <!-- Página de "Nosotros" -->
-    <url>
-        <!-- URL de la página "Nosotros" -->
-        <loc>https://tudominio.com/nosotros</loc>
-        
-        <!-- Fecha de la última modificación de esta página -->
-        <lastmod>2025-04-21</lastmod>
-        
-        <!-- Prioridad de esta página -->
-        <priority>0.80</priority>
-    </url>
-
-    <!-- Página de "Contacto" -->
-    <url>
-        <!-- URL de la página de contacto -->
-        <loc>https://tudominio.com/contacto</loc>
-        
-        <!-- Fecha de la última modificación de esta página -->
-        <lastmod>2025-04-21</lastmod>
-        
-        <!-- Prioridad de esta página -->
-        <priority>0.80</priority>
-    </url>
-
-    <!-- Agrega más páginas según sea necesario -->
-    <!-- Si tienes más páginas en tu sitio, repite el bloque <url> y cambia la URL, la fecha de modificación y la prioridad -->
-    
+  <url><loc>https://movimientonaluum.org/</loc><priority>1.00</priority></url>
+  <url><loc>https://movimientonaluum.org/sobre-nosotros</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/productos</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/servicios</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/proyectos/madre-selva</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/proyectos/naluum</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/proyectos/global</loc><priority>0.80</priority></url>
+  <url><loc>https://movimientonaluum.org/blog</loc><priority>0.70</priority></url>
+  <url><loc>https://movimientonaluum.org/calendario</loc><priority>0.70</priority></url>
+  <url><loc>https://movimientonaluum.org/contacto</loc><priority>0.70</priority></url>
 </urlset>
-
-
-
-<!-- Una vez que termines de personalizar este archivo, guárdalo y sigue el siguiente paso (subirlo al servidor y verificarlo en herramientas como Google Search Console). -->

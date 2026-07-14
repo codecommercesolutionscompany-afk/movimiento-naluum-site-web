@@ -1,4 +1,4 @@
-import { createContext, useMemo } from 'react';
+import { createContext } from 'react';
 
 import dataImpactoReal from '../../json/data_impacto_real.json';
 import listRouters from '../../json/listRouters.json';
@@ -70,27 +70,23 @@ const validateContent = () => {
 
     errors.push(name);
     content[name] = Array.isArray(value) ? [] : {};
-    console.error(`[contenido local] Esquema inválido en ${name}.json`);
+    if (import.meta.env.DEV) console.error(`[contenido local] Esquema inválido en ${name}.json`);
   });
 
   return { content, errors };
 };
 
 const validatedContent = validateContent();
+const contextValue = Object.freeze({
+  ...validatedContent.content,
+  json_load: true,
+  content_errors: validatedContent.errors,
+  dataTimerProps: validatedContent.content.timerProps,
+});
 
 export const ContextJsonLoadProvider = ({ children }) => {
-  const value = useMemo(
-    () => ({
-      ...validatedContent.content,
-      json_load: true,
-      content_errors: validatedContent.errors,
-      dataTimerProps: validatedContent.content.timerProps,
-    }),
-    [],
-  );
-
   return (
-    <ContextJsonLoadContext.Provider value={value}>
+    <ContextJsonLoadContext.Provider value={contextValue}>
       {validatedContent.errors.length > 0 && (
         <div role="alert" className="content-data-error">
           No se pudo cargar correctamente: {validatedContent.errors.join(', ')}.

@@ -8,6 +8,7 @@ import { clearLegacyContentCache } from './utils/cleanupLegacyContentCache';
 import { clearLegacyPaymentState } from './utils/cleanupLegacyPaymentState';
 import './index.css'
 import App from './App.jsx'
+import ErrorBoundary from './components/errors/error_boundary/error_boundary.jsx'
 
 clearLegacyContentCache();
 clearLegacyPaymentState();
@@ -15,11 +16,13 @@ clearLegacyPaymentState();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
-      <ContextJsonLoadProvider>
-        <EmailProvider>
-          <App />
-        </EmailProvider>
-      </ContextJsonLoadProvider>
+      <ErrorBoundary>
+        <ContextJsonLoadProvider>
+          <EmailProvider>
+            <App />
+          </EmailProvider>
+        </ContextJsonLoadProvider>
+      </ErrorBoundary>
     </Router>
   </StrictMode>
 )

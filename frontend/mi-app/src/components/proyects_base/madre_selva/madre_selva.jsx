@@ -135,7 +135,7 @@ const actividadesMadreSelva = [
 // ------------------------------
 // 🌿 COMPONENTE PRINCIPAL
 const MadreSelva = () => {
-  const { servicios, FAQ: faqData, products, timerProps } = useContext(ContextJsonLoadContext);
+  const { servicios = [], FAQ: faqData = [], products = [], timerProps } = useContext(ContextJsonLoadContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
@@ -146,8 +146,6 @@ const MadreSelva = () => {
       if (item) setIsModalOpen({ isOpen: true, item });
     }
   }, [servicioIdParam, servicios]);
-
-  if (!servicios || !products) return null;
 
   const handleOpenModal = useCallback((status, e, item) => {
     if (!item || !item.id) return;
@@ -195,7 +193,7 @@ const MadreSelva = () => {
     keywords:
       'madre selva, permacultura, regeneración, selva misionera, agricultura sintrópica, educación ambiental, ecología, Naluum, sostenibilidad, restauración ecológica',
     author: 'Neyen Frandino',
-    url: 'https://miempresa.com/projects/madre-selva',
+    url: 'https://movimientonaluum.org/proyectos/madre-selva',
     image: new URL('/img/shared/ecocentro-madre-selva.webp', window.location.origin).href,
   };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import './map_location.scss';
 
 const MapLocations = () => {
@@ -6,7 +6,7 @@ const MapLocations = () => {
   const mapInstanceRef = useRef(null);
 
   // 5 ubicaciones diferentes
-  const locations = [
+  const locations = useMemo(() => [
     {
         id: 1,
         name: "Colonia Paraíso",
@@ -47,19 +47,22 @@ const MapLocations = () => {
       lng: 151.2153,
       description: "Arquitectura única reconocida mundialmente"
     }
-  ];
+  ], []);
 
   useEffect(() => {
+    let leafletCSS;
+    let script;
+
     // Cargar Leaflet dinámicamente
     const loadLeaflet = async () => {
       // Cargar CSS de Leaflet
-      const leafletCSS = document.createElement('link');
+      leafletCSS = document.createElement('link');
       leafletCSS.rel = 'stylesheet';
       leafletCSS.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
       document.head.appendChild(leafletCSS);
 
       // Cargar JS de Leaflet
-      const script = document.createElement('script');
+      script = document.createElement('script');
       script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
       script.async = true;
       
@@ -69,10 +72,6 @@ const MapLocations = () => {
       
       document.body.appendChild(script);
 
-      return () => {
-        document.head.removeChild(leafletCSS);
-        document.body.removeChild(script);
-      };
     };
 
     const initializeMap = () => {
@@ -133,8 +132,13 @@ const MapLocations = () => {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
       }
+      if (script) {
+        script.onload = null;
+        script.remove();
+      }
+      leafletCSS?.remove();
     };
-  }, []);
+  }, [locations]);
 
   return (
     <div className="map-locations">

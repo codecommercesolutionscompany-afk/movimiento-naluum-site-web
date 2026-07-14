@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './before_and_after.scss';
 
 const BeforeAndAfter = () => {

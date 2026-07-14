@@ -17,7 +17,7 @@ const LEGACY_CONTENT_CACHE_KEYS = [
 export const clearLegacyContentCache = () => {
   try {
     LEGACY_CONTENT_CACHE_KEYS.forEach((key) => window.localStorage.removeItem(key));
-  } catch (error) {
-    console.warn('No se pudo limpiar la caché de contenido anterior.', error);
+  } catch {
+    if (import.meta.env.DEV) console.warn('No se pudo limpiar la caché de contenido anterior.');
   }
 };

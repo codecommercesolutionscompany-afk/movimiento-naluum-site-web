@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Home, User, ShoppingBag, Mail, HelpCircle } from 'lucide-react';
 
 // ------------------------------
@@ -15,6 +15,7 @@ import Header from '../../components/layout/header/header';
 import MadreSelva from '../../components/proyects_base/madre_selva/madre_selva';
 import Naluum from '../../components/proyects_base/naluum/naluum';
 import Global from '../../components/proyects_base/global/global';
+import NotFound from '../notFound/notFound';
 
 // ------------------------------
 // 📂 Styles
@@ -37,7 +38,7 @@ const Projects = () => {
 
   // ✅ Meta dinámico según la ruta (SEO optimizado y coherente con Naluum)
   const metaData = {
-    '/projects/madre-selva': {
+    '/proyectos/madre-selva': {
       title: 'Madre Selva | Regeneración de la selva misionera y permacultura viva',
       description:
         'Madre Selva es un santuario de 22 hectáreas en la selva misionera donde aplicamos principios de permacultura, restauración ecológica y aprendizaje vivencial. Proyecto raíz del movimiento Naluum para regenerar la Tierra desde la acción local.',
@@ -45,7 +46,7 @@ const Projects = () => {
       keywords:
         'madre selva, selva misionera, regeneración ecológica, permacultura, reforestación, sostenibilidad, restauración ambiental, Naluum',
     },
-    '/projects/naluum': {
+    '/proyectos/naluum': {
       title: 'Naluum | Movimiento global de permacultura y pedagogía regenerativa',
       description:
         'Naluum es un movimiento global que integra, permacultura y procesos pedagógicos para regenerar la conexión entre humanidad y naturaleza. Llevamos el conocimiento y la práctica de la permacultura al mundo.',
@@ -53,7 +54,7 @@ const Projects = () => {
       keywords:
         'naluum, permacultura, pedagogía regenerativa, sostenibilidad, educación ambiental, comunidad global, ecología profunda',
     },
-    '/projects/global': {
+    '/proyectos/global': {
       title: 'Global | Consultoría permacultural para proyectos sostenibles',
       description:
         'Global es la consultoría de Naluum que acompaña a empresas y emprendedores en la creación de proyectos sostenibles. Aplicamos principios de permacultura al diseño organizacional, estrategias digitales y desarrollo regenerativo.',
@@ -91,9 +92,11 @@ const Projects = () => {
 
       {/* 📂 Rutas internas */}
       <Routes>
+        <Route index element={<Navigate to="madre-selva" replace />} />
         <Route path="madre-selva" element={<MadreSelva />} />
         <Route path="naluum" element={<Naluum />} />
         <Route path="global" element={<Global />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

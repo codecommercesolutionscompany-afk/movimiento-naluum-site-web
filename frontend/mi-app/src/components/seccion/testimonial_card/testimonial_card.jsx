@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
 import './testimonial_card.scss';
 
@@ -8,7 +8,6 @@ const TestimonialCard = ({ typeTestimonial = 'servicio' }) => {
 
   const testimonialType = testimonios?.[typeTestimonial] || [];   
   
-  console.log(testimonialType)
   // Si no hay testimonios, no renderizar nada
   if (!testimonialType || testimonialType.length === 0) return null;
 

@@ -103,7 +103,7 @@ const AboutMe = () => {
               alt="Vista panorámica del movimiento Naluum - Regeneración planetaria en acción" 
               className="aboutMe__header-img"
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               width="1920"
               height="1080"
             />

@@ -1,6 +1,6 @@
 
 // FadeInOnView.jsx
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './FadeInOnView.scss';
 
 

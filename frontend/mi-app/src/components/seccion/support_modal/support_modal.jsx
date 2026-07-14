@@ -14,7 +14,7 @@ const normalize = (s = '') =>
   s.normalize?.('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase() || String(s).toLowerCase();
 
 const SupportModalContent = ({ item }) => {
-  const { sendEmail } = useContext(EmailContext);
+  const { sendEmail, isEmailConfigured } = useContext(EmailContext);
   const {
     title: itemTitle,
     id: itemId,
@@ -157,13 +157,6 @@ const SupportModalContent = ({ item }) => {
     };
 
     try {
-      if (typeof sendEmail !== 'function') {
-        console.error('❌ EmailContext.sendEmail no disponible');
-        setSubmitStatus('error');
-        setIsSubmitting(false);
-        return;
-      }
-
       const response = await sendEmail(emailData);
 
       if (response?.success) {
@@ -178,10 +171,9 @@ const SupportModalContent = ({ item }) => {
         // Mantener isSubjectLocked tal cual está
         // NO cerrar el modal
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus(response?.reason === 'configuration' ? 'configuration' : 'error');
       }
-    } catch (error) {
-      console.error('❌ Error al enviar el correo:', error);
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -262,6 +254,11 @@ const SupportModalContent = ({ item }) => {
           </button>
 
           <form className="email-form" onSubmit={handleSubmit}>
+            {!isEmailConfigured && (
+              <div className="email-form__alert email-form__alert--error" role="alert">
+                <span>El formulario por correo no está disponible temporalmente. Podés usar WhatsApp.</span>
+              </div>
+            )}
             <h3 className="email-form__title">Envíanos tu mensaje</h3>
 
             <div className="email-form__group">
@@ -335,7 +332,13 @@ const SupportModalContent = ({ item }) => {
               </div>
             )}
 
-            <button type="submit" className="email-form__submit" disabled={isSubmitting}>
+            {submitStatus === 'configuration' && (
+              <div className="email-form__alert email-form__alert--error" role="alert">
+                <span>El formulario por correo no está disponible temporalmente. Podés usar WhatsApp.</span>
+              </div>
+            )}
+
+            <button type="submit" className="email-form__submit" disabled={isSubmitting || !isEmailConfigured}>
               {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
             </button>
           </form>

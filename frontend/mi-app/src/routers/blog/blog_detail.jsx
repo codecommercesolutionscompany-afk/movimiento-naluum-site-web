@@ -1,8 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
 import { 
-  ArrowLeft, 
   Calendar, 
   User, 
   Clock, 
@@ -14,8 +13,7 @@ import {
   Sprout,
   Droplets,
   Sun,
-  ChevronRight,
-  Image as ImageIcon
+  ChevronRight
 } from 'lucide-react';
 import SEOHelmet from '../../components/seo/SEOHelmet/SEOHelmet';
 import './blog_detail.scss';
@@ -42,7 +40,7 @@ const BlogDetail = () => {
             if (foundBlog) {
                 setBlogPost(foundBlog);
             } else {
-                console.error('Blog no encontrado con ID:', id);
+                if (import.meta.env.DEV) console.error('No se encontró el artículo solicitado.');
                 setTimeout(() => {
                     navigate('/blog', { replace: true });
                 }, 2000);
@@ -99,10 +97,6 @@ const BlogDetail = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleGoBack = () => {
-        navigate('/blog');
-    };
-
     const handleShare = async () => {
         if (navigator.share) {
             try {
@@ -112,7 +106,9 @@ const BlogDetail = () => {
                     url: window.location.href,
                 });
             } catch (error) {
-                console.log('Error al compartir:', error);
+                if (import.meta.env.DEV && error?.name !== 'AbortError') {
+                    console.error('No se pudo compartir el artículo.');
+                }
             }
         } else {
             navigator.clipboard.writeText(window.location.href);
