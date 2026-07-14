@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // =============================
 // Variables de Color
 // =============================
@@ -299,11 +301,11 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &--success {
       background: rgba($primary-light, 0.2);
-      color: darken($primary-dark, 10%);
+      color: color.adjust($primary-dark, $lightness: -10%);
       border: 1px solid rgba($primary-light, 0.5);
 
       svg {
-        stroke: darken($primary-dark, 10%);
+        stroke: color.adjust($primary-dark, $lightness: -10%);
       }
     }
 
@@ -322,7 +324,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     @include button-reset;
     width: 100%;
     padding: 14px 24px;
-    background: linear-gradient(135deg, $primary-dark, darken($primary-dark, 5%));
+    background: linear-gradient(135deg, $primary-dark, color.adjust($primary-dark, $lightness: -5%));
     color: $white;
     font-size: 1rem;
     font-weight: 600;

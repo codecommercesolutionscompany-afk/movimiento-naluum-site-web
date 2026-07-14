@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables de colores
 $primary-dark: #063B2c;
 $primary-light: #D0DE85;
@@ -468,7 +470,7 @@ $transition-base: all 0.3s ease;
             box-shadow: 0 3px 12px rgba($primary-light, 0.25);
 
             &:hover {
-              background-color: darken($primary-light, 8%);
+              background-color: color.adjust($primary-light, $lightness: -8%);
               transform: translateY(-2px);
               box-shadow: 0 5px 16px rgba($primary-light, 0.35);
 

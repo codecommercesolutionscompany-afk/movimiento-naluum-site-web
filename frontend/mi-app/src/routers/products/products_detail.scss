@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables - Paleta de colores personalizada
 $primary-dark: #063B2C;      // Verde oscuro principal
 $primary-light: #D0DE85;     // Verde claro/lima
@@ -583,7 +585,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-bottom: 2rem;
 
         &:hover {
-          background: darken($accent-brown, 10%);
+          background: color.adjust($accent-brown, $lightness: -10%);
           transform: translateY(-2px);
           box-shadow: 0 10px 20px rgba($accent-brown, 0.3);
         }

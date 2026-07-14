@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables de colores
 $color-primary: #063B2C;
 $color-secondary: #D0DE85;
@@ -299,7 +301,7 @@ $color-light: #D5CEA9;
             }
             
             .blog__content--card-content {
-            background: linear-gradient(to bottom, white, lighten($color-light, 15%));
+            background: linear-gradient(to bottom, white, color.adjust($color-light, $lightness: 15%));
             
             h3 {
                 color: $color-accent;
@@ -332,7 +334,7 @@ $color-light: #D5CEA9;
             height: 220px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(135deg, lighten($color-neutral, 40%), lighten($color-neutral, 50%));
+            background: linear-gradient(135deg, color.adjust($color-neutral, $lightness: 40%), color.adjust($color-neutral, $lightness: 50%));
             
             img {
             width: 100%;

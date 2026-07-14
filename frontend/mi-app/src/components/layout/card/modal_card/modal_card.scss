@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .card_modal__container {
   background: #f9f9f6;
   border: 1px solid #d5cea9;
@@ -317,7 +319,7 @@
   margin: 0 auto;
 
   &:hover {
-    background: darken(#8f764c, 5%);
+    background: color.adjust(#8f764c, $lightness: -5%);
     transform: translateY(-2px);
   }
 

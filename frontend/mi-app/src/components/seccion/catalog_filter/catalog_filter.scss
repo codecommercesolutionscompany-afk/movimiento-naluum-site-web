@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables de colores
 $primary-dark: #063B2c;
 $primary-light: #D0DE85;
@@ -67,7 +69,7 @@ $input-bg: rgba(255, 255, 255, 0.95); // Fondo más claro para mejor contraste
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: darken($search-bg, 10%);
+          background-color: color.adjust($search-bg, $lightness: -10%);
         }
 
         svg {

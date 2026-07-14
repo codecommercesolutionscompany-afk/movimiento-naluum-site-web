@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:map";
+
 // =============================
 // Variables de Color
 // =============================
@@ -40,8 +43,8 @@ $breakpoints: (
 // Mixins
 // =============================
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map.get($breakpoints, $breakpoint)}) {
       @content;
     }
   }
@@ -142,9 +145,9 @@ $breakpoints: (
     bottom: 0;
     background: linear-gradient(
       transparent 0%,
-      darken($dark-green, 10%) 15%,
+      color.adjust($dark-green, $lightness: -10%) 15%,
       rgba($dark-green, .9) 50%,
-      darken($dark-green, 10%) 85%,
+      color.adjust($dark-green, $lightness: -10%) 85%,
       transparent 100%
     );    pointer-events: none;
     z-index: -1;
@@ -529,12 +532,12 @@ $breakpoints: (
       transition: background 0.3s ease;
       
       &:hover {
-        background: linear-gradient(180deg, lighten($primary-gold, 10%), lighten($secondary-gold, 10%));
+        background: linear-gradient(180deg, color.adjust($primary-gold, $lightness: 10%), color.adjust($secondary-gold, $lightness: 10%));
       }
     }
 
     &::-webkit-scrollbar-thumb:active {
-      background: linear-gradient(180deg, darken($primary-gold, 5%), darken($secondary-gold, 5%));
+      background: linear-gradient(180deg, color.adjust($primary-gold, $lightness: -5%), color.adjust($secondary-gold, $lightness: -5%));
     }
 
     /* Firefox */
@@ -661,4 +664,3 @@ $breakpoints: (
     text-shadow: none;
   }
 }
-

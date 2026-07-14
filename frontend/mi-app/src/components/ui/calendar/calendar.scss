@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // calendar-view.scss
 
 // =============================================
@@ -111,7 +113,7 @@ $ultrawide: 1920px;
 .calendar-view {
   width: 100%;
   height: 100%;
-  // background: linear-gradient(135deg, $color-background 0%, lighten($color-background, 10%) 100%);
+  // background: linear-gradient(135deg, $color-background 0%, color.adjust($color-background, $lightness: 10%) 100%);
   padding: 0.5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   overflow-x: hidden;
@@ -156,7 +158,7 @@ $ultrawide: 1920px;
   &__header {
     @include card;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, $color-white 0%, lighten($color-primary-light, 35%) 100%);
+    background: linear-gradient(135deg, $color-white 0%, color.adjust($color-primary-light, $lightness: 35%) 100%);
     padding: 1rem;
     flex-shrink: 0;
     
@@ -344,7 +346,7 @@ $ultrawide: 1920px;
     font-weight: 600;
     
     &:hover {
-      background: darken($color-primary-light, 10%);
+      background: color.adjust($color-primary-light, $lightness: -10%);
     }
   }
   
@@ -1013,7 +1015,7 @@ $ultrawide: 1920px;
   
   &__summary {
     @include card;
-    background: linear-gradient(135deg, $color-primary-dark 0%, darken($color-primary-dark, 10%) 100%);
+    background: linear-gradient(135deg, $color-primary-dark 0%, color.adjust($color-primary-dark, $lightness: -10%) 100%);
     color: $color-white;
     padding: 1rem;
     flex-shrink: 0;
@@ -1066,11 +1068,11 @@ $ultrawide: 1920px;
         }
         
         &.secondary {
-          color: lighten($color-secondary, 20%);
+          color: color.adjust($color-secondary, $lightness: 20%);
         }
         
         &.accent {
-          color: lighten($color-neutral, 30%);
+          color: color.adjust($color-neutral, $lightness: 30%);
         }
       }
     }
@@ -1220,7 +1222,7 @@ $ultrawide: 1920px;
         color: $color-white;
         
         &:hover {
-          background: darken($color-primary-dark, 10%);
+          background: color.adjust($color-primary-dark, $lightness: -10%);
         }
       }
     }

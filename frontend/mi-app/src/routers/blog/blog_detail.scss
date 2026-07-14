@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // =========================
 // VARIABLES DE COLOR - NUEVA COMBINACIÓN NATURAL
 // =========================
@@ -603,7 +605,7 @@ $shadow-xl: 0 20px 25px -5px rgba(6, 59, 44, 0.18);
             @include transition();
 
             &:hover {
-              background: darken($accent-brown, 8%);
+              background: color.adjust($accent-brown, $lightness: -8%);
               transform: translateY(-2px);
               box-shadow: $shadow-md;
             }
@@ -648,7 +650,7 @@ $shadow-xl: 0 20px 25px -5px rgba(6, 59, 44, 0.18);
             border: none;
 
             &:hover {
-              background: darken($accent-brown, 8%);
+              background: color.adjust($accent-brown, $lightness: -8%);
               transform: translateY(-2px);
               box-shadow: $shadow-md;
             }
@@ -658,7 +660,7 @@ $shadow-xl: 0 20px 25px -5px rgba(6, 59, 44, 0.18);
               color: $accent-brown;
 
               &:hover {
-                background: darken($accent-beige, 10%);
+                background: color.adjust($accent-beige, $lightness: -10%);
               }
             }
           }
@@ -1164,7 +1166,7 @@ $shadow-xl: 0 20px 25px -5px rgba(6, 59, 44, 0.18);
           color: #f9fafb;
 
           &:hover {
-            background: darken($neutral-gray, 10%);
+            background: color.adjust($neutral-gray, $lightness: -10%);
           }
         }
 
