@@ -41,7 +41,7 @@ const TestimonialCard = ({ typeTestimonial = 'servicio' }) => {
         <div className="product-image-section">
           <div className="product-image-wrapper">
             <img
-              src={currentProduct?.image || 'https://via.placeholder.com/400x300?text=Sin+Imagen'}
+              src={currentProduct?.image || '/img/placeholders/placeholder-sin-imagen.svg'}
               alt={currentProduct?.name || 'Producto'}
               className="product-image"
             />
