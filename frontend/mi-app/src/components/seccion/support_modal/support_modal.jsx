@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { EmailContext } from '../../../context/email/email_context_value';
 import './support_modal.scss';
 
@@ -346,6 +347,15 @@ const SupportModalContent = ({ item }) => {
       )}
     </div>
   );
+};
+
+SupportModalContent.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.string,
+    itemType: PropTypes.string,
+  }),
 };
 
 export default SupportModalContent;

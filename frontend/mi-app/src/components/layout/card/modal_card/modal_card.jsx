@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   Star, Clock, Users, Monitor, Sparkles,
@@ -324,6 +325,33 @@ const ModalCard = ({ course, children, onPrimaryAction }) => {
       )}
     </>
   );
+};
+
+ModalCard.propTypes = {
+  course: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    students: PropTypes.number,
+    sold: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    instructor: PropTypes.string,
+    highlights: PropTypes.arrayOf(PropTypes.string),
+    date: PropTypes.string,
+    duration: PropTypes.string,
+    badge: PropTypes.string,
+    format: PropTypes.string,
+    originalPrice: PropTypes.number,
+    price: PropTypes.number,
+    currency: PropTypes.string,
+    router: PropTypes.string,
+    type: PropTypes.string,
+    category: PropTypes.string,
+  }),
+  children: PropTypes.node,
+  onPrimaryAction: PropTypes.func,
 };
 
 export default React.memo(ModalCard);
