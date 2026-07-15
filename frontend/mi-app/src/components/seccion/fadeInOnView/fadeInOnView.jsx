@@ -1,6 +1,7 @@
 
 // FadeInOnView.jsx
 import { useEffect, useRef, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './FadeInOnView.scss';
 
 
@@ -85,6 +86,21 @@ const FadeInOnView = ({
       {children}
     </div>
   );
+};
+
+FadeInOnView.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  threshold: PropTypes.number,
+  rootMargin: PropTypes.string,
+  triggerOnce: PropTypes.bool,
+  delay: PropTypes.number,
+  duration: PropTypes.number,
+  direction: PropTypes.oneOf(['up', 'down', 'left', 'right', 'fade']),
+  distance: PropTypes.number,
+  easing: PropTypes.oneOf(['ease-out', 'bounce', 'linear']),
+  speed: PropTypes.oneOf(['fast', 'normal', 'slow']),
+  disabled: PropTypes.bool,
 };
 
 export default FadeInOnView;

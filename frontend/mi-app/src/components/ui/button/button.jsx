@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./button.scss";
 
 const Button = ({ text, link, icon, style = "primary" }) => {
@@ -12,5 +13,11 @@ const Button = ({ text, link, icon, style = "primary" }) => {
   );
 };
 
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  style: PropTypes.oneOf(['primary', 'secondary']),
+};
+
 export default Button;
- 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './coming_soon_card.scss';
 
 const ComingSoonCard = ({ 
@@ -53,6 +54,11 @@ const ComingSoonCard = ({
       </div>
     </div>
   );
+};
+
+ComingSoonCard.propTypes = {
+  title: PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default ComingSoonCard;

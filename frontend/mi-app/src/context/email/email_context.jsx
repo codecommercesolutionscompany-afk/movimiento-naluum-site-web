@@ -1,4 +1,5 @@
 import { useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import emailjs from '@emailjs/browser';
 import { EmailContext } from './email_context_value';
 
@@ -40,4 +41,8 @@ export const EmailProvider = ({ children }) => {
   );
 
   return <EmailContext.Provider value={value}>{children}</EmailContext.Provider>;
+};
+
+EmailProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

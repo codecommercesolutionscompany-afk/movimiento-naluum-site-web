@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './cta_logros_reconocimientos.scss';
 
 import { useState, useEffect } from 'react';
@@ -221,5 +222,9 @@ const CtaLogrosReconocimientos = ({redirectRouter}) => {
         </div>
     );
 }
+
+CtaLogrosReconocimientos.propTypes = {
+    redirectRouter: PropTypes.string.isRequired,
+};
 
 export default CtaLogrosReconocimientos;

@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import './testimonial_card.scss';
 
@@ -106,6 +107,17 @@ const TestimonialCard = ({ typeTestimonial = 'servicio' }) => {
       </div>
     </div>
   );
+};
+
+TestimonialCard.propTypes = {
+  typeTestimonial: PropTypes.oneOf([
+    'servicio',
+    'productos_madreSelva',
+    'servicios_madreSelva',
+    'servicios_naluum',
+    'testimonios_movimiento',
+    'testimonios_naluum',
+  ]),
 };
 
 export default TestimonialCard;

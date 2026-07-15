@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './discount_badge.scss';
 
 const DiscountBadge = ({ originalPrice, currentPrice }) => {
@@ -25,6 +26,11 @@ const DiscountBadge = ({ originalPrice, currentPrice }) => {
       </div>
     </div>
   );
+};
+
+DiscountBadge.propTypes = {
+  originalPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  currentPrice: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default DiscountBadge;

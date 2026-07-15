@@ -1,5 +1,6 @@
 // src/components/SEOHelmet.jsx
 import { Helmet } from "react-helmet";
+import PropTypes from 'prop-types';
 
 const SEOHelmet = ({
     // Título que se muestra en la pestaña del navegador y en Google
@@ -52,6 +53,15 @@ const SEOHelmet = ({
         <meta name="twitter:image" content={image} />
         </Helmet>
     );
+};
+
+SEOHelmet.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    keywords: PropTypes.string,
+    author: PropTypes.string,
+    url: PropTypes.string,
+    image: PropTypes.string,
 };
 
 export default SEOHelmet;

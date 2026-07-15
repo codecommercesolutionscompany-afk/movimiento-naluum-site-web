@@ -1,4 +1,5 @@
 
+import PropTypes from 'prop-types';
 import './header.scss';
 
 const Header = ({ children }) => {
@@ -9,6 +10,10 @@ const Header = ({ children }) => {
             </div>
         </header>
     );
+};
+
+Header.propTypes = {
+    children: PropTypes.node,
 };
 
 export default Header;

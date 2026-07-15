@@ -1,4 +1,5 @@
 
+import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './button_back.scss';
 import { ArrowLeft } from 'lucide-react';
@@ -32,6 +33,10 @@ const ButtonBack = ({ fallback = '/' }) => {
       <ArrowLeft size={18} className="icon" />
     </button>
   );
+};
+
+ButtonBack.propTypes = {
+  fallback: PropTypes.string,
 };
 
 export default ButtonBack;

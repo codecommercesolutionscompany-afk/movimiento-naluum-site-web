@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 
@@ -322,6 +323,10 @@ const ProductsDetail = ({ type = 'product' }) => {
       </Modal>
     </div>
   );
+};
+
+ProductsDetail.propTypes = {
+  type: PropTypes.oneOf(['product', 'service']),
 };
 
 export default ProductsDetail;

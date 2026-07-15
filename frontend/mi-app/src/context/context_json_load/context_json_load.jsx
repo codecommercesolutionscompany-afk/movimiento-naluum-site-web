@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ContextJsonLoadContext } from './context_json_load_context';
 
 import dataImpactoReal from '../../json/data_impacto_real.json';
@@ -93,4 +94,8 @@ export const ContextJsonLoadProvider = ({ children }) => {
       {children}
     </ContextJsonLoadContext.Provider>
   );
+};
+
+ContextJsonLoadProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

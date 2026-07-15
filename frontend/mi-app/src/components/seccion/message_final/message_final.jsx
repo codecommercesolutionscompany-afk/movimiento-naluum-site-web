@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import './message_final.scss';
 
@@ -23,5 +24,9 @@ const MessageFinal = ({indexMessage}) => {
         </div>
     );
 } 
+
+MessageFinal.propTypes = {
+    indexMessage: PropTypes.number.isRequired,
+};
  
 export default MessageFinal;
