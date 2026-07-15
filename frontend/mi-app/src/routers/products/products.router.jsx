@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useCallback, lazy, Suspense } from "react";
+import { useEffect, useState, useContext, useCallback, Suspense } from "react";
 import { Outlet, useParams, useLocation, useNavigate } from "react-router-dom";
 
 // ------------------------------
@@ -15,13 +15,13 @@ import { ContextJsonLoadContext } from "../../context/context_json_load/context_
 
 // ------------------------------
 // 📂 Lazy Loading - Mejora performance
-const TestimonialCard = lazy(() => import("../../components/seccion/testimonial_card/testimonial_card"));
-const CatalogFilter = lazy(() => import("../../components/seccion/catalog_filter/catalog_filter"));
-const FAQ = lazy(() => import("../../components/seccion/FAQ/FAQ"));
-const CtaImgCuentaRgresiva = lazy(() => import("../../components/seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva"));
-const MessageFinal = lazy(() => import("../../components/seccion/message_final/message_final"));
-const FadeInOnView = lazy(() => import('../../components/seccion/fadeInOnView/fadeInOnView'));
-const Grid = lazy(() => import("../../components/seccion/grid/grid"));
+import TestimonialCard from "../../components/seccion/testimonial_card/testimonial_card";
+import CatalogFilter from "../../components/seccion/catalog_filter/catalog_filter";
+import FAQ from "../../components/seccion/FAQ/FAQ";
+import CtaImgCuentaRgresiva from "../../components/seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva";
+import MessageFinal from "../../components/seccion/message_final/message_final";
+import FadeInOnView from '../../components/seccion/fadeInOnView/fadeInOnView';
+import Grid from "../../components/seccion/grid/grid";
 
 // ------------------------------
 // 📂 Styles

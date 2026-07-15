@@ -8,15 +8,15 @@ import SEOHelmet from '../../components/seo/SEOHelmet/SEOHelmet';
 // ------------------------------
 // 📂 Layout
 import Header from '../../components/layout/header/header';
+import FadeInOnView from '../../components/seccion/fadeInOnView/fadeInOnView';
+import TimeLineHistory from '../../components/seccion/history_about/time_line_history';
 
 // ------------------------------
 // 📂 Secciones - Lazy Loading para mejor performance
-const FadeInOnView = lazy(() => import('../../components/seccion/fadeInOnView/fadeInOnView'));
 const CTAServicios = lazy(() => import('../../components/seccion/cta_servicios/cta_servicios'));
 const Founders = lazy(() => import('../../components/seccion/founders/founders'));
 const Valores = lazy(() => import('../../components/seccion/valores/valores'));
 const CtaLogrosReconocimientos = lazy(() => import('../../components/seccion/cta_logros_reconocimientos/cta_logros_reconocimientos'));
-const TimeLineHistory = lazy(() => import('../../components/seccion/history_about/time_line_history'));
   
 // ------------------------------
 // 📂 UI
