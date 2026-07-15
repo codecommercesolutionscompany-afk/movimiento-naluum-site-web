@@ -1,10 +1,6 @@
-import { createContext, useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import emailjs from '@emailjs/browser';
-
-export const EmailContext = createContext({
-  sendEmail: async () => ({ success: false, reason: 'configuration' }),
-  isEmailConfigured: false,
-});
+import { EmailContext } from './email_context_value';
 
 export const EmailProvider = ({ children }) => {
   const config = useMemo(() => ({

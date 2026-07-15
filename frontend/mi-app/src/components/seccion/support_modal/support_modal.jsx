@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useMemo } from 'react';
-import { EmailContext } from '../../../context/email/email_context';
+import { EmailContext } from '../../../context/email/email_context_value';
 import './support_modal.scss';
 
 const messageTitle = {

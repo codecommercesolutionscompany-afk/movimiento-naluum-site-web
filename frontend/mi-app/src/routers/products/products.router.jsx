@@ -11,7 +11,7 @@ import Header from "../../components/layout/header/header";
 
 // ------------------------------
 // 📂 Context
-import { ContextJsonLoadContext } from "../../context/context_json_load/context_json_load";
+import { ContextJsonLoadContext } from "../../context/context_json_load/context_json_load_context";
 
 // ------------------------------
 // 📂 Lazy Loading - Mejora performance

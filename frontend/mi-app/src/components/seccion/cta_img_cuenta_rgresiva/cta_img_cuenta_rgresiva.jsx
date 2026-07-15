@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load.jsx';
+import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import Modal from '../../ui/modal/modal';
 import SupportModalContent from '../support_modal/support_modal';
 import './cta_img_cuenta_rgresiva.scss';

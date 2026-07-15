@@ -16,7 +16,7 @@ import {
 import Modal from '../../components/ui/modal/modal';
 import SupportModalContent from '../../components/seccion/support_modal/support_modal';
 
-import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 import './services_detail.scss';
 
 // Imagen fallback simple

@@ -1,6 +1,6 @@
 import { useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useQueryParam } from '../../../hooks/useQueryParams';
-import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 
 // ------------------------------
 // 📂 SEO y Meta
@@ -211,7 +211,7 @@ const Global = () => {
                             <p className="subtitle" style={getChildStyles(0.3)}>Red viva de transformación ecosocial</p>
                             <p style={getChildStyles(0.45)}>
                                 No somos una empresa. Somos un <span className="highlight">tejido vivo</span> de personas comprometidas con la regeneración de la vida. Nacidos desde la experiencia del {' '}
-                                <span className="highlight">Movimiento Na Lu'um</span> y nutrida por décadas de trabajo en territorios diversos, co-creamos realidades donde la vida puede florecer.
+                                <span className="highlight">Movimiento Na Lu&apos;um</span> y nutrida por décadas de trabajo en territorios diversos, co-creamos realidades donde la vida puede florecer.
                             </p>
                         </div>
                     </div>

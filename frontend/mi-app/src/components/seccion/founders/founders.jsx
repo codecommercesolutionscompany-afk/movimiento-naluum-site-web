@@ -88,7 +88,7 @@ const familyFounder = {
                   {/* Bio expandible */}
                   <div className="bio-container">
                     <p className="founder-bio">{founder.bio}</p>
-                    <blockquote className="founder-quote">"{founder.quote}"</blockquote>
+                    <blockquote className="founder-quote">&quot;{founder.quote}&quot;</blockquote>
                   </div>
                 </div>
 
@@ -134,7 +134,7 @@ const familyFounder = {
                 {/* Bio expandible */}
                 <div className="bio-container">
                   <p className="founder-bio">{familyFounder.bio}</p>
-                  <blockquote className="founder-quote">"{familyFounder.quote}"</blockquote>
+                  <blockquote className="founder-quote">&quot;{familyFounder.quote}&quot;</blockquote>
                 </div>
               </div>
 

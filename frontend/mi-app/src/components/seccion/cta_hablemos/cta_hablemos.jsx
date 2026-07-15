@@ -1,6 +1,6 @@
 import { useState, useCallback, useContext } from 'react';
-import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
-import { EmailContext } from '../../../context/email/email_context';
+import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
+import { EmailContext } from '../../../context/email/email_context_value';
 import { Mail, MessageCircle, Instagram, Leaf, Send, User, AtSign, AlertCircle, CheckCircle } from 'lucide-react';
 import './cta_hablemos.scss';
 

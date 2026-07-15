@@ -1,6 +1,6 @@
 import { useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useQueryParam } from '../../../hooks/useQueryParams';
-import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 
 // ------------------------------
 // 📂 SEO y Meta

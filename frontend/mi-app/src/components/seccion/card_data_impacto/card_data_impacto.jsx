@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import './card_data_impacto.scss';
 
-import {ContextJsonLoadContext} from '../../../context/context_json_load/context_json_load'
+import {ContextJsonLoadContext} from '../../../context/context_json_load/context_json_load_context'
 
 // Componente individual para cada card con su propio hook
 const ImpactCard = ({ item }) => {

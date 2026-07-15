@@ -1,6 +1,6 @@
 
 import { useContext } from 'react';
-import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 
 // ------------------------------
 // 📂 SEO y Meta

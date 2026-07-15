@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 
 import Modal from '../../components/ui/modal/modal';
 import SupportModalContent from '../../components/seccion/support_modal/support_modal';

@@ -123,7 +123,7 @@ const CtaLogrosReconocimientos = ({redirectRouter}) => {
                         </div>
 
                         <div className='cta-logros-reconocimientos__text-paragraph'>
-                            <div className='quote-mark'>"</div>
+                            <div className='quote-mark'>&quot;</div>
                             <span>
                                 A través de proyectos colaborativos y diseño participativo, fortalecemos redes humanas que sanan, empoderan y transforman realidades con esperanza y cooperación.
                             </span>

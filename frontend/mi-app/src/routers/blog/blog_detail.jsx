@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 import { 
   Calendar, 
   User, 

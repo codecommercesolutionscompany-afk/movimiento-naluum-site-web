@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { ContextJsonLoadContext } from './context_json_load_context';
 
 import dataImpactoReal from '../../json/data_impacto_real.json';
 import listRouters from '../../json/listRouters.json';
@@ -13,8 +13,6 @@ import blogs from '../../json/blogs.json';
 import timerProps from '../../json/timerProps.json';
 import eventos from '../../json/eventos.json';
 import infoContacto from '../../json/info_contacto.json';
-
-export const ContextJsonLoadContext = createContext();
 
 const testimonialGroups = [
   'productos_madreSelva',

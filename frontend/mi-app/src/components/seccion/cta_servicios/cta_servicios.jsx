@@ -31,7 +31,7 @@ import Button from '../../ui/button/button';
 // ------------------------------
 // 📂 Context
 // Archivos relacionados con Context API para manejo global de estados
-import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load';
+import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 
 
 // ------------------------------
