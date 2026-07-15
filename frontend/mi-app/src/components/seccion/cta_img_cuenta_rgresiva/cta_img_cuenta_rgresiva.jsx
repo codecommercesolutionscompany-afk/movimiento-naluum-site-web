@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useMemo, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import Modal from '../../ui/modal/modal';
@@ -160,6 +161,21 @@ const CtaImgCuentaRgresiva = ({
       </Modal>
     </div>
   );
+};
+
+CtaImgCuentaRgresiva.propTypes = {
+  img: PropTypes.string,
+  titles: PropTypes.shape({
+    main: PropTypes.string,
+    subtitle: PropTypes.string,
+  }),
+  text: PropTypes.string,
+  buttonText: PropTypes.string,
+  timer: PropTypes.shape({
+    targetDate: PropTypes.string,
+    link: PropTypes.string,
+  }),
+  id: PropTypes.string,
 };
  
 export default CtaImgCuentaRgresiva;

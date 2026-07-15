@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import './carrusel_imagenes.scss';
 
 const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 }) => {
@@ -121,6 +122,19 @@ const MissionCarousel = ({ cards = [], autoPlay = true, autoPlayInterval = 5000 
       </div>
     </div>
   );
+};
+
+MissionCarousel.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      image: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ).isRequired,
+  autoPlay: PropTypes.bool,
+  autoPlayInterval: PropTypes.number,
 };
 
 MissionCarousel.displayName = 'MissionCarousel';

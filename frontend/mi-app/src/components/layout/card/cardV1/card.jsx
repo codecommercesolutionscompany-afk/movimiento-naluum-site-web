@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "./card.scss";
 
 const Card = ({ products }) => {
@@ -25,6 +26,18 @@ const Card = ({ products }) => {
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      image: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.number,
+      currency: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default Card;

@@ -1,4 +1,5 @@
 import { useState, useCallback, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import { EmailContext } from '../../../context/email/email_context_value';
 import { Mail, MessageCircle, Instagram, Leaf, Send, User, AtSign, AlertCircle, CheckCircle } from 'lucide-react';
@@ -390,6 +391,11 @@ const CtaHablemos = ({
             </div>
         </div>
     );
+};
+
+CtaHablemos.propTypes = {
+    proyecto: PropTypes.string,
+    showSocialMedia: PropTypes.bool,
 };
 
 export default CtaHablemos;

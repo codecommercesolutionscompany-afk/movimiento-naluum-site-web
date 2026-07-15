@@ -1,4 +1,5 @@
 
+import PropTypes from 'prop-types';
 // ------------------------------
 // 📂 SEO y Meta
 // Importaciones de componentes relacionados con SEO y metadata
@@ -75,5 +76,16 @@ const CardV2Img = ({ objectContentCard, buttonTrue = true }) => {
 
     )
 }
+
+CardV2Img.propTypes = {
+    objectContentCard: PropTypes.shape({
+        image: PropTypes.string,
+        question: PropTypes.string,
+        title: PropTypes.string,
+        text: PropTypes.string,
+        buttonPrimary: PropTypes.arrayOf(PropTypes.string),
+    }).isRequired,
+    buttonTrue: PropTypes.bool,
+};
 
 export default CardV2Img;

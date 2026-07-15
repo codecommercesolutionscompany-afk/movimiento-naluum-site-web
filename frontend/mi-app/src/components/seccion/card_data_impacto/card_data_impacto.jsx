@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext } from 'react';
+import PropTypes from 'prop-types';
 import './card_data_impacto.scss';
 
 import {ContextJsonLoadContext} from '../../../context/context_json_load/context_json_load_context'
@@ -95,6 +96,15 @@ const ImpactCard = ({ item }) => {
             </p>
         </div>
     );
+};
+
+ImpactCard.propTypes = {
+    item: PropTypes.shape({
+        icon: PropTypes.string,
+        title: PropTypes.string,
+        value: PropTypes.string,
+        description: PropTypes.string,
+    }).isRequired,
 };
  
 const CardDataImpacto = () => {
