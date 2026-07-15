@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 // 📂 Layout
@@ -13,19 +13,19 @@ import ButtonBack from './components/ui/button_back/button_back';
 
 // 📂 Páginas principales (Routers)
 import Home from './routers/home/home';
-import Services from './routers/services/services.router';
-import AboutMe from './routers/aboutMe/aboutMe.router';
-import Blog from './routers/blog/blog.router';
-import Contact from './routers/contact/contact.router';
-import Projects from './routers/projects/projects.router';
-import CalendarRouter from './routers/calendar.router/calendar.router';
-import Products from './routers/products/products.router';
+const Services = lazy(() => import('./routers/services/services.router'));
+const AboutMe = lazy(() => import('./routers/aboutMe/aboutMe.router'));
+const Blog = lazy(() => import('./routers/blog/blog.router'));
+const Contact = lazy(() => import('./routers/contact/contact.router'));
+const Projects = lazy(() => import('./routers/projects/projects.router'));
+const CalendarRouter = lazy(() => import('./routers/calendar.router/calendar.router'));
+const Products = lazy(() => import('./routers/products/products.router'));
 
 
 // 📂 Detalles (subpáginas de routers)
-import ProductDetail from './routers/products/products_detail';
-import ServiceDetail from './routers/services/services_detail';
-import BlogDetail from './routers/blog/blog_detail';
+const ProductDetail = lazy(() => import('./routers/products/products_detail'));
+const ServiceDetail = lazy(() => import('./routers/services/services_detail'));
+const BlogDetail = lazy(() => import('./routers/blog/blog_detail'));
 import NotFound from './routers/notFound/notFound';
 
 import './App.scss';
@@ -68,7 +68,8 @@ const App = () => {
       <ScrollToTop />
 
       <main id="view-root">
-        <Routes location={{ ...location, pathname: currentPath }} key={currentPath}>
+        <Suspense fallback={null}>
+          <Routes location={{ ...location, pathname: currentPath }} key={currentPath}>
           <Route index path="/" element={<Home />} />
           <Route path="/proyectos/*" element={<Projects/>} />
 
@@ -97,7 +98,8 @@ const App = () => {
 
           <Route path="*" element={<NotFound />} />
 
-        </Routes>
+          </Routes>
+        </Suspense>
       </main>
 
       <footer className='App__footer'>
