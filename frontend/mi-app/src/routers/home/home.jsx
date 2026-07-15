@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
 import { useQueryParam } from '../../hooks/useQueryParams';
@@ -278,52 +279,47 @@ const Home = () => {
       <link rel="canonical" href="https://movimientonaluum.org" />
       
       <Header>
-        <div className='home__header-img-container'>
-          <img 
-            src="/img/hero/brote-regeneracion.webp"
-            alt="Comunidad del Movimiento Naluum trabajando en proyectos regenerativos" 
-            className="home__header-img"
+        <div className="home__hero">
+          <div className="home__hero-media" aria-hidden="true">
+            <img
+              src="/img/hero/brote-regeneracion.webp"
+              alt=""
+              className="home__hero-image"
+              loading="eager"
+              fetchPriority="high"
+              width="1920"
+              height="1080"
+            />
+          </div>
+          <div className="home__hero-overlay" aria-hidden="true" />
+          <div className="home__hero-inner">
+            <div className="home__hero-content">
+              <p className="home__hero-brand" itemProp="name">Movimiento Naluum</p>
+              <h1 itemProp="headline">
+                Regenerar la vida, desde el <span className="home__hero-highlight">territorio</span>
+              </h1>
+              <p className="home__hero-description" itemProp="description">
+                Formación, comunidad y experiencias vivas para aprender a habitar la Tierra de otra manera.
+              </p>
+              <nav className="home__hero-actions" aria-label="Acciones principales">
+                <Link className="home__hero-cta home__hero-cta--primary" to="/servicios">
+                  Explorar propuestas
+                </Link>
+                <Link className="home__hero-cta home__hero-cta--secondary" to="/sobre-nosotros">
+                  Conocer nuestra historia
+                </Link>
+              </nav>
+            </div>
+          </div>
+          <img
+            className="home__hero-signature"
+            src="/img/branding/logo-naluum-transparente.svg"
+            alt=""
+            aria-hidden="true"
+            width="500"
+            height="500"
             loading="eager"
-            fetchPriority="high"
-            width="1920"
-            height="1080"
           />
-        </div>
-        <div className='home__header-container'>
-          <div className='home__header-logo'>
-            <div className='home__header-logo-img'>
-              <img 
-                src="/img/branding/logo-naluum-transparente.svg"
-                alt="Logo Movimiento Naluum - Soluciones Regenerativas" 
-                width="200"
-                height="200"
-                loading="eager"
-              />
-            </div>
-            <div className='home__header-logo-text'>
-              <h1 itemProp="name">Movimiento Naluum</h1>
-            </div>
-          </div>
-          <div className="home__content-titile">
-            <div className='home__content-titile-text'>
-              <h1 itemProp="headline">El Despertar de una Visión Colectiva</h1>
-            </div>
-            <div className='home__content-titile-subtitle'>
-              <h2 itemProp="alternativeHeadline">
-                Hace más de dos décadas, en las selvas del Caribe mexicano, comenzó a germinar algo más grande que un simple proyecto. Lo que nació como un sueño personal de regeneración se transformó en un movimiento que hoy abraza continentes enteros.
-              </h2>
-            </div>
-            <div className='home__content-titile-buttons'>
-              <Button 
-                text="Sobre el movimiento naluum" 
-                link="/sobre-nosotros" 
-                style="primary"
-                aria-label="Conoce más sobre el Movimiento Naluum y nuestra misión"
-              />
-            </div>
-
-
-          </div>
         </div>
       </Header>
 
