@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import './FAQ.scss';
 
 const FAQ = ({ 
@@ -125,6 +126,28 @@ const FAQ = ({
       </div>
     </section>
   );
+};
+
+FAQ.propTypes = {
+  faqs: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      category: PropTypes.string,
+      question: PropTypes.string,
+      answer: PropTypes.string,
+      additionalInfo: PropTypes.string,
+      links: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          url: PropTypes.string,
+          external: PropTypes.bool,
+        })
+      ),
+    })
+  ),
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  defaultCategory: PropTypes.string,
 };
 
 export default FAQ;

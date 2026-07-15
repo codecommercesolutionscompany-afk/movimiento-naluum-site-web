@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import SupportModalContent from '../support_modal/support_modal'; 
 import Modal from '../../ui/modal/modal';
 
@@ -201,6 +202,29 @@ const Grid = ({ items = [], slice, setIsOpen }) => {
       </div>
     </div>
   );
+};
+
+Grid.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string,
+      badge: PropTypes.string,
+      icon: PropTypes.node,
+      type: PropTypes.string,
+      category: PropTypes.string,
+      price: PropTypes.number,
+      currency: PropTypes.string,
+      content: PropTypes.node,
+      originalPrice: PropTypes.number,
+      router: PropTypes.string,
+    })
+  ),
+  slice: PropTypes.number,
+  setIsOpen: PropTypes.func,
 };
 
 export default Grid;

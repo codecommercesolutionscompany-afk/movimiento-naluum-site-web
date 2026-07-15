@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './timelineNav.scss';
 
@@ -200,6 +201,17 @@ const TimelineNav = ({ sections }) => {
       </div>
     </nav>
   );
+};
+
+TimelineNav.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+      icon: PropTypes.elementType.isRequired,
+    })
+  ),
 };
 
 export default TimelineNav;

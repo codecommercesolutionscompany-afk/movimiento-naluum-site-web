@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import './catalog_filter.scss';
 
 const CatalogFilter = ({ items = [], onFilteredItems }) => {
@@ -189,6 +190,22 @@ const CatalogFilter = ({ items = [], onFilteredItems }) => {
       </div>
     </div>
   );
+};
+
+CatalogFilter.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      badge: PropTypes.string,
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.number,
+      rating: PropTypes.number,
+      students: PropTypes.number,
+      sold: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ),
+  onFilteredItems: PropTypes.func,
 };
 
 export default CatalogFilter;

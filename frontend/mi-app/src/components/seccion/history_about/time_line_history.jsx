@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { ContextJsonLoadContext } from '../../../context/context_json_load/context_json_load_context';
 import './time_line_history.scss';
 
@@ -208,6 +209,22 @@ const TimeLineHistory = ({
       </section>
     </div>
   );
+};
+
+TimeLineHistory.propTypes = {
+  index: PropTypes.number.isRequired,
+  titles: PropTypes.shape({
+    titulo: PropTypes.string,
+    subTitle: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+  showHeroBg: PropTypes.bool,
+  heroBgImage: PropTypes.string,
+  theme: PropTypes.oneOf(['naluum', 'global', 'madreselva']),
+  className: PropTypes.string,
+  initialItemsToShow: PropTypes.number,
+  showMoreButton: PropTypes.bool,
+  onChapterChange: PropTypes.func,
 };
 
 export default TimeLineHistory;
