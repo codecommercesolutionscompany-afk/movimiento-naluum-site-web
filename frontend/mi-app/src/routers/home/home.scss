@@ -598,6 +598,209 @@ $desktop-lg: 1280px;
       @include desktop { height: 100%; }
     }
 
+    .home__history {
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      border-top: 1px solid rgba(208, 222, 133, 0.3);
+      border-bottom: 1px solid rgba(213, 206, 169, 0.28);
+      background: #063b2c;
+      color: #d5cea9;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -12rem;
+        right: -10rem;
+        width: 30rem;
+        height: 26rem;
+        border: 1px solid rgba(208, 222, 133, 0.22);
+        border-radius: 52% 48% 40% 60% / 42% 62% 38% 58%;
+        transform: rotate(18deg);
+        pointer-events: none;
+      }
+    }
+
+    .home__history-inner {
+      position: relative;
+      width: min(100%, 80rem);
+      margin: 0 auto;
+      padding: 4.5rem 1.25rem 5rem;
+    }
+
+    .home__history-heading,
+    .home__history-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .home__history-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .home__history-eyebrow {
+      margin: 0 0 1.25rem;
+      color: #d0de85;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      line-height: 1.3;
+    }
+
+    .home__history-heading h2 {
+      max-width: 14ch;
+      margin: 0;
+      color: #d5cea9;
+      font-size: clamp(2.25rem, 9vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .home__history-intro {
+      display: grid;
+      gap: 1rem;
+      max-width: 48ch;
+      margin: 2rem 0 0;
+
+      p {
+        margin: 0;
+        color: #d5cea9;
+        font-size: 1.0625rem;
+        line-height: 1.65;
+      }
+    }
+
+    .home__history-body {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 60ch;
+      margin-top: 3rem;
+    }
+
+    .home__history-intro strong,
+    .home__history-body strong {
+      color: #d0de85;
+      font-weight: 700;
+    }
+
+    .home__history-media {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      aspect-ratio: 4 / 3;
+      border: 1px solid rgba(208, 222, 133, 0.3);
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(6, 59, 44, 0.04), rgba(6, 59, 44, 0.5));
+        pointer-events: none;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .home__history-identity {
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      width: min(calc(100% - 2rem), 28rem);
+      max-width: 28ch;
+      margin: -2.25rem auto 0;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(208, 222, 133, 0.42);
+      background: #063b2c;
+      color: #d0de85;
+      font-size: clamp(1.125rem, 3vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .home__history-cta {
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 2.75rem;
+      margin: 2rem auto 0;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid #d0de85;
+      color: #d0de85;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background-color 180ms ease, color 180ms ease;
+
+      &:hover {
+        background: #d0de85;
+        color: #063b2c;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 4px;
+      }
+    }
+
+    @media screen and (min-width: 430px) {
+      .home__history-inner {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .home__history-inner {
+        padding: 5.5rem 2rem 6rem;
+      }
+
+      .home__history-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: start;
+        gap: clamp(3rem, 7vw, 6rem);
+      }
+
+      .home__history-body {
+        margin-top: 0.25rem;
+      }
+
+      .home__history-cta {
+        grid-column: 1 / -1;
+      }
+
+    }
+
+    @media screen and (min-width: 1024px) {
+      .home__history-inner {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: clamp(4rem, 8vw, 7rem);
+        padding-top: 6.5rem;
+        padding-bottom: 7rem;
+      }
+    }
+
+    @media screen and (min-width: 1280px) {
+      .home__history-inner {
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
+      }
+    }
+
     // ============================================
     // 4.5.1 SECCIÓN DE MISIÓN
     // ============================================

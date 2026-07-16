@@ -21,7 +21,6 @@ import Header from '../../components/layout/header/header';
 // ------------------------------
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
-import MissionCarousel from '../../components/seccion/carrusel_imagenes/carrusel_imagenes';
 import Grid from '../../components/seccion/grid/grid';
 import CtaImgCuentaRgresiva from '../../components/seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CardDataImpacto from '../../components/seccion/card_data_impacto/card_data_impacto';
@@ -95,57 +94,6 @@ const fadeInProps = {
 //   },
 //   link : "/serviciosl/aboratorios-alimentacion-viva"
 // };
-
-const missionCards = [
- {
-   id: 1,
-   title: '🌱 Regeneramos territorios, pero también comunidades.',
-   description: 'Trabajamos con permacultura y agricultura sintrópica para sanar la tierra y fortalecer vínculos comunitarios a través de nuestra red global.',
-   image: '/img/shared/comunidad-circulo.webp',
- },
- {
-   id: 2,
-   title: '🔥 Rescatamos saberes ancestrales, pero también encendemos el futuro.',
-   description: 'Conectamos la sabiduría maya y de pueblos originarios con técnicas regenerativas modernas para crear soluciones innovadoras.',
-   image: '/img/shared/equipo-diseno-colaborativo.webp',
- },
- {
-   id: 3,
-   title: '🏡 Diseñamos con bioconstrucción, pero sobre todo, nuevas formas de habitar.',
-   description: 'Creamos espacios sustentables con materiales naturales que nutren la conexión entre las personas y la Madre Tierra.',
-   image: '/img/shared/hojas-bosque.webp',
- },
- {
-   id: 4,
-   title: '🌾 Cultivamos alimentos, pero también soberanía alimentaria.',
-   description: 'Promovemos huertas comunitarias y técnicas agroecológicas para lograr autonomía y abundancia local en cada territorio.',
-   image: '/img/shared/personas-trabajando.webp',
- },
- {
-   id: 5,
-   title: '💧 Gestionamos agua, pero también vida.',
-   description: 'Diseñamos sistemas hidrológicos regenerativos que honran el agua como fuente sagrada de toda existencia.',
-   image: '/img/sections/gestion-agua-vida.webp',
- },
- {
-   id: 6,
-   title: '🛠 Construimos herramientas, pero también redes de cambio.',
-   description: 'Capacitamos facilitadores que replican metodologías regenerativas, creando una constelación de proyectos interconectados.',
-   image: '/img/shared/comunidad-circulo.webp',
- },
- {
-   id: 7,
-   title: '🌍 Conectamos proyectos locales, pero también transformamos globalmente.',
-   description: 'Desde grupos locales hasta alianzas continentales, tejemos una red viva que regenera el planeta proyecto a proyecto.',
-   image: '/img/shared/manos-plantines.webp',
- },
- {
-   id: 8,
-   title: '🎓 Enseñamos permacultura, pero también despertamos propósito.',
-   description: 'Nuestros cursos y talleres no solo transmiten técnicas, sino que ayudan a cada persona a encontrar su lugar en la regeneración.',
-   image: '/img/shared/personas-trabajando.webp',
- }
-];
 
 // SEO: Datos estructurados para Schema.org
 const structuredData = {
@@ -226,8 +174,6 @@ const Home = () => {
     setTriggerElement(null);
     removeServicioIdParam();
   }, [removeServicioIdParam]);
-
-  const memoizedCards = useMemo(() => missionCards, []);
 
   const modalContent = useMemo(() => {
     if (!isModalOpen.isOpen || !isModalOpen.item) return null;
@@ -339,29 +285,31 @@ const Home = () => {
         <meta itemProp="name" content="Movimiento Naluum" />
         <meta itemProp="description" content="Organización dedicada a impulsar soluciones regenerativas" />
 
-        <section className='home__content--mision__container' aria-labelledby="mision-title">
-          <FadeInOnView {...fadeInProps}>
-            <div className='home__content--mision'>
-              <div className='content--mision--titiles'>
-                <div className='mision--titile'>
-                  <h1 id="mision-title">! Lo que hacemos !</h1>
-                </div>
-                <div className='mision--subTitle'>
-                  <h2>Acompañamos proyectos con impacto regenerativo</h2>
-                </div>
-
-                <div className='mision--parrafo'>
-                  <p itemProp="description">
-                      Capacitamos personas y proyectos para impulsar iniciativas regenerativas que restauren el equilibrio social, económico y ecológico del planeta, basados en valores de respeto, colaboración y amor por la Madre Tierra.
-                  </p>
-                </div>
-                
-              </div>
-              <div className='content--mision--carousel-wrapper'>
-                <MissionCarousel cards={memoizedCards} autoPlayInterval={5000} />
+        <section className="home__history" aria-labelledby="home-history-title">
+          <div className="home__history-inner">
+            <div className="home__history-heading">
+              <p className="home__history-eyebrow">QUÉ ES EL MOVIMIENTO NALU’UM</p>
+              <h2 id="home-history-title">Una red global de regeneración</h2>
+              <div className="home__history-intro">
+                <p>Lo que comenzó como un <strong>instituto de permacultura</strong> en el <strong>Caribe mexicano</strong> se transformó en un <strong>movimiento mundial</strong>.</p>
+                <p>Hoy conecta grupos locales, redes nacionales y alianzas continentales, con una visión basada en el respeto por los <strong>saberes ancestrales</strong>, la <strong>regeneración de los territorios</strong> y la abundancia para todas las formas de vida.</p>
               </div>
             </div>
-          </FadeInOnView>
+
+            <div className="home__history-body">
+              <figure className="home__history-media">
+                <img
+                  src="/img/sections/equipo-global.webp"
+                  alt="Personas trabajando con plantas en un espacio de aprendizaje"
+                  width="1200"
+                  height="800"
+                  loading="lazy"
+                />
+              </figure>
+              <p className="home__history-identity">Aprender, cuidar y regenerar en comunidad.</p>
+            </div>
+            <Link className="home__history-cta" to="/sobre-nosotros">Conocer nuestra historia</Link>
+          </div>
         </section>
 
         <LineLogoSeparacion />
