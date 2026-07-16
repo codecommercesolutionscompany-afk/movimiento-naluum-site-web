@@ -375,6 +375,193 @@ $desktop-lg: 1280px;
 
   }
 
+  .home__ecosystem-intro {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    border-top: 1px solid rgba(213, 206, 169, 0.55);
+    border-bottom: 1px solid rgba(143, 118, 76, 0.32);
+    background: #d5cea9;
+    color: #48514a;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -15rem;
+      left: -12rem;
+      width: 28rem;
+      height: 25rem;
+      border: 1px solid rgba(143, 118, 76, 0.24);
+      border-radius: 44% 56% 61% 39% / 55% 38% 62% 45%;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(64%, 52rem);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(143, 118, 76, 0), rgba(143, 118, 76, 0.72));
+      pointer-events: none;
+    }
+  }
+
+  .home__ecosystem-intro__inner {
+    position: relative;
+    width: min(100%, 80rem);
+    margin: 0 auto;
+    padding: 4.5rem 1.25rem 5rem;
+  }
+
+  .home__ecosystem-intro__heading {
+    position: relative;
+    padding-top: 1.25rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3.25rem;
+      height: 2px;
+      background: #8f764c;
+    }
+
+    h2 {
+      margin: 0;
+      max-width: 16ch;
+      color: #063b2c;
+      font-size: clamp(2.25rem, 9vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+  }
+
+  .home__ecosystem-intro__body {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .home__ecosystem-intro__copy {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 60ch;
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    p:first-child {
+      color: #063b2c;
+      font-size: clamp(1.125rem, 3.8vw, 1.3125rem);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    strong {
+      color: #063b2c;
+      font-weight: 700;
+    }
+  }
+
+  .home__ecosystem-intro__axes {
+    counter-reset: ecosystem-axis;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(6, 59, 44, 0.28);
+    list-style: none;
+
+    li {
+      counter-increment: ecosystem-axis;
+      display: grid;
+      grid-template-columns: 2.75rem minmax(0, 1fr);
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(6, 59, 44, 0.28);
+
+      &::before {
+        content: '0' counter(ecosystem-axis);
+        color: #8f764c;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+    }
+
+    span {
+      color: #063b2c;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+  }
+
+  @media screen and (min-width: 430px) {
+    .home__ecosystem-intro__inner {
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .home__ecosystem-intro__inner {
+      padding: 5.5rem 2rem 6rem;
+    }
+
+    .home__ecosystem-intro__body {
+      grid-template-columns: minmax(0, 1.2fr) minmax(15rem, 0.8fr);
+      align-items: start;
+      gap: clamp(3rem, 7vw, 5rem);
+      margin-top: 3rem;
+    }
+
+    .home__ecosystem-intro__copy {
+      gap: 0.85rem;
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.55;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .home__ecosystem-intro__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      align-items: start;
+      gap: clamp(4rem, 8vw, 7rem);
+      padding-top: 6.5rem;
+      padding-bottom: 7rem;
+    }
+
+    .home__ecosystem-intro__body {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 0.5rem;
+    }
+
+    .home__ecosystem-intro__axes {
+      margin-top: 2.75rem;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .home__ecosystem-intro__inner {
+      padding-right: 2.5rem;
+      padding-left: 2.5rem;
+    }
+  }
+
   // ============================================
   // 4.5 CONTENIDO PRINCIPAL (SECCIONES)
   // ============================================

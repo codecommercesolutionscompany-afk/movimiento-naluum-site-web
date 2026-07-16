@@ -14,7 +14,6 @@ import SEOHelmet from '../../components/seo/SEOHelmet/SEOHelmet';
 // ------------------------------
 // 📂 Layout
 // Componentes que forman la estructura y navegación principal (header, footer, nav, etc.)
-import CardV2Img from '../../components/layout/card/cardV2_Img/cardV2_img';
 import ModalCard from '../../components/layout/card/modal_card/modal_card';
 import Header from '../../components/layout/header/header';
 
@@ -147,14 +146,6 @@ const missionCards = [
    image: '/img/shared/personas-trabajando.webp',
  }
 ];
-
-const objectContentCard = {
-   question: "¿Qué es el Movimiento Naluum?",
-   title: "Una red global de regeneración",
-   text: "El Movimiento Naluum es una comunidad viva que emergió hace más de dos décadas en las selvas del Caribe mexicano. Lo que comenzó como un instituto itinerante de permacultura se transformó en un movimiento mundial que conecta proyectos regenerativos través de una red descentralizada de grupos locales, redes nacionales y alianzas continentales, basado en el respeto por saberes ancestrales, regeneración de territorios y abundancia para todas las formas de vida.",
-   buttonPrimary: ["Conocer más sobre el Movimiento", '/sobre-nosotros'],
-   image: '/img/shared/personas-trabajando.webp'
-}
 
 // SEO: Datos estructurados para Schema.org
 const structuredData = {
@@ -323,19 +314,30 @@ const Home = () => {
         </div>
       </Header>
 
+      <section className="home__ecosystem-intro" aria-labelledby="home-ecosystem-title">
+        <div className="home__ecosystem-intro__inner">
+          <div className="home__ecosystem-intro__heading">
+            <h2 id="home-ecosystem-title">Un movimiento, distintas formas de regenerar</h2>
+          </div>
+
+          <div className="home__ecosystem-intro__body">
+            <div className="home__ecosystem-intro__copy">
+              <p>Movimiento Naluum conecta <strong>personas, saberes y territorios</strong> alrededor de una misma intención: aprender a vivir de una forma más <strong>consciente, comunitaria y regenerativa</strong>.</p>
+              <p>A través de <strong>procesos educativos</strong>, experiencias prácticas y proyectos vinculados con la <strong>permacultura</strong>, el movimiento busca transformar la manera en que habitamos, aprendemos y nos relacionamos con la Tierra.</p>
+            </div>
+
+            <ol className="home__ecosystem-intro__axes">
+              <li><span>Aprender.</span></li>
+              <li><span>Vivir el territorio.</span></li>
+              <li><span>Tejer comunidad.</span></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
       <section className='home__content' itemScope itemType="https://schema.org/Organization">
         <meta itemProp="name" content="Movimiento Naluum" />
         <meta itemProp="description" content="Organización dedicada a impulsar soluciones regenerativas" />
-        
-        <LineLogoSeparacion />
-
-        <article className='home__content--card-question' itemScope itemType="https://schema.org/Article">
-          <FadeInOnView {...fadeInProps}>
-            <CardV2Img objectContentCard={objectContentCard} buttonTrue={false} />
-          </FadeInOnView>
-        </article>
-
-        <LineLogoSeparacion />
 
         <section className='home__content--mision__container' aria-labelledby="mision-title">
           <FadeInOnView {...fadeInProps}>
