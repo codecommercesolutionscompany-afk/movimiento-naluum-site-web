@@ -22,7 +22,6 @@ import Header from '../../components/layout/header/header';
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
 import Grid from '../../components/seccion/grid/grid';
-import CardDataImpacto from '../../components/seccion/card_data_impacto/card_data_impacto';
 import BeforeAndAfter from '../../components/seccion/before_and_after/before_and_after';
 import Bitacora from '../../components/seccion/bitacora/bitacora';
 import CtaHablemos from '../../components/seccion/cta_hablemos/cta_hablemos';
@@ -345,13 +344,40 @@ const Home = () => {
           </div>
         </section>
 
-        <LineLogoSeparacion />
+        <section className="home__impact" aria-labelledby="home-impact-title">
+          <div className="home__impact-inner">
+            <header className="home__impact-intro">
+              <p className="home__impact-eyebrow">IMPACTO</p>
+              <h2 id="home-impact-title">Regenerar también es dejar huella</h2>
+              <p className="home__impact-lede">El movimiento se construye a través de proyectos, territorios, comunidades y procesos de aprendizaje que continúan creciendo.</p>
+              <div className="home__impact-signature" aria-hidden="true">
+                <img src="/img/branding/logo-naluum-transparente.svg" alt="" />
+              </div>
+            </header>
 
-        <section className='home__content--impacto' aria-labelledby="impacto-title">
-          <FadeInOnView {...fadeInProps}>
-            <h2 id="impacto-title" className="visually-hidden">Nuestro Impacto Regenerativo</h2>
-            <CardDataImpacto />
-          </FadeInOnView>
+            <ol className="home__impact-list">
+              <li className="home__impact-item">
+                <span className="home__impact-number" aria-label="Más de 50">+50</span>
+                <h3>Proyectos en marcha</h3>
+                <p>Iniciativas activas vinculadas con la regeneración.</p>
+              </li>
+              <li className="home__impact-item home__impact-item--featured">
+                <div className="home__impact-number-group"><span className="home__impact-number" aria-label="Más de 5.000">+5.000</span><span className="home__impact-unit">hectáreas</span></div>
+                <h3>Territorios regenerados</h3>
+                <p>Tierra acompañada en procesos de restauración y cuidado.</p>
+              </li>
+              <li className="home__impact-item">
+                <span className="home__impact-number" aria-label="Más de 15">+15</span>
+                <h3>Comunidades beneficiadas</h3>
+                <p>Comunidades involucradas en prácticas sostenibles.</p>
+              </li>
+              <li className="home__impact-item">
+                <span className="home__impact-number" aria-label="Más de 500">+500</span>
+                <h3>Talleres realizados</h3>
+                <p>Instancias de formación y educación ambiental.</p>
+              </li>
+            </ol>
+          </div>
         </section>
  
         <LineLogoSeparacion />

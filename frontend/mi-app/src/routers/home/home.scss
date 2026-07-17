@@ -572,7 +572,9 @@ $desktop-lg: 1280px;
     z-index: 1;
 
     @include mobile { 
-      padding: 2%; 
+      // Las secciones hijas pintan sus propios fondos a ancho completo.
+      // El contenedor exterior no debe encogerlas en mobile.
+      padding: 0;
     }
 
     // Fondo degradado para el contenido
@@ -1731,7 +1733,7 @@ $desktop-lg: 1280px;
       }
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
       .home__proposals { padding-top: 5.5rem; padding-bottom: 7rem; }
       .home__proposals-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .home__proposal-card--pdc { grid-column: span 2; }
@@ -1932,6 +1934,193 @@ $desktop-lg: 1280px;
         h3 { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
       }
       .home__proposal-card-content { padding: clamp(1rem, 1.8vw, 1.5rem); }
+    }
+
+    // HOME 5: impacto institucional en cifras.
+    .home__impact {
+      position: relative;
+      overflow: hidden;
+      padding: 3rem 1.25rem 3.75rem;
+      background-color: rgba(6, 59, 44, 0.7);
+      color: #d5cea9;
+    }
+
+    .home__impact-inner { width: min(100%, 78rem); margin: 0 auto; }
+
+    .home__impact-intro {
+      display: block;
+      gap: 0.45rem;
+      margin-bottom: 1.75rem;
+
+      .home__impact-eyebrow {
+        margin: 0;
+        color: #d0de85;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        line-height: 1.2;
+      }
+
+      h2 {
+        max-width: 20ch;
+        margin: 0;
+        color: #f4f0e4;
+        font-size: clamp(1.9rem, 4.5vw, 3.4rem);
+        letter-spacing: -0.035em;
+        line-height: 1.02;
+      }
+
+      .home__impact-lede {
+        max-width: 48ch;
+        margin: 0.75rem 0 0;
+        padding-left: 1rem;
+        border-left: 2px solid rgba(208, 222, 133, 0.68);
+        color: #d5cea9;
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+    }
+
+    .home__impact-signature {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, 9rem);
+      margin: 1.5rem auto 0;
+      opacity: 0.72;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .home__impact-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .home__impact-item {
+      min-width: 0;
+      padding: 1rem 1rem 1.2rem 0;
+      border-top: 1px solid rgba(213, 206, 169, 0.32);
+
+      &:nth-child(even) {
+        padding-right: 0;
+        padding-left: 1rem;
+        border-left: 1px solid rgba(213, 206, 169, 0.32);
+      }
+
+      h3 {
+        max-width: 18ch;
+        margin: 0.45rem 0 0;
+        color: #f4f0e4;
+        font-size: clamp(1.15rem, 2vw, 1.55rem);
+        line-height: 1.12;
+      }
+
+      > p {
+        max-width: 32ch;
+        margin: 0.4rem 0 0;
+        color: #d5cea9;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+    }
+
+    .home__impact-number-group {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .home__impact-number {
+      display: block;
+      color: #d0de85;
+      font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.06em;
+      line-height: 0.86;
+      white-space: nowrap;
+    }
+
+    .home__impact-unit {
+      color: #f4f0e4;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+
+    .home__impact-item--featured {
+      padding-top: 1.25rem;
+      padding-bottom: 1.5rem;
+
+      .home__impact-number { font-size: clamp(3.6rem, 8vw, 6.8rem); }
+    }
+
+    @media screen and (min-width: 768px) {
+      .home__impact { padding: 3.75rem 2rem 4.5rem; }
+      .home__impact-intro {
+        margin-bottom: 2.25rem;
+
+        h2 { max-width: 20ch; }
+        > p:last-child {
+          max-width: 44ch;
+          margin-top: 0.85rem;
+          margin-left: clamp(0.75rem, 2.5vw, 2.5rem);
+          padding-left: 1rem;
+        }
+
+        .home__impact-signature { margin-top: 1.5rem; }
+      }
+      .home__impact-list { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .home__impact-item {
+        grid-column: span 5;
+        padding: 1.25rem 2rem 1.5rem 0;
+
+        &:nth-child(even) {
+          grid-column: span 7;
+          padding-right: 0;
+          padding-left: 2rem;
+          border-left: 1px solid rgba(213, 206, 169, 0.32);
+        }
+      }
+      .home__impact-item--featured {
+        grid-column: span 7;
+        padding-top: 2.25rem;
+
+        .home__impact-number { font-size: clamp(4.5rem, 8vw, 7rem); }
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .home__impact { padding-top: 4.25rem; padding-bottom: 5rem; }
+      .home__impact-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 0.22fr);
+        grid-template-rows: auto auto auto;
+        column-gap: clamp(1rem, 2.5vw, 2.5rem);
+        align-items: center;
+        margin-bottom: 2.75rem;
+
+        .home__impact-eyebrow,
+        h2,
+        > p:last-child { grid-column: 1; }
+        .home__impact-signature {
+          grid-column: 2;
+          grid-row: 1 / span 3;
+          width: clamp(7rem, 11vw, 12rem);
+          margin: 0 auto;
+        }
+      }
+      .home__impact-item { min-height: 11.5rem; }
     }
 
     .home__content--products {
