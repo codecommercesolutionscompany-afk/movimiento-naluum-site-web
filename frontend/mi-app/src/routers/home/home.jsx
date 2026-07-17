@@ -379,6 +379,42 @@ const Home = () => {
             </ol>
           </div>
         </section>
+
+        <section className="home__madre-selva" aria-labelledby="home-madre-selva-title">
+          <div className="home__madre-selva-inner">
+            <div className="home__madre-selva-copy">
+              <p className="home__madre-selva-eyebrow">MADRE SELVA</p>
+              <div className="home__madre-selva-intro">
+                <div className="home__madre-selva-primary-copy">
+                  <h2 id="home-madre-selva-title">Un territorio vivo para aprender haciendo</h2>
+                  <p>En Misiones, Madre Selva es una expresión concreta del ecosistema Naluum: un espacio donde la tierra, la práctica y la vida en comunidad forman parte de una misma experiencia de aprendizaje.</p>
+                </div>
+                <div className="home__madre-selva-closing-copy">
+                  <p>Agricultura, bioconstrucción y procesos cotidianos se encuentran en un territorio que funciona como escuela viva.</p>
+                  <Link className="home__madre-selva-cta" to="/proyectos/madre-selva">Conocer el proyecto</Link>
+                </div>
+              </div>
+            </div>
+
+            <figure className="home__madre-selva-main-media">
+              <img
+                src="/img/shared/ecocentro-madre-selva.webp"
+                alt="Paisaje selvático del territorio de Madre Selva"
+                width="1200"
+                height="675"
+                loading="lazy"
+              />
+              <img
+                className="home__madre-selva-logo"
+                src="/img/branding/logo-madre-selva-horizontal-blanco.png"
+                alt="Madre Selva"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </section>
  
         <LineLogoSeparacion />
 
