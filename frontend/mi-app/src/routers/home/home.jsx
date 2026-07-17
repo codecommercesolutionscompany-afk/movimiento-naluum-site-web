@@ -22,7 +22,6 @@ import Header from '../../components/layout/header/header';
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
 import Grid from '../../components/seccion/grid/grid';
-import CtaImgCuentaRgresiva from '../../components/seccion/cta_img_cuenta_rgresiva/cta_img_cuenta_rgresiva';
 import CardDataImpacto from '../../components/seccion/card_data_impacto/card_data_impacto';
 import BeforeAndAfter from '../../components/seccion/before_and_after/before_and_after';
 import Bitacora from '../../components/seccion/bitacora/bitacora';
@@ -80,21 +79,6 @@ const fadeInProps = {
   speed: prefersReducedMotion ? 'fast' : "slow"
 };
 
-// Timer Configuration
-// const timerProps = {
-//   img: '/img/shared/manos-plantines.webp',
-//   titles: {
-//     main: "",
-//     subtitle: "Festival Eco de la Tierra",
-//   },
-//   text: " lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euis mod tincidunt ut laoreet dolore magna aliquam erat volutpat.",
-//   buttonText: "Quiero participar",
-//   timer: {
-//     targetDate: "2025-09-23T18:59:59"
-//   },
-//   link : "/serviciosl/aboratorios-alimentacion-viva"
-// };
-
 // SEO: Datos estructurados para Schema.org
 const structuredData = {
   "@context": "https://schema.org",
@@ -130,10 +114,31 @@ const breadcrumbSchema = {
 
 const Home = () => {
 
-  const { products, servicios, timerProps } = useContext(ContextJsonLoadContext);
+  const { products, servicios } = useContext(ContextJsonLoadContext);
   const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [triggerElement, setTriggerElement] = useState(null);
+  const [festivalTimeLeft, setFestivalTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const targetDate = new Date('2026-09-21T00:00:00');
+    const updateFestivalTimer = () => {
+      const difference = targetDate.getTime() - Date.now();
+      if (difference <= 0) {
+        setFestivalTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setFestivalTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / (1000 * 60)) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      });
+    };
+    updateFestivalTimer();
+    const intervalId = setInterval(updateFestivalTimer, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     if (servicioIdParam && servicios?.length > 0) {
@@ -312,45 +317,32 @@ const Home = () => {
           </div>
         </section>
 
-        <LineLogoSeparacion />
+        <section className="home__proposals" aria-labelledby="home-proposals-title">
+          <div className="home__proposals-inner">
+            <header className="home__proposals-intro">
+              <p className="home__proposals-eyebrow">PROPUESTAS DESTACADAS</p>
+              <h2 id="home-proposals-title">Experiencias que nacen del territorio</h2>
+              <p>Una selección de experiencias y productos para aprender, encontrarse y acercarse a una forma regenerativa de habitar la Tierra.</p>
+            </header>
 
-        <section className='home__content--servicios' aria-labelledby="servicios-title" itemScope itemType="https://schema.org/Service">
-          <FadeInOnView {...fadeInProps}>
-            <div className='content--servicios__container'>
-              <div className='content--servicios__text'>
-                <h2 id="servicios-title" itemProp="name">Juntos en el proceso de regenerar territorios</h2>
-                <p itemProp="description">
-                  Nuestro objetivo es crear una red de regeneración global que impulse la colaboración y el aprendizaje compartido. A través de metodologías teórico-prácticas que integran permacultura, bioconstrucción y saberes ancestrales, acompañamos a quienes buscan transformar su entorno y modo de vida de manera profunda y consciente.
-                </p>
-                <span>
-                Dirigimos nuestras capacitaciones a personas comprometidas con un cambio regenerativo auténtico, con la esperanza de generar transformación social y territorial significativa en familias, proyectos y comunidades, construyendo juntos un futuro más sostenible donde la vida humana y la naturaleza encuentren equilibrio.
-                </span>
-              </div>
-              <div className='content--servicios__grid'>
-                <div className="grid-wrapper">
-                  <Grid items={servicios} gridType="services" slice={3} setIsOpen={handleOpenModal} variant="minimal" />
-                </div>
-                {modalContent}
-              </div>
+            <div className="home__proposals-grid">
+              <article className="home__proposal-card home__proposal-card--selva">
+                <span className="home__proposal-badge">RECOMENDADO</span>
+                <div className="home__proposal-card-content"><h3>Selva Adentro</h3><p className="home__proposal-type">EXPERIENCIA FORMATIVA</p><p>Una experiencia inmersiva de aprendizaje, convivencia y práctica entre agricultura, bioconstrucción, arte y territorio.</p><Link className="home__proposal-cta" to="/selva-adentro">Ver experiencia</Link></div>
+                <figure><img src="/img/shared/bitacora-madre-selva.webp" alt="Personas reunidas en una experiencia compartida en territorio" loading="lazy" /></figure>
+              </article>
+              <article className="home__proposal-card home__proposal-card--festival">
+                <div className="home__proposal-event-meta"><span>PRÓXIMO ENCUENTRO</span><span className="home__proposal-timer" aria-label="Cuenta regresiva para el Festival Ecos de la Tierra">{String(festivalTimeLeft.days).padStart(2, '0')}d : {String(festivalTimeLeft.hours).padStart(2, '0')}h : {String(festivalTimeLeft.minutes).padStart(2, '0')}m : {String(festivalTimeLeft.seconds).padStart(2, '0')}s</span></div>
+                <div className="home__proposal-card-content"><h3>Festival Ecos de la Tierra</h3><p className="home__proposal-type">ENCUENTRO</p><p>Un encuentro cultural y comunitario para compartir expresiones, aprendizajes y formas regenerativas de habitar la Tierra.</p><Link className="home__proposal-cta" to="/servicios/festival-eco-de-la-tierra">Conocer el festival</Link></div>
+                <figure><img src="/img/hero/hero-festival-eco-de-la-tierra.webp" alt="Personas reunidas al aire libre durante un encuentro comunitario" loading="lazy" /></figure>
+              </article>
+              <article className="home__proposal-card home__proposal-card--product">
+                <div className="home__proposal-card-content"><h3>Yerba Mate Madre Selva</h3><p className="home__proposal-type">PRODUCTO DEL TERRITORIO</p><p>Yerba mate agroecológica vinculada con el cuidado de la tierra, los procesos artesanales y la producción regenerativa.</p><Link className="home__proposal-cta" to="/productos/yerba-mate-organica">Ver producto</Link></div>
+                <figure><img src="/img/shared/mate-yerba-organica.webp" alt="Persona preparando mate al aire libre" loading="lazy" /></figure>
+              </article>
             </div>
- 
-            <div className='content--servicios__cta-timer'>
-              <div className='content--servicios__cta-component'>
-                <CtaImgCuentaRgresiva {...timerProps} />
-              </div>
-
-              <div className='home__content--servicios-buttons'>
-                <Button 
-                  text="Explora todos los servicios"
-                  link="/servicios"
-                  style="outline"
-                  aria-label="Ver todos los servicios de capacitación y acompañamiento del Movimiento Naluum"
-                />
-              </div>
-
-            </div>
-
-          </FadeInOnView>
+            <Link className="home__proposals-cta" to="/servicios">Explorar todos los servicios</Link>
+          </div>
         </section>
 
         <LineLogoSeparacion />

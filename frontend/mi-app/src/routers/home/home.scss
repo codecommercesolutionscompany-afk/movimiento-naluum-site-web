@@ -1245,8 +1245,695 @@ $desktop-lg: 1280px;
     }
 
     // ============================================
+    // 4.5.3 HOME 4: PROPUESTAS ACTIVAS
+    // ============================================
+    .home__proposals {
+      position: relative;
+      overflow: hidden;
+      padding: 4.5rem 1.25rem 5rem;
+      background: #f4f0e4;
+      color: #17352b;
+    }
+
+    .home__proposals-inner {
+      width: min(100%, 78rem);
+      margin: 0 auto;
+    }
+
+    .home__proposals-intro {
+      max-width: 50rem;
+      margin-bottom: 4.5rem;
+
+      h2 {
+        max-width: 18ch;
+        margin: 0;
+        color: #17352b;
+        font-size: clamp(2.3rem, 8vw, 4.5rem);
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.03;
+        text-wrap: balance;
+      }
+
+      > p:last-child {
+        max-width: 47ch;
+        margin: 1.5rem 0 0;
+        color: #365b48;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+    }
+
+    .home__proposals-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      width: fit-content;
+      margin: 4rem auto 0;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid rgba(54, 91, 72, 0.45);
+      border-radius: 999px;
+      background: rgba(244, 240, 228, 0.55);
+      color: #365b48;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.3;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+
+      &::after { content: '→'; font-size: 1rem; line-height: 1; }
+      &:hover { border-color: #365b48; background: #d0de85; color: #17352b; transform: translateY(-1px); }
+      &:focus-visible { outline: 2px solid #c68148; outline-offset: 4px; }
+    }
+
+    .home__proposals-eyebrow,
+    .home__proposals-chapter-heading > p,
+    .home__proposal-kicker {
+      margin: 0 0 0.75rem;
+      color: #6e8433;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .home__proposals-chapter + .home__proposals-chapter {
+      margin-top: 5rem;
+    }
+
+    .home__proposals-chapter-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      > p {
+        min-width: 1.75rem;
+        margin: 0;
+      }
+
+      h3 {
+        margin: 0;
+        color: #17352b;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+    }
+
+    .home__proposal {
+      position: relative;
+      min-width: 0;
+
+      .home__proposal-media {
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        background: #d9e0c6;
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .home__proposal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+      }
+
+      h4 {
+        margin: 0;
+        color: #17352b;
+        font-size: clamp(1.35rem, 4vw, 2rem);
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        line-height: 1.1;
+      }
+
+      .home__proposal-content > p:not(.home__proposal-kicker) {
+        margin: 1rem 0 0;
+        color: #365b48;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      a {
+        margin-top: 1.5rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid currentColor;
+        color: #315c3c;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        line-height: 1.3;
+        text-decoration: none;
+
+        &:focus-visible {
+          outline: 2px solid #17352b;
+          outline-offset: 4px;
+        }
+
+        &:hover {
+          color: #6e8433;
+        }
+      }
+    }
+
+    .home__proposals-learn-layout,
+    .home__proposals-participate-layout,
+    .home__proposals-stay-layout {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .home__proposal--pdc {
+      border: 1px solid #1f4f3c;
+      background: #17352b;
+
+      .home__proposal-media {
+        aspect-ratio: 4 / 3;
+      }
+
+      .home__proposal-content {
+        padding: 1.75rem;
+      }
+
+      h4,
+      .home__proposal-content > p:not(.home__proposal-kicker),
+      a {
+        color: #f4f0e4;
+      }
+
+      a:hover {
+        color: #d0de85;
+      }
+    }
+
+    .home__proposal--selva {
+      background: #dbe5cb;
+
+      .home__proposal-media {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    .home__proposal--residency {
+      border-left: 3px solid #c68148;
+      background: #fffdf7;
+
+      .home__proposal-media {
+        aspect-ratio: 16 / 10;
+      }
+    }
+
+    .home__proposal--volunteer {
+      display: flex;
+      align-items: flex-end;
+      min-height: 22rem;
+      overflow: hidden;
+      background: #cddc8b;
+
+      &::before,
+      &::after {
+        position: absolute;
+        border: 1px solid rgba(23, 53, 43, 0.3);
+        border-radius: 50%;
+        content: '';
+        pointer-events: none;
+      }
+
+      &::before {
+        top: -5rem;
+        right: -4rem;
+        width: 16rem;
+        height: 16rem;
+      }
+
+      &::after {
+        bottom: -8rem;
+        left: -5rem;
+        width: 18rem;
+        height: 18rem;
+      }
+
+      .home__proposal-content {
+        position: relative;
+        z-index: 1;
+        max-width: 30rem;
+      }
+
+      .home__proposal-organic-mark {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 2.75rem;
+        height: 2.75rem;
+        border: 1px solid #17352b;
+        border-radius: 52% 48% 42% 58%;
+        transform: rotate(28deg);
+      }
+    }
+
+    .home__proposal--festival {
+      background: #283f58;
+
+      .home__proposal-media {
+        aspect-ratio: 4 / 5;
+      }
+
+      h4,
+      .home__proposal-content > p:not(.home__proposal-kicker),
+      a {
+        color: #f4f0e4;
+      }
+    }
+
+    .home__proposal--camping {
+      background: #e4d8b7;
+
+      .home__proposal-media {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    .home__proposal--visits {
+      border-top: 1px solid #315c3c;
+      background: #f8f6ed;
+
+      .home__proposal-media {
+        aspect-ratio: 3 / 4;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .home__proposals {
+        padding: 6rem 2rem 7rem;
+      }
+
+      .home__proposals-intro {
+        margin-bottom: 6rem;
+
+        > p:last-child {
+          font-size: 1.125rem;
+        }
+      }
+
+      .home__proposals-learn-layout {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        align-items: start;
+
+        .home__proposal--pdc {
+          grid-row: span 2;
+        }
+
+        .home__proposal--selva {
+          margin-top: 2.5rem;
+        }
+
+        .home__proposal--residency {
+          margin-left: 2rem;
+        }
+      }
+
+      .home__proposal--pdc {
+        .home__proposal-media {
+          aspect-ratio: 5 / 4;
+        }
+
+        .home__proposal-content {
+          padding: 2.25rem;
+        }
+
+        h4 {
+          font-size: clamp(2rem, 3vw, 3rem);
+        }
+      }
+
+      .home__proposals-participate-layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: stretch;
+
+        .home__proposal--festival {
+          display: grid;
+          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+
+          .home__proposal-media {
+            aspect-ratio: auto;
+          }
+        }
+      }
+
+      .home__proposals-stay-layout {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+        align-items: start;
+
+        .home__proposal--camping {
+          display: grid;
+          grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+
+          .home__proposal-media {
+            aspect-ratio: auto;
+          }
+        }
+
+        .home__proposal--visits {
+          margin-top: 4rem;
+        }
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .home__proposals {
+        padding-top: 7rem;
+        padding-bottom: 8rem;
+      }
+
+      .home__proposals-chapter + .home__proposals-chapter {
+        margin-top: 7rem;
+      }
+
+      .home__proposals-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(17rem, 0.85fr);
+        column-gap: 4rem;
+
+        .home__proposals-eyebrow {
+          grid-column: 1 / -1;
+        }
+
+        > p:last-child {
+          align-self: end;
+          margin: 0;
+        }
+      }
+    }
+
+    // ============================================
     // 4.5.3 SECCIÓN DE PRODUCTOS
     // ============================================
+    // HOME 4 override: clear proposal cards with an explicit service/product system.
+    .home__proposals {
+      padding: 3.5rem 1.25rem 4.5rem;
+      background: #f4f0e4;
+      color: #17352b;
+    }
+
+    .home__proposals-inner { width: min(100%, 78rem); }
+
+    .home__proposals-intro {
+      display: block;
+      max-width: none;
+      margin-bottom: 2.5rem;
+
+      h2 { max-width: 23ch; font-size: clamp(2rem, 7vw, 3.8rem); line-height: 1.08; }
+      > p:last-child { max-width: 52ch; margin: 1rem 0 0; font-size: 1rem; }
+    }
+
+    .home__proposals-grid { display: grid; gap: 1.25rem; }
+
+    .home__proposal-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(23, 53, 43, 0.32);
+      background: #fffdf7;
+
+      figure { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; background: #d9e0c6; }
+      img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    }
+
+    .home__proposal-card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem;
+
+      h3 { margin: 0; color: #17352b; font-size: clamp(1.35rem, 4vw, 1.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; }
+      > p:not(.home__proposal-type) { margin: 0.85rem 0 0; color: #365b48; font-size: 1rem; line-height: 1.55; }
+    }
+
+    .home__proposal-type { margin: 0 0 0.75rem; color: #597033; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.13em; line-height: 1.2; }
+
+    .home__proposal-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.125rem;
+      border: 1px solid #17352b;
+      background: #17352b;
+      color: #f4f0e4;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background-color 180ms ease, color 180ms ease;
+
+      &:hover { background: #d0de85; color: #17352b; }
+      &:focus-visible { outline: 3px solid #c68148; outline-offset: 3px; }
+    }
+
+    .home__proposal-card--warm { background: #f5e7cd; }
+    .home__proposal-card--festival { background: #e7ecd7; }
+    .home__proposal-card--camping { background: #e9e0bf; }
+    .home__proposal-card--product { border-color: #8a603d; background: #f0dfc2; .home__proposal-type { color: #82552e; } }
+
+    @media screen and (min-width: 768px) {
+      .home__proposals { padding: 4.5rem 2rem 6rem; }
+      .home__proposals-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+        column-gap: 3rem;
+        align-items: end;
+        margin-bottom: 3.5rem;
+        .home__proposals-eyebrow { grid-column: 1 / -1; }
+        > p:last-child { margin: 0; font-size: 1.0625rem; }
+      }
+      .home__proposals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+      .home__proposal-card--pdc {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        background: #dce8c7;
+        figure { aspect-ratio: auto; }
+        .home__proposal-card-content { padding: 2rem; }
+        h3 { font-size: clamp(2rem, 4vw, 2.8rem); }
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .home__proposals { padding-top: 5.5rem; padding-bottom: 7rem; }
+      .home__proposals-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .home__proposal-card--pdc { grid-column: span 2; }
+    }
+
+    // HOME 4: tres propuestas visibles, compactas y relacionadas.
+    .home__proposals {
+      padding: 2.5rem 1.25rem 5.25rem;
+    }
+
+    .home__proposals-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.25rem;
+      text-align: center;
+
+      h2 {
+        max-width: 20ch;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: clamp(1.9rem, 6vw, 3rem);
+        letter-spacing: -0.025em;
+        line-height: 1.08;
+      }
+      > p:last-child {
+        width: min(100%, 56ch);
+        max-width: 56ch;
+        margin: 0.75rem auto 0;
+        text-align: center;
+      }
+
+    }
+
+    .home__proposals-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .home__proposal-card {
+      position: relative;
+      border-radius: 0.25rem;
+      min-height: clamp(24rem, 100vw, 28rem);
+      isolation: isolate;
+      overflow: visible;
+
+      figure {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100% !important;
+        margin: 0;
+        aspect-ratio: auto;
+        border-radius: inherit;
+        overflow: hidden;
+        background: #17352b;
+
+        &::after {
+          position: absolute;
+          inset: 0;
+          content: "";
+          background: linear-gradient(180deg, rgba(4, 28, 20, 0.25) 0%, rgba(4, 28, 20, 0.84) 100%);
+        }
+      }
+      .home__proposal-card-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: inherit;
+        padding: 1.5rem;
+        color: #f4f0e4;
+        text-align: center;
+      }
+      h3 {
+        max-width: 16ch;
+        color: #f4f0e4;
+        font-size: clamp(1.45rem, 5vw, 2rem);
+        letter-spacing: -0.02em;
+        line-height: 1.12;
+      }
+      > .home__proposal-card-content > p:not(.home__proposal-type) {
+        max-width: 35ch;
+        margin-top: 0.75rem;
+        color: #f4f0e4;
+        font-size: 0.9375rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+    }
+
+    .home__proposal-type { margin: 0.5rem 0 0; color: #d0de85; text-align: center; }
+
+    .home__proposal-badge,
+    .home__proposal-event-meta {
+      position: absolute;
+      z-index: 3;
+      top: -0.7rem;
+      left: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid rgba(23, 53, 43, 0.45);
+      background: #f4f0e4;
+      color: #17352b;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .home__proposal-event-meta {
+      right: auto;
+      justify-content: space-between;
+      left: 50%;
+      transform: translateX(-50%);
+      border-color: #6e8433;
+      background: #dfe6c9;
+    }
+    .home__proposal-timer { font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+
+    .home__proposal-cta {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    .home__proposal-card--selva {
+      background: #17352b;
+
+      h3, > .home__proposal-card-content > p:not(.home__proposal-type) { color: #f4f0e4; }
+      .home__proposal-type { color: #d0de85; }
+      .home__proposal-cta {
+        border-color: #d0de85;
+        background: #d0de85;
+        color: #17352b;
+
+        &:hover {
+          border-color: #f4f0e4;
+          background: #f4f0e4;
+          color: #17352b;
+        }
+      }
+    }
+
+    .home__proposal-card--festival {
+      background: #dfe6c9;
+
+      .home__proposal-card-content { border-top: 3px solid #6e8433; }
+    }
+
+    .home__proposal-card--product {
+      background: #ead8b9;
+
+      .home__proposal-card-content { border-top: 1px solid rgba(138, 96, 61, 0.42); }
+    }
+
+    @media screen and (min-width: 768px) {
+      .home__proposals { padding: 3rem 2rem 5.75rem; }
+      .home__proposals-cta { margin-top: 4.5rem; }
+      .home__proposals-intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2.5rem;
+
+        .home__proposals-eyebrow { grid-column: auto; }
+        > p:last-child { margin: 0.75rem auto 0; }
+      }
+      .home__proposals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+      .home__proposal-card--selva {
+        grid-column: 1 / -1;
+        display: flex;
+
+        figure { min-height: 0; }
+      }
+      .home__proposal-card { min-height: 25rem; }
+      .home__proposal-cta { width: auto; margin-top: 1.5rem; }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .home__proposals { padding-top: clamp(2.5rem, 5svh, 3.5rem); padding-bottom: clamp(5rem, 8svh, 6.5rem); }
+      .home__proposals-cta { margin-top: clamp(4.5rem, 7svh, 6rem); }
+      .home__proposals-intro { margin-bottom: clamp(2.25rem, 3.5svh, 3rem); }
+      .home__proposals-grid {
+        grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
+        align-items: stretch;
+      }
+      .home__proposal-card { min-height: clamp(25rem, 61svh, 29rem); }
+      .home__proposal-card--selva {
+        grid-column: auto;
+        display: flex;
+
+        figure { min-height: 0; }
+        h3 { font-size: clamp(1.7rem, 2.3vw, 2.2rem); }
+      }
+      .home__proposal-card-content { padding: clamp(1rem, 1.8vw, 1.5rem); }
+    }
+
     .home__content--products {
       padding: 1rem ;
       border-radius: 1rem;
