@@ -1,8 +1,5 @@
-import { useState, useCallback, useMemo, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import { ContextJsonLoadContext } from '../../context/context_json_load/context_json_load_context';
-import { useQueryParam } from '../../hooks/useQueryParams';
 
 
 // ------------------------------
@@ -14,27 +11,21 @@ import SEOHelmet from '../../components/seo/SEOHelmet/SEOHelmet';
 // ------------------------------
 // 📂 Layout
 // Componentes que forman la estructura y navegación principal (header, footer, nav, etc.)
-import ModalCard from '../../components/layout/card/modal_card/modal_card';
 import Header from '../../components/layout/header/header';
 
 
 // ------------------------------
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
-import Grid from '../../components/seccion/grid/grid';
 import Bitacora from '../../components/seccion/bitacora/bitacora';
 import CtaHablemos from '../../components/seccion/cta_hablemos/cta_hablemos';
 import MessageFinal from '../../components/seccion/message_final/message_final';
-import TestimonialCard from '../../components/seccion/testimonial_card/testimonial_card';
 import FadeInOnView from '../../components/seccion/fadeInOnView/fadeInOnView';
-import SupportModalContent from '../../components/seccion/support_modal/support_modal';
 
 
 // ------------------------------
 // 📂 UI / Componentes visuales pequeños y reutilizables
-import Button from '../../components/ui/button/button';
 import LineLogoSeparacion from '../../components/ui/line_logo_separacion/line_logo_separacion';
-import Modal from '../../components/ui/modal/modal';
 
 
 // ------------------------------
@@ -109,14 +100,29 @@ const breadcrumbSchema = {
   }]
 };
 
+const communityVoices = [
+  {
+    name: 'Claudia',
+    context: 'Selva Adentro · Madre Selva',
+    quote: 'Sentís una energía especial con el lugar, la tierra y las personas. Ves la vida misma crecer mientras aprendes.',
+  },
+  {
+    name: 'Ayelén',
+    context: 'Selva Adentro · Madre Selva',
+    quote: 'Me llevo muchísimas herramientas para aplicar en la práctica de la permacultura. Me sentí contenida y muy a gusto en todo el proceso.',
+  },
+  {
+    name: 'Iara',
+    context: 'Yerba Mate Madre Selva',
+    quote: 'Es hermoso ver todo el proceso, desde el crecimiento en las agroflorestas hasta el sapecado y poder probarlo. Me gustó ver cómo algo que viene generalmente empaquetado tiene todo un proceso hasta llegar al consumo.',
+  },
+];
 
 const Home = () => {
 
-  const { products, servicios } = useContext(ContextJsonLoadContext);
-  const [servicioIdParam, setServicioIdParam, removeServicioIdParam] = useQueryParam('servicios');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [triggerElement, setTriggerElement] = useState(null);
   const [festivalTimeLeft, setFestivalTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [activeVoiceIndex, setActiveVoiceIndex] = useState(0);
+  const [leavingVoiceIndex, setLeavingVoiceIndex] = useState(null);
 
   useEffect(() => {
     const targetDate = new Date('2026-09-21T00:00:00');
@@ -139,11 +145,15 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (servicioIdParam && servicios?.length > 0) {
-      const item = servicios.find(s => s.id.toString() === servicioIdParam.toString());
-      if (item) setIsModalOpen({ isOpen: true, item });
-    }
-  }, [servicioIdParam, servicios]);
+    if (prefersReducedMotion) return undefined;
+
+    const timeoutId = window.setTimeout(() => {
+      setLeavingVoiceIndex(activeVoiceIndex);
+      setActiveVoiceIndex((activeVoiceIndex + 1) % communityVoices.length);
+    }, 8000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeVoiceIndex]);
 
   // SEO: Inyectar datos estructurados en el head
   useEffect(() => {
@@ -162,40 +172,6 @@ const Home = () => {
       if (breadcrumbScript.parentNode) breadcrumbScript.parentNode.removeChild(breadcrumbScript);
     };
   }, []);
-
-  const handleOpenModal = useCallback((status, e, item) => {
-    if (!item || !item.id) return;
-
-    setTriggerElement(e.currentTarget);
-    setIsModalOpen({ isOpen: status, item });
-    setServicioIdParam(item.id);
-
-  }, [setServicioIdParam]);
-
-  const handleCloseModal = useCallback(() => {
-    setIsModalOpen(false);
-    setTriggerElement(null);
-    removeServicioIdParam();
-  }, [removeServicioIdParam]);
-
-  const modalContent = useMemo(() => {
-    if (!isModalOpen.isOpen || !isModalOpen.item) return null;
-    return (
-      <Modal
-        isOpenModal={isModalOpen}
-        onClose={handleCloseModal}
-        triggerElement={triggerElement}
-        showPointer={true}
-      >
-        <ModalCard course={isModalOpen.item}>
-          <SupportModalContent
-            onClose={handleCloseModal}
-            item={isModalOpen.item}
-          />
-        </ModalCard>
-      </Modal>
-    );
-  }, [isModalOpen, handleCloseModal, triggerElement]);
 
   return (
     <main className='home__container' aria-label="Página principal" itemScope itemType="https://schema.org/WebPage">
@@ -439,35 +415,38 @@ const Home = () => {
           </FadeInOnView>
         </section>
 
-        <section className='home__content--testimonios' aria-labelledby="testimonios-title" itemScope itemType="https://schema.org/Review">
+        <section className="home__voices" aria-labelledby="voces-title">
           <FadeInOnView {...fadeInProps}>
-            <h2 id="testimonios-title" className="visually-hidden">Testimonios de nuestra comunidad</h2>
-            <TestimonialCard typeTestimonial="testimonios_movimiento" />
+            <div className="home__voices-inner">
+              <header className="home__voices-header">
+                <p className="home__voices-eyebrow">VOCES DE LA COMUNIDAD</p>
+                <h2 id="voces-title">Experiencias que dejan huella</h2>
+              </header>
+
+              <div className="home__voices-stage" aria-live="polite" aria-atomic="true">
+                {communityVoices.map((voice, index) => {
+                  const isActive = index === activeVoiceIndex;
+                  const isLeaving = index === leavingVoiceIndex;
+                  const voiceClassName = [
+                    'home__voices-quote',
+                    isActive && 'home__voices-quote--active',
+                    isLeaving && 'home__voices-quote--leaving',
+                  ].filter(Boolean).join(' ');
+
+                  return (
+                    <figure className={voiceClassName} aria-hidden={!isActive} key={voice.name}>
+                      <blockquote>{voice.quote}</blockquote>
+                      <figcaption>
+                        <cite>{voice.name}</cite>
+                        <span>{voice.context}</span>
+                      </figcaption>
+                    </figure>
+                  );
+                })}
+              </div>
+            </div>
           </FadeInOnView>
         </section>
-
-        <LineLogoSeparacion />
-
-        <section className='home__content--products' aria-labelledby="productos-title" itemScope itemType="https://schema.org/Product">
-          <FadeInOnView {...fadeInProps}>
-            <div className='home__content--products-title'>
-              <h2 id="productos-title" itemProp="name">Productos Regenerativos</h2>
-              <p itemProp="description">Conoce los productos ecológicos que nos ayudan a cumplir con nuestras metas de regeneración</p>
-            </div>
-            <Grid items={products} slice={5} setIsOpen={handleOpenModal} />
-            {modalContent}
-            <div className='home__content--products-button'>
-              <Button 
-                text="Ver todos los productos" 
-                link="/productos" 
-                style="outline"
-                aria-label="Explorar catálogo completo de productos regenerativos"
-              />
-            </div>
-          </FadeInOnView>
-        </section>
-
-        <LineLogoSeparacion />
 
         <section className='home__content--bitacora' aria-labelledby="bitacora-title">
           <FadeInOnView {...fadeInProps}>
