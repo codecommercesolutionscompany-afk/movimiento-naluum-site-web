@@ -7,7 +7,7 @@ import Footer from './components/layout/footer/footer';
 
 // 📂 UI / utilitarios
 import ScrollToTop from './components/ui/scrollToTop/ScrollToTop';
-import ButtonBack from './components/ui/button_back/button_back';
+// import ButtonBack from './components/ui/button_back/button_back';
 
 // 📂 Tracking y métricas
 
@@ -60,9 +60,9 @@ const App = () => {
           <Nav />
         </div>
 
-        <div className='app__back-button'>
+        {/* <div className='app__back-button'>
           <ButtonBack />
-        </div>
+        </div> */}
       </>
   
       <ScrollToTop />
