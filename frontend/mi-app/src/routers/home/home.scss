@@ -2128,7 +2128,7 @@ $desktop-lg: 1280px;
       display: grid;
       width: min(100%, 78rem);
       margin: 0 auto;
-      padding: 3.5rem 1.25rem 4rem;
+      padding: 3.5rem 1.25rem 0;
     }
 
     .home__madre-selva-copy {
@@ -2291,7 +2291,7 @@ $desktop-lg: 1280px;
           "copy";
         align-items: start;
         row-gap: 0;
-        padding: 4.5rem 2rem 5rem;
+        padding: 4.5rem 2rem 0;
       }
 
       .home__madre-selva-main-media {
@@ -2352,7 +2352,7 @@ $desktop-lg: 1280px;
     @media screen and (min-width: 1024px) {
       .home__madre-selva-inner {
         padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-bottom: 0;
       }
 
       .home__madre-selva-copy {
@@ -2361,6 +2361,124 @@ $desktop-lg: 1280px;
         max-width: none;
         margin-top: calc(-1 * var(--madre-selva-overlay-depth));
         padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.5rem, 2.5vw, 2.25rem) clamp(1.75rem, 2.5vw, 2.25rem);
+      }
+    }
+
+    // HOME 7: comparación territorial documentada.
+    .home__transformation {
+      width: 100%;
+      background: #e9e1cf;
+      color: #063b2c;
+    }
+
+    .home__transformation-inner {
+      width: min(100%, 78rem);
+      margin: 0 auto;
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .home__transformation-header {
+      max-width: 58rem;
+      margin: 0 auto clamp(2.25rem, 5vw, 4rem);
+      text-align: center;
+
+      h2 {
+        max-width: 18ch;
+        margin: 0 auto;
+        color: #063b2c;
+        font-size: clamp(2.1rem, 5vw, 4.25rem);
+        font-weight: 600;
+        letter-spacing: -0.045em;
+        line-height: 1.04;
+        text-wrap: balance;
+      }
+
+      > p:not(.home__transformation-eyebrow) {
+        max-width: 58ch;
+        margin: 1.1rem auto 0;
+        color: #365b48;
+        font-size: clamp(1rem, 1.5vw, 1.125rem);
+        line-height: 1.55;
+      }
+    }
+
+    .home__transformation-eyebrow {
+      margin: 0 0 0.85rem;
+      color: #597033;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      line-height: 1.2;
+    }
+
+    .home__transformation-support {
+      color: #597033 !important;
+      font-size: 0.9375rem !important;
+      font-weight: 600;
+    }
+
+    .home__transformation-comparison {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1rem, 2.5vw, 2rem);
+      width: min(100%, 64rem);
+      margin: 0 auto;
+    }
+
+.home__transformation-frame {
+      position: relative;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(6, 59, 44, 0.22);
+      background: #d5cea9;
+
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1204 / 1600;
+        object-fit: cover;
+      }
+
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        padding: 0.6rem 0.9rem;
+        background: #063b2c;
+        color: #f4f0e4;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .home__transformation-inner { padding: 3.5rem 1.25rem 4rem; }
+
+      .home__transformation-header {
+        margin-bottom: 2rem;
+        text-align: left;
+
+        h2 { max-width: 14ch; margin-left: 0; }
+
+        > p:not(.home__transformation-eyebrow) { margin-left: 0; }
+      }
+
+      .home__transformation-comparison { grid-template-columns: 1fr; }
+
+      .home__transformation-frame {
+        aspect-ratio: 4 / 3;
+        max-height: 22rem;
+      }
+
+      .home__transformation-frame img {
+        height: 100%;
+        aspect-ratio: auto;
+        object-fit: cover;
+        object-position: center;
       }
     }
 
@@ -2440,6 +2558,19 @@ $desktop-lg: 1280px;
       }
 
     }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home__transformation-frame {
+    height: clamp(24rem, 37vw, 31rem);
+  }
+
+  .home__transformation-frame img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
   }
 }
 

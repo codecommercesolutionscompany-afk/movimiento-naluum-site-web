@@ -22,7 +22,6 @@ import Header from '../../components/layout/header/header';
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
 import Grid from '../../components/seccion/grid/grid';
-import BeforeAndAfter from '../../components/seccion/before_and_after/before_and_after';
 import Bitacora from '../../components/seccion/bitacora/bitacora';
 import CtaHablemos from '../../components/seccion/cta_hablemos/cta_hablemos';
 import MessageFinal from '../../components/seccion/message_final/message_final';
@@ -416,12 +415,27 @@ const Home = () => {
           </div>
         </section>
  
-        <LineLogoSeparacion />
-
-        <section className='home__content--beforeAfter' aria-labelledby="transformacion-title">
+        <section className="home__transformation" aria-labelledby="transformacion-title">
           <FadeInOnView {...fadeInProps}>
-            <h2 id="transformacion-title" className="visually-hidden">Transformación: Antes y Después</h2>
-            <BeforeAndAfter />
+            <div className="home__transformation-inner">
+              <header className="home__transformation-header">
+                <p className="home__transformation-eyebrow">TRANSFORMACIÓN EN EL TERRITORIO</p>
+                <h2 id="transformacion-title">Un mismo lugar, otra forma de habitarlo</h2>
+                <p>La regeneración se vuelve visible cuando el cuidado del territorio, el aprendizaje y el trabajo sostenido forman parte de un mismo proceso.</p>
+                <p className="home__transformation-support">Estas imágenes muestran el mismo espacio en dos momentos distintos.</p>
+              </header>
+
+              <div className="home__transformation-comparison" role="group" aria-label="Comparación del mismo espacio en Madre Selva">
+                <figure className="home__transformation-frame">
+                  <img src="/img/home/madre-selva-antes.jpg" alt="Vista anterior del mismo espacio en Madre Selva" width="1204" height="1600" loading="lazy" />
+                  <figcaption>Antes</figcaption>
+                </figure>
+                <figure className="home__transformation-frame">
+                  <img src="/img/home/madre-selva-despues.jpg" alt="Vista posterior del mismo espacio en Madre Selva" width="1204" height="1600" loading="lazy" />
+                  <figcaption>Después</figcaption>
+                </figure>
+              </div>
+            </div>
           </FadeInOnView>
         </section>
 
