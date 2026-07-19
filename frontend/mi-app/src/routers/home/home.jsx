@@ -17,16 +17,8 @@ import Header from '../../components/layout/header/header';
 // ------------------------------
 // 📂 Secciones
 // Bloques grandes o secciones completas que conforman las páginas
-import Bitacora from '../../components/seccion/bitacora/bitacora';
 import CtaHablemos from '../../components/seccion/cta_hablemos/cta_hablemos';
-import MessageFinal from '../../components/seccion/message_final/message_final';
 import FadeInOnView from '../../components/seccion/fadeInOnView/fadeInOnView';
-
-
-// ------------------------------
-// 📂 UI / Componentes visuales pequeños y reutilizables
-import LineLogoSeparacion from '../../components/ui/line_logo_separacion/line_logo_separacion';
-
 
 // ------------------------------
 // 📂 Maps
@@ -448,32 +440,11 @@ const Home = () => {
           </FadeInOnView>
         </section>
 
-        <section className='home__content--bitacora' aria-labelledby="bitacora-title">
+        <section className='home__content--boletin' id='boletin' aria-label="Hablemos">
           <FadeInOnView {...fadeInProps}>
-            <h2 id="bitacora-title" className="visually-hidden">Bitácora del Movimiento</h2>
-            <Bitacora />
+            <CtaHablemos showSocialMedia={false} variant="home" />
           </FadeInOnView>
         </section>
-
-        <LineLogoSeparacion />
-
-        <section className='home__content--boletin' id='boletin' aria-labelledby="boletin-title">
-          <FadeInOnView {...fadeInProps}>
-            <h2 id="boletin-title" className="visually-hidden">Suscríbete a nuestro boletín</h2>
-            <CtaHablemos showSocialMedia={false} />
-          </FadeInOnView>
-        </section>
-
-        {/* <LineLogoSeparacion /> */}
-
-        <section className='home__content--message_final' aria-labelledby="mensaje-final-title">
-          <FadeInOnView {...fadeInProps}>
-            {/* <h2 id="mensaje-final-title" className="visually-hidden">Mensaje de cierre</h2> */}
-            <MessageFinal indexMessage={0} />
-          </FadeInOnView>
-        </section>
-
-        <LineLogoSeparacion />
       </section>
 
       {/* SEO: CSS para ocultar visualmente pero mantener accesible para screen readers */}

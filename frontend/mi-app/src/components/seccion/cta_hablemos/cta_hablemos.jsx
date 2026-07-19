@@ -8,6 +8,7 @@ import './cta_hablemos.scss';
 const CtaHablemos = ({
     proyecto = "Na Lu'um",
     showSocialMedia = true, // prop para mostrar/ocultar redes sociales
+    variant = 'default',
 }) => {
     const { sendEmail } = useContext(EmailContext);
     const { info_contacto } = useContext(ContextJsonLoadContext);
@@ -39,6 +40,7 @@ const CtaHablemos = ({
     });
 
     const { nombre, correo, mensaje } = formState;
+    const isHomeVariant = variant === 'home';
 
     const validateField = useCallback((field, value) => {
         const fieldErrors = {};
@@ -143,7 +145,7 @@ const CtaHablemos = ({
     const isFormValid = () => Object.keys(validateForm()).length === 0 && nombre && correo && mensaje;
 
     return (
-        <div className="modern-contact modern-contact--compact">
+        <div className={`modern-contact modern-contact--compact ${isHomeVariant ? 'modern-contact--home' : ''}`}>
             <div className="modern-contact__bg-decoration modern-contact__bg-decoration--1"></div>
             <div className="modern-contact__bg-decoration modern-contact__bg-decoration--2"></div>
             <div className="modern-contact__bg-decoration modern-contact__bg-decoration--3"></div>
@@ -159,17 +161,31 @@ const CtaHablemos = ({
             </div>
 
             <div className="modern-contact__container">
-                {/* Header */}
-                <div className="modern-contact__header">
-                    <div className="modern-contact__header-icon"><Leaf size={24} /></div>
-                    <h1 className="modern-contact__title">Hablemos</h1>
-                    <p className="modern-contact__subtitle">
-                        Conectemos ideas, creemos soluciones sostenibles y construyamos juntos un futuro más verde
-                    </p>
-                </div>
+                <div className="modern-contact__home-layout">
+                    <div className="modern-contact__home-copy">
+                        {/* Header */}
+                        <div className="modern-contact__header">
+                            {isHomeVariant ? (
+                                <p className="modern-contact__eyebrow">HABLEMOS</p>
+                            ) : (
+                                <div className="modern-contact__header-icon"><Leaf size={24} /></div>
+                            )}
+                            {isHomeVariant ? (
+                                <h2 className="modern-contact__title">Conversemos sobre lo que podemos construir juntos</h2>
+                            ) : (
+                                <h1 className="modern-contact__title">Hablemos</h1>
+                            )}
+                            <p className="modern-contact__subtitle">
+                                {isHomeVariant
+                                    ? 'Si querés conocer más sobre Naluum, participar de una experiencia o acercarnos una propuesta, escribinos. Leemos cada mensaje.'
+                                    : 'Conectemos ideas, creemos soluciones sostenibles y construyamos juntos un futuro más verde'}
+                            </p>
+                        </div>
+                    </div>
 
-                {/* Formulario */}
-                <div className="modern-contact__form-section">
+                    <div className="modern-contact__home-form">
+                        {/* Formulario */}
+                        <div className="modern-contact__form-section">
                     <div className="modern-contact__form-card">
                         <div className="modern-contact__form-grid">
                             <div className="modern-contact__image-section">
@@ -214,17 +230,22 @@ const CtaHablemos = ({
                                 {submitStatus === 'configuration' && (
                                     <div className="modern-contact__status modern-contact__status--error" role="alert">
                                         <AlertCircle size={14} />
-                                        <span>El formulario por correo no está disponible temporalmente. Podés usar los otros medios de contacto.</span>
+                                        <span>{isHomeVariant
+                                            ? 'El formulario por correo no está disponible temporalmente. Intentá nuevamente más tarde.'
+                                            : 'El formulario por correo no está disponible temporalmente. Podés usar los otros medios de contacto.'}
+                                        </span>
                                     </div>
                                 )}
 
                                 <form className="modern-contact__form" onSubmit={handleSubmit}>
                                     {/* Nombre */}
                                     <div className="modern-contact__field">
+                                        {isHomeVariant && <label htmlFor="home-contact-name">Nombre</label>}
                                         <div className={`modern-contact__field-icon ${focusedField === 'nombre' ? 'modern-contact__field-icon--focused' : ''} ${errors.nombre ? 'modern-contact__field-icon--error' : ''}`}>
                                             <User size={18} />
                                         </div>
                                         <input
+                                            id={isHomeVariant ? 'home-contact-name' : undefined}
                                             type="text"
                                             placeholder="Tu nombre"
                                             value={nombre}
@@ -246,10 +267,12 @@ const CtaHablemos = ({
 
                                     {/* Correo */}
                                     <div className="modern-contact__field">
+                                        {isHomeVariant && <label htmlFor="home-contact-email">Correo electrónico</label>}
                                         <div className={`modern-contact__field-icon ${focusedField === 'correo' ? 'modern-contact__field-icon--focused' : ''} ${errors.correo ? 'modern-contact__field-icon--error' : ''}`}>
                                             <AtSign size={18} />
                                         </div>
                                         <input
+                                            id={isHomeVariant ? 'home-contact-email' : undefined}
                                             type="email"
                                             placeholder="tu@email.com"
                                             value={correo}
@@ -271,7 +294,9 @@ const CtaHablemos = ({
 
                                     {/* Mensaje */}
                                     <div className="modern-contact__field">
+                                        {isHomeVariant && <label htmlFor="home-contact-message">Mensaje</label>}
                                         <textarea
+                                            id={isHomeVariant ? 'home-contact-message' : undefined}
                                             placeholder="Escribe tu mensaje aquí..."
                                             value={mensaje}
                                             onChange={(e) => handleInputChange('mensaje', e.target.value)}
@@ -315,6 +340,8 @@ const CtaHablemos = ({
                                     </button>
                                 </form>
                             </div>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -396,6 +423,7 @@ const CtaHablemos = ({
 CtaHablemos.propTypes = {
     proyecto: PropTypes.string,
     showSocialMedia: PropTypes.bool,
+    variant: PropTypes.oneOf(['default', 'home']),
 };
 
 export default CtaHablemos;

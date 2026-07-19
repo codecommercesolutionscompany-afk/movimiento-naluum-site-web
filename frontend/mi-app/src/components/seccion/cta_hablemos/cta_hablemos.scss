@@ -1122,4 +1122,210 @@ $spacing-xl-compact: 28px;
             }
         }
     }
+
+    &--home {
+        min-height: auto;
+        padding: clamp(4rem, 6vw, 6rem) clamp(1.25rem, 5vw, 3rem);
+        background-color: rgba(6, 59, 44, 0.7);
+
+        &::before {
+            background: none;
+        }
+
+        .modern-contact__bg-decoration,
+        .modern-contact__floating-icon,
+        .modern-contact__image-section {
+            display: none;
+        }
+
+        .modern-contact__container {
+            width: min(100%, 76rem);
+        }
+
+        .modern-contact__home-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            align-items: start;
+            gap: clamp(2.5rem, 6vw, 6rem);
+        }
+
+        .modern-contact__header {
+            width: min(100%, 34rem);
+            margin: 0;
+            text-align: left;
+
+            &::before,
+            .modern-contact__header-icon {
+                display: none;
+            }
+        }
+
+        .modern-contact__eyebrow {
+            margin: 0 0 0.8rem;
+            color: #d0de85;
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            line-height: 1.2;
+        }
+
+        .modern-contact__title {
+            max-width: 16ch;
+            margin: 0;
+            color: #f4f0e4;
+            font-family: inherit;
+            font-size: clamp(2.4rem, 5vw, 4.8rem);
+            font-weight: 600;
+            line-height: 1.04;
+            letter-spacing: -0.035em;
+            text-shadow: none;
+            text-wrap: balance;
+        }
+
+        .modern-contact__subtitle {
+            max-width: 34rem;
+            margin: clamp(1rem, 2vw, 1.4rem) 0 0;
+            color: #d5cea9;
+            font-family: inherit;
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            font-weight: 400;
+            line-height: 1.55;
+            text-shadow: none;
+        }
+
+        .modern-contact__form-section {
+            width: 100%;
+            margin: 0;
+        }
+
+        .modern-contact__form-card {
+            border: 1px solid rgba(213, 206, 169, 0.52);
+            border-radius: 1rem;
+            background: rgba(233, 225, 207, 0.96);
+            box-shadow: none;
+        }
+
+        .modern-contact__form-grid {
+            display: block;
+        }
+
+        .modern-contact__form-content {
+            padding: clamp(1.75rem, 4vw, 3.25rem);
+
+            h2 {
+                color: #063b2c;
+                font-family: inherit;
+                font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                line-height: 1.15;
+                text-shadow: none;
+            }
+
+            > p {
+                color: #315849;
+                font-family: inherit;
+                font-weight: 400;
+                line-height: 1.55;
+                text-shadow: none;
+            }
+        }
+
+        .modern-contact__input,
+        .modern-contact__textarea {
+            border-color: rgba(6, 59, 44, 0.28);
+            background: rgba(255, 255, 255, 0.68);
+            color: #063b2c;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .modern-contact__field:has(> label) {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: auto auto;
+        }
+
+        .modern-contact__field label {
+            display: block;
+            grid-column: 1;
+            grid-row: 1;
+            margin: 0 0 0.5rem;
+            color: #063b2c;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 1.4;
+        }
+
+        .modern-contact__field > label + .modern-contact__field-icon {
+            position: relative;
+            top: auto;
+            left: 1rem;
+            grid-column: 1;
+            grid-row: 2;
+            align-self: center;
+            z-index: 1;
+            transform: translateY(2px);
+            pointer-events: none;
+        }
+
+        .modern-contact__field > .modern-contact__input,
+        .modern-contact__field > .modern-contact__textarea {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .modern-contact__submit {
+            align-self: flex-start;
+            border-radius: 999px;
+            background: #063b2c;
+            box-shadow: none;
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 1.2;
+
+            &:hover:not(:disabled) {
+                background: #0b5941;
+                box-shadow: none;
+            }
+        }
+
+        .modern-contact__status,
+        .modern-contact__char-counter,
+        .modern-contact__field-error {
+            font-family: inherit;
+        }
+
+        @media (max-width: 768px) {
+            padding: clamp(3rem, 10vw, 4rem) 1.25rem;
+
+            .modern-contact__home-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: clamp(2rem, 7vw, 3rem);
+            }
+
+            .modern-contact__header {
+                width: min(100%, 34rem);
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .modern-contact__title,
+            .modern-contact__subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .modern-contact__form-content {
+                padding: 1.5rem;
+            }
+        }
+    }
 }
