@@ -473,6 +473,7 @@ const VoluntariadoLanding = () => {
   useEffect(() => {
     persistUtms();
     const firstTouchTimestamp = getFirstTouchTimestamp();
+    const funnelReference = getFunnelReference();
 
     if (!pageContextPushed) {
       pageContextPushed = true;
@@ -483,6 +484,7 @@ const VoluntariadoLanding = () => {
         ...TRACKING_CONTEXT,
         ...getMergedUtms(),
         first_touch_timestamp: firstTouchTimestamp,
+        funnel_reference: funnelReference,
       });
     }
   }, []);
@@ -586,7 +588,8 @@ const VoluntariadoLanding = () => {
               {...getTrackingAttributes('header', 'whatsapp', 'sin_seleccionar', 'multiple_open')}
               data-available-weeks-count={OPEN_COHORT_COUNT}
             >
-              Quiero reservar mi lugar
+              <span className="voi-header__cta-text voi-header__cta-text--desktop">QUIERO RESERVAR MI LUGAR</span>
+              <span className="voi-header__cta-text voi-header__cta-text--mobile">RESERVAR MI LUGAR</span>
             </a>
           </div>
         </div>
