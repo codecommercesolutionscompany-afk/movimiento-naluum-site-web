@@ -633,7 +633,8 @@ $desktop-lg: 1280px;
     .home__history-heading {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      margin: 0 auto;
+      // align-items: center;
     }
 
     .home__history-eyebrow {
@@ -673,7 +674,7 @@ $desktop-lg: 1280px;
     .home__history-body {
       display: grid;
       gap: 1.25rem;
-      max-width: 60ch;
+      // max-width: 60ch;
       margin-top: 3rem;
     }
 
@@ -703,6 +704,8 @@ $desktop-lg: 1280px;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transform: scale(1.18);
+        transform-origin: center;
       }
     }
 
@@ -712,7 +715,7 @@ $desktop-lg: 1280px;
       box-sizing: border-box;
       width: min(calc(100% - 2rem), 28rem);
       max-width: 28ch;
-      margin: -2.25rem auto 0;
+      margin: -4.25rem auto 0;
       padding: 1rem 1.25rem;
       border: 1px solid rgba(208, 222, 133, 0.42);
       background: #063b2c;
@@ -761,6 +764,9 @@ $desktop-lg: 1280px;
 
     @media screen and (min-width: 768px) {
       .home__history-inner {
+        box-sizing: border-box;
+        width: min(calc(100% - 3rem), 80rem);
+        margin-inline: auto;
         padding: 5.5rem 2rem 6rem;
       }
 
@@ -2623,7 +2629,7 @@ $desktop-lg: 1280px;
     .home__content .home__impact,
     .home__content .home__voices {
       padding-top: 10rem;
-      padding-bottom: 10rem;
+      padding-bottom: 5rem;
     }
 
     .home__content .home__madre-selva-inner {
