@@ -198,7 +198,9 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
       padding: 0 60px;
 
       @media (max-width: 768px) {
-        padding: 0 24px;
+        height: 64px;
+        gap: 12px;
+        padding: 0 16px;
       }
     }
 
@@ -241,6 +243,33 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
       display: flex;
       align-items: center;
       gap: 16px;
+
+      .voi-header__cta-text--mobile {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        flex: 0 0 auto;
+        min-width: 0;
+
+        .btnPrimary.btnPrimary--small {
+          width: auto;
+          min-height: 38px;
+          padding: 9px 12px;
+          font-size: 0.68rem;
+          letter-spacing: 0.055em;
+          line-height: 1.15;
+          white-space: nowrap;
+        }
+
+        .voi-header__cta-text--desktop {
+          display: none;
+        }
+
+        .voi-header__cta-text--mobile {
+          display: inline;
+        }
+      }
     }
   }
 
