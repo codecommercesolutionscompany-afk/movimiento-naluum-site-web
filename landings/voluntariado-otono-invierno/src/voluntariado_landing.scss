@@ -366,6 +366,37 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
       }
     }
 
+    .voi-price-summary--hero {
+      width: min(100%, 560px);
+      margin: 0 auto 1.6rem;
+      padding: 14px 18px;
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba($voi-deep, 0.42);
+      text-align: center;
+      backdrop-filter: blur(10px);
+
+      .voi-price-summary__label {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      strong,
+      p {
+        color: $voi-white;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      @media (max-width: 660px) {
+        margin-bottom: 1.25rem;
+
+        p {
+          display: none;
+        }
+      }
+    }
+
     @media (max-width: 660px) {
       .voi-title--hero {
         margin-bottom: 1.2rem;
@@ -902,7 +933,7 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
     }
   }
 
-  .voi-pricing {
+  .voi-price-summary {
     display: grid;
     gap: 10px;
     margin: 24px 0;
@@ -919,40 +950,12 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
       text-transform: uppercase;
     }
 
-    &__values {
-      display: grid;
-      gap: 4px;
-
-      del {
-        color: $voi-muted;
-        font-size: 1rem;
-        font-weight: 650;
-      }
-
-      strong {
-        @include voi-serif;
-        color: $voi-deep;
-        font-size: clamp(2rem, 5vw, 2.8rem);
-        line-height: 1;
-        white-space: nowrap;
-      }
-    }
-
-    &__discount {
-      width: fit-content;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: $voi-primary;
-      color: $voi-white;
-      font-size: 0.76rem;
-      font-weight: 850;
-      letter-spacing: 0.04em;
-    }
-
-    &__saving {
-      color: $voi-primary-dark;
-      font-size: 0.82rem;
-      font-weight: 800;
+    strong {
+      @include voi-serif;
+      color: $voi-deep;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1;
+      white-space: nowrap;
     }
 
     p {
@@ -1050,16 +1053,60 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   .voi-date-row {
-    display: grid;
-    grid-template-columns: minmax(118px, 0.34fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 20px;
     min-width: 0;
-    padding: 16px 22px;
     border-bottom: 1px solid rgba($voi-primary, 0.12);
 
     &:last-child {
       border-bottom: 0;
+    }
+
+    &__option,
+    &__closed {
+      display: grid;
+      grid-template-columns: 22px minmax(118px, 0.34fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+      padding: 16px 22px;
+    }
+
+    &__option {
+      cursor: pointer;
+
+      &:hover {
+        background: rgba($voi-primary, 0.05);
+      }
+
+      input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: $voi-primary;
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: 3px solid rgba($voi-primary, 0.4);
+          outline-offset: 3px;
+        }
+
+        &:checked + .voi-date-row__status {
+          background: $voi-primary;
+          color: $voi-white;
+        }
+      }
+
+      &:has(input:checked) {
+        background: rgba($voi-primary, 0.1);
+        box-shadow: inset 4px 0 0 $voi-primary;
+      }
+    }
+
+    &__closed .voi-date-row__status {
+      grid-column: 2;
+    }
+
+    &__closed time {
+      grid-column: 3;
     }
 
     &__status {
@@ -1099,9 +1146,19 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     @media (max-width: 600px) {
-      grid-template-columns: 1fr;
-      gap: 7px;
-      padding: 14px 16px;
+      &__option,
+      &__closed {
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 9px 12px;
+        padding: 14px 16px;
+      }
+
+      &__option .voi-date-row__status,
+      &__closed .voi-date-row__status,
+      &__option time,
+      &__closed time {
+        grid-column: 2;
+      }
 
       time {
         font-size: 1rem;
@@ -1116,6 +1173,21 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
     width: 100%;
     max-width: 360px;
     margin: 24px auto 0;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+      filter: grayscale(0.25);
+    }
+  }
+
+  .voi-dates-selection-status {
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: $voi-muted;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
   }
 
   .cohort-card {
@@ -1519,13 +1591,14 @@ $voi-ease: cubic-bezier(0.165, 0.84, 0.44, 1);
 
     .application-actions {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 22px;
       margin-top: 32px;
 
-      @media (max-width: 680px) {
-        flex-direction: column;
-        align-items: stretch;
+      > .btnPrimary {
+        min-width: min(100%, 260px);
       }
     }
 

@@ -12,37 +12,45 @@ import {
   XCircle,
 } from 'lucide-react';
 import SEOHelmet from './SEOHelmet.jsx';
-import logoUrl from './assets/images/logo-madre-selva-user.png';
 const heroImage = '/voluntariado-otono-invierno/images/voluntariado-grupo-hero.jpg';
 const cultivationImage = '/voluntariado-otono-invierno/images/voluntariado-cultivos.jpg';
 const workImage = '/voluntariado-otono-invierno/images/voluntariado-trabajo.jpg';
 import './voluntariado_landing.scss';
 
 const SITE_URL = 'https://movimientonaluum.org';
-const LANDING_URL = `${SITE_URL}/voluntariado-otono-invierno`;
-const APPLICATION_FORM_URL = 'https://forms.gle/zjeisEcMoAyntZL26';
-const heroSeoImage = new URL(heroImage, SITE_URL).toString();
-const logoSeoImage = new URL(logoUrl, SITE_URL).toString();
+const LANDING_URL = `${SITE_URL}/voluntariado-otono-invierno/`;
+const socialSeoImage = new URL(
+  '/voluntariado-otono-invierno/voluntariado-madre-selva-social.png',
+  SITE_URL
+).toString();
+const SEO_TITLE = 'Voluntariado en Madre Selva | Otoño–Invierno 2026';
+const SEO_DESCRIPTION =
+  'Viví una semana de voluntariado en Madre Selva, Misiones. Elegí una fecha disponible y avanzá con tu reserva por WhatsApp.';
+const SEO_OG_DESCRIPTION =
+  'Viví una experiencia de voluntariado comunitario en contacto con la naturaleza. Elegí una semana disponible y reservá tu lugar por WhatsApp.';
+const SEO_TWITTER_DESCRIPTION =
+  'Elegí una semana disponible y avanzá con tu reserva para vivir una experiencia de voluntariado comunitario en Madre Selva.';
+const SEO_IMAGE_ALT = 'Voluntariado Otoño–Invierno en Madre Selva, Misiones';
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 const UTM_STORAGE_KEY = 'voluntariado_utm_params';
 const FIRST_TOUCH_STORAGE_KEY = 'voluntariado_first_touch_timestamp';
 const FUNNEL_REFERENCE_KEY = 'voluntariado_funnel_reference:inscripcion';
-const FORM_START_DEDUP_PREFIX = 'voluntariado_form_start_dedup';
+const WHATSAPP_DEDUP_PREFIX = 'voluntariado_whatsapp_dedup';
+const WHATSAPP_NUMBER = '5493764257777';
+const WHATSAPP_DESTINATION = 'madre_selva_whatsapp';
 const REFERENCE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+const PUBLIC_PRICING = {
+  amount: 133333,
+  currency: 'ARS',
+};
 const TRACKING_CONTEXT = {
   landing_name: 'voluntariado-otono-invierno',
   related_service: 'voluntariado',
   event_id: 'voluntariado-2026',
   event_name: 'Voluntariado Otoño-Invierno',
-  event_type: 'experiencia_intercambio',
+  event_type: 'voluntariado',
   event_edition: 2026,
   event_status: 'published',
-  currency: 'ARS',
-  original_contribution_amount: 150000,
-  contribution_amount: 133333.33,
-  discount_percentage: 11.11,
-  discount_amount: 16666.67,
-  pricing_type: 'promotional',
 };
 
 const isPendingUrl = (url = '') => /^PENDIENTE_/i.test(String(url).trim());
@@ -62,10 +70,10 @@ const motion = new Proxy(
 
 const AnimatePresence = ({ children }) => children;
 
-const buildApplicationUrl = () => {
-  if (!APPLICATION_FORM_URL) return 'PENDIENTE_FORM_URL';
-  return APPLICATION_FORM_URL;
-};
+const formatPublicPrice = () =>
+  `$${new Intl.NumberFormat('es-AR', {
+    maximumFractionDigits: 0,
+  }).format(PUBLIC_PRICING.amount)} ${PUBLIC_PRICING.currency}`;
 
 let pageContextPushed = false;
 
@@ -155,7 +163,12 @@ const pushDataLayer = (payload) => {
   window.dataLayer.push(payload);
 };
 
-const getTrackingAttributes = (ctaLocation, volunteerWeek = 'sin_seleccionar', availabilityStatus = 'open') => ({
+const getTrackingAttributes = (
+  ctaLocation,
+  ctaType,
+  volunteerWeek = 'sin_seleccionar',
+  availabilityStatus = 'open',
+) => ({
   'data-landing-name': TRACKING_CONTEXT.landing_name,
   'data-related-service': TRACKING_CONTEXT.related_service,
   'data-event-id': TRACKING_CONTEXT.event_id,
@@ -164,6 +177,7 @@ const getTrackingAttributes = (ctaLocation, volunteerWeek = 'sin_seleccionar', a
   'data-event-edition': String(TRACKING_CONTEXT.event_edition),
   'data-event-status': TRACKING_CONTEXT.event_status,
   'data-cta-location': ctaLocation,
+  'data-cta-type': ctaType,
   'data-volunteer-week': volunteerWeek,
   'data-availability-status': availabilityStatus,
 });
@@ -271,7 +285,7 @@ const lodgingNotes = [
   'El espacio de camping está incluido en el aporte.',
   'Cada participante debe traer obligatoriamente su propia carpa, bolsa de dormir, abrigo suficiente y elementos personales para acampar.',
   'También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional y está sujeto a disponibilidad.',
-  'La yurta no está incluida en los $133.333 ARS y debe consultarse después de la aceptación o durante el proceso correspondiente.',
+  `La yurta no está incluida en el aporte semanal de ${formatPublicPrice()} y debe consultarse después de la aceptación o durante el proceso correspondiente.`,
 ];
 
 const scheduleNotes = [
@@ -298,23 +312,18 @@ const applicationSteps = [
   'Solo después de ser aceptado abonás el aporte para confirmar tu lugar.',
 ];
 
-const PromotionalPricing = () => (
-  <div className="voi-pricing">
-    <span className="voi-pricing__label">Por persona y por semana · ARS</span>
-    <div className="voi-pricing__values">
-      <del>$150.000 ARS</del>
-      <strong>$133.333 ARS</strong>
-    </div>
-    <span className="voi-pricing__discount">11,11% de descuento</span>
-    <span className="voi-pricing__saving">$16.666,67 ARS de ahorro</span>
-    <p>Precio promocional por cupos limitados</p>
+const PublicPricing = ({ className = '', supportText = '' }) => (
+  <div className={`voi-price-summary ${className}`.trim()}>
+    <span className="voi-price-summary__label">Aporte por semana</span>
+    <strong>{formatPublicPrice()}</strong>
+    {supportText ? <p>{supportText}</p> : null}
   </div>
 );
 
 const faqs = [
   {
     q: '¿El voluntariado es gratuito?',
-    a: 'No es gratuito. El precio promocional es de $133.333 ARS por persona y por la semana completa.',
+    a: `No es gratuito. El aporte es de ${formatPublicPrice()} por persona y por la semana completa.`,
   },
   {
     q: '¿Qué incluye el aporte?',
@@ -354,7 +363,7 @@ const faqs = [
   },
   {
     q: '¿Existe alojamiento en yurta?',
-    a: 'También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional, no está incluido en los $133.333 ARS, está sujeto a disponibilidad y debe consultarse después de la aceptación o durante el proceso correspondiente.',
+    a: `También existen yurtas opcionales por $15.000 ARS por noche. Este alojamiento tiene un costo adicional, no está incluido en el aporte semanal de ${formatPublicPrice()}, está sujeto a disponibilidad y debe consultarse después de la aceptación o durante el proceso correspondiente.`,
   },
   {
     q: '¿Cuántas comidas están incluidas?',
@@ -374,7 +383,7 @@ const faqs = [
   },
   {
     q: '¿Es turismo, retiro o alojamiento gratuito?',
-    a: 'No. No es turismo, hospedaje gratuito, retiro espiritual ni una experiencia pasiva. Es una propuesta de intercambio con participación activa y responsabilidades concretas.',
+    a: 'No. No es turismo, hospedaje gratuito, retiro espiritual ni una experiencia pasiva. Es una propuesta de voluntariado comunitario con participación activa y responsabilidades concretas.',
   },
 ];
 
@@ -415,6 +424,7 @@ const VoluntariadoLanding = () => {
   const [openFaq, setOpenFaq] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [showDeferredContent, setShowDeferredContent] = useState(false);
+  const [selectedCohort, setSelectedCohort] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -490,11 +500,9 @@ const VoluntariadoLanding = () => {
     cta_type: ctaType,
     ticket_category: 'inscripcion',
     volunteer_week: cohort?.normalizedWeek || 'sin_seleccionar',
-    volunteer_dates: cohort?.dates || 'sin_seleccionar',
+    volunteer_dates: cohort?.displayDates || 'sin_seleccionar',
     volunteer_schedule: 'lunes_a_viernes_07_00_13_00',
     availability_status: cohort?.availabilityStatus || 'open',
-    contribution_amount: TRACKING_CONTEXT.contribution_amount,
-    currency: TRACKING_CONTEXT.currency,
   });
 
   const handleInternalClick = (event, ctaLocation) => {
@@ -504,36 +512,63 @@ const VoluntariadoLanding = () => {
     });
   };
 
-  const handleApplicationClick = (event, ctaLocation = 'dates_section') => {
+  const buildWhatsappUrl = (cohort = null) => {
+    const funnelReference = getFunnelReference();
+    const message = [
+      'Hola, estuve viendo la propuesta de Voluntariado de Madre Selva y quiero avanzar con mi reserva.',
+      'Ya vi que el aporte es de $133.333 ARS por persona y semana.',
+      'Quiero confirmar disponibilidad y conocer los pasos para reservar mi lugar.',
+      `Referencia: ${funnelReference}`,
+    ].join('\n\n');
+
+    const selectedWeekMessage = cohort
+      ? [
+          'Hola, estuve viendo la propuesta de Voluntariado de Madre Selva y quiero avanzar con mi reserva.',
+          `Semana elegida: ${cohort.displayDates}.`,
+          'Ya vi que el aporte es de $133.333 ARS por persona y semana.',
+          'Quiero confirmar disponibilidad y conocer los pasos para reservar mi lugar.',
+          `Referencia: ${funnelReference}`,
+        ].join('\n\n')
+      : message;
+
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(selectedWeekMessage)}`;
+  };
+
+  const handleWhatsappClick = (event, ctaLocation, cohort = null) => {
     const funnelReference = getFunnelReference();
     const payload = {
-      ...getCommonClickPayload(event, ctaLocation, 'external_form'),
-      form_provider: 'google_forms',
-      form_destination: APPLICATION_FORM_URL,
+      ...getCommonClickPayload(event, ctaLocation, 'whatsapp', cohort),
       funnel_reference: funnelReference,
-      volunteer_week: 'sin_seleccionar',
-      volunteer_dates: 'multiple_open',
-      availability_status: 'multiple_open',
-      available_weeks_count: OPEN_COHORT_COUNT,
-      deduplication_scope: 'session_cta_location',
+      volunteer_week: cohort?.normalizedWeek || 'sin_seleccionar',
+      volunteer_dates: cohort?.displayDates || 'multiple_open',
+      availability_status: cohort?.availabilityStatus || 'multiple_open',
+      whatsapp_destination: WHATSAPP_DESTINATION,
+      deduplication_scope: 'session_cta_location_volunteer_week',
+      intent: 'reservation',
+      funnel_stage: 'high_intent',
     };
 
     event?.currentTarget?.setAttribute('data-funnel-reference', funnelReference);
     pushDataLayer({ event: 'cta_click', ...payload });
 
-    const deduplicationKey = `${FORM_START_DEDUP_PREFIX}:${ctaLocation}`;
+    const deduplicationKey = `${WHATSAPP_DEDUP_PREFIX}:${ctaLocation}:${cohort?.normalizedWeek || 'sin_seleccionar'}`;
     if (!readSessionValue(deduplicationKey)) {
       writeSessionValue(deduplicationKey, '1');
-      pushDataLayer({ event: 'application_form_start', ...payload });
+      pushDataLayer({ event: 'click_whatsapp', ...payload });
     }
+
+    return buildWhatsappUrl(cohort);
   };
 
   return (
     <div className="voi-landing">
       <SEOHelmet
-        title="Voluntariado Otoño-Invierno | Madre Selva"
-        description="Sumate al voluntariado de otoño-invierno en Madre Selva. Una experiencia de aprendizaje práctico, vida comunitaria y contacto con la naturaleza."
-        image={heroSeoImage}
+        title={SEO_TITLE}
+        description={SEO_DESCRIPTION}
+        ogDescription={SEO_OG_DESCRIPTION}
+        twitterDescription={SEO_TWITTER_DESCRIPTION}
+        image={socialSeoImage}
+        imageAlt={SEO_IMAGE_ALT}
         url={LANDING_URL}
       />
 
@@ -545,13 +580,13 @@ const VoluntariadoLanding = () => {
           <div className="voi-header__actions">
             <a
               className="btnPrimary btnPrimary--small"
-              href={buildApplicationUrl()}
-              onClick={(event) => handleApplicationClick(event, 'header')}
-              {...getTargetProps(APPLICATION_FORM_URL)}
-              {...getTrackingAttributes('header', 'sin_seleccionar', 'multiple_open')}
+              href={buildWhatsappUrl()}
+              onClick={(event) => handleWhatsappClick(event, 'header')}
+              {...getTargetProps(WHATSAPP_NUMBER)}
+              {...getTrackingAttributes('header', 'whatsapp', 'sin_seleccionar', 'multiple_open')}
               data-available-weeks-count={OPEN_COHORT_COUNT}
             >
-              Postularme
+              Quiero reservar mi lugar
             </a>
           </div>
         </div>
@@ -572,15 +607,21 @@ const VoluntariadoLanding = () => {
 
         <div className="voi-hero__content">
           <motion.span className="voi-badge" {...fadeInUp}>
-            Experiencia de intercambio
+            Voluntariado comunitario
           </motion.span>
           <motion.h1 className="voi-title--hero" {...fadeInUp} transition={{ delay: 0.08 }}>
             Voluntariado Otoño–Invierno
           </motion.h1>
           <motion.p className="voi-hero__subtitle" {...fadeInUp} transition={{ delay: 0.16 }}>
-            Una experiencia de intercambio en Madre Selva para colaborar con actividades concretas del proyecto,
+            Una experiencia de voluntariado comunitario en Madre Selva para colaborar con actividades concretas del proyecto,
             vivir en comunidad y aprender desde la práctica en contacto con la naturaleza.
           </motion.p>
+          <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
+            <PublicPricing
+              className="voi-price-summary--hero"
+              supportText="Incluye camping, tres comidas diarias y participación en las actividades de la semana."
+            />
+          </motion.div>
           <motion.p className="voi-hero__support" {...fadeInUp} transition={{ delay: 0.24 }}>
             Durante la estadía vas a participar en tareas reales del territorio, como podas, agrofloresta, huerta,
             mantenimiento y sistemas en desarrollo. La experiencia incluye estadía, tres comidas diarias, espacios
@@ -589,9 +630,19 @@ const VoluntariadoLanding = () => {
           <motion.div className="voi-hero__actions" {...fadeInUp} transition={{ delay: 0.32 }}>
             <a
               className="btnPrimary"
+              href={buildWhatsappUrl()}
+              {...getTargetProps(WHATSAPP_NUMBER)}
+              {...getTrackingAttributes('hero', 'whatsapp', 'sin_seleccionar', 'multiple_open')}
+              onClick={(event) => handleWhatsappClick(event, 'hero')}
+            >
+              Quiero reservar mi lugar
+              <ArrowRight size={18} />
+            </a>
+            <a
+              className="btnOutlineLight"
               href={chooseCohortHref}
-              {...getTrackingAttributes('hero')}
-              onClick={(event) => handleInternalClick(event, 'hero')}
+              {...getTrackingAttributes('hero_dates', 'internal_anchor')}
+              onClick={(event) => handleInternalClick(event, 'hero_dates')}
             >
               Ver semanas disponibles
               <ArrowRight size={18} />
@@ -637,11 +688,11 @@ const VoluntariadoLanding = () => {
         <div className="container voi-purpose__inner">
           <motion.div {...fadeInUp}>
             <span className="section-label">Propósito</span>
-            <h2 className="editorial-title">Un intercambio consciente, claro y con responsabilidad compartida.</h2>
+            <h2 className="editorial-title">Una experiencia comunitaria, clara y con responsabilidad compartida.</h2>
           </motion.div>
           <motion.div className="voi-purpose__copy" {...fadeInUp}>
             <p>
-              El propósito del Voluntariado Otoño–Invierno es generar una experiencia de intercambio consciente entre
+              El propósito del Voluntariado Otoño–Invierno es generar una experiencia comunitaria consciente entre
               Madre Selva y las personas participantes.
             </p>
             <p>
@@ -723,15 +774,16 @@ const VoluntariadoLanding = () => {
             viewport={{ once: true }}
           >
             <span className="section-label">Datos rápidos</span>
-            <PromotionalPricing />
+            <PublicPricing className="voi-price-summary--sidebar" />
             <p className="booking-price-note">El aporte contribuye a cubrir alimentación, estadía y logística durante la semana elegida.</p>
             <a
               className="btnPrimary btnPrimary--wide"
-              href={chooseCohortHref}
-              {...getTrackingAttributes('quick_facts')}
-              onClick={(event) => handleInternalClick(event, 'quick_facts')}
+              href={buildWhatsappUrl()}
+              {...getTargetProps(WHATSAPP_NUMBER)}
+              {...getTrackingAttributes('investment_section', 'whatsapp', 'sin_seleccionar', 'multiple_open')}
+              onClick={(event) => handleWhatsappClick(event, 'investment_section')}
             >
-              Elegir semana para postularme
+              Quiero avanzar con mi reserva
             </a>
             <p className="booking-note">
               El pago se realiza únicamente después de que Madre Selva confirme tu aceptación.
@@ -812,7 +864,7 @@ const VoluntariadoLanding = () => {
           <h2 className="editorial-title">Elegí la semana que mejor se adapte a vos.</h2>
         </motion.div>
 
-        <div className="voi-dates-list">
+        <div className="voi-dates-list" role="radiogroup" aria-label="Semana de voluntariado de interés">
           {cohorts.map((cohort, index) => (
             <motion.div
               className={`voi-date-row voi-date-row--${cohort.availabilityStatus}`}
@@ -820,25 +872,55 @@ const VoluntariadoLanding = () => {
               {...fadeInUp}
               transition={{ delay: index * 0.05 }}
             >
-              <span className="voi-date-row__status">
-                {cohort.availabilityStatus === 'open' ? 'Disponible' : 'Finalizada'}
-              </span>
-              <time dateTime={cohort.selectedWeek}>{cohort.displayDates}</time>
+              {cohort.availabilityStatus === 'open' ? (
+                <label className="voi-date-row__option">
+                  <input
+                    type="radio"
+                    name="voluntariado-cohort"
+                    value={cohort.normalizedWeek}
+                    checked={selectedCohort?.normalizedWeek === cohort.normalizedWeek}
+                    onChange={() => setSelectedCohort(cohort)}
+                    aria-label={`${cohort.name}: ${cohort.displayDates}`}
+                  />
+                  <span className="voi-date-row__status">Disponible</span>
+                  <time dateTime={cohort.selectedWeek}>{cohort.displayDates}</time>
+                </label>
+              ) : (
+                <div className="voi-date-row__closed" aria-disabled="true">
+                  <span className="voi-date-row__status">Finalizada</span>
+                  <time dateTime={cohort.selectedWeek}>{cohort.displayDates}</time>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
 
-        <a
+        <p className="voi-dates-selection-status" aria-live="polite">
+          {selectedCohort
+            ? `Semana seleccionada: ${selectedCohort.displayDates}`
+            : 'Elegí la semana que te interesa para avanzar con tu reserva.'}
+        </p>
+
+        <button
           className="btnPrimary btnPrimary--wide voi-dates-cta"
-          href={buildApplicationUrl()}
-          onClick={handleApplicationClick}
-          {...getTargetProps(APPLICATION_FORM_URL)}
-          {...getTrackingAttributes('dates_section', 'sin_seleccionar', 'multiple_open')}
+          type="button"
+          disabled={!selectedCohort}
+          onClick={(event) => {
+            if (!selectedCohort) return;
+            const whatsappUrl = handleWhatsappClick(event, 'dates_section', selectedCohort);
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+          }}
+          {...getTrackingAttributes(
+            'dates_section',
+            'whatsapp',
+            selectedCohort?.normalizedWeek || 'sin_seleccionar',
+            selectedCohort?.availabilityStatus || 'selection_required',
+          )}
           data-available-weeks-count={OPEN_COHORT_COUNT}
         >
-          Postularme
+          Quiero reservar esta semana
           <ArrowRight size={18} />
-        </a>
+        </button>
       </section>
 
 
@@ -912,29 +994,28 @@ const VoluntariadoLanding = () => {
       <section id="aplicar" className="voi-application">
         <div className="container">
           <motion.div className="application-content" {...fadeInUp}>
-            <span className="section-label">Aplicación</span>
-            <h2 className="editorial-title">Sumate al Voluntariado Otoño–Invierno</h2>
+            <span className="section-label">Reserva</span>
+            <h2 className="editorial-title">Elegí tu semana y avanzá con la reserva</h2>
             <p className="editorial-lead application-lead">
-              Si querés vivir unos días en Madre Selva, colaborar con trabajos reales del territorio y formar parte de
-              una experiencia comunitaria en contacto con la naturaleza, primero elegí una semana disponible y completá
-              el formulario de postulación.
+              Seleccioná una fecha disponible y escribinos por WhatsApp para confirmar tu lugar y recibir los próximos
+              pasos.
             </p>
 
             <div className="application-actions">
               <a
                 className="btnPrimary"
-                href={chooseCohortHref}
-                {...getTrackingAttributes('final')}
-                onClick={(event) => handleInternalClick(event, 'final')}
+                href={buildWhatsappUrl()}
+                {...getTargetProps(WHATSAPP_NUMBER)}
+                {...getTrackingAttributes('final_section', 'whatsapp', 'sin_seleccionar', 'multiple_open')}
+                onClick={(event) => handleWhatsappClick(event, 'final_section')}
               >
-                Elegir semana para postularme
+                Reservar mi lugar
                 <ArrowRight size={18} />
               </a>
             </div>
 
             <p className="application-note">
-              Completar el formulario no garantiza el ingreso. No debés realizar ningún pago antes de recibir la
-              confirmación de aceptación de Madre Selva.
+              No realices ningún pago hasta recibir la confirmación del equipo de Madre Selva.
             </p>
           </motion.div>
         </div>
