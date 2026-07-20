@@ -1,67 +1,73 @@
-// src/components/SEOHelmet.jsx
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
+const SITE_URL = 'https://movimientonaluum.org/';
+const DEFAULT_TITLE = 'Movimiento Naluum | Permacultura, comunidad y regeneración';
+const DEFAULT_DESCRIPTION = 'Movimiento Naluum reúne personas, proyectos y territorios para aprender, compartir y regenerar desde la permacultura, con experiencias vivas en comunidad.';
+const DEFAULT_IMAGE = `${SITE_URL}img/branding/movimiento-naluum-og.jpg`;
+
 const SEOHelmet = ({
-    // Título que se muestra en la pestaña del navegador y en Google
-    title = "Mi Empresa - Soluciones digitales simples",
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  keywords,
+  author = 'Movimiento Naluum',
+  url,
+  canonical,
+  robots = 'index, follow',
+  image = DEFAULT_IMAGE,
+  imageAlt = 'Movimiento Naluum: permacultura, comunidad y regeneración',
+  imageWidth,
+  imageHeight,
+  type = 'website',
+  locale = 'es_AR',
+  siteName = 'Movimiento Naluum',
+  jsonLd,
+}) => (
+  <Helmet>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
+    <meta name="author" content={author} />
+    <meta name="robots" content={robots} />
+    {canonical ? <link rel="canonical" href={canonical} /> : null}
 
-    // Descripción que aparece en los resultados de búsqueda
-    description = "Somos una empresa que potencia pequeños negocios con soluciones tecnológicas accesibles y efectivas.",
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    {url ? <meta property="og:url" content={url} /> : null}
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {imageWidth ? <meta property="og:image:width" content={String(imageWidth)} /> : null}
+    {imageHeight ? <meta property="og:image:height" content={String(imageHeight)} /> : null}
 
-    // Palabras clave separadas por coma (opcional, no muy relevante hoy)
-    keywords = "tecnología, software, negocios, soluciones digitales, emprendimientos",
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={imageAlt} />
 
-    // Autor de la página (tu nombre o el de la empresa)
-    author = "Neyen Frandino",
-
-    // URL completa de la página (importante para compartir en redes)
-    url = "https://miempresa.com",
-
-    // Imagen que se muestra cuando se comparte el sitio (debe estar alojada en la web)
-    image = new URL('/img/blog/permacultura-portada.webp', window.location.origin).href,
-    }) => {
-        
-    return (
-        <Helmet>
-        {/* 👇 Título de la pestaña */}
-        <title>{title}</title>
-
-        {/* 👇 Descripción para motores de búsqueda */}
-        <meta name="description" content={description} />
-
-        {/* 👇 Palabras clave (no tan relevantes para Google, pero pueden servir) */}
-        <meta name="keywords" content={keywords} />
-
-        {/* 👇 Autor del sitio o página */}
-        <meta name="author" content={author} />
-
-        {/* 👇 Escalado para móviles (siempre debe estar) */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* 🌐 Open Graph - para mejorar cómo se ve al compartir en redes como Facebook o LinkedIn */}
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="og:image" content={image} />
-
-        {/* 🐦 Twitter Card - para que se vea bien al compartir en Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={image} />
-        </Helmet>
-    );
-};
+    {jsonLd ? <script type="application/ld+json">{JSON.stringify(jsonLd)}</script> : null}
+  </Helmet>
+);
 
 SEOHelmet.propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    keywords: PropTypes.string,
-    author: PropTypes.string,
-    url: PropTypes.string,
-    image: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  keywords: PropTypes.string,
+  author: PropTypes.string,
+  url: PropTypes.string,
+  canonical: PropTypes.string,
+  robots: PropTypes.string,
+  image: PropTypes.string,
+  imageAlt: PropTypes.string,
+  imageWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  imageHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  type: PropTypes.string,
+  locale: PropTypes.string,
+  siteName: PropTypes.string,
+  jsonLd: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 export default SEOHelmet;

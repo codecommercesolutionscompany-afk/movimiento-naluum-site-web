@@ -60,36 +60,47 @@ const fadeInProps = {
   speed: prefersReducedMotion ? 'fast' : "slow"
 };
 
-// SEO: Datos estructurados para Schema.org
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Movimiento Naluum",
-  "description": "Movimiento que impulsa soluciones regenerativas para transformar vidas, conectar comunidades y sanar la Tierra",
-  "url": "https://movimientonaluum.org",
-  "logo": new URL('/img/branding/logo-naluum-transparente.svg', window.location.origin).href,
-  "sameAs": [
-    "https://www.facebook.com/movimientonaluum",
-    "https://www.instagram.com/movimientonaluum",
-    "https://www.linkedin.com/company/movimientonaluum"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "availableLanguage": ["es"]
-  }
+const homeSeo = {
+  title: 'Movimiento Naluum | Permacultura, comunidad y regeneración',
+  description: 'Movimiento Naluum reúne personas, proyectos y territorios para aprender, compartir y regenerar desde la permacultura, con experiencias vivas en comunidad.',
+  url: 'https://movimientonaluum.org/',
+  image: 'https://movimientonaluum.org/img/branding/movimiento-naluum-og.jpg',
 };
 
-// SEO: Datos estructurados para breadcrumbs
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Inicio",
-    "item": "https://movimientonaluum.org"
-  }]
+const homeStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${homeSeo.url}#organization`,
+      name: 'Movimiento Naluum',
+      description: homeSeo.description,
+      url: homeSeo.url,
+      logo: 'https://movimientonaluum.org/img/branding/logo-naluum-transparente.svg',
+      sameAs: [
+        'https://www.facebook.com/Permacultura.Naluum',
+        'https://www.instagram.com/naluum.permacultura',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${homeSeo.url}#website`,
+      name: 'Movimiento Naluum',
+      url: homeSeo.url,
+      inLanguage: 'es-AR',
+      publisher: { '@id': `${homeSeo.url}#organization` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${homeSeo.url}#webpage`,
+      name: homeSeo.title,
+      description: homeSeo.description,
+      url: homeSeo.url,
+      inLanguage: 'es-AR',
+      isPartOf: { '@id': `${homeSeo.url}#website` },
+      about: { '@id': `${homeSeo.url}#organization` },
+    },
+  ],
 };
 
 const communityVoices = [
@@ -147,44 +158,20 @@ const Home = () => {
     return () => window.clearTimeout(timeoutId);
   }, [activeVoiceIndex]);
 
-  // SEO: Inyectar datos estructurados en el head
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    const breadcrumbScript = document.createElement('script');
-    breadcrumbScript.type = 'application/ld+json';
-    breadcrumbScript.text = JSON.stringify(breadcrumbSchema);
-    document.head.appendChild(breadcrumbScript);
-
-    return () => {
-      if (script.parentNode) script.parentNode.removeChild(script);
-      if (breadcrumbScript.parentNode) breadcrumbScript.parentNode.removeChild(breadcrumbScript);
-    };
-  }, []);
-
   return (
-    <main className='home__container' aria-label="Página principal" itemScope itemType="https://schema.org/WebPage">
-      <SEOHelmet 
-        title="Movimiento Naluum | Soluciones Regenerativas para un Futuro Sostenible"
-        description="Descubre cómo el Movimiento Naluum impulsa soluciones regenerativas para transformar vidas, conectar comunidades y sanar la Tierra. Capacitaciones, productos ecológicos y diseño permacultural."
-        keywords="regeneración, permacultura, agricultura regenerativa, soluciones sostenibles, educación ambiental, comunidad sustentable, diseño regenerativo, tecnología social, agroecología, desarrollo sostenible"
-        author="Movimiento Naluum"
-        url="https://movimientonaluum.org"
-        image="/img/branding/logo-naluum-transparente.svg"
+    <main className='home__container' aria-label="Página principal">
+      <SEOHelmet
+        {...homeSeo}
+        canonical={homeSeo.url}
+        robots="index, follow"
+        imageAlt="Movimiento Naluum: permacultura, comunidad y regeneración"
+        imageWidth={1200}
+        imageHeight={630}
         type="website"
-        locale="es_ES"
+        locale="es_AR"
         siteName="Movimiento Naluum"
+        jsonLd={homeStructuredData}
       />
-      
-      {/* SEO: Meta tags adicionales */}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="google" content="notranslate" />
-      <meta name="format-detection" content="telephone=no" />
-      <link rel="canonical" href="https://movimientonaluum.org" />
       
       <Header>
         <div className="home__hero">
@@ -252,9 +239,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='home__content' itemScope itemType="https://schema.org/Organization">
-        <meta itemProp="name" content="Movimiento Naluum" />
-        <meta itemProp="description" content="Organización dedicada a impulsar soluciones regenerativas" />
+      <section className='home__content'>
 
         <section className="home__history" aria-labelledby="home-history-title">
           <div className="home__history-inner">
@@ -294,7 +279,7 @@ const Home = () => {
             <div className="home__proposals-grid">
               <article className="home__proposal-card home__proposal-card--selva">
                 <span className="home__proposal-badge">RECOMENDADO</span>
-                <div className="home__proposal-card-content"><h3>Selva Adentro</h3><p className="home__proposal-type">EXPERIENCIA FORMATIVA</p><p>Una experiencia inmersiva de aprendizaje, convivencia y práctica entre agricultura, bioconstrucción, arte y territorio.</p><Link className="home__proposal-cta" to="/selva-adentro">Ver experiencia</Link></div>
+                <div className="home__proposal-card-content"><h3>Selva Adentro</h3><p className="home__proposal-type">EXPERIENCIA FORMATIVA</p><p>Una experiencia inmersiva de aprendizaje, convivencia y práctica entre agricultura, bioconstrucción, arte y territorio.</p><Link className="home__proposal-cta" to="/servicios/selva-adentro">Ver experiencia</Link></div>
                 <figure><img src="/img/shared/bitacora-madre-selva.webp" alt="Personas reunidas en una experiencia compartida en territorio" loading="lazy" /></figure>
               </article>
               <article className="home__proposal-card home__proposal-card--festival">
