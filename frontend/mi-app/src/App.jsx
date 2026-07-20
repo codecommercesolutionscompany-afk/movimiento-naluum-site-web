@@ -102,9 +102,9 @@ const App = () => {
         </Suspense>
       </main>
 
-      <footer className='App__footer'>
+      <div className='App__footer'>
         <Footer />
-      </footer>
+      </div>
     </div>
   );
 };

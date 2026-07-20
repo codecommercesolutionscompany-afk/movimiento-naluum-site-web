@@ -1,129 +1,100 @@
-import "./footer.scss";
-import { 
-  Facebook, 
-  Instagram, 
-  MapPin,
-  Mail,
-  Phone
-} from "lucide-react";
+import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Mail } from 'lucide-react';
+import './footer.scss';
 
-const Footer = () => {
-
-  // Objeto estático con toda la información del footer
-  const footerData = {
-    company: {
-      name: "Movimiento Naluum",
-      description: "Transformamos tu negocio hacia un futuro sostenible con soluciones innovadoras que regeneran nuestro planeta mientras impulsan tu éxito.",
-      logo: '/img/branding/logo-naluum-transparente.svg'
+const footerData = {
+  company: {
+    name: 'Movimiento Naluum',
+    description: 'Una red de personas, proyectos y territorios que aprende, comparte y regenera desde la permacultura.',
+    logo: '/img/branding/logo-naluum-transparente.svg',
+  },
+  navigation: [
+    { label: 'Inicio', to: '/' },
+    { label: 'Nosotros', to: '/sobre-nosotros' },
+    { label: 'Productos', to: '/productos' },
+    { label: 'Servicios', to: '/servicios' },
+    { label: 'Proyectos', to: '/proyectos' },
+    { label: 'Calendario', to: '/calendario' },
+    { label: 'Blog', to: '/blog' },
+  ],
+  contact: {
+    email: 'naluumpermacultura@gmail.com',
+  },
+  socialMedia: [
+    {
+      name: 'Facebook',
+      icon: Facebook,
+      url: 'https://www.facebook.com/Permacultura.Naluum',
     },
-    socialMedia: [
-      { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/Permacultura.Naluum", color: "#1877f2" },
-      { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/naluum.permacultura", color: "#e4405f" }
-    ],
-    contact: {
-      title: "Contáctanos",
-      info: [
-        { 
-          icon: MapPin, 
-          text: "Coto 7 Interior 807 2-D Selva Nova, Playa del Carmen, México",
-          type: "address"
-        },
-        { 
-          icon: Mail, 
-          text: "naluumpermacultura@gmail.com",
-          type: "email",
-          link: "mailto:naluumpermacultura@gmail.com"
-        },
-        { 
-          icon: Phone, 
-          text: "+54 9 376 425-7777",
-          type: "phone",
-          link: "tel:+5493764257777"
-        }
-      ]
+    {
+      name: 'Instagram',
+      icon: Instagram,
+      url: 'https://www.instagram.com/naluum.permacultura',
     },
-    legal: {
-      copyright: `© ${new Date().getFullYear()} Movimiento Naluum. Todos los derechos reservados. Juntos por un planeta mejor.`,
-      links: ["Política de Privacidad", "Términos de Servicio", "Política de Sostenibilidad"]
-    }
-  };
+  ],
+};
 
-  return (
-    <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__content">
-          {/* Sección de la empresa */}
-          <div className="footer__section footer__brand">
-            <div className="footer__logo">
-              <h2 className="footer__logo-text">{footerData.company.name}</h2>
-              <div className="footer__logo-decoration"></div>
-              <img src={footerData.company.logo} alt="Logo Movimiento Naluum" className="footer__logo-img" />
-            </div>
-            <p className="footer__description">{footerData.company.description}</p>
-            
-            <div className="footer__social">
-              {footerData.socialMedia.map((social) => {
-                const IconComponent = social.icon;
-                return (
-                  <a 
-                    key={social.name}
-                    href={social.url} 
-                    className="footer__social-link"
-                    aria-label={social.name}
-                    style={{'--social-color': social.color}}
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer__container">
+      <div className="footer__content">
+        <section className="footer__brand" aria-labelledby="footer-brand-title">
+          <div className="footer__brand-heading">
+            <img
+              src={footerData.company.logo}
+              alt=""
+              className="footer__logo"
+            />
+            <h2 id="footer-brand-title">{footerData.company.name}</h2>
+          </div>
+          <p>{footerData.company.description}</p>
+        </section>
+
+        <nav className="footer__navigation" aria-label="Navegación del pie de página">
+          <h2>Explorar</h2>
+          <ul>
+            {footerData.navigation.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <section className="footer__contact" aria-labelledby="footer-contact-title">
+          <h2 id="footer-contact-title">Contacto</h2>
+          <a className="footer__email" href={`mailto:${footerData.contact.email}`}>
+            <Mail aria-hidden="true" size={18} strokeWidth={1.8} />
+            <span>{footerData.contact.email}</span>
+          </a>
+
+          <ul className="footer__social" aria-label="Redes sociales">
+            {footerData.socialMedia.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <li key={social.name}>
+                  <a
+                    href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${social.name} de Movimiento Naluum`}
                   >
-                    <IconComponent size={20} />
+                    <Icon aria-hidden="true" size={18} strokeWidth={1.8} />
+                    <span>{social.name}</span>
                   </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Información de contacto */}
-          <div className="footer__section">
-            <h3 className="footer__title">{footerData.contact.title}</h3>
-            <ul className="footer__contact-list">
-              {footerData.contact.info.map((item) => {
-                const IconComponent = item.icon;
-                return (
-                  <li key={item.type} className="footer__contact-item">
-                    <div className="footer__contact-icon">
-                      <IconComponent size={16} />
-                    </div>
-                    {item.link ? (
-                      <a href={item.link} className="footer__contact-text">
-                        {item.text}
-                      </a>
-                    ) : (
-                      <span className="footer__contact-text">{item.text}</span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-
-        {/* Parte inferior del footer */}
-        <div className="footer__bottom">
-          <div className="footer__bottom-content">
-            <p className="footer__copyright">{footerData.legal.copyright}</p>
-            <div className="footer__legal-links">
-              {footerData.legal.links.map((link) => (
-                <span key={link} className="footer__legal-link">
-                  {link}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
       </div>
 
-
-    </footer>
-  );
-};
+      <div className="footer__bottom">
+        <p>© {new Date().getFullYear()} Movimiento Naluum. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
