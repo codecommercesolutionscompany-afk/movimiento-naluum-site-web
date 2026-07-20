@@ -3,84 +3,55 @@
     {
       "name": "Inicio",
       "path": "/",
-      "icon": "HomeIcon",
-      "type": "single"
+      "type": "link"
     },
     {
       "name": "Nosotros",
       "path": "/sobre-nosotros",
-      "icon": "UserIcon",
-      "type": "single"
+      "type": "link"
     },
     {
-      "name": "Tienda",
-      "icon": "StoreIcon",
-      "type": "dropdown",
-      "subItems": [
-        {
-          "name": "Todos los Productos",
-          "path": "/productos",
-          "icon": "PackageIcon",
-          "image": "/img/shared/mate-yerba-organica.webp",
-          "description": "Explora nuestra colección completa de productos naturales y conscientes"
-        },
-        {
-          "name": "Todos los Servicios",
-          "path": "/servicios",
-          "icon": "BriefcaseIcon",
-          "image": "/img/shared/comunidad-suscripcion.webp",
-          "description": "Descubre nuestros servicios de transformación y crecimiento personal"
-        }
-      ]
+      "name": "Productos",
+      "path": "/productos",
+      "type": "link"
+    },
+    {
+      "name": "Servicios",
+      "path": "/servicios",
+      "type": "link"
     },
     {
       "name": "Proyectos",
-      "icon": "FolderIcon",
       "type": "dropdown",
       "subItems": [
         {
           "name": "Madre Selva",
-          "path": "/proyectos/madre-selva",
-          "icon": "LeafIcon"
+          "path": "/proyectos/madre-selva"
         },
         {
           "name": "Naluum",
-          "path": "/proyectos/naluum",
-          "icon": "StarIcon"
+          "path": "/proyectos/naluum"
         },
         {
           "name": "Global",
-          "path": "/proyectos/global",
-          "icon": "GlobeIcon"
+          "path": "/proyectos/global"
         }
       ]
     },
     {
-      "name": "Recursos",
-      "icon": "BookOpenIcon",
-      "type": "dropdown",
-      "subItems": [
-        {
-          "name": "Blog",
-          "path": "/blog",
-          "icon": "PenToolIcon",
-          "image": "/img/blog/blog-menu-flor.webp",
-          "description": "Artículos, reflexiones y sabiduría compartidas"
-        },
-        {
-          "name": "Calendario de Eventos",
-          "path": "/calendario",
-          "icon": "CalendarIcon",
-          "image": "/img/sections/menu-calendario.webp",
-          "description": "Próximos talleres, ceremonias y encuentros del movimiento"
-        }
-      ]
+      "name": "Calendario",
+      "path": "/calendario",
+      "type": "link"
+    },
+    {
+      "name": "Blog",
+      "path": "/blog",
+      "type": "link"
     },
     {
       "name": "Contacto",
       "path": "/contacto",
-      "icon": "MessageCircleIcon",
-      "type": "single"
+      "type": "link"
     }
   ]
 }

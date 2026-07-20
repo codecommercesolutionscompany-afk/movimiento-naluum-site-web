@@ -67,7 +67,7 @@ const App = () => {
   
       <ScrollToTop />
 
-      <main id="view-root">
+      <main id="main-content" tabIndex="-1">
         <Suspense fallback={null}>
           <Routes location={{ ...location, pathname: currentPath }} key={currentPath}>
           <Route index path="/" element={<Home />} />
