@@ -13,6 +13,13 @@ $neutral-light: #D5CEA9;     // Beige claro
     position: relative;
     overflow: hidden;
 
+    > .header__container,
+    > .header__container > .header__content {
+        width: 100%;
+        min-height: 100vh;
+        height: 100vh;
+    }
+
 // ============================================
 // ANIMACIONES HERMOSAS
 // ============================================
@@ -306,6 +313,189 @@ $neutral-light: #D5CEA9;     // Beige claro
         }
     }
 }
+
+    // Hero editorial de Sobre Nosotros
+    .aboutMe__hero {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        overflow: hidden;
+        background: $primary-dark;
+        isolation: isolate;
+
+        &-image,
+        &-overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        &-image {
+            z-index: -2;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        &-overlay {
+            z-index: -1;
+            background:
+                linear-gradient(90deg,
+                    rgba(3, 36, 27, 0.9) 0%,
+                    rgba(3, 36, 27, 0.72) 40%,
+                    rgba(3, 36, 27, 0.2) 74%,
+                    rgba(3, 36, 27, 0.08) 100%),
+                linear-gradient(0deg,
+                    rgba(3, 36, 27, 0.48) 0%,
+                    rgba(3, 36, 27, 0) 42%);
+        }
+
+        &-content {
+            width: min(100% - 3rem, 76rem);
+            padding-top: clamp(7rem, 12vw, 10rem);
+            padding-bottom: clamp(6rem, 10vw, 8rem);
+            margin-inline: auto;
+            color: $neutral-light;
+            text-align: left;
+        }
+
+        &-eyebrow {
+            margin: 0 0 0.75rem;
+            color: $primary-light;
+            font-size: clamp(0.78rem, 1vw, 0.9rem);
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 10ch;
+            margin: 0;
+            color: $neutral-light;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3.5rem, 8vw, 6.75rem);
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+        }
+
+        &-lead {
+            max-width: min(80%, 37rem);
+            margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+            color: rgba(213, 206, 169, 0.96);
+            font-family: 'Lora', Georgia, serif;
+            font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            line-height: 1.6;
+        }
+
+        &-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 3rem;
+            padding: 0.75rem 1.25rem;
+            margin-top: clamp(1.75rem, 3vw, 2.5rem);
+            color: $primary-dark;
+            background: $primary-light;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-decoration: none;
+            transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+
+            &:hover {
+                background: #dce79f;
+            }
+
+            &:active {
+                transform: translateY(1px);
+            }
+
+            &:focus-visible {
+                outline: 3px solid $primary-light;
+                outline-offset: 4px;
+            }
+        }
+
+        &-scroll {
+            position: absolute;
+            right: clamp(1.5rem, 4vw, 4rem);
+            bottom: clamp(1.5rem, 3vw, 2.75rem);
+            display: grid;
+            place-items: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            color: $neutral-light;
+            border: 1px solid rgba(213, 206, 169, 0.64);
+            border-radius: 50%;
+
+            span {
+                width: 0.55rem;
+                height: 0.55rem;
+                border-right: 1px solid currentColor;
+                border-bottom: 1px solid currentColor;
+                transform: rotate(45deg) translate(-0.1rem, -0.1rem);
+            }
+
+            &:focus-visible {
+                outline: 2px solid $primary-light;
+                outline-offset: 0.25rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            &-content {
+                width: min(100% - 3rem, 64rem);
+            }
+        }
+
+        @media (max-width: 767px) {
+            height: 100vh;
+            min-height: 100vh;
+            min-height: 100svh;
+            align-items: center;
+
+            &-image {
+                object-position: 67% center;
+            }
+
+            &-overlay {
+                background: linear-gradient(90deg,
+                    rgba(3, 36, 27, 0.9) 0%,
+                    rgba(3, 36, 27, 0.8) 48%,
+                    rgba(3, 36, 27, 0.5) 78%,
+                    rgba(3, 36, 27, 0.3) 100%);
+            }
+
+            &-content {
+                width: min(100% - 2.5rem, 38rem);
+                padding-top: 0;
+                padding-bottom: 0;
+                transform: translateY(clamp(-1.5rem, -4vw, -0.75rem));
+            }
+
+            &-lead {
+                max-width: min(86%, 34rem);
+            }
+
+            &-scroll {
+                right: 1.25rem;
+                bottom: 1.25rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+    }
+
     // Contenido del body (sección)
     .aboutMe__content {
         width: 100%;

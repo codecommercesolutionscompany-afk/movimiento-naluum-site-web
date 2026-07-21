@@ -95,39 +95,33 @@ const AboutMe = () => {
       {/* Contenedor principal con semántica mejorada */}
       <main className='aboutMe__container' role="main" aria-label="Contenido principal sobre Naluum">
         
-        {/* Header con mejor estructura semántica */}
+        {/* Hero editorial */}
         <Header>
-          <section className='aboutMe__header-img-container' aria-label="Imagen hero">
+          <section className='aboutMe__hero' aria-labelledby="about-hero-title">
             <img 
-              src="/img/shared/curso-diseno-permacultura.webp"
-              alt="Vista panorámica del movimiento Naluum - Regeneración planetaria en acción" 
-              className="aboutMe__header-img"
+              src="/img/hero/sobre-nosotros.webp"
+              alt=""
+              className="aboutMe__hero-image"
               loading="eager"
               fetchPriority="high"
+              decoding="async"
               width="1920"
-              height="1080"
+              height="1282"
             />
-          </section>
-          
-          <section className='aboutMe__header-content-container' aria-label="Introducción">
-            <div className='aboutMe__header-content'>
-              <header className='aboutMe__header-content-title'>
-                <h1>Naluum un camino de regeneración y amor a la vida</h1>
-                <p>La historia de cómo un sueño ancestral de cuidado de la Madre Tierra se convirtió en un movimiento global de transformación regenerativa</p>
-              </header>
-              
-              <nav className='aboutMe__header-content-button' aria-label="Navegación a sección de fundadores">
-                <a 
-                  href="#founders" 
-                  className='button-CTA'
-                  aria-label="Ir a la sección de fundadores de Naluum"
-                >
-                  <button className='button-CTA' type="button">
-                    Los fundadores
-                  </button>
-                </a>
-              </nav>
+            <div className="aboutMe__hero-overlay" aria-hidden="true" />
+            <div className="aboutMe__hero-content">
+              <p className="aboutMe__hero-eyebrow">Movimiento Naluum</p>
+              <h1 id="about-hero-title">Naluum</h1>
+              <p className="aboutMe__hero-lead">
+                Una historia de regeneración planetaria que comenzó con un descubrimiento y se convirtió en la esperanza de millones
+              </p>
+              <a className="aboutMe__hero-cta" href="#nuestra-historia">
+                Descubre nuestra historia
+              </a>
             </div>
+            <a className="aboutMe__hero-scroll" href="#nuestra-historia" aria-label="Ir a nuestra historia">
+              <span aria-hidden="true" />
+            </a>
           </section>
         </Header>
 
@@ -135,7 +129,7 @@ const AboutMe = () => {
         <div className='aboutMe__content'>
           
           {/* Historia con lazy loading */}
-          <section className='aboutMe__content-history' aria-label="Historia de Naluum">
+          <section id="nuestra-historia" className='aboutMe__content-history' aria-label="Historia de Naluum">
             <Suspense fallback={<LoadingFallback />}>
               <FadeInOnView {...fadeInProps}>
                 <TimeLineHistory index={0} titles={titles} showHeroBg={true} heroBgImage="/img/branding/logo-naluum-transparente.svg" />
