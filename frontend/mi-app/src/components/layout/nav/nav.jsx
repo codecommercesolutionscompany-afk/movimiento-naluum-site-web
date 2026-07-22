@@ -5,6 +5,7 @@ import { ContextJsonLoadContext } from '../../../context/context_json_load/conte
 import './nav.scss';
 
 const MOBILE_BREAKPOINT = 1100;
+const TRANSPARENT_HEADER_ROUTES = ['/', '/sobre-nosotros'];
 
 const Nav = () => {
   const { listaRutas } = useContext(ContextJsonLoadContext);
@@ -111,8 +112,8 @@ const Nav = () => {
   }, [isMobile, isMobileMenuOpen]);
 
   const isProjectsActive = location.pathname.startsWith('/proyectos');
-  const isHomeRoute = location.pathname === '/';
-  const isSolidHeader = !isHomeRoute || isScrolled || isMobileMenuOpen || isProjectsOpen;
+  const supportsTransparentHeader = TRANSPARENT_HEADER_ROUTES.includes(location.pathname);
+  const isSolidHeader = !supportsTransparentHeader || isScrolled || isMobileMenuOpen || isProjectsOpen;
 
   const handleProjectsButtonClick = () => {
     setIsProjectsOpen((isOpen) => !isOpen);
@@ -172,7 +173,7 @@ const Nav = () => {
   );
 
   return (
-    <header className={`site-header${isHomeRoute ? '' : ' site-header--internal'}`} ref={navRef}>
+    <header className={`site-header${supportsTransparentHeader ? '' : ' site-header--internal'}`} ref={navRef}>
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <nav className={`nav${isSolidHeader ? ' nav--solid' : ''}${isScrolled ? ' nav--scrolled' : ''}`} aria-label="Navegación principal">
         <div className="nav__content">

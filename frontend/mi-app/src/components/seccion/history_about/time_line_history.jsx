@@ -16,6 +16,8 @@ import './time_line_history.scss';
  * @param {number} props.initialItemsToShow - Número inicial de items a mostrar (default: 3)
  * @param {boolean} props.showMoreButton - Mostrar botón de "más info" (default: true)
  * @param {Function} props.onChapterChange - Callback cuando cambia el capítulo activo
+ * @param {number} props.startIndex - Índice inicial de capítulos a mostrar (default: 0)
+ * @param {boolean} props.hideHero - Oculta el hero heredado (default: false)
  */
 const TimeLineHistory = ({ 
   index, 
@@ -26,7 +28,9 @@ const TimeLineHistory = ({
   className = '',
   initialItemsToShow = 3,
   showMoreButton = true,
-  onChapterChange
+  onChapterChange,
+  startIndex = 0,
+  hideHero = false,
 }) => {
   // TODOS los hooks DEBEN ejecutarse ANTES de cualquier return condicional
   const { time_line_history } = useContext(ContextJsonLoadContext);
@@ -36,8 +40,8 @@ const TimeLineHistory = ({
   const chapterRefs = useRef([]);
 
   const chapters = useMemo(
-    () => time_line_history?.[index]?.items || [],
-    [index, time_line_history],
+    () => (time_line_history?.[index]?.items || []).slice(startIndex),
+    [index, startIndex, time_line_history],
   );
 
   // Efecto para detectar scroll y activar animaciones
@@ -116,6 +120,7 @@ const TimeLineHistory = ({
   return (
     <div className={`timeline-wrapper ${getThemeClass()} ${className}`}>
       {/* Hero Section */}
+      {!hideHero && (
       <section className="hero-section">
         <div className="hero-background">
           <div className="particle particle-1">✧</div>
@@ -150,6 +155,7 @@ const TimeLineHistory = ({
           <div className="arrow-down">↓</div>
         </div>
       </section>
+      )}
 
       {/* Timeline Section */}
       <section className="timeline-section">
@@ -225,6 +231,8 @@ TimeLineHistory.propTypes = {
   initialItemsToShow: PropTypes.number,
   showMoreButton: PropTypes.bool,
   onChapterChange: PropTypes.func,
+  startIndex: PropTypes.number,
+  hideHero: PropTypes.bool,
 };
 
 export default TimeLineHistory;

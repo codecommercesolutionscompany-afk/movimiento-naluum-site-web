@@ -1,160 +1,91 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './founders.scss';
-const Founders = () => {
-  const [expandedCard, setExpandedCard] = useState(null);
-  
+
 const founders = [
   {
-    id: 1,
-    name: "Tierra Martínez",
-    role: "Co-Fundador y Coordinador General",
-    bio: "Diseñador en Permacultura y educador internacional con más de 25 años de experiencia en procesos de regeneración ecológica, social y cultural. Ha trabajado en más de 40 países desarrollando proyectos de diseño regenerativo, educación y desarrollo comunitario. Co-fundador del Instituto Na Lu’um y del Eco Centro Madre Selva (Argentina), impulsa espacios de aprendizaje vivo donde se integran la sabiduría ancestral, la ciencia moderna y la espiritualidad práctica para construir una humanidad en equilibrio con la Tierra.",
-    quote: "Solo cuando recordamos cómo habitar la Tierra con humildad y propósito, comienza la verdadera transformación.",
-    image: '/img/testimonials/tierra-martinez.webp'
+    id: 'tierra',
+    name: 'Tierra Martínez',
+    role: 'Co-Fundador y Coordinador General',
+    bio: 'Diseñador en Permacultura y educador internacional con más de 25 años de experiencia en procesos de regeneración ecológica, social y cultural. Ha trabajado en más de 40 países desarrollando proyectos de diseño regenerativo, educación y desarrollo comunitario. Co-fundador del Instituto Na Lu’um y del Eco Centro Madre Selva (Argentina), impulsa espacios de aprendizaje vivo donde se integran la sabiduría ancestral, la ciencia moderna y la espiritualidad práctica para construir una humanidad en equilibrio con la Tierra.',
+    image: '/img/testimonials/tierra-martinez.webp',
+    alt: 'Tierra Martínez',
+    width: 801,
+    height: 1200,
   },
   {
-    id: 2,
-    name: "Beatriz Ramírez Cruz",
-    role: "Co-Fundadora y Directora General de Campo",
-    bio: "Diseñadora en Permacultura especializada en Bioconstrucción y Diseño Social, con más de 15 años de experiencia. Co-facilitadora de los cursos de Diseño en Permacultura del Instituto Na Lu’um, ha trabajado en más de 30 países compartiendo herramientas para la regeneración ecológica y humana. De origen mexicana, coordina programas educativos en Madre Selva y el Instituto Na Lu’um, impulsando una educación viva que une conocimiento, propósito y acción.",
-    quote: "La vida es muy sencilla, solo que la complicamos en nombre de la búsqueda incansable de quienes somos, sin saber que ya somos alguien desde que hacemos.",
-    image: '/img/testimonials/beatriz-ramirez.webp'
-  }
+    id: 'beatriz',
+    name: 'Beatriz Ramírez Cruz',
+    role: 'Co-Fundadora y Directora General de Campo',
+    bio: 'Diseñadora en Permacultura especializada en Bioconstrucción y Diseño Social, con más de 15 años de experiencia. Co-facilitadora de los cursos de Diseño en Permacultura del Instituto Na Lu’um, ha trabajado en más de 30 países compartiendo herramientas para la regeneración ecológica y humana. De origen mexicana, coordina programas educativos en Madre Selva y el Instituto Na Lu’um, impulsando una educación viva que une conocimiento, propósito y acción.',
+    image: '/img/testimonials/beatriz-ramirez.webp',
+    alt: 'Beatriz Ramírez Cruz',
+    width: 1080,
+    height: 720,
+  },
+  {
+    id: 'familia',
+    name: "La Familia Na Lu'um",
+    role: 'Unidos por un propósito común',
+    bio: "El Instituto de Permacultura Na Lu'um International tiene como propósito común la regeneración planetaria a través de procesos educativos en diseño de permacultura, bioconstrucción, permacultura social, reingeniería del ser, diseño hidrológico y agricultura sintrópica. Somos una familia unida por la regeneración de los sistemas. La Familia Na Lu'um sostiene un proceso educativo mediante una organización viva, donde cada integrante aporta desde su servicio al proyecto.",
+    image: '/img/shared/personas-trabajando.webp',
+    alt: 'Personas trabajando juntas bajo una estructura al aire libre',
+    width: 1080,
+    height: 720,
+  },
 ];
 
+const FounderProfile = ({ founder, reverse = false, collective = false }) => (
+  <article
+    className={`about-founders__profile${reverse ? ' about-founders__profile--reverse' : ''}${collective ? ' about-founders__profile--collective' : ''}`}
+  >
+    <figure className="about-founders__media">
+      <img
+        src={founder.image}
+        alt={founder.alt}
+        loading="lazy"
+        decoding="async"
+        width={founder.width}
+        height={founder.height}
+      />
+    </figure>
 
-const familyFounder = {
-  id: 3,
-  name: "La Familia Na Lu'um",
-  role: "Unidos por un propósito común",
-  bio: "El Instituto de Permacultura Na Lu'um International tiene como propósito común la regeneración planetaria a través de procesos educativos en diseño de permacultura, bioconstrucción, permacultura social, reingeniería del ser, diseño hidrológico y agricultura sintrópica. Somos una familia unida por la regeneración de los sistemas. La Familia Na Lu'um sostiene un proceso educativo mediante una organización viva, donde cada integrante aporta desde su servicio al proyecto.",
-  quote: "Somos una familia unida por la regeneración de la Tierra, sosteniendo una organización viva al servicio del cambio.",
-  image: '/img/placeholders/pendiente-persona-familia-naluum.svg'
+    <div className="about-founders__profile-content">
+      <p className="about-founders__role">{founder.role}</p>
+      <h3>{founder.name}</h3>
+      <p>{founder.bio}</p>
+    </div>
+  </article>
+);
+
+FounderProfile.propTypes = {
+  founder: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
+  reverse: PropTypes.bool,
+  collective: PropTypes.bool,
 };
 
+const Founders = () => (
+  <section className="about-founders" aria-labelledby="about-founders-title">
+    <div className="about-founders__inner">
+      <header className="about-founders__heading">
+        <p>LAS PERSONAS</p>
+        <h2 id="about-founders-title">Los fundadores</h2>
+      </header>
 
-
-  const handleCardClick = (founderId) => {
-    // Si la tarjeta ya está expandida, la contraemos, si no, la expandimos
-    setExpandedCard(expandedCard === founderId ? null : founderId);
-  };
-
-  return (
-    <section className="founders-section">
-      <div className="founders-container">
-        {/* Header elegante y minimalista */}
-        <div className="founders-header">
-          <div className="accent-line"></div>
-          <h2 className="founders-title">Fundadores</h2>
-          <p className="founders-subtitle">Las mentes visionarias detrás de Naluum</p>
-        </div>
-
-        {/* Layout de dos niveles */}
-        <div className="founders-layout">
-          {/* Primera fila - dos fundadores */}
-          <div className="founders-row-top">
-            {founders.map((founder) => (
-              <div
-                key={founder.id}
-                className={`founder-card ${expandedCard === founder.id ? 'expanded' : ''}`}
-                onClick={() => handleCardClick(founder.id)}
-              >
-                {/* Número decorativo */}
-            
-
-                {/* Imagen con overlay elegante */}
-                <div className="founder-image-wrapper">
-                  <div className="founder-image-container">
-                    <img
-                      src={founder.image}
-                      alt={founder.name}
-                      className="founder-image"
-                    />
-                    <div className="image-overlay"></div>
-                  </div>
-                  
-                  {/* Glow effect sutil */}
-                  <div className="glow-effect"></div>
-                </div>
-
-                {/* Información del fundador */}
-                <div className="founder-info">
-                  <h3 className="founder-name">{founder.name}</h3>
-                  <p className="founder-role">{founder.role}</p>
-                  
-                  {/* Línea decorativa */}
-                  <div className="divider"></div>
-
-                  {/* Bio expandible */}
-                  <div className="bio-container">
-                    <p className="founder-bio">{founder.bio}</p>
-                    <blockquote className="founder-quote">&quot;{founder.quote}&quot;</blockquote>
-                  </div>
-                </div>
-
-                {/* Indicador de hover */}
-                <div className="hover-indicator"></div>
-                
-                {/* Botón de expansión */}
-                <div className="expand-icon"></div>
-              </div>
-            ))}
-          </div>
-
-          {/* Segunda fila - familia centrada */}
-          <div className="founders-row-bottom">
-            <div
-              className={`founder-card ${expandedCard === familyFounder.id ? 'expanded' : ''}`}
-              onClick={() => handleCardClick(familyFounder.id)}
-            >
-
-              {/* Imagen con overlay elegante */}
-              <div className="founder-image-wrapper">
-                <div className="founder-image-container">
-                  <img
-                    src={familyFounder.image}
-                    alt={familyFounder.name}
-                    className="founder-image"
-                  />
-                  <div className="image-overlay"></div>
-                </div>
-                
-                {/* Glow effect sutil */}
-                <div className="glow-effect"></div>
-              </div>
-
-              {/* Información del fundador */}
-              <div className="founder-info">
-                <h3 className="founder-name">{familyFounder.name}</h3>
-                <p className="founder-role">{familyFounder.role}</p>
-                
-                {/* Línea decorativa */}
-                <div className="divider"></div>
-
-                {/* Bio expandible */}
-                <div className="bio-container">
-                  <p className="founder-bio">{familyFounder.bio}</p>
-                  <blockquote className="founder-quote">&quot;{familyFounder.quote}&quot;</blockquote>
-                </div>
-              </div>
-
-              {/* Indicador de hover */}
-              <div className="hover-indicator"></div>
-              
-              {/* Botón de expansión */}
-              <div className="expand-icon"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer elegante */}
-        <div className="founders-footer">
-          <div className="footer-line"></div>
-          <p className="footer-message">Unidos por una visión común de transformación</p>
-        </div>
+      <div className="about-founders__profiles">
+        <FounderProfile founder={founders[0]} />
+        <FounderProfile founder={founders[1]} reverse />
+        <FounderProfile founder={founders[2]} collective />
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Founders;

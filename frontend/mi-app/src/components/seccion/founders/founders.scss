@@ -1,666 +1,182 @@
-@use "sass:color";
-@use "sass:map";
-
-// =============================
-// Variables de Color
-// =============================
-$primary-gold: #D0DE85;
-$secondary-gold: #8F764C;
-$dark-green: #063B2C;
-$dark-green-hover: #1a4d3a;
-$light-gray: #7B7A70;
-$mid-gray: #48514A;
-$cream: #D5CEA9;
-
-// =============================
-// Variables de Espaciado y Tamaño
-// =============================
-$spacing-xs: 8px;
-$spacing-sm: 15px;
-$spacing-md: 20px;
-$spacing-lg: 30px;
-$spacing-xl: 40px;
-$spacing-xxl: 80px;
-
-$border-radius: 20px;
-$border-radius-sm: 15px;
-$transition-time: 0.5s;
-$transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
-
-// =============================
-// Breakpoints
-// =============================
-$breakpoints: (
-  'xs': 320px,
-  'sm': 480px,
-  'md': 768px,
-  'lg': 1024px,
-  'xl': 1200px,
-  'xxl': 1400px
-);
-
-// =============================
-// Mixins
-// =============================
-@mixin respond-to($breakpoint) {
-  @if map.has-key($breakpoints, $breakpoint) {
-    @media (max-width: #{map.get($breakpoints, $breakpoint)}) {
-      @content;
-    }
-  }
-}
-
-@mixin glass-effect {
-  background: rgba($dark-green, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-@mixin glow-effect($color: $primary-gold, $size: 20px) {
-  box-shadow: 0 $size ($size * 2) rgba($color, 0.2);
-}
-
-@mixin gradient-line {
-  background: linear-gradient(90deg, transparent, $primary-gold, transparent);
-}
-
-@mixin gradient-line-gold {
-  background: linear-gradient(90deg, transparent, $secondary-gold, transparent);
-}
-
-@mixin transition-smooth {
-  transition: all $transition-time $transition-cubic;
-}
-
-// =============================
-// Animaciones
-// =============================
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes expandHeight {
-  from {
-    max-height: 420px;
-  }
-  to {
-    max-height: 600px;
-  }
-}
-
-// =============================
-// Estilos Base
-// =============================
-.founders-section {
-  min-height: 100vh;
-  padding: $spacing-xxl $spacing-md;
+.about-founders {
   position: relative;
-  overflow: hidden;
-
-  // Patrón de fondo sutil
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   background-image: 
-  //     radial-gradient(circle at 20% 50%, rgba($primary-gold, 0.05) 0%, transparent 50%),
-  //     radial-gradient(circle at 80% 80%, rgba($secondary-gold, 0.05) 0%, transparent 50%);
-  //   pointer-events: none;
-  // }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      transparent 0%,
-      color.adjust($dark-green, $lightness: -10%) 15%,
-      rgba($dark-green, .9) 50%,
-      color.adjust($dark-green, $lightness: -10%) 85%,
-      transparent 100%
-    );    pointer-events: none;
-    z-index: -1;
-  }
-
-  @include respond-to('md') {
-    padding: $spacing-xl $spacing-sm;
-  }
-}
-
-// =============================
-// Container
-// =============================
-.founders-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-
-  @include respond-to('xl') {
-    max-width: 1000px;
-  }
-
-  @include respond-to('lg') {
-    max-width: 100%;
-    padding: 0 $spacing-sm;
-  }
-}
-
-// =============================
-// Header
-// =============================
-.founders-header {
-  text-align: center;
-  margin-bottom: $spacing-xxl;
-  animation: fadeInUp 0.8s ease-out;
-
-  .accent-line {
-    width: 60px;
-    height: 2px;
-    @include gradient-line;
-    margin: 0 auto $spacing-lg;
-    animation: pulse 3s ease-in-out infinite;
-  }
-
-  .founders-title {
-    font-size: clamp(2.5rem, 5vw, 3rem);
-    font-weight: 200;
-    color: $primary-gold;
-    margin-bottom: $spacing-sm;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-shadow: 0 2px 20px rgba($primary-gold, 0.3);
-    line-height: 1.2;
-
-    @include respond-to('sm') {
-      font-size: 2rem;
-      letter-spacing: 2px;
-    }
-  }
-
-  .founders-subtitle {
-    font-size: clamp(1rem, 2vw, 1rem);
-    color: $cream;
-    font-weight: 300;
-    letter-spacing: 1px;
-    opacity: 0.8;
-
-    @include respond-to('sm') {
-      font-size: 0.9rem;
-    }
-  }
-}
-
-// =============================
-// Layout de dos niveles
-// =============================
-.founders-layout {
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-xl;
-  margin-bottom: $spacing-xxl;
-}
-
-// Primera fila - dos fundadores
-.founders-row-top {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-xl;
-  justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
   width: 100%;
+  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.5rem, 5vw, 5rem);
+  color: #063b2c;
+  background: #d5cea9;
 
-  @include respond-to('md') {
-    grid-template-columns: 1fr;
-    gap: $spacing-lg;
-    max-width: 400px;
+  &__inner {
+    width: min(100%, 84rem);
+    margin-inline: auto;
   }
-}
 
-// Segunda fila - familia centrada
-.founders-row-bottom {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
-}
+  &__heading {
+    max-width: 42rem;
+    margin-bottom: clamp(3.5rem, 8vw, 7rem);
 
-// =============================
-// Founder Card
-// =============================
-.founder-card {
-  position: relative;
-  @include glass-effect;
-  border-radius: $border-radius;
-  padding: $spacing-xl $spacing-lg;
-  border: 1px solid rgba($primary-gold, 0.2);
-  cursor: pointer;
-  overflow: hidden;
-  min-height: 420px;
-  max-height: 420px;
-  transition: max-height $transition-time $transition-cubic,
-              transform $transition-time $transition-cubic,
-              background $transition-time ease,
-              border-color $transition-time ease,
-              box-shadow $transition-time ease;
-  display: flex;
-  flex-direction: column;
-
-  // Estados hover y expanded
-  &:hover {
-    transform: translateY(-5px);
-    background: rgba($dark-green, 0.5);
-    border-color: rgba($primary-gold, 0.3);
-    @include glow-effect($primary-gold, 15px);
-
-    .number-decoration {
-      opacity: 0.08;
+    > p {
+      margin: 0;
+      color: #6f7c28;
+      font-size: clamp(0.72rem, 0.85vw, 0.86rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
     }
 
-    .founder-image-container {
-      transform: scale(1.02);
-    }
-
-    .image-overlay {
-      opacity: 0.2;
-    }
-
-    .glow-effect {
-      opacity: 0.4;
+    h2 {
+      max-width: 11ch;
+      margin: clamp(0.75rem, 1.5vw, 1.25rem) 0 0;
+      color: #063b2c;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.7rem, 5vw, 5.25rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
     }
   }
 
-  // Estado expandido
-  &.expanded {
-    max-height: 700px;
-    transform: translateY(-8px);
-    background: rgba($dark-green, 0.6);
-    border-color: rgba($primary-gold, 0.5);
-    @include glow-effect($primary-gold, 20px);
-    z-index: 10;
-
-    .number-decoration {
-      opacity: 0.1;
-    }
-
-    .divider {
-      width: 60px;
-    }
-
-    .bio-container {
-      max-height: 200px;
-      opacity: 1;
-      padding-top: $spacing-md;
-    }
-
-    .hover-indicator {
-      opacity: 1;
-    }
-
-    .expand-icon {
-      transform: rotate(180deg);
-    }
+  &__profiles {
+    display: grid;
+    gap: clamp(4rem, 9vw, 8rem);
   }
 
-  @include respond-to('md') {
-    padding: $spacing-lg $spacing-md;
-    min-height: 380px;
-    max-height: 380px;
+  &__profile {
+    display: grid;
+    grid-template-columns: minmax(16rem, 5fr) minmax(0, 7fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: center;
 
-    &.expanded {
-      max-height: 550px;
+    &--reverse {
+      grid-template-columns: minmax(0, 7fr) minmax(16rem, 5fr);
+
+      .about-founders__media {
+        grid-column: 2;
+      }
+
+      .about-founders__profile-content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    &--collective {
+      grid-template-columns: minmax(0, 7fr) minmax(16rem, 5fr);
+      align-items: start;
+
+      .about-founders__media {
+        aspect-ratio: 7 / 5;
+      }
     }
   }
 
-  @include respond-to('sm') {
-    min-height: 400px;
-    max-height: 400px;
-
-    &.expanded {
-      max-height: 580px;
-    }
-  }
-
-  // Desactivar hover en touch devices
-  @media (hover: none) {
-    &:hover {
-      transform: none;
-      box-shadow: none;
-    }
-  }
-}
-
-// Botón de expansión
-.expand-icon {
-  position: absolute;
-  bottom: $spacing-sm;
-  right: $spacing-sm;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba($primary-gold, 0.1);
-  border: 1px solid rgba($primary-gold, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all $transition-time ease;
-  z-index: 5;
-
-  &::after {
-    content: '↓';
-    color: $primary-gold;
-    font-size: 16px;
-    line-height: 1;
-  }
-
-  &:hover {
-    background: rgba($primary-gold, 0.2);
-    border-color: $primary-gold;
-  }
-}
-
-// =============================
-// Imagen y efectos
-// =============================
-.founder-image-wrapper {
-  position: relative;
-  margin-bottom: $spacing-lg;
-  flex-shrink: 0;
-}
-
-.founder-image-container {
-  position: relative;
-  width: 180px;
-  height: 220px;
-  margin: 0 auto;
-  border-radius: $border-radius-sm;
-  overflow: hidden;
-  @include transition-smooth;
-
-  @include respond-to('sm') {
-    width: 150px;
-    height: 190px;
-  }
-
-  .founder-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .image-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent, rgba($dark-green, 0.8));
-    transition: opacity $transition-time ease;
-    pointer-events: none;
-  }
-
-  // Borde dorado elegante
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(135deg, $primary-gold, $secondary-gold);
-    border-radius: $border-radius-sm;
-    opacity: 0.3;
-    z-index: -1;
-  }
-}
-
-.glow-effect {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba($primary-gold, 0.4), transparent);
-  filter: blur(40px);
-  opacity: 0;
-  transition: opacity $transition-time ease;
-  pointer-events: none;
-}
-
-// =============================
-// Información del Fundador
-// =============================
-.founder-info {
-  text-align: center;
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-
-  .founder-name {
-    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-    color: $cream;
-    margin-bottom: $spacing-xs;
-    font-weight: 400;
-    letter-spacing: 1px;
-    line-height: 1.3;
-
-    @include respond-to('sm') {
-      font-size: 1.2rem;
-    }
-  }
-
-  .founder-role {
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
-    color: $secondary-gold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 300;
-    margin-bottom: $spacing-sm;
-
-    @include respond-to('sm') {
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-    }
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    @include gradient-line-gold;
-    margin: 0 auto;
-    @include transition-smooth;
-  }
-}
-
-// =============================
-// Bio Container (Expandible)
-// =============================
-  .bio-container {
-    max-height: 0;
-    opacity: 0;
+  &__media {
+    aspect-ratio: 4 / 5;
+    margin: 0;
     overflow: hidden;
-    transition: max-height $transition-time $transition-cubic,
-                opacity $transition-time ease,
-                padding-top $transition-time ease;
-    padding-top: 0;
-    overflow: auto;
-    
-    // Estilos de scroll personalizados
-    &::-webkit-scrollbar {
-      width: 6px;
+    background: #063b2c;
+    border: 1px solid rgba(6, 59, 44, 0.16);
+    border-radius: 0.35rem;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__profile-content {
+    max-width: 42rem;
+
+    h3 {
+      max-width: 12ch;
+      margin: clamp(0.75rem, 1.5vw, 1.25rem) 0 0;
+      color: #063b2c;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.3rem, 4.2vw, 4.5rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 0.98;
     }
 
-    &::-webkit-scrollbar-track {
-      background: rgba($dark-green, 0.3);
-      border-radius: 3px;
+    > p:last-child {
+      max-width: 38rem;
+      margin: 1.5rem 0 0;
+      color: #4f5e35;
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(1rem, 1.35vw, 1.18rem);
+      line-height: 1.68;
     }
+  }
 
-    &::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, $primary-gold, $secondary-gold);
-      border-radius: 3px;
-      transition: background 0.3s ease;
-      
-      &:hover {
-        background: linear-gradient(180deg, color.adjust($primary-gold, $lightness: 10%), color.adjust($secondary-gold, $lightness: 10%));
+  &__role {
+    margin: 0;
+    color: #6f7c28;
+    font-size: clamp(0.72rem, 0.85vw, 0.86rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    padding-block: clamp(4rem, 14vw, 5.5rem);
+
+    &__heading {
+      margin-bottom: 3.5rem;
+
+      h2 {
+        max-width: 10ch;
+        font-size: clamp(2.4rem, 12vw, 3.75rem);
       }
     }
 
-    &::-webkit-scrollbar-thumb:active {
-      background: linear-gradient(180deg, color.adjust($primary-gold, $lightness: -5%), color.adjust($secondary-gold, $lightness: -5%));
+    &__profiles {
+      gap: 4.5rem;
     }
 
-    /* Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: $secondary-gold rgba($dark-green, 0.3);
+    &__profile,
+    &__profile--reverse,
+    &__profile--collective {
+      grid-template-columns: 1fr;
+      gap: 2rem;
 
-  .founder-bio {
-    font-size: 0.95rem;
-    color: $light-gray;
-    line-height: 1.6;
-    margin-bottom: $spacing-sm;
-    padding: 0 $spacing-sm;
-
-    @include respond-to('sm') {
-      font-size: 0.9rem;
-    }
-  }
-
-  .founder-quote {
-    font-size: 0.9rem;
-    color: $primary-gold;
-    font-style: italic;
-    padding: $spacing-sm;
-    border-left: 2px solid $secondary-gold;
-    margin: 0 $spacing-sm;
-    opacity: 0.9;
-    text-align: left;
-    background: rgba($dark-green, 0.3);
-    border-radius: 0 $spacing-xs $spacing-xs 0;
-
-    @include respond-to('sm') {
-      font-size: 0.85rem;
-      padding: $spacing-xs;
-    }
-  }
-}
-
-// =============================
-// Hover Indicator
-// =============================
-.hover-indicator {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  @include gradient-line;
-  opacity: 0;
-  transition: opacity $transition-time ease;
-}
-
-// =============================
-// Footer
-// =============================
-.founders-footer {
-  text-align: center;
-  padding-top: $spacing-xl;
-  animation: fadeInUp 1s ease-out 0.3s both;
-
-  .footer-line {
-    width: 100px;
-    height: 1px;
-    @include gradient-line-gold;
-    margin: 0 auto $spacing-lg;
-  }
-
-  .footer-message {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: $cream;
-    font-weight: 300;
-    letter-spacing: 2px;
-    opacity: 0.9;
-    margin-bottom: $spacing-lg;
-
-    @include respond-to('sm') {
-      font-size: 1rem;
-      letter-spacing: 1px;
-    }
-  }
-
-  .footer-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: $secondary-gold;
-      opacity: 0.3;
-      transition: opacity 0.3s ease;
-
-      &.active {
-        opacity: 1;
-        background: $primary-gold;
-        animation: pulse 2s ease-in-out infinite;
+      .about-founders__media,
+      .about-founders__profile-content {
+        grid-column: auto;
+        grid-row: auto;
       }
     }
-  }
-}
 
-// =============================
-// Accesibilidad
-// =============================
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+    &__profile--reverse {
+      .about-founders__profile-content {
+        order: 0;
+      }
 
-@media (prefers-contrast: high) {
-  .founder-card {
-    border-width: 2px;
-    border-color: $primary-gold;
-  }
-  
-  .founders-title {
-    text-shadow: none;
+      .about-founders__media {
+        order: 1;
+      }
+    }
+
+    &__media,
+    &__profile--collective .about-founders__media {
+      aspect-ratio: 4 / 3;
+    }
+
+    &__profile-content {
+      max-width: none;
+
+      h3 {
+        max-width: 11ch;
+        font-size: clamp(2.15rem, 10vw, 3.4rem);
+      }
+
+      > p:last-child {
+        margin-top: 1.25rem;
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+    }
   }
 }
