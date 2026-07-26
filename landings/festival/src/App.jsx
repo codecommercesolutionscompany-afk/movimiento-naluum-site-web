@@ -372,9 +372,11 @@ function App() {
 
   const trackWhatsappClick = ({ ctaLocation, ctaText, ticketCategory = null, ticketLabel = null }) => {
     const funnelReference = getFunnelReference(ticketCategory);
+    const messageKey = ticketCategory || ctaLocation;
+    const whatsappMessage = data.whatsapp.messages[messageKey] || data.whatsapp.messages.hero;
     const ctaUrl = generateWhatsappUrl(
       whatsappDestination,
-      buildFestivalWhatsappMessage(data.whatsapp.message, ticketLabel, funnelReference, attributionContext),
+      buildFestivalWhatsappMessage(whatsappMessage, funnelReference, attributionContext),
     );
     const trackingBase = {
       page_url: eventContext.page_url,
