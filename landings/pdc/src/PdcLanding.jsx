@@ -81,13 +81,12 @@ const iconMap = {
   Zap,
 };
 
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-const UTM_STORAGE_KEY = 'pdc_utm_params';
+const ATTRIBUTION_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid'];
+const ATTRIBUTION_STORAGE_KEY = 'pdc_attribution_context';
 const FIRST_TOUCH_STORAGE_KEY = 'pdc_first_touch_timestamp';
 const WHATSAPP_DEDUP_PREFIX = 'pdc_whatsapp_click_dedup';
 const FUNNEL_REFERENCE_KEY = 'pdc_funnel_reference:inscripcion';
 const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-const WHATSAPP_DESTINATION = '5493764257777';
 const TICKET_CATEGORY = 'inscripcion';
 const PDC_CONTEXT = {
   landing_name: 'pdc',
@@ -183,25 +182,31 @@ const renderMultiline = (text = '') =>
       </Fragment>
     ));
 
-const getStoredUtms = () => {
+const getStoredAttribution = () => {
   if (typeof window === 'undefined') return {};
 
   const params = new URLSearchParams(window.location.search);
-  const currentUtms = UTM_KEYS.reduce((acc, key) => {
+  const currentAttribution = ATTRIBUTION_KEYS.reduce((acc, key) => {
     const value = params.get(key);
     if (value) acc[key] = value;
     return acc;
   }, {});
 
-  if (Object.keys(currentUtms).length > 0) {
-    window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(currentUtms));
-    return currentUtms;
-  }
-
   try {
-    return JSON.parse(window.sessionStorage.getItem(UTM_STORAGE_KEY) || '{}');
+    const storedAttribution = JSON.parse(window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY) || '{}');
+    const attribution = { ...storedAttribution, ...currentAttribution };
+
+    if (Object.keys(currentAttribution).length > 0) {
+      window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(attribution));
+    }
+
+    return attribution;
   } catch {
-    return {};
+    if (Object.keys(currentAttribution).length > 0) {
+      window.sessionStorage.setItem(ATTRIBUTION_STORAGE_KEY, JSON.stringify(currentAttribution));
+    }
+
+    return currentAttribution;
   }
 };
 
@@ -257,12 +262,20 @@ const getPageLocation = () => {
   };
 };
 
-const getTrackingContext = () => ({
-  ...getPageLocation(),
-  ...PDC_CONTEXT,
-  ...getStoredUtms(),
-  first_touch_timestamp: getFirstTouchTimestamp(),
-});
+const getTrackingContext = () => {
+  const attribution = getStoredAttribution();
+
+  return {
+    ...getPageLocation(),
+    ...PDC_CONTEXT,
+    service_name: PDC_CONTEXT.event_name,
+    funnel_reference: getFunnelReference(),
+    ...attribution,
+    fbclid_present: Boolean(attribution.fbclid),
+    gclid_present: Boolean(attribution.gclid),
+    first_touch_timestamp: getFirstTouchTimestamp(),
+  };
+};
 
 const pushDataLayer = (payload = {}) => {
   if (typeof window === 'undefined') return;
@@ -270,17 +283,28 @@ const pushDataLayer = (payload = {}) => {
   window.dataLayer.push(payload);
 };
 
-const buildPdcWhatsappMessage = (funnelReference) =>
-  [
-    'Hola, ya estuve viendo la información del PDC Diseño de Permacultura de Madre Selva y quiero avanzar con mi inscripción.',
-    '',
-    `Referencia: ${funnelReference}`,
-  ].join('\n');
+const getWhatsappDestination = () => String(data.settings?.whatsappNumber || '').replace(/\D/g, '');
 
-const generateWhatsappUrl = (funnelReference) =>
-  `https://wa.me/${WHATSAPP_DESTINATION}?text=${encodeURIComponent(buildPdcWhatsappMessage(funnelReference))}`;
+const buildPdcWhatsappMessage = (funnelReference, attribution = {}) => {
+  const attributionLines = [
+    ['Origen', attribution.utm_source],
+    ['Campaña', attribution.utm_campaign],
+    ['Pieza', attribution.utm_content],
+    ['Término', attribution.utm_term],
+  ]
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => `${label}: ${value}`)
+    .join('\n');
 
-const getWhatsappTrackingUrl = () => `https://wa.me/${WHATSAPP_DESTINATION}`;
+  return [data.settings?.whatsappMessage, `Referencia: ${funnelReference}`, attributionLines]
+    .filter(Boolean)
+    .join('\n\n');
+};
+
+const generateWhatsappUrl = (funnelReference, attribution) =>
+  `https://wa.me/${getWhatsappDestination()}?text=${encodeURIComponent(buildPdcWhatsappMessage(funnelReference, attribution))}`;
+
+const getWhatsappTrackingUrl = () => `https://wa.me/${getWhatsappDestination()}`;
 
 const getInitials = (name = '') =>
   String(name)
@@ -372,17 +396,21 @@ const PdcLanding = () => {
   };
 
   const trackWhatsappClick = ({ ctaLocation, ctaText, element }) => {
-    const funnelReference = getFunnelReference();
-    const ctaUrl = generateWhatsappUrl(funnelReference);
+    const trackingContext = getTrackingContext();
+    const funnelReference = trackingContext.funnel_reference;
+    const whatsappDestination = getWhatsappDestination();
+    const ctaUrl = generateWhatsappUrl(funnelReference, trackingContext);
     const trackingPayload = {
-      ...getTrackingContext(),
+      ...trackingContext,
       cta_location: ctaLocation,
       cta_text: ctaText,
       cta_type: 'whatsapp',
       cta_url: ctaUrl,
       ticket_category: TICKET_CATEGORY,
+      ticket_name: PDC_CONTEXT.event_name,
+      ticket_label: 'Inscripción',
       funnel_reference: funnelReference,
-      whatsapp_destination: WHATSAPP_DESTINATION,
+      whatsapp_destination: whatsappDestination,
       deduplication_scope: 'session_cta_location_ticket_category',
       landing_slug: data.tracking.landingSlug,
       campaign_type: data.tracking.campaignType,
@@ -441,7 +469,7 @@ const PdcLanding = () => {
       'data-cta-type': 'whatsapp',
       'data-ticket-category': TICKET_CATEGORY,
       'data-related-service': PDC_CONTEXT.related_service,
-      'data-whatsapp-destination': WHATSAPP_DESTINATION,
+      'data-whatsapp-destination': getWhatsappDestination(),
     };
   };
 
