@@ -383,6 +383,7 @@ function App() {
       page_path: eventContext.page_path,
       landing_name: LANDING_NAME,
       event_type: data.type,
+      event_status: data.status,
       service_name: data.name,
       cta_text: ctaText,
       cta_location: ctaLocation,
