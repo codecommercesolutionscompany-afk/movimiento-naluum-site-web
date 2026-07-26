@@ -14,7 +14,15 @@
   },
   "whatsapp": {
     "number": "5493764257777",
-    "message": "Hola, quiero recibir información sobre Ecos de la Tierra 2026."
+    "messages": {
+      "hero": "Hola, quiero comprar mi entrada para Ecos de la Tierra 2026. Mi opción de interés es Congreso + Festival completo.",
+      "sticky_preventa_banner": "Hola, quiero comprar mi entrada para Ecos de la Tierra 2026. Mi opción de interés es Congreso + Festival completo.",
+      "congreso-festival-completo": "Hola, quiero comprar mi entrada para Congreso + Festival completo de Ecos de la Tierra 2026.",
+      "solo-congreso": "Hola, quiero comprar mi entrada para Solo Congreso de Ecos de la Tierra 2026.",
+      "solo-festival": "Hola, quiero comprar mi entrada para Solo Festival de Ecos de la Tierra 2026.",
+      "diplomado-inmersivo": "Hola, quiero postularme al Diplomado inmersivo de Ecos de la Tierra 2026.",
+      "final": "Hola, quiero reservar mi lugar para Ecos de la Tierra 2026. Mi opción de interés es Congreso + Festival completo."
+    }
   },
   "hero": {
     "eyebrow": "Congreso Festival Regenerativo",

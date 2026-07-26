@@ -12,15 +12,13 @@ export const buildFestivalAttributionLine = (attribution = {}) => {
 
 export const buildFestivalWhatsappMessage = (
   baseMessage = '',
-  ticketLabel = null,
   funnelReference = '',
   attribution = {},
 ) => {
   const referenceLine = funnelReference ? `Referencia: ${funnelReference}` : '';
   const attributionLine = buildFestivalAttributionLine(attribution);
-  const ticketContext = ticketLabel ? `Opción de interés: ${ticketLabel}` : '';
 
-  return [baseMessage, ticketContext, referenceLine, attributionLine].filter(Boolean).join('\n\n');
+  return [baseMessage, referenceLine, attributionLine].filter(Boolean).join('\n\n');
 };
 
 export const generateWhatsappUrl = (number = OFFICIAL_WHATSAPP_NUMBER, message = '') => {
