@@ -1,13 +1,26 @@
 export const OFFICIAL_WHATSAPP_NUMBER = '5493764257777';
 
-export const buildFestivalWhatsappMessage = (baseMessage = '', ticketLabel = null, funnelReference = '') => {
+export const buildFestivalAttributionLine = (attribution = {}) => {
+  const fields = [
+    ['Origen', attribution.utm_source],
+    ['Campaña', attribution.utm_campaign],
+    ['Pieza', attribution.utm_content],
+  ].filter(([, value]) => Boolean(value));
+
+  return fields.length ? fields.map(([label, value]) => `${label}: ${value}`).join(' | ') : '';
+};
+
+export const buildFestivalWhatsappMessage = (
+  baseMessage = '',
+  ticketLabel = null,
+  funnelReference = '',
+  attribution = {},
+) => {
   const referenceLine = funnelReference ? `Referencia: ${funnelReference}` : '';
+  const attributionLine = buildFestivalAttributionLine(attribution);
+  const ticketContext = ticketLabel ? `Opción de interés: ${ticketLabel}` : '';
 
-  if (!ticketLabel) {
-    return [baseMessage, referenceLine].filter(Boolean).join('\n\n');
-  }
-
-  return `${baseMessage}\n\nOpción de interés: ${ticketLabel}\n${referenceLine}`;
+  return [baseMessage, ticketContext, referenceLine, attributionLine].filter(Boolean).join('\n\n');
 };
 
 export const generateWhatsappUrl = (number = OFFICIAL_WHATSAPP_NUMBER, message = '') => {
