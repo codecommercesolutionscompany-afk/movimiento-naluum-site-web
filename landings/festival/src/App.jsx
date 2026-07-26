@@ -9,6 +9,7 @@ import {
 import './styles/main.scss';
 
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+const ATTRIBUTION_KEYS = [...UTM_KEYS, 'fbclid', 'gclid'];
 const UTM_STORAGE_KEY = 'festival_utm_context';
 const FIRST_TOUCH_STORAGE_KEY = 'festival_first_touch_timestamp';
 const WHATSAPP_DEDUP_PREFIX = 'festival_whatsapp_click_tracked';
@@ -28,19 +29,19 @@ const TRAINING_PACKAGE_IDS = ['diplomado-inmersivo'];
 
 let eventPageContextPushed = false;
 
-const getStoredUtms = () => {
+const getStoredAttribution = () => {
   if (typeof window === 'undefined') return {};
 
   const params = new URLSearchParams(window.location.search);
-  const currentUtms = UTM_KEYS.reduce((acc, key) => {
+  const currentAttribution = ATTRIBUTION_KEYS.reduce((acc, key) => {
     const value = params.get(key);
     if (value) acc[key] = value;
     return acc;
   }, {});
 
-  if (Object.keys(currentUtms).length > 0) {
-    window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(currentUtms));
-    return currentUtms;
+  if (Object.keys(currentAttribution).length > 0) {
+    window.sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(currentAttribution));
+    return currentAttribution;
   }
 
   try {
@@ -60,6 +61,12 @@ const getFirstTouchTimestamp = () => {
   window.sessionStorage.setItem(FIRST_TOUCH_STORAGE_KEY, timestamp);
   return timestamp;
 };
+
+const getUtmAttribution = (attribution) =>
+  UTM_KEYS.reduce((acc, key) => {
+    acc[key] = attribution[key] || undefined;
+    return acc;
+  }, {});
 
 const generateReferenceCode = (length = 4) => {
   const values = new Uint32Array(length);
@@ -106,19 +113,24 @@ const getPageLocation = () => {
   };
 };
 
-const getFestivalContext = (data) => ({
-  ...getPageLocation(),
-  landing_name: LANDING_NAME,
-  related_service: RELATED_SERVICE,
-  event_id: data.id,
-  event_name: data.name,
-  event_type: data.type,
-  event_edition: data.year,
-  event_date: data.dates,
-  event_status: data.status,
-  ...getStoredUtms(),
-  first_touch_timestamp: getFirstTouchTimestamp(),
-});
+const getFestivalContext = (data, attribution) => {
+  return {
+    ...getPageLocation(),
+    landing_name: LANDING_NAME,
+    related_service: RELATED_SERVICE,
+    event_id: data.id,
+    event_name: data.name,
+    event_type: data.type,
+    event_edition: data.year,
+    event_date: data.dates,
+    event_status: data.status,
+    funnel_reference: getFunnelReference(),
+    ...getUtmAttribution(attribution),
+    fbclid_present: Boolean(attribution.fbclid),
+    gclid_present: Boolean(attribution.gclid),
+    first_touch_timestamp: getFirstTouchTimestamp(),
+  };
+};
 
 const pushDataLayer = (eventName, payload = {}) => {
   if (typeof window === 'undefined') return;
@@ -135,17 +147,88 @@ const formatTicketPrice = ({ amount, currency }) => {
   return currency === 'ARS' ? `$${formattedAmount} ARS` : `${currency} ${formattedAmount}`;
 };
 
-function CommercialStageNote({ stage }) {
+const formatCountdown = (remainingMilliseconds, { compact = false } = {}) => {
+  const remainingSeconds = Math.max(0, Math.floor(remainingMilliseconds / 1000));
+  const days = Math.floor(remainingSeconds / 86400);
+  const hours = Math.floor((remainingSeconds % 86400) / 3600);
+  const minutes = Math.floor((remainingSeconds % 3600) / 60);
+  const seconds = remainingSeconds % 60;
+
+  if (compact) {
+    return `${days}d · ${String(hours).padStart(2, '0')}h · ${String(minutes).padStart(2, '0')}m`;
+  }
+
+  return `${days} días · ${String(hours).padStart(2, '0')} h · ${String(minutes).padStart(2, '0')} min · ${String(seconds).padStart(2, '0')} s`;
+};
+
+function StickyCommercialBanner({ stage, ticket, ctaProps }) {
+  const [now, setNow] = useState(() => Date.now());
+  const closingTimestamp = new Date(stage.closingDateTime).getTime();
+  const isPreventa = Number.isFinite(closingTimestamp) && now < closingTimestamp;
+
+  useEffect(() => {
+    if (!isPreventa) return undefined;
+
+    const intervalId = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(intervalId);
+  }, [isPreventa]);
+
+  if (!stage?.active || !ticket?.commercialStage) return null;
+
+  const { commercialStage } = ticket;
+  const currentPrice = isPreventa ? ticket.price : commercialStage.nextPrice;
+
+  return (
+    <aside
+      className="festival-commercial-banner"
+      aria-label={`Etapa comercial: ${isPreventa ? stage.title : commercialStage.nextStage}`}
+    >
+      <div className="festival-container festival-commercial-banner__content">
+        <p className="festival-commercial-banner__stage">{isPreventa ? stage.title : commercialStage.nextStage}</p>
+        {isPreventa ? (
+          <p
+            className="festival-commercial-banner__countdown"
+            aria-label={`La Preventa finaliza el ${stage.closingDate} a las 23:59:59, hora de Argentina.`}
+          >
+            <span>Finaliza en:</span>{' '}
+            <span className="festival-commercial-banner__countdown--desktop">
+              {formatCountdown(closingTimestamp - now)}
+            </span>
+            <span className="festival-commercial-banner__countdown--mobile" aria-hidden="true">
+              {formatCountdown(closingTimestamp - now, { compact: true })}
+            </span>
+          </p>
+        ) : (
+          <p className="festival-commercial-banner__open">Inscripciones abiertas</p>
+        )}
+        <p className="festival-commercial-banner__price">
+          <span>{isPreventa ? 'Ahora' : 'Precio vigente'}</span> {formatTicketPrice(currentPrice)}
+        </p>
+        {isPreventa ? (
+          <p className="festival-commercial-banner__next-price">
+            <span className="festival-commercial-banner__next-price-label--desktop">Luego:</span>
+            <span className="festival-commercial-banner__next-price-label--mobile">Después:</span>{' '}
+            <s>{formatTicketPrice(commercialStage.nextPrice)}</s>
+          </p>
+        ) : null}
+        <a {...ctaProps({ location: 'sticky_preventa_banner', text: stage.cta })}>{stage.cta}</a>
+      </div>
+    </aside>
+  );
+}
+
+function CommercialStageNote({ stage, currentPrice }) {
   if (!stage) return null;
 
   return (
     <div className="festival-ticket__commercial-stage">
-      <strong>{stage.label}</strong>
-      <span>{stage.validity}</span>
-      <span>{stage.nextStageStarts}</span>
-      <span>
-        Próximo precio de {stage.nextStage}: {formatTicketPrice(stage.nextPrice)}
-      </span>
+      <p className="festival-ticket__previous-price">
+        {stage.nextStage}: <s>{formatTicketPrice(stage.nextPrice)}</s>
+      </p>
+      <span className="festival-ticket__savings">{stage.savingsLabel}</span>
+      <strong className="festival-ticket__current-price">{formatTicketPrice(currentPrice)}</strong>
+      <span className="festival-ticket__validity">{stage.validity}</span>
+      <span>{stage.nextStageStarts}: {formatTicketPrice(stage.nextPrice)}</span>
     </div>
   );
 }
@@ -261,7 +344,8 @@ function App() {
   const data = festivalData;
   const [selectedTicket, setSelectedTicket] = useState(null);
   const lastDetailsButtonRef = useRef(null);
-  const eventContext = useMemo(() => getFestivalContext(data), [data]);
+  const attributionContext = useMemo(() => getStoredAttribution(), []);
+  const eventContext = useMemo(() => getFestivalContext(data, attributionContext), [data, attributionContext]);
   const whatsappDestination = data.whatsapp.number || OFFICIAL_WHATSAPP_NUMBER;
   const trackingWhatsappUrl = getWhatsappTrackingUrl(whatsappDestination);
   const festivalTickets = data.tickets
@@ -270,6 +354,7 @@ function App() {
   const trainingTickets = data.tickets
     .filter((ticket) => TRAINING_PACKAGE_IDS.includes(ticket.id))
     .map((ticket) => ({ ...ticket, modalLocation: 'training_modal' }));
+  const featuredTicket = festivalTickets.find((ticket) => ticket.recommended);
 
   useEffect(() => {
     if (eventPageContextPushed) return;
@@ -277,27 +362,35 @@ function App() {
     eventPageContextPushed = true;
   }, [eventContext]);
 
-  const getUtmPayload = () =>
-    UTM_KEYS.reduce((acc, key) => {
-      acc[key] = eventContext[key] || undefined;
-      return acc;
-    }, {});
+  const getAttributionPayload = () => {
+    return {
+      ...getUtmAttribution(attributionContext),
+      fbclid_present: Boolean(attributionContext.fbclid),
+      gclid_present: Boolean(attributionContext.gclid),
+    };
+  };
 
   const trackWhatsappClick = ({ ctaLocation, ctaText, ticketCategory = null, ticketLabel = null }) => {
     const funnelReference = getFunnelReference(ticketCategory);
     const ctaUrl = generateWhatsappUrl(
       whatsappDestination,
-      buildFestivalWhatsappMessage(data.whatsapp.message, ticketLabel, funnelReference),
+      buildFestivalWhatsappMessage(data.whatsapp.message, ticketLabel, funnelReference, attributionContext),
     );
     const trackingBase = {
       page_url: eventContext.page_url,
       page_path: eventContext.page_path,
+      landing_name: LANDING_NAME,
+      event_type: data.type,
+      service_name: data.name,
       cta_text: ctaText,
       cta_location: ctaLocation,
       ticket_category: ticketCategory,
+      ticket_name: ticketLabel,
+      ticket_label: ticketLabel,
       funnel_reference: funnelReference,
       related_service: RELATED_SERVICE,
-      ...getUtmPayload(),
+      destination: trackingWhatsappUrl,
+      ...getAttributionPayload(),
     };
 
     pushDataLayer('cta_click', {
@@ -371,8 +464,11 @@ function App() {
       {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
       <h3>{ticket.name}</h3>
       <p className="festival-ticket__period">{ticket.period}</p>
-      <strong>{formatTicketPrice(ticket.price)}</strong>
-      <CommercialStageNote stage={ticket.commercialStage} />
+      {ticket.commercialStage ? (
+        <CommercialStageNote stage={ticket.commercialStage} currentPrice={ticket.price} />
+      ) : (
+        <strong>{formatTicketPrice(ticket.price)}</strong>
+      )}
       <p className="festival-ticket__audience">{ticket.audience}</p>
       <ul className="festival-ticket__includes">
         {ticket.summaryBenefits.map((item) => (
@@ -436,6 +532,7 @@ function App() {
 
   return (
     <main className="festival-page">
+      <StickyCommercialBanner stage={data.commercialStage} ticket={featuredTicket} ctaProps={ctaProps} />
       <section className="festival-hero">
         <div className="festival-hero__media" aria-hidden="true">
             <img src="/festival/img/diplomado-fuego.webp" alt="" decoding="async" />
@@ -452,7 +549,6 @@ function App() {
             <span>{data.location.short}</span>
           </div>
           <a {...ctaProps({ location: 'hero', text: data.hero.cta })}>{data.hero.cta}</a>
-          <p className="festival-hero__status">Una experiencia formativa inmersiva para aprender, practicar y transformar en comunidad.</p>
         </div>
       </section>
 
