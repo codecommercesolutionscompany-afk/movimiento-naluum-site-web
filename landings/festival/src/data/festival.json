@@ -19,10 +19,10 @@
   "hero": {
     "eyebrow": "Congreso Festival Regenerativo",
     "title": "Ecos de la Tierra 2026",
-    "subtitle": "Un encuentro para aprender, practicar y celebrar nuevas formas de habitar la Tierra.",
-    "description": "Permacultura, bioconstrucción, agricultura regenerativa, comunidad, arte y celebración en EcoCentro Madre Selva.",
-    "pathNote": "Podés participar del Congreso Festival completo, elegir una experiencia puntual o sumarte a una formación más profunda.",
-    "cta": "Quiero recibir información"
+    "subtitle": "7 días para aprender, practicar y celebrar nuevas formas de habitar la Tierra.",
+    "description": "Una experiencia inmersiva de permacultura, bioconstrucción, agricultura regenerativa, arte, música y vida en comunidad, dentro del territorio vivo de EcoCentro Madre Selva.",
+    "pathNote": "Viví el Congreso Festival completo, participá de una experiencia puntual o sumate a una formación más profunda.",
+    "cta": "Comprar mi entrada"
   },
   "about": {
     "title": "Mucho más que un festival",
@@ -161,12 +161,14 @@
   "commercialStage": {
     "active": true,
     "eyebrow": "ETAPA ACTUAL",
-    "title": "Súper Preventa",
-    "text": "El Congreso + Festival completo tiene precio de Súper Preventa hasta el 15 de julio de 2026.",
-    "cta": "Consultar disponibilidad",
+    "title": "Preventa",
+    "text": "El Congreso + Festival completo tiene precio de Preventa hasta el 31 de agosto de 2026 inclusive.",
+    "cta": "Comprar mi entrada",
     "note": "Las condiciones de inscripción pueden actualizarse según la etapa comercial del evento.",
-    "stageName": "super-preventa",
-    "closingDate": "15 de julio de 2026",
+    "stageName": "preventa",
+    "closingDate": "31 de agosto de 2026",
+    "closingDateTime": "2026-08-31T23:59:59-03:00",
+    "timeZone": "America/Argentina/Buenos_Aires",
     "currentPrice": "",
     "previousPrice": "",
     "spotsLabel": "",
@@ -181,20 +183,21 @@
     {
       "id": "congreso-festival-completo",
       "recommended": true,
-      "badge": "Súper Preventa",
+      "badge": "Preventa",
       "name": "Congreso + Festival completo",
       "period": "20 al 26 de septiembre de 2026",
       "price": {
-        "amount": 520000,
+        "amount": 653333,
         "currency": "ARS"
       },
       "commercialStage": {
-        "label": "Súper Preventa",
-        "validity": "Disponible hasta el 15 de julio de 2026",
-        "nextStage": "Preventa",
-        "nextStageStarts": "Comienza el 16 de julio de 2026",
+        "label": "Preventa",
+        "validity": "Preventa disponible hasta el 31 de agosto de 2026 inclusive",
+        "nextStage": "Entrada General",
+        "nextStageStarts": "Desde el 1 de septiembre",
+        "savingsLabel": "Ahorrás 25%",
         "nextPrice": {
-          "amount": 653333.33,
+          "amount": 866667,
           "currency": "ARS"
         }
       },
@@ -228,14 +231,14 @@
       "accommodation": "Estadía en carpa propia.",
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Integra Congreso y Festival final en una sola experiencia.",
-      "cta": "Consultar por la experiencia completa"
+      "cta": "Elegir esta entrada"
     },
     {
       "id": "solo-congreso",
       "name": "Solo Congreso",
       "period": "20 al 25 de septiembre de 2026",
       "price": {
-        "amount": 373333.33,
+        "amount": 373333,
         "currency": "ARS"
       },
       "audience": "Para quienes buscan la etapa formativa y práctica del encuentro sin participar del festival final.",
@@ -271,14 +274,14 @@
       "accommodation": "Estadía en carpa propia.",
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "No incluye el Festival del 26 de septiembre.",
-      "cta": "Consultar por el Congreso"
+      "cta": "Elegir esta entrada"
     },
     {
       "id": "solo-festival",
       "name": "Solo Festival",
       "period": "26 de septiembre de 2026",
       "price": {
-        "amount": 113333.33,
+        "amount": 113333,
         "currency": "ARS"
       },
       "audience": "Para quienes quieren vivir una jornada de arte, espiritualidad, música, danza y celebración comunitaria.",
@@ -313,7 +316,7 @@
       "accommodation": "Una noche de estadía en carpa propia.",
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Es una jornada final de celebración comunitaria.",
-      "cta": "Consultar por el Festival"
+      "cta": "Elegir esta entrada"
     },
     {
       "id": "diplomado-inmersivo",
@@ -360,7 +363,7 @@
       "accommodation": "Estadía en carpa propia durante los 45 días.",
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Incluye internet según las condiciones del lugar.",
-      "cta": "Consultar por el Diplomado"
+      "cta": "Quiero postularme"
     }
   ],
   "closing": {
@@ -370,7 +373,7 @@
   "finalCta": {
     "title": "¿Todavía no sabés qué opción elegir?",
     "text": "Escribinos por WhatsApp y te ayudamos a encontrar la experiencia adecuada para vos.",
-    "cta": "Quiero recibir información"
+    "cta": "Reservar mi lugar"
   },
   "faq": [
     {

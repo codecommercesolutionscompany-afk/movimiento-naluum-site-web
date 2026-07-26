@@ -118,6 +118,86 @@ summary:focus-visible {
   filter: brightness(0.98);
 }
 
+.festival-commercial-banner {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(110deg, #963f26 0%, #b8522d 58%, #8e3722 100%);
+  box-shadow: 0 8px 22px rgba(91, 33, 20, 0.28);
+}
+
+.festival-commercial-banner__content {
+  display: grid;
+  grid-template-columns: auto auto auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem 1.15rem;
+  min-height: 68px;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}
+
+.festival-commercial-banner p {
+  margin: 0;
+}
+
+.festival-commercial-banner__stage {
+  color: var(--festival-gold);
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.festival-commercial-banner__countdown,
+.festival-commercial-banner__open,
+.festival-commercial-banner__next-price {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+.festival-commercial-banner__countdown span {
+  color: #fff;
+  font-weight: 700;
+}
+
+.festival-commercial-banner__countdown--mobile {
+  display: none;
+}
+
+.festival-commercial-banner__next-price-label--mobile {
+  display: none;
+}
+
+.festival-commercial-banner__price {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.festival-commercial-banner__price span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.festival-commercial-banner__next-price {
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.festival-commercial-banner .festival-button {
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border-width: 1px;
+  box-shadow: none;
+  white-space: nowrap;
+}
+
 .festival-hero {
   position: relative;
   min-height: 92vh;
@@ -148,21 +228,24 @@ summary:focus-visible {
 .festival-hero__content {
   position: relative;
   z-index: 1;
-  max-width: 760px;
-  padding: 6rem 0;
+  width: min(1320px, calc(100% - 96px));
+  max-width: none;
+  padding: clamp(3.5rem, 5vw, 4.5rem) 0;
+  text-align: left;
 }
 
 .festival-hero h1 {
   margin: 0;
   max-width: 12ch;
   color: #fff;
-  font-size: clamp(3.1rem, 9vw, 6.8rem);
-  line-height: 0.95;
+  font-size: clamp(2.85rem, 7vw, 5.85rem);
+  line-height: 0.98;
   letter-spacing: 0;
 }
 
 .festival-hero__concept {
-  margin: 1rem 0 0;
+  max-width: 700px;
+  margin: 0.8rem 0 0;
   color: var(--festival-gold);
   font-size: clamp(1.15rem, 3vw, 1.8rem);
   font-weight: 800;
@@ -170,7 +253,7 @@ summary:focus-visible {
 
 .festival-hero__description {
   max-width: 640px;
-  margin: 1rem 0 1.4rem;
+  margin: 0.85rem 0 1.05rem;
   color: rgba(255, 255, 255, 0.9);
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   line-height: 1.65;
@@ -178,7 +261,7 @@ summary:focus-visible {
 
 .festival-hero__path {
   max-width: 620px;
-  margin: 0 0 1.4rem;
+  margin: 0 0 1.2rem;
   color: #fff;
   font-weight: 800;
   line-height: 1.55;
@@ -188,7 +271,7 @@ summary:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
-  margin: 0 0 1.6rem;
+  margin: 0 0 1.35rem;
 }
 
 .festival-hero__facts span {
@@ -414,18 +497,50 @@ summary:focus-visible {
 
 .festival-ticket__commercial-stage {
   display: grid;
-  gap: 0.18rem;
+  justify-items: start;
+  gap: 0.55rem;
   color: var(--festival-muted);
   font-size: 0.82rem;
   line-height: 1.35;
 }
 
-.festival-ticket__commercial-stage strong {
+.festival-ticket__commercial-stage .festival-ticket__previous-price {
+  margin: 0;
+  color: var(--festival-muted);
+  font-size: 0.88rem;
+}
+
+.festival-ticket__previous-price s {
+  color: rgba(21, 37, 28, 0.62);
+  font-weight: 760;
+  text-decoration-thickness: 1.5px;
+}
+
+.festival-ticket__savings {
   width: fit-content;
-  padding: 0;
-  background: transparent;
+  padding: 0.28rem 0.54rem;
+  border: 1px solid rgba(47, 107, 79, 0.2);
+  border-radius: 10px;
+  background: rgba(47, 107, 79, 0.09);
   color: var(--festival-leaf);
-  font-size: 0.82rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.festival-ticket__commercial-stage .festival-ticket__current-price {
+  width: fit-content;
+  padding: 0.42rem 0.68rem;
+  border-radius: 14px;
+  background: rgba(47, 107, 79, 0.08);
+  color: var(--festival-leaf);
+  font-size: clamp(1.35rem, 2.5vw, 1.62rem);
+  line-height: 1;
+}
+
+.festival-ticket__validity {
+  color: var(--festival-forest);
+  font-weight: 760;
 }
 
 .festival-ticket__badge {
@@ -1023,6 +1138,14 @@ summary:focus-visible {
 }
 
 @media (max-width: 980px) {
+  .festival-commercial-banner__content {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .festival-commercial-banner__next-price {
+    grid-column: 2;
+  }
+
   .festival-grid--tickets,
   .festival-essential-grid {
     grid-template-columns: 1fr 1fr;
@@ -1047,14 +1170,74 @@ summary:focus-visible {
     min-height: auto;
   }
 
+  .festival-commercial-banner__content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+    min-height: 0;
+    padding-top: 0.65rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .festival-commercial-banner__stage,
+  .festival-commercial-banner__countdown,
+  .festival-commercial-banner__open,
+  .festival-commercial-banner__price,
+  .festival-commercial-banner__next-price {
+    grid-column: 1;
+  }
+
+  .festival-commercial-banner__countdown--desktop {
+    display: none;
+  }
+
+  .festival-commercial-banner__countdown--mobile {
+    display: inline;
+  }
+
+  .festival-commercial-banner__next-price-label--desktop {
+    display: none;
+  }
+
+  .festival-commercial-banner__next-price-label--mobile {
+    display: inline;
+  }
+
+  .festival-commercial-banner__stage {
+    font-size: 0.7rem;
+  }
+
+  .festival-commercial-banner__countdown,
+  .festival-commercial-banner__open,
+  .festival-commercial-banner__next-price {
+    font-size: 0.78rem;
+  }
+
+  .festival-commercial-banner__price {
+    font-size: 1rem;
+  }
+
+  .festival-commercial-banner .festival-button {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+    min-height: 46px;
+    margin-top: 0.45rem;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
   .festival-hero__content {
-    padding: 4.5rem 0 3.5rem;
+    padding: 3.2rem 0 2.8rem;
   }
 
   .festival-hero h1 {
     max-width: 100%;
     font-size: clamp(2.75rem, 13vw, 3.55rem);
     line-height: 1;
+  }
+
+  .festival-hero__path {
+    display: none;
   }
 
   .festival-hero__facts {
