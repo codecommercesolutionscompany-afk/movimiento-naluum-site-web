@@ -108,44 +108,43 @@
   },
   "affinity": {
     "label": "Filtro de afinidad",
-    "title": "No es solo aprender permacultura. Es vivirla en contexto real.",
-    "lead": "Esta experiencia está pensada para personas que quieren pasar de la teoría a la práctica y aprender permacultura dentro de un proyecto real, con territorio, comunidad, diseño, sistemas vivos y decisiones concretas.",
-    "warning": "Esta es una experiencia 100% activa. Venís a ensuciarte las manos, a convivir y a construir en equipo dentro de un proyecto real."
+    "title": "No es solo aprender permacultura. Es vivirla.",
+    "lead": "Esta experiencia es para quienes quieren pasar de la teoría a la práctica, convivir y aprender dentro de un proyecto real.",
+    "warning": "Venís a participar, ensuciarte las manos y construir en equipo."
   },
   "includes": {
     "label": "Propuesta",
     "title": "Qué incluye la experiencia",
-    "lead": "Durante 10 días, el Curso de Diseño en Permacultura (PDC) combina formación profesional, práctica aplicada, convivencia, certificación y beneficios de continuidad para que puedas integrar herramientas reales de diseño permacultural.",
     "items": [
       {
         "icon": "Award",
         "value": "Certificación",
         "label": "Aval académico",
-        "description": "Certificación del Curso de Diseño en Permacultura, avalada por el Instituto Na Lu'um y Permaculture Research Institute Australia."
+        "description": "Certificación del Curso de Diseño en Permacultura avalada por el Instituto Na Lu'um y Permaculture Research Institute Australia."
       },
       {
         "icon": "Leaf",
         "value": "Práctica real",
         "label": "Territorio",
-        "description": "Clases prácticas por la mañana, observación del territorio, análisis de sistemas vivos y diseño aplicado en Madre Selva."
+        "description": "Trabajo en territorio y aplicación del diseño en Madre Selva."
       },
       {
         "icon": "BookOpen",
         "value": "Teoría aplicada",
         "label": "Diseño",
-        "description": "Clases teóricas, herramientas de diseño, análisis de casos y desarrollo de propuestas vinculadas a proyectos reales."
+        "description": "Herramientas de diseño, análisis de casos y desarrollo de propuestas."
       },
       {
         "icon": "Utensils",
         "value": "Alimentación completa",
         "label": "Incluido",
-        "description": "Alimentación durante todos los días: 3 comidas diarias y 2 refrigerios diarios."
+        "description": "Tres comidas y dos refrigerios diarios durante toda la experiencia."
       },
       {
         "icon": "Tent",
         "value": "Camping base",
         "label": "Hospedaje",
-        "description": "Estadía base en carpa propia. También existe opción de dormi compartido en yurta, sujeto a disponibilidad y con costo extra."
+        "description": "Camping en carpa propia. Dormi compartido en yurta disponible con costo extra, sujeto a disponibilidad."
       },
       {
         "icon": "Users",
@@ -154,6 +153,33 @@
         "description": "Primer mes gratis en la comunidad de apoyo y precio mensual especial para continuar."
       }
     ]
+  },
+  "permaapprentice": {
+    "label": "Beneficio de continuidad",
+    "title": "Convertite en Permaaprendiz",
+    "paragraphs": [
+      "Al completar tu primer PDC y recibir tu certificado, accedés a un beneficio que te acompaña para siempre.",
+      "Podés volver a participar en futuros PDC organizados por nosotros, en cualquier lugar del mundo, sin volver a pagar la formación.",
+      "Solo abonás la alimentación correspondiente a cada nueva experiencia."
+    ],
+    "steps": [
+      {
+        "icon": "BookOpen",
+        "title": "Completás tu primer PDC",
+        "description": "Vivís la formación y recorrés el proceso de aprendizaje completo."
+      },
+      {
+        "icon": "Award",
+        "title": "Recibís tu certificado",
+        "description": "Tu primera experiencia abre la puerta a continuar aprendiendo."
+      },
+      {
+        "icon": "Users",
+        "title": "Volvés como Permaaprendiz",
+        "description": "No volvés a pagar la formación; solo abonás la alimentación de cada nueva experiencia."
+      }
+    ],
+    "highlight": "El PDC no termina cuando recibís tu certificado: se convierte en una comunidad de aprendizaje continuo."
   },
   "rolesSection": {
     "label": "EJES DEL CURSO DE DISEÑO EN PERMACULTURA (PDC)",
@@ -209,11 +235,6 @@
     "cardLabels": {
       "registered": "inscriptos",
       "spotsLeftPrefix": "Disponibilidad",
-      "countdownTitle": "Cuenta regresiva",
-      "days": "Días",
-      "hours": "Horas",
-      "minutes": "Min",
-      "seconds": "Seg",
       "availability": "Disponibilidad",
       "cta": "Consultar por esta edición"
     },
@@ -239,13 +260,11 @@
   "formation": {
     "label": "La Formación",
     "title": "No es un curso más.\nEs una inmersión en diseño permacultural aplicado.",
-    "lead": "El Curso de Diseño en Permacultura (PDC), Permaculture Design Course, es una experiencia de vida en comunidad que integra las áreas principales de la sustentabilidad propuestas por la permacultura.",
+    "lead": "El PDC combina práctica en territorio, herramientas de diseño, clases teóricas y vida en comunidad.",
     "paragraphs": [
-      "Durante las mañanas se realizan principalmente prácticas, recorridos, observaciones, ejercicios de campo, reconocimiento del territorio, análisis de sistemas vivos y prácticas vinculadas al diseño.",
-      "Durante las tardes se trabajan clases teóricas, marcos conceptuales, herramientas de diseño, ejercicios grupales, análisis de casos y desarrollo de propuestas.",
-      "La idea es aprender haciendo, observando, pensando, diseñando y compartiendo con otras personas que también buscan una vida más coherente y regenerativa."
+      "Aprendés haciendo, observando y desarrollando propuestas aplicadas a sistemas reales."
     ],
-    "highlight": "No es un curso pasivo. Es una experiencia activa, profunda y participativa."
+    "highlight": "Una experiencia activa, profunda y participativa."
   },
   "progression": {
     "label": "Trayectoria",
@@ -260,26 +279,22 @@
   "filters": {
     "positive": {
       "id": "perfil",
-      "title": "Este Curso de Diseño en Permacultura (PDC) puede ser para vos si...",
+      "title": "Este PDC puede ser para vos si…",
       "items": [
         "Querés aprender permacultura con profundidad y llevarla a la práctica.",
-        "Tenés un terreno, una idea, una comunidad, un emprendimiento o una búsqueda que necesitás ordenar.",
-        "Querés diseñar proyectos regenerativos, sustentables y económicamente viables.",
-        "Te interesa producir alimentos sanos, cuidar el agua, construir mejor y crear economías alternativas.",
-        "Sentís que el cambio externo también necesita un proceso interno.",
-        "Estás dispuesta/o a invertir tiempo, energía, dinero y compromiso en tu transformación."
+        "Tenés un proyecto, terreno, comunidad o idea que necesitás ordenar.",
+        "Buscás diseñar soluciones regenerativas, sustentables y viables.",
+        "Estás dispuesto/a a participar con tiempo, energía y compromiso."
       ]
     },
     "negative": {
-      "title": "Importante: esto no es",
+      "title": "Importante: esta experiencia requiere participación real",
       "items": [
-        "No es un voluntariado.",
-        "No es una experiencia turística.",
-        "No es una actividad para mirar desde afuera.",
-        "No es para recibir información sin participar.",
-        "No es para quien no pueda sostener intensidad, convivencia y compromiso diario."
+        "No es turismo ni voluntariado.",
+        "No es una formación para observar desde afuera.",
+        "Requiere presencia, convivencia, apertura y compromiso cotidiano."
       ],
-      "note": "Buscamos cuidar la calidad del proceso y la afinidad con la experiencia. El Curso de Diseño en Permacultura (PDC) requiere presencia, apertura y compromiso real."
+      "note": "Buscamos cuidar la calidad del proceso y la afinidad entre cada participante y la experiencia."
     }
   },
   "requirements": {
@@ -417,25 +432,6 @@
     "logo": "MADRE SELVA",
     "copy": "© 2026 MADRE SELVA — MOVIMIENTO NA LU'UM. Instituto de Pedagogía de la Tierra."
   },
-  "threeDimensions": {
-    "label": "Qué hace especial a este Curso de Diseño en Permacultura (PDC)",
-    "title": "Tres dimensiones para aprender permacultura con profundidad",
-    "lead": "El Curso de Diseño en Permacultura (PDC) une formación profesional, aprendizaje en un proyecto real y transformación personal aplicada al diseño regenerativo.",
-    "items": [
-      {
-        "title": "Formación profesional en diseño de permacultura",
-        "description": "Aprendés bases éticas, filosóficas, técnicas y metodológicas para observar, ordenar y crear sistemas vivos donde agua, suelo, alimentos, viviendas, economía, relaciones y organización funcionen de manera más armónica."
-      },
-      {
-        "title": "Aprendizaje en un proyecto real",
-        "description": "El curso se desarrolla dentro de Madre Selva, una escuela viva con sistemas productivos, construcciones, procesos comunitarios y decisiones de diseño que se aplican todos los días."
-      },
-      {
-        "title": "Transformación personal y mirada regenerativa",
-        "description": "Diseñar también implica mirar cómo tomamos decisiones, cómo nos relacionamos, cómo habitamos el territorio y desde qué lugar queremos crear futuro."
-      }
-    ]
-  },
   "topicsSection": {
     "label": "Temas del curso",
     "title": "Qué vas a trabajar durante el Curso de Diseño en Permacultura (PDC)",
@@ -481,27 +477,11 @@
   "locationSection": {
     "label": "Lugar",
     "title": "Madre Selva: un territorio diseñado para aprender",
-    "lead": "El curso se realiza en el Eco Centro Madre Selva, en El Soberbio, Misiones, Argentina, en el corazón de la selva misionera.",
+    "lead": "El PDC se realiza en el EcoCentro Madre Selva, en El Soberbio, Misiones, en el corazón de la selva misionera.",
     "paragraphs": [
-      "Madre Selva es una escuela viva donde se integran permacultura, bioarquitectura, agricultura sintrópica, desarrollo sustentable, educación transformadora, producción agroecológica, vida comunitaria y cuidado del territorio.",
-      "No es solamente un lugar bonito para hacer un curso. La selva, el agua, las construcciones, los cultivos, los caminos, los sistemas de organización y la vida cotidiana forman parte del proceso educativo."
+      "Acá, la permacultura, la bioarquitectura, la agricultura sintrópica y la vida comunitaria no se estudian solamente en teoría: forman parte de la experiencia cotidiana."
     ],
     "highlight": "Durante los 10 días vas a habitar un espacio donde muchas de las ideas del curso ya están siendo practicadas."
-  },
-  "offerSection": {
-    "label": "Inversión e inscripción",
-    "title": "Inversión del curso",
-    "lead": "El valor del curso es de {programPrice} por persona.",
-    "priceCards": [
-      {
-        "label": "Valor del curso",
-        "valueFromPricing": true,
-        "description": "Inversión por persona."
-      }
-    ],
-    "conditions": [
-      "Tu lugar queda confirmado una vez coordinado el pago y recibido el comprobante."
-    ]
   },
   "accommodationSection": {
     "label": "Hospedaje",

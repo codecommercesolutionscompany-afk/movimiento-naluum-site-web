@@ -4,7 +4,6 @@ import {
   BookOpen,
   Calendar,
   CheckCircle2,
-  Clock,
   CreditCard,
   DollarSign,
   Leaf,
@@ -67,7 +66,6 @@ const iconMap = {
   BookOpen,
   Calendar,
   CheckCircle2,
-  Clock,
   CreditCard,
   DollarSign,
   Leaf,
@@ -114,63 +112,6 @@ const formatPdcPrice = ({ amount, currency }) =>
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(amount)}`;
-
-const getCountdownParts = (startsAt, now) => {
-  const diff = Math.max(new Date(startsAt).getTime() - now, 0);
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-
-  return { days, hours, minutes, seconds };
-};
-
-const padCountdownValue = (value) => String(value).padStart(2, '0');
-
-const useCountdown = (startsAt) => {
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const timerId = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(timerId);
-  }, []);
-
-  return startsAt ? getCountdownParts(startsAt, now) : null;
-};
-
-const BookingCountdown = ({ startsAt }) => {
-  const countdown = useCountdown(startsAt);
-
-  if (!countdown) return null;
-
-  return (
-    <div className="booking-countdown" aria-label="Cuenta regresiva para el Curso de Diseño en Permacultura (PDC)">
-      <div className="booking-countdown__title">
-        <Clock size={16} />
-        El Curso de Diseño en Permacultura (PDC) empieza en
-      </div>
-      <div className="booking-countdown__grid">
-        <span>
-          <strong>{countdown.days}</strong>
-          <small>Días</small>
-        </span>
-        <span>
-          <strong>{padCountdownValue(countdown.hours)}</strong>
-          <small>Horas</small>
-        </span>
-        <span>
-          <strong>{padCountdownValue(countdown.minutes)}</strong>
-          <small>Min</small>
-        </span>
-        <span>
-          <strong>{padCountdownValue(countdown.seconds)}</strong>
-          <small>Seg</small>
-        </span>
-      </div>
-      <p>Los cupos se confirman por orden de inscripción.</p>
-    </div>
-  );
-};
 
 const renderMultiline = (text = '') =>
   String(text)
@@ -479,7 +420,6 @@ const PdcLanding = () => {
   };
 
   const testimonials = data.testimonialsSection?.testimonials || [];
-  const nextCohort = data.cohortsSection?.cohorts?.[0];
   return (
     <div className="pdc-landing">
       <SEOHelmet
@@ -575,36 +515,10 @@ const PdcLanding = () => {
         </div>
       </section>
 
-      {data.threeDimensions?.items?.length ? (
-        <section className="pdc-stats-grid container">
-          <motion.div className="section-intro" {...fadeInUp}>
-            <span className="section-label">{data.threeDimensions.label}</span>
-            <h2 className="editorial-title">{data.threeDimensions.title}</h2>
-            <p className="editorial-lead">{data.threeDimensions.lead}</p>
-          </motion.div>
-
-          <div className="axis-grid axis-grid--three">
-            {data.threeDimensions.items.map((item, index) => (
-              <motion.div
-                key={item.title}
-                className="axis-item"
-                {...fadeInUp}
-                transition={{ delay: index * 0.1 }}
-              >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      ) : null}
-
       <section className="pdc-stats-grid container">
-        <motion.div className="section-intro" {...fadeInUp}>
+        <motion.div className="section-intro section-intro--compact" {...fadeInUp}>
           <span className="section-label">{data.includes.label}</span>
           <h2 className="editorial-title">{data.includes.title}</h2>
-          <p className="editorial-lead">{data.includes.lead}</p>
         </motion.div>
 
         <div className="stats-container">
@@ -625,6 +539,35 @@ const PdcLanding = () => {
           ))}
         </div>
       </section>
+
+      {data.permaapprentice ? (
+        <section className="container pdc-permaapprentice-section">
+          <motion.section className="pdc-permaapprentice" {...fadeInUp}>
+            <div className="pdc-permaapprentice__intro">
+              <span className="section-label">{data.permaapprentice.label}</span>
+              <h2 className="editorial-title">{data.permaapprentice.title}</h2>
+              {data.permaapprentice.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="pdc-permaapprentice__steps">
+              {data.permaapprentice.steps.map((step, index) => (
+                <div className="pdc-permaapprentice__step" key={step.title}>
+                  <span className="pdc-permaapprentice__step-number">{String(index + 1).padStart(2, '0')}</span>
+                  <Icon name={step.icon} size={22} />
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="pdc-permaapprentice__highlight">{data.permaapprentice.highlight}</p>
+          </motion.section>
+        </section>
+      ) : null}
 
       <main className="pdc-main-layout container">
         <div className="content-area">
@@ -664,8 +607,6 @@ const PdcLanding = () => {
                 La inscripción queda confirmada una vez realizado el pago correspondiente y enviado el comprobante.
               </p>
             </div>
-
-            <BookingCountdown startsAt={nextCohort?.startsAt} />
 
             <a
               {...getWhatsappCtaProps('sticky_sidebar')}
@@ -734,35 +675,6 @@ const PdcLanding = () => {
             ))}
             {data.locationSection.highlight ? (
               <p className="highlight-text">{data.locationSection.highlight}</p>
-            ) : null}
-          </motion.section>
-        </section>
-      ) : null}
-
-      {data.offerSection?.priceCards?.length ? (
-        <section className="container pdc-offer-section">
-          <motion.section className="card-editorial card-editorial--focus" {...fadeInUp}>
-            <span className="section-label">{data.offerSection.label}</span>
-            <h2 className="editorial-title">{data.offerSection.title}</h2>
-            <p className="editorial-lead">{resolveTemplate(data.offerSection.lead)}</p>
-            <div className={`price-grid ${data.offerSection.priceCards.length === 1 ? 'price-grid--single' : ''}`}>
-              {data.offerSection.priceCards.map((card) => (
-                <div className="price-card" key={card.label}>
-                  <span>{card.label}</span>
-                  <strong>{resolveValue(card)}</strong>
-                  <p>{card.description}</p>
-                </div>
-              ))}
-            </div>
-            {data.offerSection.conditions?.length ? (
-              <ul className="id-list conditions-list">
-                {data.offerSection.conditions.map((condition) => (
-                  <li key={condition}>
-                    <CheckCircle2 className="check" size={20} />
-                    <p>{condition}</p>
-                  </li>
-                ))}
-              </ul>
             ) : null}
           </motion.section>
         </section>

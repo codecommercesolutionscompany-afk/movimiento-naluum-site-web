@@ -20,11 +20,10 @@ const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const TICKET_CATEGORY_CODES = {
   general: 'GEN',
   'congreso-festival-completo': 'COMP',
-  'solo-congreso': 'CONG',
   'solo-festival': 'FEST',
   'diplomado-inmersivo': 'DIP',
 };
-const FESTIVAL_PACKAGE_IDS = ['congreso-festival-completo', 'solo-congreso', 'solo-festival'];
+const FESTIVAL_PACKAGE_IDS = ['congreso-festival-completo', 'solo-festival'];
 const TRAINING_PACKAGE_IDS = ['diplomado-inmersivo'];
 
 let eventPageContextPushed = false;
