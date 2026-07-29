@@ -67,12 +67,6 @@
         "ticketId": "congreso-festival-completo"
       },
       {
-        "title": "Quiero enfocarme en la formación del Congreso",
-        "target": "Solo Congreso",
-        "text": "La etapa formativa y práctica, sin participar del festival final.",
-        "ticketId": "solo-congreso"
-      },
-      {
         "title": "Quiero participar únicamente del día de celebración",
         "target": "Solo Festival",
         "text": "Una jornada puntual de arte, música, danza y comunidad.",
@@ -234,54 +228,11 @@
       "cta": "Elegir esta entrada"
     },
     {
-      "id": "solo-congreso",
-      "name": "Solo Congreso",
-      "period": "20 al 25 de septiembre de 2026",
-      "price": {
-        "amount": 373333,
-        "currency": "ARS"
-      },
-      "audience": "Para quienes buscan la etapa formativa y práctica del encuentro sin participar del festival final.",
-      "summaryBenefits": [
-        "Conferencias y clases",
-        "Actividades prácticas",
-        "Alimentación y camping incluidos"
-      ],
-      "description": "Cinco días dedicados al aprendizaje, la práctica y la exploración de herramientas regenerativas mediante conferencias, clases, plenarias, workshops y dinámicas grupales.",
-      "includes": [
-        "Acceso a las actividades del Congreso del 20 al 25 de septiembre",
-        "Conferencias",
-        "Clases",
-        "Plenarias",
-        "Workshops",
-        "Actividades prácticas",
-        "Dinámicas grupales",
-        "Contenidos de bioconstrucción, permacultura, agricultura regenerativa, diseño ecológico, comunidad y economía consciente",
-        "Alimentación sana y consciente durante los días del Congreso",
-        "Estadía en carpa propia",
-        "Acceso a instalaciones ecológicas y espacios comunitarios"
-      ],
-      "excludes": [
-        "Festival del 26 de septiembre",
-        "Transporte",
-        "Carpa",
-        "Bolsa de dormir",
-        "Aislante",
-        "Linterna",
-        "Equipo personal de camping"
-      ],
-      "food": "Alimentación sana y consciente durante los días del Congreso.",
-      "accommodation": "Estadía en carpa propia.",
-      "camping": "Cada participante debe traer su equipo personal de camping.",
-      "note": "No incluye el Festival del 26 de septiembre.",
-      "cta": "Elegir esta entrada"
-    },
-    {
       "id": "solo-festival",
       "name": "Solo Festival",
       "period": "26 de septiembre de 2026",
       "price": {
-        "amount": 113333,
+        "amount": 150000,
         "currency": "ARS"
       },
       "audience": "Para quienes quieren vivir una jornada de arte, espiritualidad, música, danza y celebración comunitaria.",
