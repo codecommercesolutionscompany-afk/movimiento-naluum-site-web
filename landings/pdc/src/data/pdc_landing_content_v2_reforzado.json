@@ -1,17 +1,18 @@
-﻿{
+{
   "site": {
     "brand": "MADRE SELVA",
     "organization": "Instituto de Permacultura Na Lu'um",
     "programId": "curso-certificado-diseno-permacultura",
     "programSlug": "pdc",
     "siteUrl": "https://movimientonaluum.org",
-    "landingUrl": "https://movimientonaluum.org/pdc"
+    "landingUrl": "https://movimientonaluum.org/pdc/"
   },
   "seo": {
-    "title": "Curso de Diseño en Permacultura (PDC) en Madre Selva | Curso Certificado de Diseño en Permacultura 2026",
-    "description": "Viví la permacultura en la práctica: una inmersión intensiva de 10 días en Madre Selva con certificación Na Lu'um + PRI Australia.",
-    "image": "/pdc/pdc_hero_pricipal.webp",
-    "canonical": "https://movimientonaluum.org/pdc"
+    "title": "Curso PDC Certificado en Madre Selva | Permacultura 2026",
+    "description": "Curso de Diseño en Permacultura: una experiencia inmersiva de 10 días en Madre Selva para aprender en la práctica, con certificación del Instituto Na Lu'um y Permaculture Research Institute Australia.",
+    "image": "/pdc/pdc-madre-selva-social.png",
+    "imageAlt": "Curso de Diseño en Permacultura (PDC) en EcoCentro Madre Selva, Misiones",
+    "canonical": "https://movimientonaluum.org/pdc/"
   },
   "pricing": {
     "amount": 533.33,
