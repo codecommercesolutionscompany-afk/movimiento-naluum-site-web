@@ -16,7 +16,6 @@ import {
   Users,
   Zap,
 } from 'lucide-react';
-import SEOHelmet from './SEOHelmet.jsx';
 import data from './data/pdc_landing_content_v2_reforzado.json';
 import testimonialImage from './assets/images/testimonioPDC1.jpg';
 import jazminTestimonialImage from './assets/images/jazmin-testimonio.webp';
@@ -331,11 +330,6 @@ const PdcLanding = () => {
 
   const resolveImage = (imageName) => imageAssets[imageName] || imageName || '';
 
-  const resolveAbsoluteImage = (imageName) => {
-    const src = resolveImage(imageName);
-    return src ? new URL(src, data.site.siteUrl).toString() : '';
-  };
-
   const trackWhatsappClick = ({ ctaLocation, ctaText, element }) => {
     const trackingContext = getTrackingContext();
     const funnelReference = trackingContext.funnel_reference;
@@ -422,13 +416,6 @@ const PdcLanding = () => {
   const testimonials = data.testimonialsSection?.testimonials || [];
   return (
     <div className="pdc-landing">
-      <SEOHelmet
-        title={data.seo.title}
-        description={data.seo.description}
-        canonical={data.seo.canonical}
-        image={resolveAbsoluteImage(data.seo.image)}
-      />
-
       <header className={`pdc-header ${scrolled ? 'scrolled' : ''}`}>
         <div className="pdc-header__wrapper">
           <a href={data.header.logoUrl} className="nav-logo">
