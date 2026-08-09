@@ -160,7 +160,7 @@ const formatCountdown = (remainingMilliseconds, { compact = false } = {}) => {
   return `${days} días · ${String(hours).padStart(2, '0')} h · ${String(minutes).padStart(2, '0')} min · ${String(seconds).padStart(2, '0')} s`;
 };
 
-function StickyCommercialBanner({ stage, ticket, ctaProps }) {
+function StickyCommercialBanner({ stage, ticket, ctaProps, eventName, eventDates }) {
   const [now, setNow] = useState(() => Date.now());
   const closingTimestamp = new Date(stage.closingDateTime).getTime();
   const isPreventa = Number.isFinite(closingTimestamp) && now < closingTimestamp;
@@ -175,8 +175,6 @@ function StickyCommercialBanner({ stage, ticket, ctaProps }) {
   if (!stage?.active || !ticket?.commercialStage) return null;
 
   const { commercialStage } = ticket;
-  const currentPrice = isPreventa ? ticket.price : commercialStage.nextPrice;
-
   return (
     <aside
       className="festival-commercial-banner"
@@ -184,6 +182,11 @@ function StickyCommercialBanner({ stage, ticket, ctaProps }) {
     >
       <div className="festival-container festival-commercial-banner__content">
         <p className="festival-commercial-banner__stage">{isPreventa ? stage.title : commercialStage.nextStage}</p>
+        <p className="festival-commercial-banner__event">{eventName}</p>
+        <p className="festival-commercial-banner__date">{eventDates}</p>
+        <p className="festival-commercial-banner__validity">
+          {isPreventa ? `Vigente hasta ${stage.closingDate}` : commercialStage.nextStageStarts}
+        </p>
         {isPreventa ? (
           <p
             className="festival-commercial-banner__countdown"
@@ -200,16 +203,6 @@ function StickyCommercialBanner({ stage, ticket, ctaProps }) {
         ) : (
           <p className="festival-commercial-banner__open">Inscripciones abiertas</p>
         )}
-        <p className="festival-commercial-banner__price">
-          <span>{isPreventa ? 'Ahora' : 'Precio vigente'}</span> {formatTicketPrice(currentPrice)}
-        </p>
-        {isPreventa ? (
-          <p className="festival-commercial-banner__next-price">
-            <span className="festival-commercial-banner__next-price-label--desktop">Luego:</span>
-            <span className="festival-commercial-banner__next-price-label--mobile">Después:</span>{' '}
-            <s>{formatTicketPrice(commercialStage.nextPrice)}</s>
-          </p>
-        ) : null}
         <a {...ctaProps({ location: 'sticky_preventa_banner', text: stage.cta })}>{stage.cta}</a>
       </div>
     </aside>
@@ -534,7 +527,13 @@ function App() {
 
   return (
     <main className="festival-page">
-      <StickyCommercialBanner stage={data.commercialStage} ticket={featuredTicket} ctaProps={ctaProps} />
+      <StickyCommercialBanner
+        stage={data.commercialStage}
+        ticket={featuredTicket}
+        ctaProps={ctaProps}
+        eventName={data.name}
+        eventDates={data.dates}
+      />
       <section className="festival-hero">
         <div className="festival-hero__media" aria-hidden="true">
             <img src="/festival/img/diplomado-fuego.webp" alt="" decoding="async" />
@@ -573,46 +572,28 @@ function App() {
         </div>
       </section>
 
-      <section className="festival-section festival-section--tickets" id="paquetes-congreso-festival">
+      <section className="festival-section festival-section--experience">
         <div className="festival-container">
           <div className="festival-section__header">
-            <p className="festival-eyebrow">Congreso Festival</p>
-            <h2>Elegí cómo vivir Ecos de la Tierra</h2>
+            <p className="festival-eyebrow">Qué incluye la experiencia</p>
+            <h2>{data.experience.title}</h2>
+            <p>{data.experience.text}</p>
           </div>
-          <div className="festival-grid festival-grid--tickets">
-            {festivalTickets.map((ticket) => renderFestivalCard(ticket))}
+          <div className="festival-experience-layout">
+            <div className="festival-experience-pillars">
+              {data.experience.pillars.map((pillar) => (
+                <article className="festival-experience-item" key={pillar.title}>
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.text}</p>
+                </article>
+              ))}
+            </div>
+            <ul className="festival-experience-includes">
+              {[...data.includes, ...featuredTicket.summaryBenefits]
+                .filter((item, index, items) => items.indexOf(item) === index)
+                .map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--training" id="formaciones">
-        <div className="festival-container">
-          <div className="festival-section__header">
-            <p className="festival-eyebrow">Formaciones</p>
-            <h2>{data.trainingSection.title}</h2>
-            <p>{data.trainingSection.text}</p>
-          </div>
-          <div className="festival-training-list">
-            {trainingTickets.map((ticket) => renderTrainingCard(ticket))}
-          </div>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--essential">
-        <div className="festival-container">
-          <div className="festival-section__header">
-            <p className="festival-eyebrow">Información esencial</p>
-            <h2>{data.essentialInfo.title}</h2>
-          </div>
-          <div className="festival-essential-grid">
-            {data.essentialInfo.items.map((item) => (
-              <article className="festival-essential-item" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-          <p className="festival-essential-note">{data.essentialInfo.note}</p>
         </div>
       </section>
 
@@ -631,6 +612,38 @@ function App() {
         </div>
       </section>
 
+      <section className="festival-section festival-section--tickets" id="paquetes-congreso-festival">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Congreso Festival</p>
+            <h2>Elegí cómo vivir Ecos de la Tierra</h2>
+          </div>
+          <div className="festival-grid festival-grid--tickets">
+            {festivalTickets.map((ticket) => renderFestivalCard(ticket))}
+          </div>
+        </div>
+      </section>
+
+      <section className="festival-section festival-section--essential">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Información esencial</p>
+            <h2>{data.essentialInfo.title}</h2>
+          </div>
+          <div className="festival-essential-grid">
+            {data.essentialInfo.items.map((item) => (
+              <article className="festival-essential-item" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          {data.essentialInfo.note ? (
+            <p className="festival-essential-note">{data.essentialInfo.note}</p>
+          ) : null}
+        </div>
+      </section>
+
       <section className="festival-section">
         <div className="festival-container">
           <div className="festival-section__header">
@@ -641,6 +654,19 @@ function App() {
             {data.faq.map((item) => (
               <FaqItem item={item} key={item.question} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="festival-section festival-section--training" id="formaciones">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Formaciones</p>
+            <h2>{data.trainingSection.title}</h2>
+            <p>{data.trainingSection.text}</p>
+          </div>
+          <div className="festival-training-list">
+            {trainingTickets.map((ticket) => renderTrainingCard(ticket))}
           </div>
         </div>
       </section>

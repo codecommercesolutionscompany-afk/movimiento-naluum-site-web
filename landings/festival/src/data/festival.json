@@ -15,13 +15,13 @@
   "whatsapp": {
     "number": "5493764257777",
     "messages": {
-      "hero": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero conocer las opciones de participación.",
+    "hero": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero conocer las opciones de participación.",
       "sticky_preventa_banner": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero conocer las opciones de participación.",
       "congreso-festival-completo": "Hola, quiero comprar mi entrada para Congreso + Festival completo de Ecos de la Tierra 2026.",
       "solo-congreso": "Hola, quiero comprar mi entrada para Solo Congreso de Ecos de la Tierra 2026.",
       "solo-festival": "Hola, quiero comprar mi entrada para Solo Festival de Ecos de la Tierra 2026.",
       "diplomado-inmersivo": "Hola, quiero postularme al Diplomado inmersivo de Ecos de la Tierra 2026.",
-      "final": "Hola, quiero reservar mi lugar para Ecos de la Tierra 2026. Mi opción de interés es Congreso + Festival completo."
+      "final": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero saber qué opción de participación se adapta mejor a mí."
     }
   },
   "hero": {
@@ -30,7 +30,7 @@
     "subtitle": "7 días para aprender, practicar y celebrar nuevas formas de habitar la Tierra.",
     "description": "Una experiencia inmersiva de permacultura, bioconstrucción, agricultura regenerativa, arte, música y vida en comunidad, dentro del territorio vivo de EcoCentro Madre Selva.",
     "pathNote": "Viví el Congreso Festival completo, participá de una experiencia puntual o sumate a una formación más profunda.",
-    "cta": "Comprar mi entrada"
+    "cta": "Ver opciones de participación"
   },
   "about": {
     "title": "Mucho más que un festival",
@@ -110,8 +110,6 @@
     }
   ],
   "includes": [
-    "Alimentación sana y consciente",
-    "Experiencias formativas y comunitarias",
     "Uso de instalaciones ecológicas",
     "Estadía en carpa propia"
   ],
@@ -149,7 +147,7 @@
         "text": "La disponibilidad y las formas de pago se confirman por WhatsApp."
       }
     ],
-    "note": "La disponibilidad y las formas de pago se confirman por WhatsApp."
+    "note": ""
   },
   "venue": {
     "title": "En plena naturaleza misionera",
@@ -165,7 +163,7 @@
     "eyebrow": "ETAPA ACTUAL",
     "title": "Preventa",
     "text": "El Congreso + Festival completo tiene precio de Preventa hasta el 31 de agosto de 2026 inclusive.",
-    "cta": "Comprar mi entrada",
+    "cta": "Ver opciones",
     "note": "Las condiciones de inscripción pueden actualizarse según la etapa comercial del evento.",
     "stageName": "preventa",
     "closingDate": "31 de agosto de 2026",
@@ -178,7 +176,7 @@
   },
   "ticketsIntro": "Compará las opciones y abrí el detalle de cada paquete para ver qué incluye antes de escribirnos.",
   "trainingSection": {
-    "title": "Formaciones para ir más profundo",
+    "title": "¿Buscás una formación más profunda?",
     "text": "Opciones para quienes buscan una formación profesional o una experiencia de aprendizaje más extensa."
   },
   "tickets": [
@@ -205,7 +203,7 @@
       },
       "audience": "Para quienes quieren vivir la experiencia completa: formación, práctica, comunidad y festival final.",
       "summaryBenefits": [
-        "Cinco días de Congreso",
+        "Experiencia completa de 7 días: Congreso + Festival final",
         "Festival final",
         "Alimentación y camping incluidos"
       ],
@@ -332,7 +330,7 @@
   "finalCta": {
     "title": "¿Todavía no sabés qué opción elegir?",
     "text": "Escribinos por WhatsApp y te ayudamos a encontrar la experiencia adecuada para vos.",
-    "cta": "Reservar mi lugar"
+    "cta": "Hablar por WhatsApp"
   },
   "faq": [
     {
@@ -349,7 +347,7 @@
     },
     {
       "question": "¿Qué debo llevar?",
-      "answer": "Sí. Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales."
+      "answer": "Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales."
     },
     {
       "question": "¿Cómo reservo?",
