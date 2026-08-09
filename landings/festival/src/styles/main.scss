@@ -32,7 +32,15 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  width: 100%;
+  max-width: 100%;
   background: var(--festival-cream);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 img,
@@ -60,6 +68,9 @@ span {
 }
 
 .festival-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 100vh;
   background:
     radial-gradient(circle at top left, rgba(225, 182, 111, 0.28), transparent 34rem),
@@ -67,8 +78,16 @@ span {
 }
 
 .festival-container {
-  width: min(1120px, calc(100% - 40px));
+  width: calc(100% - 40px);
+  max-width: 1120px;
+  min-width: 0;
   margin: 0 auto;
+}
+
+.festival-section,
+.festival-hero,
+.festival-final {
+  min-width: 0;
 }
 
 .festival-narrow {
@@ -123,6 +142,8 @@ summary:focus-visible {
   top: 0;
   z-index: 20;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   color: #fff;
   background: linear-gradient(110deg, #963f26 0%, #b8522d 58%, #8e3722 100%);
   box-shadow: 0 8px 22px rgba(91, 33, 20, 0.28);
@@ -130,12 +151,14 @@ summary:focus-visible {
 
 .festival-commercial-banner__content {
   display: grid;
-  grid-template-columns: auto auto auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto auto;
+  min-width: 0;
+  max-width: 100%;
   align-items: center;
-  gap: 0.7rem 1.15rem;
-  min-height: 68px;
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
+  gap: 0.45rem 0.85rem;
+  min-height: 56px;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
 }
 
 .festival-commercial-banner p {
@@ -144,17 +167,33 @@ summary:focus-visible {
 
 .festival-commercial-banner__stage {
   color: var(--festival-gold);
-  font-size: 0.77rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.festival-commercial-banner__countdown,
-.festival-commercial-banner__open,
-.festival-commercial-banner__next-price {
+.festival-commercial-banner__event {
+  min-width: 0;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.festival-commercial-banner__date {
   color: rgba(255, 255, 255, 0.84);
-  font-size: 0.88rem;
+  font-size: 0.78rem;
+}
+
+.festival-commercial-banner__validity {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.76rem;
+}
+
+.festival-commercial-banner__countdown,
+.festival-commercial-banner__open {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.78rem;
   line-height: 1.3;
 }
 
@@ -167,33 +206,14 @@ summary:focus-visible {
   display: none;
 }
 
-.festival-commercial-banner__next-price-label--mobile {
-  display: none;
-}
-
-.festival-commercial-banner__price {
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.festival-commercial-banner__price span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.festival-commercial-banner__next-price {
-  justify-self: start;
-  white-space: nowrap;
-}
-
 .festival-commercial-banner .festival-button {
-  min-height: 42px;
-  padding: 0.65rem 1rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 36px;
+  padding: 0.45rem 0.85rem;
   border-width: 1px;
+  font-size: 0.8rem;
   box-shadow: none;
   white-space: nowrap;
 }
@@ -229,7 +249,8 @@ summary:focus-visible {
   position: relative;
   z-index: 1;
   width: min(1320px, calc(100% - 96px));
-  max-width: none;
+  max-width: 1320px;
+  min-width: 0;
   padding: clamp(3.5rem, 5vw, 4.5rem) 0;
   text-align: left;
 }
@@ -316,7 +337,57 @@ summary:focus-visible {
   background: var(--festival-paper);
 }
 
+.festival-section--experience {
+  background: #fffaf1;
+}
+
+.festival-experience-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.festival-experience-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.festival-experience-item,
+.festival-experience-includes {
+  padding: 1.25rem;
+  border: 1px solid var(--festival-border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.festival-experience-item h3 {
+  margin: 0 0 0.45rem;
+  color: var(--festival-forest);
+  font-size: 1.05rem;
+}
+
+.festival-experience-item p {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+.festival-experience-includes {
+  display: grid;
+  align-content: center;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 2.2rem;
+  color: var(--festival-forest);
+}
+
+.festival-experience-includes li::marker {
+  color: var(--festival-leaf);
+}
+
 .festival-section--tickets {
+  padding-top: clamp(2rem, 4vw, 3.25rem);
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(240, 226, 207, 0.78)),
     #f2e4d0;
@@ -349,6 +420,7 @@ summary:focus-visible {
 }
 
 .festival-section--venue {
+  padding-bottom: clamp(2rem, 4vw, 3.25rem);
   background: var(--festival-paper);
 }
 
@@ -1141,10 +1213,30 @@ summary:focus-visible {
 
 @media (max-width: 980px) {
   .festival-commercial-banner__content {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.3rem 0.75rem;
+    min-height: 0;
   }
 
-  .festival-commercial-banner__next-price {
+  .festival-commercial-banner__stage {
+    grid-column: 1;
+  }
+
+  .festival-commercial-banner__event {
+    grid-column: 2;
+  }
+
+  .festival-commercial-banner__date,
+  .festival-commercial-banner__validity {
+    grid-column: 1 / -1;
+  }
+
+  .festival-commercial-banner__countdown,
+  .festival-commercial-banner__open {
+    grid-column: 1;
+  }
+
+  .festival-commercial-banner .festival-button {
     grid-column: 2;
   }
 
@@ -1154,7 +1246,8 @@ summary:focus-visible {
   }
 
   .festival-about,
-  .festival-venue-layout {
+  .festival-venue-layout,
+  .festival-experience-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1165,7 +1258,8 @@ summary:focus-visible {
 
 @media (max-width: 680px) {
   .festival-container {
-    width: min(100% - 28px, 1120px);
+    width: calc(100% - 28px);
+    max-width: 1120px;
   }
 
   .festival-hero {
@@ -1173,19 +1267,30 @@ summary:focus-visible {
   }
 
   .festival-commercial-banner__content {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.25rem;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.18rem 0.55rem;
     min-height: 0;
-    padding-top: 0.65rem;
-    padding-bottom: 0.7rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.5rem;
   }
 
-  .festival-commercial-banner__stage,
-  .festival-commercial-banner__countdown,
-  .festival-commercial-banner__open,
-  .festival-commercial-banner__price,
-  .festival-commercial-banner__next-price {
+  .festival-commercial-banner__stage {
     grid-column: 1;
+  }
+
+  .festival-commercial-banner__event {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  .festival-commercial-banner__date,
+  .festival-commercial-banner__countdown,
+  .festival-commercial-banner__open {
+    grid-column: 1 / -1;
+  }
+
+  .festival-commercial-banner__validity {
+    display: none;
   }
 
   .festival-commercial-banner__countdown--desktop {
@@ -1196,39 +1301,31 @@ summary:focus-visible {
     display: inline;
   }
 
-  .festival-commercial-banner__next-price-label--desktop {
-    display: none;
-  }
-
-  .festival-commercial-banner__next-price-label--mobile {
-    display: inline;
-  }
-
   .festival-commercial-banner__stage {
-    font-size: 0.7rem;
+    font-size: 0.66rem;
   }
 
+  .festival-commercial-banner__event,
+  .festival-commercial-banner__date,
+  .festival-commercial-banner__validity,
   .festival-commercial-banner__countdown,
-  .festival-commercial-banner__open,
-  .festival-commercial-banner__next-price {
-    font-size: 0.78rem;
-  }
-
-  .festival-commercial-banner__price {
-    font-size: 1rem;
+  .festival-commercial-banner__open {
+    font-size: 0.72rem;
   }
 
   .festival-commercial-banner .festival-button {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: auto;
     width: 100%;
-    min-height: 46px;
-    margin-top: 0.45rem;
-    padding: 0.65rem 0.9rem;
-    font-size: 0.85rem;
+    min-height: 38px;
+    margin-top: 0.25rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
   }
 
   .festival-hero__content {
+    width: calc(100% - 28px);
+    max-width: 1320px;
     padding: 3.2rem 0 2.8rem;
   }
 
@@ -1292,6 +1389,10 @@ summary:focus-visible {
 
   .festival-training-card__media::after {
     inset: 0.85rem 0.85rem 0;
+  }
+
+  .festival-experience-pillars {
+    grid-template-columns: 1fr;
   }
 
   .festival-training-card__body .festival-ticket__actions {
