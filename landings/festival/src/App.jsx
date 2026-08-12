@@ -20,10 +20,17 @@ const REFERENCE_CHARACTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const TICKET_CATEGORY_CODES = {
   general: 'GEN',
   'congreso-festival-completo': 'COMP',
+  'congreso-festival-sin-alimentacion': 'CSAL',
   'solo-festival': 'FEST',
+  'ninos-festival': 'NFES',
+  'ninos-congreso-festival': 'NCON',
   'diplomado-inmersivo': 'DIP',
 };
-const FESTIVAL_PACKAGE_IDS = ['congreso-festival-completo', 'solo-festival'];
+const FESTIVAL_PACKAGE_IDS = [
+  'congreso-festival-completo',
+  'congreso-festival-sin-alimentacion',
+  'solo-festival',
+];
 const TRAINING_PACKAGE_IDS = ['diplomado-inmersivo'];
 
 let eventPageContextPushed = false;
@@ -146,81 +153,37 @@ const formatTicketPrice = ({ amount, currency }) => {
   return currency === 'ARS' ? `$${formattedAmount} ARS` : `${currency} ${formattedAmount}`;
 };
 
-const formatCountdown = (remainingMilliseconds, { compact = false } = {}) => {
-  const remainingSeconds = Math.max(0, Math.floor(remainingMilliseconds / 1000));
-  const days = Math.floor(remainingSeconds / 86400);
-  const hours = Math.floor((remainingSeconds % 86400) / 3600);
-  const minutes = Math.floor((remainingSeconds % 3600) / 60);
-  const seconds = remainingSeconds % 60;
+function StickyCommercialBanner({ stage, ctaProps, eventName, eventDates }) {
+  if (!stage?.active) return null;
 
-  if (compact) {
-    return `${days}d · ${String(hours).padStart(2, '0')}h · ${String(minutes).padStart(2, '0')}m`;
-  }
-
-  return `${days} días · ${String(hours).padStart(2, '0')} h · ${String(minutes).padStart(2, '0')} min · ${String(seconds).padStart(2, '0')} s`;
-};
-
-function StickyCommercialBanner({ stage, ticket, ctaProps, eventName, eventDates }) {
-  const [now, setNow] = useState(() => Date.now());
-  const closingTimestamp = new Date(stage.closingDateTime).getTime();
-  const isPreventa = Number.isFinite(closingTimestamp) && now < closingTimestamp;
-
-  useEffect(() => {
-    if (!isPreventa) return undefined;
-
-    const intervalId = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(intervalId);
-  }, [isPreventa]);
-
-  if (!stage?.active || !ticket?.commercialStage) return null;
-
-  const { commercialStage } = ticket;
   return (
     <aside
       className="festival-commercial-banner"
-      aria-label={`Etapa comercial: ${isPreventa ? stage.title : commercialStage.nextStage}`}
+      aria-label={`Oferta comercial: ${stage.title}`}
     >
       <div className="festival-container festival-commercial-banner__content">
-        <p className="festival-commercial-banner__stage">{isPreventa ? stage.title : commercialStage.nextStage}</p>
+        <p className="festival-commercial-banner__stage">{stage.eyebrow}</p>
         <p className="festival-commercial-banner__event">{eventName}</p>
         <p className="festival-commercial-banner__date">{eventDates}</p>
-        <p className="festival-commercial-banner__validity">
-          {isPreventa ? `Vigente hasta ${stage.closingDate}` : commercialStage.nextStageStarts}
-        </p>
-        {isPreventa ? (
-          <p
-            className="festival-commercial-banner__countdown"
-            aria-label={`La Preventa finaliza el ${stage.closingDate} a las 23:59:59, hora de Argentina.`}
-          >
-            <span>Finaliza en:</span>{' '}
-            <span className="festival-commercial-banner__countdown--desktop">
-              {formatCountdown(closingTimestamp - now)}
-            </span>
-            <span className="festival-commercial-banner__countdown--mobile" aria-hidden="true">
-              {formatCountdown(closingTimestamp - now, { compact: true })}
-            </span>
-          </p>
-        ) : (
-          <p className="festival-commercial-banner__open">Inscripciones abiertas</p>
-        )}
+        <p className="festival-commercial-banner__discount">{stage.discountLabel}</p>
         <a {...ctaProps({ location: 'sticky_preventa_banner', text: stage.cta })}>{stage.cta}</a>
       </div>
     </aside>
   );
 }
 
-function CommercialStageNote({ stage, currentPrice }) {
-  if (!stage) return null;
+function ScholarshipOffer({ offer, currentPrice }) {
+  if (!offer) return <strong>{formatTicketPrice(currentPrice)}</strong>;
 
   return (
     <div className="festival-ticket__commercial-stage">
       <p className="festival-ticket__previous-price">
-        {stage.nextStage}: <s>{formatTicketPrice(stage.nextPrice)}</s>
+        Precio de referencia: <s>{formatTicketPrice(offer.referencePrice)}</s>
       </p>
-      <span className="festival-ticket__savings">{stage.savingsLabel}</span>
-      <strong className="festival-ticket__current-price">{formatTicketPrice(currentPrice)}</strong>
-      <span className="festival-ticket__validity">{stage.validity}</span>
-      <span>{stage.nextStageStarts}: {formatTicketPrice(stage.nextPrice)}</span>
+      <span className="festival-ticket__savings">{offer.discountLabel}</span>
+      <strong className="festival-ticket__current-price">{offer.priceLabel}: {formatTicketPrice(currentPrice)}</strong>
+      <span className="festival-ticket__validity">{offer.foodLabel}</span>
+      <span>{offer.paymentLabel}</span>
     </div>
   );
 }
@@ -459,8 +422,8 @@ function App() {
       {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
       <h3>{ticket.name}</h3>
       <p className="festival-ticket__period">{ticket.period}</p>
-      {ticket.commercialStage ? (
-        <CommercialStageNote stage={ticket.commercialStage} currentPrice={ticket.price} />
+      {ticket.offer ? (
+        <ScholarshipOffer offer={ticket.offer} currentPrice={ticket.price} />
       ) : (
         <strong>{formatTicketPrice(ticket.price)}</strong>
       )}
@@ -529,7 +492,6 @@ function App() {
     <main className="festival-page">
       <StickyCommercialBanner
         stage={data.commercialStage}
-        ticket={featuredTicket}
         ctaProps={ctaProps}
         eventName={data.name}
         eventDates={data.dates}

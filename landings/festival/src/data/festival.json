@@ -17,9 +17,11 @@
     "messages": {
     "hero": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero conocer las opciones de participación.",
       "sticky_preventa_banner": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero conocer las opciones de participación.",
-      "congreso-festival-completo": "Hola, quiero comprar mi entrada para Congreso + Festival completo de Ecos de la Tierra 2026.",
-      "solo-congreso": "Hola, quiero comprar mi entrada para Solo Congreso de Ecos de la Tierra 2026.",
+      "congreso-festival-completo": "Hola, quiero acceder a una de las 50 becas para Festival + Congreso de Ecos de la Tierra 2026.",
       "solo-festival": "Hola, quiero comprar mi entrada para Solo Festival de Ecos de la Tierra 2026.",
+      "congreso-festival-sin-alimentacion": "Hola, quiero información sobre la opción Festival + Congreso sin alimentación de Ecos de la Tierra 2026.",
+      "ninos-festival": "Hola, quiero información sobre la entrada para niños · Festival solamente de Ecos de la Tierra 2026.",
+      "ninos-congreso-festival": "Hola, quiero información sobre la entrada para niños · Festival + Congreso de Ecos de la Tierra 2026.",
       "diplomado-inmersivo": "Hola, quiero postularme al Diplomado inmersivo de Ecos de la Tierra 2026.",
       "final": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero saber qué opción de participación se adapta mejor a mí."
     }
@@ -70,7 +72,7 @@
     "options": [
       {
         "title": "Quiero vivir todo el encuentro",
-        "target": "Congreso Festival completo",
+        "target": "Festival + Congreso",
         "text": "Formación, práctica, comunidad y festival final en una sola experiencia.",
         "ticketId": "congreso-festival-completo"
       },
@@ -118,9 +120,9 @@
     "items": [
       "La estadía de los paquetes que incluyen alojamiento es en carpa propia.",
       "Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales.",
-      "La alimentación sana y consciente está incluida según los días de cada paquete.",
+      "La alimentación sana y consciente está incluida únicamente en las modalidades que lo indican.",
       "El transporte hasta EcoCentro Madre Selva no está incluido.",
-      "La disponibilidad y las formas de pago se consultan por WhatsApp."
+      "Opciones de pago disponibles. Consultalas por WhatsApp."
     ]
   },
   "essentialInfo": {
@@ -136,7 +138,7 @@
       },
       {
         "title": "Alimentación",
-        "text": "La alimentación sana y consciente está incluida según los días contemplados en cada opción."
+        "text": "La alimentación sana y consciente está incluida únicamente en las modalidades que lo indican."
       },
       {
         "title": "Transporte",
@@ -144,7 +146,7 @@
       },
       {
         "title": "Reserva",
-        "text": "La disponibilidad y las formas de pago se confirman por WhatsApp."
+      "text": "Opciones de pago disponibles. Consultalas por WhatsApp."
       }
     ],
     "note": ""
@@ -160,19 +162,11 @@
   },
   "commercialStage": {
     "active": true,
-    "eyebrow": "ETAPA ACTUAL",
-    "title": "Preventa",
-    "text": "El Congreso + Festival completo tiene precio de Preventa hasta el 31 de agosto de 2026 inclusive.",
-    "cta": "Ver opciones",
-    "note": "Las condiciones de inscripción pueden actualizarse según la etapa comercial del evento.",
-    "stageName": "preventa",
-    "closingDate": "31 de agosto de 2026",
-    "closingDateTime": "2026-08-31T23:59:59-03:00",
-    "timeZone": "America/Argentina/Buenos_Aires",
-    "currentPrice": "",
-    "previousPrice": "",
-    "spotsLabel": "",
-    "urgencyText": ""
+    "eyebrow": "50 BECAS",
+    "title": "50 becas disponibles",
+    "text": "39% de descuento para Festival + Congreso con alimentación.",
+    "discountLabel": "39% de descuento",
+    "cta": "Ver opciones"
   },
   "ticketsIntro": "Compará las opciones y abrí el detalle de cada paquete para ver qué incluye antes de escribirnos.",
   "trainingSection": {
@@ -183,29 +177,28 @@
     {
       "id": "congreso-festival-completo",
       "recommended": true,
-      "badge": "Preventa",
-      "name": "Congreso + Festival completo",
+      "badge": "50 BECAS DISPONIBLES",
+      "name": "Festival + Congreso",
       "period": "20 al 26 de septiembre de 2026",
       "price": {
-        "amount": 653333,
+        "amount": 400000,
         "currency": "ARS"
       },
-      "commercialStage": {
-        "label": "Preventa",
-        "validity": "Preventa disponible hasta el 31 de agosto de 2026 inclusive",
-        "nextStage": "Entrada General",
-        "nextStageStarts": "Desde el 1 de septiembre",
-        "savingsLabel": "Ahorrás 25%",
-        "nextPrice": {
-          "amount": 866667,
+      "offer": {
+        "referencePrice": {
+          "amount": 653333,
           "currency": "ARS"
-        }
+        },
+        "discountLabel": "39% DE DESCUENTO",
+        "priceLabel": "Precio con beca",
+        "foodLabel": "Con alimentación",
+        "paymentLabel": "Opciones de pago disponibles"
       },
       "audience": "Para quienes quieren vivir la experiencia completa: formación, práctica, comunidad y festival final.",
       "summaryBenefits": [
         "Experiencia completa de 7 días: Congreso + Festival final",
         "Festival final",
-        "Alimentación y camping incluidos"
+        "Alimentación incluida"
       ],
       "description": "Este paquete integra cinco días de formación y actividades con la jornada final de festival. Combina aprendizaje, práctica, comunidad, música, danza, espiritualidad y celebración consciente.",
       "includes": [
@@ -231,14 +224,44 @@
       "accommodation": "Estadía en carpa propia.",
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Integra Congreso y Festival final en una sola experiencia.",
-      "cta": "Elegir esta entrada"
+      "cta": "Quiero acceder a una de las 50 becas"
+    },
+    {
+      "id": "congreso-festival-sin-alimentacion",
+      "name": "Festival + Congreso sin alimentación",
+      "period": "20 al 26 de septiembre de 2026",
+      "price": {
+        "amount": 133333,
+        "currency": "ARS"
+      },
+      "audience": "Para quienes quieren vivir la experiencia completa sin el servicio de alimentación del evento.",
+      "summaryBenefits": [
+        "Experiencia completa de 7 días: Congreso + Festival final",
+        "Acceso al Festival del 26 de septiembre",
+        "Sin alimentación incluida. Dentro del predio habrá opciones de comida, bebidas y tienda."
+      ],
+      "description": "La experiencia completa de formación, práctica, comunidad y celebración, sin alimentación incluida.",
+      "includes": [
+        "Cinco días de conferencias, clases, prácticas y actividades relacionadas con desarrollo sustentable",
+        "Acceso al Festival del 26 de septiembre",
+        "Participación en espacios de aprendizaje y convivencia comunitaria"
+      ],
+      "excludes": [
+        "Alimentación",
+        "Transporte hasta EcoCentro Madre Selva"
+      ],
+      "food": "Importante: esta modalidad no incluye alimentación y no está permitido ingresar alimentos externos al predio. Durante el evento habrá platos de la casa, bebidas y una tienda dentro de Madre Selva para quienes quieran realizar compras durante su estadía.",
+      "accommodation": "Consultar condiciones de estadía por WhatsApp.",
+      "camping": "Consultar condiciones por WhatsApp.",
+      "note": "Opciones de pago disponibles.",
+      "cta": "Elegir esta opción"
     },
     {
       "id": "solo-festival",
       "name": "Solo Festival",
       "period": "26 de septiembre de 2026",
       "price": {
-        "amount": 150000,
+        "amount": 133333,
         "currency": "ARS"
       },
       "audience": "Para quienes quieren vivir una jornada de arte, espiritualidad, música, danza y celebración comunitaria.",
@@ -274,6 +297,65 @@
       "camping": "Cada participante debe traer su equipo personal de camping.",
       "note": "Es una jornada final de celebración comunitaria.",
       "cta": "Elegir esta entrada"
+    },
+    {
+      "id": "ninos-festival",
+      "name": "Niños · Festival solamente",
+      "period": "26 de septiembre de 2026",
+      "price": {
+        "amount": 66667,
+        "currency": "ARS"
+      },
+      "audience": "Entrada para niños para disfrutar la jornada de Festival en comunidad.",
+      "summaryBenefits": [
+        "Acceso al día de Festival",
+        "Actividades de arte, música y comunidad",
+        "Alimentación incluida durante el día"
+      ],
+      "description": "Una entrada para niños para compartir la jornada final de arte, música y celebración.",
+      "includes": [
+        "Acceso al día completo de Festival",
+        "Actividades programadas durante la jornada",
+        "Alimentación incluida durante el día"
+      ],
+      "excludes": [
+        "Actividades del Congreso",
+        "Transporte"
+      ],
+      "food": "Alimentación incluida durante el día.",
+      "accommodation": "No incluye estadía.",
+      "camping": "Consultar condiciones por WhatsApp.",
+      "note": "Opciones de pago disponibles.",
+      "cta": "Elegir esta opción"
+    },
+    {
+      "id": "ninos-congreso-festival",
+      "name": "Niños · Festival + Congreso",
+      "period": "20 al 26 de septiembre de 2026",
+      "price": {
+        "amount": 200000,
+        "currency": "ARS"
+      },
+      "audience": "Entrada para niños para participar de la experiencia completa.",
+      "summaryBenefits": [
+        "Acceso al Congreso y al Festival",
+        "Actividades de aprendizaje y comunidad",
+        "Alimentación incluida según los días contemplados"
+      ],
+      "description": "Una opción para niños que acompaña la experiencia completa de aprendizaje, comunidad y celebración.",
+      "includes": [
+        "Acceso a actividades del Congreso",
+        "Acceso al Festival del 26 de septiembre",
+        "Alimentación incluida según los días contemplados"
+      ],
+      "excludes": [
+        "Transporte hasta EcoCentro Madre Selva"
+      ],
+      "food": "Alimentación incluida según los días contemplados.",
+      "accommodation": "Consultar condiciones de estadía por WhatsApp.",
+      "camping": "Consultar condiciones por WhatsApp.",
+      "note": "Opciones de pago disponibles.",
+      "cta": "Elegir esta opción"
     },
     {
       "id": "diplomado-inmersivo",
@@ -339,7 +421,7 @@
     },
     {
       "question": "¿La alimentación está incluida?",
-      "answer": "Sí, según los días incluidos en cada opción."
+      "answer": "Depende de la modalidad elegida. La opción Festival + Congreso sin alimentación no la incluye y no permite ingresar alimentos externos al predio."
     },
     {
       "question": "¿Cómo es la estadía?",
@@ -350,8 +432,12 @@
       "answer": "Cada participante debe traer carpa, bolsa de dormir, aislante, linterna y elementos personales."
     },
     {
+      "question": "¿Qué significa la beca?",
+      "answer": "La beca aplica un 39% de descuento sobre el valor de referencia de Festival + Congreso con alimentación. Hay 50 lugares disponibles bajo esta modalidad."
+    },
+    {
       "question": "¿Cómo reservo?",
-      "answer": "Escribiendo por WhatsApp para consultar disponibilidad y formas de pago."
+      "answer": "Opciones de pago disponibles por WhatsApp."
     }
   ]
 }
