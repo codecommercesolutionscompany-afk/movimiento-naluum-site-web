@@ -20,8 +20,8 @@
   },
   "settings": {
     "programDuration": "10 días",
-    "programDates": "9 al 18 de septiembre de 2026",
-    "arrivalNote": "El curso se realiza del 9 al 18 de septiembre de 2026.",
+    "programDates": "3 al 12 de octubre de 2026",
+    "arrivalNote": "El curso se realiza del 3 al 12 de octubre de 2026.",
     "location": "Madre Selva, Misiones, Argentina",
     "whatsappNumber": "+5493764257777",
     "whatsappUrl": "https://wa.me/5493764257777",
@@ -232,7 +232,7 @@
     "id": "cohortes",
     "label": "Fecha disponible",
     "title": "Próxima edición del Curso de Diseño en Permacultura (PDC) en Madre Selva",
-    "lead": "La próxima edición del programa se realiza del 9 al 18 de septiembre de 2026.",
+    "lead": "La próxima edición del programa se realiza del 3 al 12 de octubre de 2026.",
     "cardLabels": {
       "registered": "inscriptos",
       "spotsLeftPrefix": "Disponibilidad",
@@ -241,20 +241,20 @@
     },
     "cohorts": [
       {
-        "name": "Curso de Diseño en Permacultura (PDC) Septiembre 2026",
+        "name": "Curso de Diseño en Permacultura (PDC) Octubre 2026",
         "program": "Curso Certificado de Diseño en Permacultura",
-        "weekday": "Miércoles",
-        "day": "9",
-        "month": "Septiembre",
+        "weekday": "Sábado",
+        "day": "3",
+        "month": "Octubre",
         "year": "2026",
-        "endDateLabel": "Finaliza el 18 de septiembre de 2026",
+        "endDateLabel": "Finaliza el 12 de octubre de 2026",
         "schedule": "Jornadas completas de 5:00 a 22:00",
         "location": "Madre Selva - Misiones, Argentina",
         "spots": "Consultar disponibilidad",
         "capacity": null,
         "registered": null,
-        "startsAt": "2026-09-09T05:00:00-03:00",
-        "endsAt": "2026-09-18T22:00:00-03:00"
+        "startsAt": "2026-10-03T05:00:00-03:00",
+        "endsAt": "2026-10-12T22:00:00-03:00"
       }
     ]
   },
@@ -303,7 +303,7 @@
     "title": "Qué necesitás para participar",
     "lead": "El Curso de Diseño en Permacultura (PDC) no requiere experiencia previa, pero sí pide disposición real para vivir una formación intensiva y comunitaria.",
     "items": [
-      "Disponibilidad para participar los 10 días completos, del 9 al 18 de septiembre de 2026.",
+      "Disponibilidad para participar los 10 días completos, del 3 al 12 de octubre de 2026.",
       "Apertura para convivir, participar y aprender en comunidad.",
       "Disposición física y emocional para una formación intensiva.",
       "Interés real en permacultura, sustentabilidad, diseño regenerativo o proyectos de vida ligados a la tierra.",
