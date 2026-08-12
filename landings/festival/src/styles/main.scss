@@ -151,7 +151,7 @@ summary:focus-visible {
 
 .festival-commercial-banner__content {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1.05fr) minmax(0, 1.15fr) minmax(0, 1.15fr) auto;
+  grid-template-columns: max-content minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1.15fr) max-content;
   min-width: 0;
   max-width: 100%;
   align-items: center;
@@ -159,6 +159,10 @@ summary:focus-visible {
   min-height: 56px;
   padding-top: 0.45rem;
   padding-bottom: 0.45rem;
+}
+
+.festival-commercial-banner__content > * {
+  min-width: 0;
 }
 
 .festival-commercial-banner p {
@@ -185,25 +189,12 @@ summary:focus-visible {
   font-size: 0.78rem;
 }
 
-.festival-commercial-banner__validity {
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 0.76rem;
-}
-
-.festival-commercial-banner__countdown,
-.festival-commercial-banner__open {
+.festival-commercial-banner__discount {
   color: rgba(255, 255, 255, 0.84);
   font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
   line-height: 1.3;
-}
-
-.festival-commercial-banner__countdown span {
-  color: #fff;
-  font-weight: 700;
-}
-
-.festival-commercial-banner__countdown--mobile {
-  display: none;
 }
 
 .festival-commercial-banner .festival-button {
@@ -216,6 +207,7 @@ summary:focus-visible {
   font-size: 0.8rem;
   box-shadow: none;
   white-space: nowrap;
+  justify-self: end;
 }
 
 .festival-hero {
@@ -441,6 +433,10 @@ summary:focus-visible {
   margin-inline: auto;
   align-items: stretch;
   padding-top: 1.05rem;
+}
+
+.festival-ticket--event.festival-ticket--featured {
+  grid-column: 1 / -1;
 }
 
 .festival-ticket,
@@ -1211,6 +1207,31 @@ summary:focus-visible {
   color: #fff;
 }
 
+@media (max-width: 1199px) {
+  .festival-commercial-banner__content {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.3rem 0.75rem;
+    min-height: 0;
+  }
+
+  .festival-commercial-banner__stage {
+    grid-column: 1;
+  }
+
+  .festival-commercial-banner__event {
+    grid-column: 2;
+  }
+
+  .festival-commercial-banner__date,
+  .festival-commercial-banner__discount {
+    grid-column: 1 / -1;
+  }
+
+  .festival-commercial-banner .festival-button {
+    grid-column: 2;
+  }
+}
+
 @media (max-width: 1023px) {
   .festival-commercial-banner__content {
     grid-template-columns: auto minmax(0, 1fr);
@@ -1227,13 +1248,8 @@ summary:focus-visible {
   }
 
   .festival-commercial-banner__date,
-  .festival-commercial-banner__validity {
+  .festival-commercial-banner__discount {
     grid-column: 1 / -1;
-  }
-
-  .festival-commercial-banner__countdown,
-  .festival-commercial-banner__open {
-    grid-column: 1;
   }
 
   .festival-commercial-banner .festival-button {
@@ -1267,56 +1283,45 @@ summary:focus-visible {
   }
 
   .festival-commercial-banner__content {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.18rem 0.55rem;
-    min-height: 0;
-    padding-top: 0.45rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .festival-commercial-banner__stage {
-    grid-column: 1;
-  }
-
-  .festival-commercial-banner__event {
-    grid-column: 2;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.45rem 14px 0.5rem;
+    box-sizing: border-box;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.18rem;
+    min-height: 0;
   }
 
+  .festival-commercial-banner__stage,
+  .festival-commercial-banner__event,
   .festival-commercial-banner__date,
-  .festival-commercial-banner__countdown,
-  .festival-commercial-banner__open {
-    grid-column: 1 / -1;
-  }
-
-  .festival-commercial-banner__validity {
-    display: none;
-  }
-
-  .festival-commercial-banner__countdown--desktop {
-    display: none;
-  }
-
-  .festival-commercial-banner__countdown--mobile {
-    display: inline;
+  .festival-commercial-banner__discount {
+    grid-column: 1;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
   }
 
   .festival-commercial-banner__stage {
-    font-size: 0.66rem;
+    font-size: 0.64rem;
   }
 
   .festival-commercial-banner__event,
   .festival-commercial-banner__date,
-  .festival-commercial-banner__validity,
-  .festival-commercial-banner__countdown,
-  .festival-commercial-banner__open {
-    font-size: 0.72rem;
+  .festival-commercial-banner__discount {
+    font-size: 0.7rem;
   }
 
   .festival-commercial-banner .festival-button {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: auto;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     min-height: 38px;
     margin-top: 0.25rem;
     padding: 0.45rem 0.8rem;
