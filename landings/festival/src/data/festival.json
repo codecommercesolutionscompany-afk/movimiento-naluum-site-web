@@ -22,7 +22,6 @@
       "congreso-festival-sin-alimentacion": "Hola, quiero información sobre la opción Festival + Congreso sin alimentación de Ecos de la Tierra 2026.",
       "ninos-festival": "Hola, quiero información sobre la entrada para niños · Festival solamente de Ecos de la Tierra 2026.",
       "ninos-congreso-festival": "Hola, quiero información sobre la entrada para niños · Festival + Congreso de Ecos de la Tierra 2026.",
-      "diplomado-inmersivo": "Hola, quiero postularme al Diplomado inmersivo de Ecos de la Tierra 2026.",
       "final": "Hola, estoy interesado/a en Ecos de la Tierra 2026 y quiero saber qué opción de participación se adapta mejor a mí."
     }
   },
@@ -39,7 +38,7 @@
     "text": "Ecos de la Tierra reúne aprendizaje, práctica, comunidad, naturaleza, arte y celebración. Durante varios días, EcoCentro Madre Selva se transforma en un espacio para explorar nuevas formas de habitar, diseñar y cuidar la Tierra.",
     "concepts": ["Aprender", "Practicar", "Compartir", "Celebrar"],
     "image": {
-      "src": "/festival/img/conexion.webp",
+      "src": "/festival/img/matias-05-comunidad.jpg",
       "alt": "Experiencia comunitaria en un entorno natural",
       "caption": "Formación, práctica y comunidad en una experiencia inmersiva dentro de Madre Selva."
     }
@@ -66,6 +65,121 @@
       }
     ]
   },
+  "livedExperiences": {
+    "title": "Así se vive Ecos de la Tierra",
+    "text": "No es solamente escuchar o aprender conceptos. Durante siete días, cada propuesta invita a llevar las ideas al cuerpo, al territorio y a la experiencia compartida.",
+    "items": [
+      {
+        "title": "Permacultura y territorio",
+        "text": "Aprender observando, diseñando y trabajando directamente con el territorio.",
+        "image": {
+          "src": "/festival/img/permacultura-social.webp",
+          "alt": "Personas aprendiendo en contacto con el territorio"
+        }
+      },
+      {
+        "title": "Bioconstrucción",
+        "text": "Explorar técnicas y materiales naturales desde la práctica y la construcción colectiva.",
+        "image": {
+          "src": "/festival/img/bioconstruccion-aplicada.webp",
+          "alt": "Práctica colectiva de bioconstrucción con tierra"
+        }
+      },
+      {
+        "title": "Agricultura regenerativa",
+        "text": "Conocer prácticas que devuelven fertilidad, diversidad y vida al suelo.",
+        "image": {
+          "src": "/festival/img/agricultura-sintropica.webp",
+          "alt": "Diversidad de cultivos en un sistema de agricultura regenerativa"
+        }
+      },
+      {
+        "title": "Comunidad",
+        "text": "Compartir aprendizajes, prácticas y convivencia con personas que buscan otras formas de habitar.",
+        "image": {
+          "src": "/festival/img/conexion.webp",
+          "alt": "Personas compartiendo una experiencia comunitaria en la naturaleza"
+        }
+      },
+      {
+        "title": "Encuentro y diversidad",
+        "text": "Arte, intercambio, cultura y experiencias compartidas dentro del territorio vivo de Madre Selva.",
+        "image": {
+          "src": "/festival/img/encuentro-diversidad.jpg",
+          "alt": "Encuentro multicultural y celebración comunitaria"
+        }
+      }
+    ]
+  },
+  "facilitators": {
+    "title": "Personas que van a compartir esta experiencia",
+    "text": "Facilitadores y proyectos que llegan a Madre Selva para compartir saberes, prácticas y formas de relacionarnos con la Tierra y la comunidad.",
+    "items": [
+        {
+          "name": "Aixa Marcattini",
+          "proposal": "Takuarapé: reunirse en el bambú",
+          "text": "Una experiencia para conocer el bambú desde el manejo consciente del bambusal hasta la construcción colectiva.",
+          "image": {
+            "src": "/festival/img/facilitadores/aixa-marcattini.jpeg",
+            "alt": "Aixa Marcattini, facilitadora de Ecos de la Tierra"
+          }
+        },
+        {
+          "name": "Sergio Bruno",
+          "proposal": "Alquimia Regenerativa",
+          "text": "Producción de biocarbón de bambú y aplicaciones del biochar para regenerar el suelo.",
+          "image": {
+            "src": "/festival/img/facilitadores/sergio-bruno.jpg",
+            "alt": "Sergio Bruno, facilitador de Ecos de la Tierra"
+          }
+        },
+        {
+          "name": "Ana y Mati",
+          "proposal": "Elaboración de bocashi",
+          "text": "Una práctica colectiva para preparar un abono fermentado rico en microorganismos y devolver vida al suelo.",
+          "image": {
+            "src": "/festival/img/facilitadores/ana-y-mati.jpg",
+            "alt": "Ana y Mati, facilitadores de Ecos de la Tierra"
+          }
+        },
+        {
+          "name": "Diego Iorio",
+          "proposal": "Ceremonia Guaraní y Pachacuti",
+          "text": "Un encuentro con el territorio, los ciclos de la Tierra, la primavera y la conexión comunitaria.",
+          "image": {
+            "src": "/festival/img/facilitadores/diego-iorio.jpg",
+            "alt": "Diego Iorio, facilitador de Ecos de la Tierra"
+          }
+        },
+        {
+          "name": "Ricardo Scalco",
+          "proposal": "Tierra apisonada e hiperadobe",
+          "text": "Una experiencia práctica de bioconstrucción con tierra para explorar técnicas resistentes, saludables y de bajo impacto.",
+          "image": {
+            "src": "/festival/img/facilitadores/ricardo-scalco.jpg",
+            "alt": "Ricardo Scalco, facilitador de Ecos de la Tierra"
+          }
+        },
+        {
+          "name": "Micaela Sourigues",
+          "proposal": "Jugar Presente · Relacionamiento Auténtico",
+          "text": "Escucha, juego, honestidad, confianza y presencia para explorar el grupo como un ecosistema vivo.",
+          "image": {
+            "src": "/festival/img/facilitadores/micaela-sourigues.jpg",
+            "alt": "Micaela Sourigues, facilitadora de Ecos de la Tierra"
+          }
+        },
+      {
+        "name": "Matías",
+        "proposal": "Temazcal + Danzas de Paz Universal",
+        "text": "Prácticas colectivas de cuerpo, presencia, movimiento, música y comunidad.",
+        "image": {
+          "src": "/festival/img/facilitadores/matias-temazcal.jpg",
+          "alt": "Matías, facilitador de Temazcal y Danzas de Paz Universal"
+        }
+      }
+    ]
+  },
   "decisionGuide": {
     "title": "¿Qué experiencia es para vos?",
     "text": "Usá esta guía para orientarte antes de ver precios y detalles.",
@@ -81,12 +195,6 @@
         "target": "Solo Festival",
         "text": "Una jornada puntual de arte, música, danza y comunidad.",
         "ticketId": "solo-festival"
-      },
-      {
-        "title": "Quiero una experiencia formativa e inmersiva",
-        "target": "Diplomado inmersivo",
-        "text": "Una experiencia extensa para integrar formación, convivencia y práctica.",
-        "ticketId": "diplomado-inmersivo"
       }
     ]
   },
@@ -169,10 +277,6 @@
     "cta": "Ver opciones"
   },
   "ticketsIntro": "Compará las opciones y abrí el detalle de cada paquete para ver qué incluye antes de escribirnos.",
-  "trainingSection": {
-    "title": "¿Buscás una formación más profunda?",
-    "text": "Opciones para quienes buscan una formación profesional o una experiencia de aprendizaje más extensa."
-  },
   "tickets": [
     {
       "id": "congreso-festival-completo",
@@ -356,53 +460,6 @@
       "camping": "Consultar condiciones por WhatsApp.",
       "note": "Opciones de pago disponibles.",
       "cta": "Elegir esta opción"
-    },
-    {
-      "id": "diplomado-inmersivo",
-      "name": "Diplomado inmersivo",
-      "image": "/festival/img/diplomado-estudio.webp",
-      "period": "Comienza el 1 de septiembre · 45 días",
-      "price": {
-        "amount": 1800,
-        "currency": "EUR"
-      },
-      "audience": "Una inmersión de formación, convivencia, prácticas y comunidad.",
-      "summaryBenefits": [
-        "Formación certificada y Congreso Festival",
-        "Prácticas, salidas e inmersión comunitaria"
-      ],
-      "description": "Una experiencia de un mes y medio que integra formación, convivencia, prácticas, visitas, actividades comunitarias y un proceso profundo de aprendizaje.",
-      "includes": [
-        "Formación certificada",
-        "Participación completa en el Congreso Festival",
-        "Salidas y paseos",
-        "Visitas a comunidades indígenas guaraníes",
-        "Yoga por las mañanas o prácticas de movimiento y activación corporal",
-        "Dinámicas grupales",
-        "Baile",
-        "Clases teóricas y prácticas",
-        "Bioconstrucción",
-        "Diseño",
-        "Agricultura sintrópica",
-        "Permacultura social",
-        "Arte con barro",
-        "Alimentación de la tierra al plato durante todo el proceso",
-        "Internet según las condiciones del lugar",
-        "Estadía en carpa propia durante los 45 días"
-      ],
-      "excludes": [
-        "Transporte de llegada hasta EcoCentro Madre Selva",
-        "Carpa",
-        "Bolsa de dormir",
-        "Aislante",
-        "Linterna",
-        "Equipo personal de camping"
-      ],
-      "food": "Alimentación de la tierra al plato durante todo el proceso.",
-      "accommodation": "Estadía en carpa propia durante los 45 días.",
-      "camping": "Cada participante debe traer su equipo personal de camping.",
-      "note": "Incluye internet según las condiciones del lugar.",
-      "cta": "Quiero postularme"
     }
   ],
   "closing": {

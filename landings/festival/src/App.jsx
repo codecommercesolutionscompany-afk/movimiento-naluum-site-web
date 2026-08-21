@@ -24,15 +24,12 @@ const TICKET_CATEGORY_CODES = {
   'solo-festival': 'FEST',
   'ninos-festival': 'NFES',
   'ninos-congreso-festival': 'NCON',
-  'diplomado-inmersivo': 'DIP',
 };
 const FESTIVAL_PACKAGE_IDS = [
   'congreso-festival-completo',
   'congreso-festival-sin-alimentacion',
   'solo-festival',
 ];
-const TRAINING_PACKAGE_IDS = ['diplomado-inmersivo'];
-
 let eventPageContextPushed = false;
 
 const getStoredAttribution = () => {
@@ -306,9 +303,6 @@ function App() {
   const festivalTickets = data.tickets
     .filter((ticket) => FESTIVAL_PACKAGE_IDS.includes(ticket.id))
     .map((ticket) => ({ ...ticket, modalLocation: 'tickets_modal' }));
-  const trainingTickets = data.tickets
-    .filter((ticket) => TRAINING_PACKAGE_IDS.includes(ticket.id))
-    .map((ticket) => ({ ...ticket, modalLocation: 'training_modal' }));
   const featuredTicket = festivalTickets.find((ticket) => ticket.recommended);
 
   useEffect(() => {
@@ -450,44 +444,6 @@ function App() {
     </article>
   );
 
-  const renderTrainingCard = (ticket) => (
-    <article
-      className={`festival-training-card ${ticket.recommended ? 'festival-training-card--featured' : ''}`}
-      id={`ticket-${ticket.id}`}
-      key={ticket.name}
-    >
-      <div className="festival-training-card__media" aria-hidden="true">
-        <img src={ticket.image} alt="" loading="lazy" decoding="async" />
-      </div>
-      <div className="festival-training-card__body">
-        {ticket.badge ? <p className="festival-ticket__badge">{ticket.badge}</p> : null}
-        <h3>{ticket.name}</h3>
-        <p className="festival-ticket__period">{ticket.period}</p>
-        <strong>{formatTicketPrice(ticket.price)}</strong>
-        <p className="festival-ticket__audience">{ticket.audience}</p>
-        <ul className="festival-ticket__includes">
-          {ticket.summaryBenefits.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-        <div className="festival-ticket__actions">
-          <button type="button" className="festival-secondary-button" onClick={(event) => openDetails(ticket, event)}>
-            Ver detalles
-          </button>
-          <a
-            {...ctaProps({
-              location: 'training',
-              text: ticket.cta,
-              ticket,
-            })}
-          >
-            {ticket.cta}
-          </a>
-        </div>
-      </div>
-    </article>
-  );
-
   return (
     <main className="festival-page">
       <StickyCommercialBanner
@@ -559,6 +515,55 @@ function App() {
         </div>
       </section>
 
+      <section className="festival-section festival-section--lived-experiences">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Experiencias reales</p>
+            <h2>{data.livedExperiences.title}</h2>
+            <p>{data.livedExperiences.text}</p>
+          </div>
+          <div className="festival-lived-experiences-grid">
+            {data.livedExperiences.items.map((item) => (
+              <article className="festival-lived-experience" key={item.title}>
+                <img src={item.image.src} alt={item.image.alt} loading="lazy" decoding="async" />
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="festival-section festival-section--facilitators">
+        <div className="festival-container">
+          <div className="festival-section__header">
+            <p className="festival-eyebrow">Facilitadores y proyectos</p>
+            <h2>{data.facilitators.title}</h2>
+            <p>{data.facilitators.text}</p>
+          </div>
+          <div className="festival-facilitators-grid">
+            {data.facilitators.items.map((item) => (
+              <article className="festival-facilitator" key={item.name}>
+                {item.image ? (
+                  <img
+                    className="festival-facilitator__image"
+                    src={item.image.src}
+                    alt={item.image.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : null}
+                <p className="festival-facilitator__name">{item.name}</p>
+                <h3>{item.proposal}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="festival-section festival-section--venue">
         <div className="festival-container festival-venue-layout">
           <figure className="festival-venue-image">
@@ -616,19 +621,6 @@ function App() {
             {data.faq.map((item) => (
               <FaqItem item={item} key={item.question} />
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="festival-section festival-section--training" id="formaciones">
-        <div className="festival-container">
-          <div className="festival-section__header">
-            <p className="festival-eyebrow">Formaciones</p>
-            <h2>{data.trainingSection.title}</h2>
-            <p>{data.trainingSection.text}</p>
-          </div>
-          <div className="festival-training-list">
-            {trainingTickets.map((ticket) => renderTrainingCard(ticket))}
           </div>
         </div>
       </section>
