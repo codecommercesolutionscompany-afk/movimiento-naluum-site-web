@@ -333,6 +333,88 @@ summary:focus-visible {
   background: #fffaf1;
 }
 
+.festival-section--lived-experiences {
+  background: var(--festival-paper);
+}
+
+.festival-lived-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.festival-lived-experience {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--festival-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 36px rgba(21, 37, 28, 0.09);
+}
+
+.festival-lived-experience img {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.festival-lived-experience > div {
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+
+.festival-lived-experience h3,
+.festival-facilitator h3 {
+  margin: 0 0 0.45rem;
+  color: var(--festival-forest);
+  font-size: 1.02rem;
+}
+
+.festival-lived-experience p,
+.festival-facilitator p {
+  margin: 0;
+  color: var(--festival-muted);
+  line-height: 1.55;
+}
+
+.festival-section--facilitators {
+  background: #f2e4d0;
+}
+
+.festival-facilitators-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.festival-facilitator {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--festival-border);
+  border-radius: 20px;
+  background: rgba(255, 250, 241, 0.8);
+}
+
+.festival-facilitator__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  margin: -0.1rem 0 1rem;
+  border-radius: 14px;
+}
+
+.festival-facilitator__name {
+  margin-bottom: 0.7rem;
+  color: var(--festival-clay) !important;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .festival-experience-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
@@ -383,21 +465,6 @@ summary:focus-visible {
   background:
     linear-gradient(180deg, rgba(255, 250, 241, 0.96), rgba(240, 226, 207, 0.78)),
     #f2e4d0;
-}
-
-.festival-section--training {
-  background:
-    linear-gradient(135deg, rgba(21, 37, 28, 0.96), rgba(47, 107, 79, 0.88)),
-    var(--festival-forest);
-  color: #fff;
-}
-
-.festival-section--training h2,
-.festival-section--training h3,
-.festival-section--training p,
-.festival-section--training li,
-.festival-section--training strong {
-  color: #fff;
 }
 
 .festival-section--essential {
@@ -728,208 +795,6 @@ summary:focus-visible {
 .festival-modal__x:focus-visible {
   outline: 3px solid rgba(225, 182, 111, 0.9);
   outline-offset: 4px;
-}
-
-.festival-training-list {
-  display: grid;
-  gap: 1.25rem;
-}
-
-.festival-training-card {
-  position: relative;
-  min-width: 0;
-  display: grid;
-  grid-template-columns: minmax(210px, 0.42fr) minmax(0, 1fr);
-  gap: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 8% 12%, rgba(225, 182, 111, 0.22), transparent 18rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.055)),
-    rgba(12, 27, 19, 0.34);
-  box-shadow:
-    0 26px 70px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
-}
-
-.festival-training-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(225, 182, 111, 0.18), transparent 34%);
-  opacity: 0.58;
-}
-
-.festival-training-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(225, 182, 111, 0.34);
-  background:
-    radial-gradient(circle at 8% 12%, rgba(225, 182, 111, 0.28), transparent 18rem),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07)),
-    rgba(12, 27, 19, 0.38);
-  box-shadow:
-    0 32px 82px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22);
-}
-
-.festival-training-card--featured {
-  border-color: rgba(225, 182, 111, 0.46);
-  background:
-    radial-gradient(circle at 8% 12%, rgba(225, 182, 111, 0.34), transparent 18rem),
-    linear-gradient(135deg, rgba(111, 143, 88, 0.2), rgba(255, 255, 255, 0.08)),
-    rgba(12, 27, 19, 0.42);
-}
-
-.festival-training-card--featured::before {
-  opacity: 0.82;
-}
-
-.festival-training-card__media {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  padding: 0.85rem 0 0.85rem 0.85rem;
-}
-
-.festival-training-card__media::after {
-  content: "";
-  position: absolute;
-  inset: 0.85rem 0 0.85rem 0.85rem;
-  border-radius: 22px;
-  background:
-    linear-gradient(135deg, rgba(21, 37, 28, 0.06), rgba(21, 37, 28, 0.34)),
-    linear-gradient(0deg, rgba(225, 182, 111, 0.14), transparent 52%);
-  pointer-events: none;
-}
-
-.festival-training-card__media img {
-  width: 100%;
-  height: 100%;
-  min-height: 280px;
-  object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 22px;
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
-  transition: transform 220ms ease, filter 220ms ease;
-}
-
-.festival-training-card:hover .festival-training-card__media img {
-  transform: scale(1.025);
-  filter: saturate(1.05) contrast(1.03);
-}
-
-.festival-training-card__body {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.82rem;
-  padding: clamp(1.35rem, 3vw, 1.85rem);
-}
-
-.festival-training-card__body h3,
-.festival-training-card__body p,
-.festival-training-card__body ul {
-  margin-top: 0;
-}
-
-.festival-training-card__body h3 {
-  margin-bottom: 0.05rem;
-  font-size: clamp(1.45rem, 3vw, 2.05rem);
-  line-height: 1.05;
-}
-
-.festival-training-card__body .festival-ticket__period {
-  width: fit-content;
-  padding: 0.3rem 0.58rem;
-  border: 1px solid rgba(225, 182, 111, 0.18);
-  border-radius: 11px;
-  background: rgba(225, 182, 111, 0.09);
-  color: rgba(225, 182, 111, 0.9);
-  font-size: 0.82rem;
-  font-weight: 720;
-  letter-spacing: 0.02em;
-}
-
-.festival-training-card__body > strong {
-  width: fit-content;
-  margin: 0.08rem 0;
-  padding: 0.45rem 0.7rem;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.11);
-  color: #fff;
-  font-size: clamp(1.45rem, 3vw, 1.85rem);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-.festival-training-card__body .festival-ticket__audience {
-  max-width: 62ch;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.festival-training-card__body .festival-ticket__includes {
-  gap: 0.52rem;
-  margin: 0.1rem 0 0;
-  padding: 0;
-  list-style: none;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-.festival-training-card__body .festival-ticket__includes li {
-  position: relative;
-  padding-left: 1.25rem;
-}
-
-.festival-training-card__body .festival-ticket__includes li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.42rem;
-  height: 0.42rem;
-  border-radius: 50%;
-  background: var(--festival-gold);
-  box-shadow: 0 0 0 4px rgba(225, 182, 111, 0.13);
-}
-
-.festival-training-card__body .festival-ticket__actions {
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 0.85rem;
-  padding-top: 1.15rem;
-}
-
-.festival-training-card__body .festival-button {
-  border-color: rgba(255, 255, 255, 0.72);
-  min-height: 54px;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
-}
-
-.festival-training-card__body .festival-secondary-button {
-  min-height: 54px;
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.105);
-  color: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.festival-training-card__body .festival-secondary-button:hover {
-  border-color: rgba(225, 182, 111, 0.46);
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.festival-training-card--featured .festival-ticket__badge {
-  max-width: 100%;
-  border: 1px solid rgba(225, 182, 111, 0.34);
-  background: rgba(225, 182, 111, 0.16);
-  color: #f7e2b5;
-  font-size: 0.72rem;
-  line-height: 1.25;
-  box-shadow: none;
 }
 
 .festival-essential-grid {
@@ -1267,9 +1132,14 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .festival-training-card {
-    grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr);
+  .festival-lived-experiences-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .festival-facilitators-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
 }
 
 @media (max-width: 680px) {
@@ -1363,7 +1233,6 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .festival-training-card,
   .festival-modal__grid,
   .festival-modal__facts {
     grid-template-columns: 1fr;
@@ -1383,24 +1252,12 @@ summary:focus-visible {
     max-width: calc(100% - 2rem);
   }
 
-  .festival-training-card__media img {
-    height: 220px;
-    min-height: 0;
-  }
-
-  .festival-training-card__media {
-    padding: 0.85rem 0.85rem 0;
-  }
-
-  .festival-training-card__media::after {
-    inset: 0.85rem 0.85rem 0;
-  }
-
   .festival-experience-pillars {
     grid-template-columns: 1fr;
   }
 
-  .festival-training-card__body .festival-ticket__actions {
+  .festival-lived-experiences-grid,
+  .festival-facilitators-grid {
     grid-template-columns: 1fr;
   }
 
