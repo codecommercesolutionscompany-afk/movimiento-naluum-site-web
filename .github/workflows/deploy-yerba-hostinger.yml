@@ -13,6 +13,8 @@ concurrency:
 jobs:
   deploy-yerba:
     name: Build and deploy Yerba
+    # Temporarily disabled during Festival-only production phase.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment: production

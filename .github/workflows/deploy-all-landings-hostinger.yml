@@ -1,4 +1,4 @@
-name: Deploy all landings to Hostinger
+name: Deploy Festival to Hostinger
 
 "on":
   workflow_dispatch:
@@ -7,13 +7,7 @@ name: Deploy all landings to Hostinger
     branches:
       - main
     paths:
-      - "landings/pdc/**"
-      - "landings/programa-intercambio-formativo/**"
-      - "landings/selva-adentro/**"
-      - "landings/voluntariado-otono-invierno/**"
-      - "landings/yerba/**"
       - "landings/festival/**"
-      - "landings/link-in-bio/**"
       - ".github/workflows/deploy-all-landings-hostinger.yml"
 
 permissions:
@@ -25,7 +19,7 @@ concurrency:
 
 jobs:
   build-and-deploy:
-    name: Build and deploy all landings
+    name: Build and deploy Festival
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment: production
@@ -45,59 +39,10 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: |
-            landings/pdc/package-lock.json
-            landings/programa-intercambio-formativo/package-lock.json
-            landings/selva-adentro/package-lock.json
-            landings/voluntariado-otono-invierno/package-lock.json
-            landings/yerba/package-lock.json
-            landings/festival/package-lock.json
-            landings/link-in-bio/package-lock.json
-
-      - name: Build PDC
-        working-directory: landings/pdc
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
-
-      - name: Build Residencia Formativa
-        working-directory: landings/programa-intercambio-formativo
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
-
-      - name: Build Selva Adentro
-        working-directory: landings/selva-adentro
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
-
-      - name: Build Voluntariado
-        working-directory: landings/voluntariado-otono-invierno
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
-
-      - name: Build Yerba
-        working-directory: landings/yerba
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
+          cache-dependency-path: landings/festival/package-lock.json
 
       - name: Build Festival
         working-directory: landings/festival
-        run: |
-          npm ci
-          npm run build
-          test -f dist/index.html
-
-      - name: Build Link-in-bio
-        working-directory: landings/link-in-bio
         run: |
           npm ci
           npm run build
@@ -151,13 +96,7 @@ jobs:
             echo "$label deployed successfully"
           }
 
-          deploy_landing "landings/pdc/dist" "pdc" "PDC"
-          deploy_landing "landings/programa-intercambio-formativo/dist" "programa-intercambio-formativo" "Residencia Formativa"
-          deploy_landing "landings/selva-adentro/dist" "selva-adentro" "Selva Adentro"
-          deploy_landing "landings/voluntariado-otono-invierno/dist" "voluntariado-otono-invierno" "Voluntariado"
-          deploy_landing "landings/yerba/dist" "yerba" "Yerba"
           deploy_landing "landings/festival/dist" "festival" "Festival"
-          deploy_landing "landings/link-in-bio/dist" "madre-selva" "Link-in-bio"
 
       - name: Verify public URLs
         shell: bash
@@ -180,16 +119,10 @@ jobs:
             echo "$label verified successfully"
           }
 
-          check_url "https://movimientonaluum.org/pdc/" "PDC" "PDC"
-          check_url "https://movimientonaluum.org/programa-intercambio-formativo/" "Residencia" "Residencia Formativa"
-          check_url "https://movimientonaluum.org/selva-adentro/" "Selva" "Selva Adentro"
-          check_url "https://movimientonaluum.org/voluntariado-otono-invierno/" "Voluntariado" "Voluntariado"
-          check_url "https://movimientonaluum.org/yerba/" "Yerba Mate Madre Selva" "Yerba"
           check_url "https://movimientonaluum.org/festival/" "Ecos de la Tierra 2026" "Festival"
-          check_url "https://movimientonaluum.org/madre-selva/" "Madre Selva | Enlaces" "Link-in-bio"
 
       - name: Deployment completed
         shell: bash
         run: |
-          echo "All landings were built, deployed, and verified."
+          echo "Festival was built, deployed, and verified."
           echo "No remote delete operation was used."
